@@ -1,0 +1,423 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="livetemplates.csharp.usevar">True</setting>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="btnExit" priority="0" />
+      <Item value="Point" priority="0" />
+      <Item value="Application`0" priority="0" />
+      <Item value="MessageBox`0" priority="10" />
+      <Item value="panel1" priority="2" />
+      <Item value="false" priority="0" />
+      <Item value="if" priority="22" />
+      <Item value="else" priority="4" />
+      <Item value="ex" priority="0" />
+      <Item value="textBox1" priority="1" />
+      <Item value="public" priority="7" />
+      <Item value="string" priority="4" />
+      <Item value="DbManager`0" priority="2" />
+      <Item value="return" priority="2" />
+      <Item value="null" priority="2" />
+      <Item value="results" priority="2" />
+      <Item value="command" priority="2" />
+      <Item value="connection" priority="0" />
+      <Item value="cmbCustomers" priority="9" />
+      <Item value="cmbSelect_Customer" priority="0" />
+      <Item value="gridPrices" priority="6" />
+      <Item value="var" priority="20" />
+      <Item value="foreach" priority="16" />
+      <Item value="price" priority="0" />
+      <Item value="prices" priority="0" />
+      <Item value="DataGridView`0" priority="10" />
+      <Item value="Exception`0" priority="0" />
+      <Item value="static" priority="0" />
+      <Item value="void" priority="4" />
+      <Item value="Log`0" priority="0" />
+      <Item value="Select`0" priority="0" />
+      <Item value="row" priority="10" />
+      <Item value="query" priority="1" />
+      <Item value="Db`0" priority="29" />
+      <Item value="params" priority="0" />
+      <Item value="object" priority="1" />
+      <Item value="currentPrice" priority="2" />
+      <Item value="textBox2" priority="0" />
+      <Item value="idsStr" priority="0" />
+      <Item value="rdoReplace" priority="5" />
+      <Item value="rdoSkip" priority="1" />
+      <Item value="Font" priority="0" />
+      <Item value="FontStyle`0" priority="0" />
+      <Item value="chbRepDup" priority="0" />
+      <Item value="chbDeleteAfterCopy" priority="0" />
+      <Item value="rdoExcept" priority="0" />
+      <Item value="dt" priority="0" />
+      <Item value="Convert`0" priority="2" />
+      <Item value="c2" priority="0" />
+      <Item value="cmbItems" priority="1" />
+      <Item value="btnAdd_Item" priority="0" />
+      <Item value="comboBox2" priority="1" />
+      <Item value="txtItemDescription" priority="0" />
+      <Item value="itemCopyFrom" priority="0" />
+      <Item value="DataRow`0" priority="2" />
+      <Item value="dataTable" priority="1" />
+      <Item value="comboBox1" priority="0" />
+      <Item value="ValueType`0" priority="0" />
+      <Item value="RefreshDataset`0" priority="0" />
+      <Item value="lstGroups" priority="1" />
+      <Item value="txtUsername" priority="0" />
+      <Item value="user" priority="0" />
+      <Item value="NullReferenceException`0" priority="0" />
+      <Item value="StringBuilder`0" priority="0" />
+      <Item value="lblCopy_To" priority="0" />
+      <Item value="DialogResult" priority="2" />
+      <Item value="result" priority="1" />
+      <Item value="txtNew_Group" priority="0" />
+      <Item value="groupName" priority="0" />
+      <Item value="lstItems_In_Group" priority="0" />
+      <Item value="lstItems_NotIn_Group" priority="0" />
+      <Item value="cmbSwingNumber" priority="1" />
+      <Item value="chkCombine" priority="0" />
+      <Item value="cmbSwing1" priority="1" />
+      <Item value="chkDelete" priority="0" />
+      <Item value="custs1" priority="0" />
+      <Item value="txtNewSwingNumber" priority="0" />
+      <Item value="lstDistMaster" priority="4" />
+      <Item value="grdDetail" priority="0" />
+      <Item value="newRow" priority="2" />
+      <Item value="decimal" priority="2" />
+      <Item value="OnFontChanged`0" priority="0" />
+      <Item value="txtPercent" priority="0" />
+      <Item value="out" priority="0" />
+      <Item value="percent" priority="1" />
+      <Item value="modifier" priority="0" />
+      <Item value="txtGroupName" priority="0" />
+      <Item value="RefreshGroupList`0" priority="0" />
+      <Item value="customers" priority="0" />
+      <Item value="custRow" priority="0" />
+      <Item value="@decimal" priority="0" />
+      <Item value="CultureInfo`0" priority="0" />
+      <Item value="Color`0" priority="0" />
+      <Item value="ProcessCmdKey`0" priority="0" />
+      <Item value="cmbCust" priority="0" />
+      <Item value="int" priority="1" />
+      <Item value="i" priority="4" />
+      <Item value="custPricings" priority="0" />
+      <Item value="DataRow" priority="0" />
+      <Item value="DataRowBuilder" priority="0" />
+      <Item value="new" priority="0" />
+      <Item value="progressBar1" priority="0" />
+      <Item value="cmbItem" priority="1" />
+      <Item value="isInGroup" priority="0" />
+      <Item value="grpoupId" priority="0" />
+      <Item value="_groupId" priority="0" />
+      <Item value="groupId" priority="0" />
+      <Item value="leadCustomerNumber" priority="0" />
+      <Item value="pgrBar1" priority="1" />
+      <Item value="leadItems" priority="2" />
+      <Item value="membersCustomersNumgers" priority="0" />
+      <Item value="in" priority="0" />
+      <Item value="memberItems" priority="0" />
+      <Item value="memberItem" priority="0" />
+      <Item value="leadItem" priority="0" />
+      <Item value="lblSelectedGroup" priority="0" />
+      <Item value="_groupName" priority="0" />
+      <Item value="try" priority="0" />
+      <Item value="progressBar2" priority="0" />
+      <Item value="i2" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Button">
+      <Item value="Location" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.Application">
+      <Item value="ExecutablePath" priority="0" />
+      <Item value="StartupPath" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.IO.Path">
+      <Item value="Combine`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.MessageBox">
+      <Item value="Show`0" priority="10" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Unified_Price_for_Var.Main">
+      <Item value="Visible" priority="0" />
+      <Item value="Close`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Panel">
+      <Item value="Visible" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Exception">
+      <Item value="Message" priority="0" />
+      <Item value="StackTrace" priority="0" />
+      <Item value="InnerException" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.TextBox">
+      <Item value="Text" priority="8" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Unified_Price_for_Var.DbManager">
+      <Item value="ExecuteReader`0" priority="0" />
+      <Item value="ExecuteDataTable`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.DataTable">
+      <Item value="Rows" priority="23" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.DataRowCollection">
+      <Item value="Count" priority="8" />
+      <Item value="AsQueryable`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.OleDb.OleDbConnection">
+      <Item value="Close`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.OleDb.OleDbCommand">
+      <Item value="Dispose`0" priority="0" />
+      <Item value="ExecuteNonQuery`0" priority="0" />
+      <Item value="ExecuteScalar`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ComboBox">
+      <Item value="DataSource" priority="0" />
+      <Item value="DisplayMember" priority="0" />
+      <Item value="ValueMember" priority="1" />
+      <Item value="SelectedItem" priority="0" />
+      <Item value="SelectedValue" priority="11" />
+      <Item value="Items" priority="3" />
+      <Item value="Text" priority="5" />
+      <Item value="Refresh`0" priority="0" />
+      <Item value="ResetBindings`0" priority="0" />
+      <Item value="Visible" priority="0" />
+      <Item value="SelectedIndexChanged" priority="0" />
+      <Item value="SelectedText" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DataGridView">
+      <Item value="DataSource" priority="1" />
+      <Item value="Columns" priority="0" />
+      <Item value="Rows" priority="14" />
+      <Item value="SelectionMode" priority="0" />
+      <Item value="SelectedRows" priority="4" />
+      <Item value="ReadOnly" priority="0" />
+      <Item value="Visible" priority="0" />
+      <Item value="Invoke`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DataGridViewRowCollection">
+      <Item value="Add`0" priority="1" />
+      <Item value="Clear`0" priority="0" />
+      <Item value="Count" priority="2" />
+      <Item value="RemoveAt`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Int32">
+      <Item value="ToString`0" priority="4" />
+      <Item value="CompareTo`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DataGridViewRow">
+      <Item value="SetValues`0" priority="1" />
+      <Item value="Cells" priority="13" />
+      <Item value="Dispose`0" priority="0" />
+      <Item value="Index" priority="1" />
+      <Item value="CreateCells`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Unified_Price_for_Var.Log">
+      <Item value="Exception`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DataGridViewCell">
+      <Item value="Value" priority="11" />
+      <Item value="Style" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Object">
+      <Item value="ToString`0" priority="17" />
+      <Item value="Equals`0" priority="0" />
+      <Item value="GetHashCode`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Unified_Price_for_Var.Db">
+      <Item value="NonQuery`0" priority="19" />
+      <Item value="ExecuteDataTable`0" priority="8" />
+      <Item value="ExecuteDataRow`0" priority="11" />
+      <Item value="AddSlashes`0" priority="0" />
+      <Item value="_connectionString" priority="0" />
+      <Item value="ExecuteScalar`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.String">
+      <Item value="Format`0" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.RadioButton">
+      <Item value="Font" priority="4" />
+      <Item value="Checked" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Drawing.Font">
+      <Item value="Bold" priority="0" />
+      <Item value="FontFamily" priority="0" />
+      <Item value="Size" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Drawing.FontStyle">
+      <Item value="Bold" priority="0" />
+      <Item value="Regular" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.CheckBox">
+      <Item value="Checked" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DataGridViewSelectedRowCollection">
+      <Item value="Clear`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Convert">
+      <Item value="ToDecimal`0" priority="3" />
+      <Item value="ToDouble`0" priority="0" />
+      <Item value="DBNull" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Drawing.Point">
+      <Item value="X" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ComboBox+ObjectCollection">
+      <Item value="Add`0" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ListBox">
+      <Item value="DataSource" priority="0" />
+      <Item value="SelectedItem" priority="2" />
+      <Item value="Text" priority="4" />
+      <Item value="Items" priority="4" />
+      <Item value="SelectedItems" priority="0" />
+      <Item value="SelectedValue" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Label">
+      <Item value="Text" priority="6" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Unified_Price_for_Var.frmCopyPrices">
+      <Item value="Close`0" priority="0" />
+      <Item value="DialogResult" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.String">
+      <Item value="Replace`0" priority="5" />
+      <Item value="Trim`0" priority="0" />
+      <Item value="Length" priority="1" />
+      <Item value="Equals`0" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DialogResult">
+      <Item value="OK" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.DataRowView">
+      <Item value="Row" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ListBox+ObjectCollection">
+      <Item value="RemoveAt`0" priority="0" />
+      <Item value="Add`0" priority="1" />
+      <Item value="Clear`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Unified_Price_for_Var.frmViewPricing">
+      <Item value="Close`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DataGridViewCellStyle">
+      <Item value="ForeColor" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Drawing.Color">
+      <Item value="Red" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Decimal">
+      <Item value="TryParse`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Number">
+      <Item value="FormatDecimal`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Globalization.CultureInfo">
+      <Item value="CultureTypes" priority="0" />
+      <Item value="NumberFormat" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Globalization.NumberFormatInfo">
+      <Item value="NumberDecimalSeparator" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Int32">
+      <Item value="TryParse`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ProgressBar">
+      <Item value="Maximum" priority="3" />
+      <Item value="Value" priority="5" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Threading.Thread">
+      <Item value="Start`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Linq.IQueryable">
+      <Item value="GetEnumerator`0" priority="0" />
+      <Item value="Expression" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.EnumerableRowCollection`1">
+      <Item value="Where`1" priority="0" />
+      <Item value="SingleOrDefault`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.DataRow">
+      <Item value="Field`1" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Pricing/f:frmViewPricing.Designer.cs" caret="37537" fromTop="23" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Customer/f:frmViewCustomer.cs" caret="8737" fromTop="3" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/f:Log.cs" caret="352" fromTop="12" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmMyDistribution.cs" caret="494" fromTop="18" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/f:Validation.cs" caret="670" fromTop="14" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Item/f:frmManageInventoryGroup.Designer.cs" caret="17335" fromTop="23" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Item/f:frmViewItem.Designer.cs" caret="0" fromTop="0" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/f:Main.Designer.cs" caret="0" fromTop="0" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmViewSwing.Designer.cs" caret="25243" fromTop="3" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:ChangeGroupPricing/f:frmChangeGroupPricing .cs" caret="4050" fromTop="98" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmViewSwing.cs" caret="6661" fromTop="23" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Item/f:frmViewItem.cs" caret="5773" fromTop="22" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:ReportViewers/f:frmReportViewerJustNew.Designer.cs" caret="242" fromTop="0" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:CrystalReports/f:ChangePriceReport.cs" caret="0" fromTop="0" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:ReportViewers/f:frmReportViewer.cs" caret="709" fromTop="22" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:ReportViewers/f:frmReportViewer.Designer.cs" caret="2174" fromTop="32" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Item/f:frmManageInventoryGroup.cs" caret="1421" fromTop="23" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/f:Main.cs" caret="1648" fromTop="41" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/f:app.config" caret="0" fromTop="0" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Pricing/f:frmCopyPrices.cs" caret="0" fromTop="0" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/f:Db.cs" caret="1592" fromTop="17" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/f:Program.cs" caret="460" fromTop="16" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmViewDistributionGroup.cs" caret="1537" fromTop="34" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="5448" fromTop="33" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Pricing/f:frmViewPricing.cs" caret="1491" fromTop="23" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/f:frmReports.cs" caret="11056" fromTop="44" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="1255" fromTop="14" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="7051" fromTop="34" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="6712" fromTop="23" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="5776" fromTop="30" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="1228" fromTop="9" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="1297" fromTop="13" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="8547" fromTop="39" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="2973" fromTop="5" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="7509" fromTop="26" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="7337" fromTop="19" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="8088" fromTop="27" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="8547" fromTop="38" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/f:Program.cs" caret="460" fromTop="16" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="2748" fromTop="18" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="2462" fromTop="13" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="6164" fromTop="25" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="1926" fromTop="21" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="1923" fromTop="22" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="6372" fromTop="36" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="6887" fromTop="26" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmViewDistributionGroup.cs" caret="1712" fromTop="34" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="5776" fromTop="35" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="5743" fromTop="40" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="5776" fromTop="43" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="5446" fromTop="42" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="3711" fromTop="21" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="4264" fromTop="20" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/d:Distribution/f:frmReconc.cs" caret="5448" fromTop="33" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/f:frmReports.cs" caret="12774" fromTop="16" />
+      <File id="4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61/f:frmReports.cs" caret="2244" fromTop="34" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+</Configuration>

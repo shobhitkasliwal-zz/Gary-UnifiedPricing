@@ -1,0 +1,544 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4DE221ED-478E-4BA3-8B87-A7F7D5C0DD61}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Unified_Price_for_Var</RootNamespace>
+    <AssemblyName>Unified Pricing</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CrystalReports\ByDistr_Group_Report.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ByDistr_Group_Report.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReports\ByItem_Comparison_Report.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ByItem_Comparison_Report.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReports\ByItem_Report.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ByItem_Report.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReports\BySwing_Report.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BySwing_Report.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReports\ChangePriceReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChangePriceReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReports\ChangePriceReportJustNew.cs">
+      <DependentUpon>ChangePriceReportJustNew.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CrystalReports\ByCustomer_Comparison_report.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ByCustomer_Comparison_report.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReports\ItemsByCustFamily.cs">
+      <DependentUpon>ItemsByCustFamily.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CrystalReports\Report2_new.cs">
+      <DependentUpon>Report2_new.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CrystalReports\Report1_all.cs">
+      <DependentUpon>Report1_all.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CrystalReports\Report1_new.cs">
+      <DependentUpon>Report1_new.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CrystalReports\Report2_all.cs">
+      <DependentUpon>Report2_all.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Db.cs" />
+    <Compile Include="Distribution\frmViewDistributionGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Distribution\frmViewDistributionGroup.Designer.cs">
+      <DependentUpon>frmViewDistributionGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Distribution\frmMyDistribution.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Distribution\frmMyDistribution.Designer.cs">
+      <DependentUpon>frmMyDistribution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Distribution\frmViewSwing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Distribution\frmViewSwing.Designer.cs">
+      <DependentUpon>frmViewSwing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeGroupPricing\frmChangeGroupPricing .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeGroupPricing\frmChangeGroupPricing .designer.cs">
+      <DependentUpon>frmChangeGroupPricing .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Distribution\frmReconc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Distribution\frmReconc.Designer.cs">
+      <DependentUpon>frmReconc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Email\frmEmail1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Email\frmEmail1.Designer.cs">
+      <DependentUpon>frmEmail1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemConversion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemConversion.Designer.cs">
+      <DependentUpon>ItemConversion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBackUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBackUp.designer.cs">
+      <DependentUpon>frmBackUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportViewers\frmItemsByCustFamily_Viewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportViewers\frmItemsByCustFamily_Viewer.Designer.cs">
+      <DependentUpon>frmItemsByCustFamily_Viewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportViewers\frmReport2_new_Viewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportViewers\frmReport2_new_Viewer.Designer.cs">
+      <DependentUpon>frmReport2_new_Viewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportViewers\frmReport2_all_Viewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportViewers\frmReport2_all_Viewer.Designer.cs">
+      <DependentUpon>frmReport2_all_Viewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportViewers\frmReport1_all_Viewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportViewers\frmReport1_all_Viewer.Designer.cs">
+      <DependentUpon>frmReport1_all_Viewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportViewers\frmReport1_new_Viewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportViewers\frmReport1_new_Viewer.Designer.cs">
+      <DependentUpon>frmReport1_new_Viewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportViewers\frmByDisrt_Group_Report_Viewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportViewers\frmByDisrt_Group_Report_Viewer.Designer.cs">
+      <DependentUpon>frmByDisrt_Group_Report_Viewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportViewers\frmByCustomer_Comparison_Report_Viewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportViewers\frmByCustomer_Comparison_Report_Viewer.Designer.cs">
+      <DependentUpon>frmByCustomer_Comparison_Report_Viewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReports.designer.cs">
+      <DependentUpon>frmReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportViewers\frmByItem_Viewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportViewers\frmByItem_Viewer.Designer.cs">
+      <DependentUpon>frmByItem_Viewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportViewers\frmByItem_Comparison_Report_Viewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportViewers\frmByItem_Comparison_Report_Viewer.Designer.cs">
+      <DependentUpon>frmByItem_Comparison_Report_Viewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportViewers\frmBySwing_Report_Viewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportViewers\frmBySwing_Report_Viewer.Designer.cs">
+      <DependentUpon>frmBySwing_Report_Viewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Log.cs" />
+    <Compile Include="Pricing\frmCopyPrices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pricing\frmCopyPrices.Designer.cs">
+      <DependentUpon>frmCopyPrices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Item\frmManageInventoryGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Item\frmManageInventoryGroup.Designer.cs">
+      <DependentUpon>frmManageInventoryGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pricing\frmViewPricing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pricing\frmViewPricing.Designer.cs">
+      <DependentUpon>frmViewPricing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Item\frmViewItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Item\frmViewItem.Designer.cs">
+      <DependentUpon>frmViewItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\frmViewCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer\frmViewCustomer.Designer.cs">
+      <DependentUpon>frmViewCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pricing_for_Tanya_DataSet1.cs">
+      <DependentUpon>Pricing_for_Tanya_DataSet1.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Pricing_for_Tanya_DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pricing_for_Tanya_DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportViewers\frmReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportViewers\frmReportViewer.Designer.cs">
+      <DependentUpon>frmReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportViewers\frmReportViewerJustNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportViewers\frmReportViewerJustNew.Designer.cs">
+      <DependentUpon>frmReportViewerJustNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="Validation.cs" />
+    <EmbeddedResource Include="CrystalReports\ByDistr_Group_Report.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ByDistr_Group_Report.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\ByItem_Comparison_Report.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ByItem_Comparison_Report.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\ByItem_Report.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ByItem_Report.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\BySwing_Report.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>BySwing_Report.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\ChangePriceReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ChangePriceReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\ChangePriceReportJustNew.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ChangePriceReportJustNew.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\ItemsByCustFamily.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ItemsByCustFamily.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\Report2_new.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Report2_new.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\Report1_all.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Report1_all.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\Report1_new.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Report1_new.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\Report2_all.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Report2_all.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer\frmViewCustomer.resx">
+      <DependentUpon>frmViewCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\ByCustomer_Comparison_report.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ByCustomer_Comparison_report.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Distribution\frmViewDistributionGroup.resx">
+      <DependentUpon>frmViewDistributionGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Distribution\frmMyDistribution.resx">
+      <DependentUpon>frmMyDistribution.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Distribution\frmViewSwing.resx">
+      <DependentUpon>frmViewSwing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeGroupPricing\frmChangeGroupPricing .resx">
+      <DependentUpon>frmChangeGroupPricing .cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Distribution\frmReconc.resx">
+      <DependentUpon>frmReconc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Email\frmEmail1.resx">
+      <DependentUpon>frmEmail1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemConversion.resx">
+      <DependentUpon>ItemConversion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBackUp.resx">
+      <DependentUpon>frmBackUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportViewers\frmItemsByCustFamily_Viewer.resx">
+      <DependentUpon>frmItemsByCustFamily_Viewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportViewers\frmReport2_new_Viewer.resx">
+      <DependentUpon>frmReport2_new_Viewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportViewers\frmReport2_all_Viewer.resx">
+      <DependentUpon>frmReport2_all_Viewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportViewers\frmReport1_all_Viewer.resx">
+      <DependentUpon>frmReport1_all_Viewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportViewers\frmReport1_new_Viewer.resx">
+      <DependentUpon>frmReport1_new_Viewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportViewers\frmByDisrt_Group_Report_Viewer.resx">
+      <DependentUpon>frmByDisrt_Group_Report_Viewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportViewers\frmByCustomer_Comparison_Report_Viewer.resx">
+      <DependentUpon>frmByCustomer_Comparison_Report_Viewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReports.resx">
+      <DependentUpon>frmReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportViewers\frmByItem_Viewer.resx">
+      <DependentUpon>frmByItem_Viewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportViewers\frmByItem_Comparison_Report_Viewer.resx">
+      <DependentUpon>frmByItem_Comparison_Report_Viewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportViewers\frmBySwing_Report_Viewer.resx">
+      <DependentUpon>frmBySwing_Report_Viewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pricing\frmCopyPrices.resx">
+      <DependentUpon>frmCopyPrices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Item\frmManageInventoryGroup.resx">
+      <DependentUpon>frmManageInventoryGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pricing\frmViewPricing.resx">
+      <DependentUpon>frmViewPricing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Item\frmViewItem.resx">
+      <DependentUpon>frmViewItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="ReportViewers\frmReportViewer.resx">
+      <DependentUpon>frmReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportViewers\frmReportViewerJustNew.resx">
+      <DependentUpon>frmReportViewerJustNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Assignments\GaryAssignment1.pdf" />
+    <None Include="Pricing_for_Tanya_DataSet1.xsc">
+      <DependentUpon>Pricing_for_Tanya_DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Pricing_for_Tanya_DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Pricing_for_Tanya_DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Pricing_for_Tanya_DataSet1.xss">
+      <DependentUpon>Pricing_for_Tanya_DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\16129.png" />
+    <None Include="Resources\Picture1-001.jpg" />
+    <None Include="Resources\Picture2-001.jpg" />
+    <None Include="Resources\Picture5-003.jpg" />
+    <Content Include="UnifiedPricingDB.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="CrystalActiveXReportViewerLib13">
+      <Guid>{B816E96D-D151-4000-BADB-53A2D8F3FC65}</Guid>
+      <VersionMajor>13</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

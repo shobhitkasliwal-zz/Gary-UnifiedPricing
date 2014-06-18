@@ -319,6 +319,8 @@ namespace Unified_Price_for_Var
             }
 
             //-------------------------------------------------------------------------------
+
+            // Update here to remove the looping and do everythign at database.
             if (rdoPrintAll.Checked)
             {
                 var reallyItems = Db.ExecuteDataTable("SELECT * FROM tblItems");

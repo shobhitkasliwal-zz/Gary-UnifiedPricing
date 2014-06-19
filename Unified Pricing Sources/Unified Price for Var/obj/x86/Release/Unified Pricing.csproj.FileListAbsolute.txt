@@ -1906,7 +1906,6 @@ S:\Githib Repository\Projects\Gary-UnifiedPricing\Gary-UnifiedPricing\Unified Pr
 S:\Githib Repository\Projects\Gary-UnifiedPricing\Gary-UnifiedPricing\Unified Pricing Sources\Unified Price for Var\bin\Release\Unified Pricing.exe
 S:\Githib Repository\Projects\Gary-UnifiedPricing\Gary-UnifiedPricing\Unified Pricing Sources\Unified Price for Var\bin\Release\Unified Pricing.pdb
 S:\Githib Repository\Projects\Gary-UnifiedPricing\Gary-UnifiedPricing\Unified Pricing Sources\Unified Price for Var\bin\Release\Interop.CrystalActiveXReportViewerLib13.dll
-S:\Githib Repository\Projects\Gary-UnifiedPricing\Gary-UnifiedPricing\Unified Pricing Sources\Unified Price for Var\obj\x86\Release\Unified Pricing.csprojResolveAssemblyReference.cache
 S:\Githib Repository\Projects\Gary-UnifiedPricing\Gary-UnifiedPricing\Unified Pricing Sources\Unified Price for Var\obj\x86\Release\Unified_Price_for_Var.frmViewCustomer.resources
 S:\Githib Repository\Projects\Gary-UnifiedPricing\Gary-UnifiedPricing\Unified Pricing Sources\Unified Price for Var\obj\x86\Release\Unified_Price_for_Var.frmViewDistributionGroup.resources
 S:\Githib Repository\Projects\Gary-UnifiedPricing\Gary-UnifiedPricing\Unified Pricing Sources\Unified Price for Var\obj\x86\Release\Unified_Price_for_Var.frmMyDistribution.resources

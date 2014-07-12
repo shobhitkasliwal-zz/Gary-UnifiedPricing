@@ -1088,7 +1088,6 @@ S:\Githib Repository\Projects\Gary-UnifiedPricing\Gary-UnifiedPricing\Unified Pr
 S:\Githib Repository\Projects\Gary-UnifiedPricing\Gary-UnifiedPricing\Unified Pricing Sources\Unified Price for Var\obj\x86\Debug\Unified_Price_for_Var.frmReportViewer.resources
 S:\Githib Repository\Projects\Gary-UnifiedPricing\Gary-UnifiedPricing\Unified Pricing Sources\Unified Price for Var\obj\x86\Debug\Unified_Price_for_Var.frmReportViewerJustNew.resources
 S:\Githib Repository\Projects\Gary-UnifiedPricing\Gary-UnifiedPricing\Unified Pricing Sources\Unified Price for Var\obj\x86\Debug\Unified Pricing.csproj.GenerateResource.Cache
-S:\Githib Repository\Projects\Gary-UnifiedPricing\Gary-UnifiedPricing\Unified Pricing Sources\Unified Price for Var\obj\x86\Debug\Unified Pricing.csprojResolveAssemblyReference.cache
 C:\Projects\GitHub Projects\Gary-UnifiedPricing\Unified Pricing Sources\Unified Price for Var\bin\Debug\UnifiedPricingDB.accdb
 C:\Projects\GitHub Projects\Gary-UnifiedPricing\Unified Pricing Sources\Unified Price for Var\bin\Debug\Unified Pricing.exe
 C:\Projects\GitHub Projects\Gary-UnifiedPricing\Unified Pricing Sources\Unified Price for Var\bin\Debug\Unified Pricing.pdb

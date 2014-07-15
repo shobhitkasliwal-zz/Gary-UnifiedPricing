@@ -1974,3 +1974,4 @@ C:\Projects\GitHub Projects\Gary-UnifiedPricing\Unified Pricing Sources\Unified 
 C:\Projects\GitHub Projects\Gary-UnifiedPricing\Unified Pricing Sources\Unified Price for Var\obj\x86\Release\Unified_Price_for_Var.frmReportViewerJustNew.resources
 C:\Projects\GitHub Projects\Gary-UnifiedPricing\Unified Pricing Sources\Unified Price for Var\obj\x86\Release\Unified Pricing.csproj.GenerateResource.Cache
 C:\Projects\GitHub Projects\Gary-UnifiedPricing\Unified Pricing Sources\Unified Price for Var\obj\x86\Release\Unified Pricing.csprojResolveAssemblyReference.cache
+S:\Githib Repository\Projects\Gary-UnifiedPricing\Gary-UnifiedPricing\Unified Pricing Sources\Unified Price for Var\obj\x86\Release\Unified Pricing.csprojResolveAssemblyReference.cache

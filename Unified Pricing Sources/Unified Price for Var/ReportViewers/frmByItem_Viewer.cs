@@ -44,6 +44,11 @@ namespace Unified_Price_for_Var.ReportViewers
             crystalReportViewer1.Zoom(75);
             WindowState = FormWindowState.Maximized;
             rpt.ReportOptions.EnableSaveDataWithReport = false;
+             
+            CrystalDecisions.CrystalReports.Engine.TextObject txtReportHeader;
+            txtReportHeader = rpt.ReportDefinition.ReportObjects["rptHeader"] as TextObject;
+            txtReportHeader.Text = this.Text;
+
         }
 
     }

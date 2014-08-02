@@ -261,6 +261,7 @@ namespace Unified_Price_for_Var
                 Db.NonQuery(DefaultQuery + " WHERE [Item Number] = '" + cmbItem.SelectedValue + "' ORDER BY [Current Price];");
                 Cursor.Current = Cursors.Default;
                 ReportViewers.frmByItem_Viewer frm = new ReportViewers.frmByItem_Viewer();
+                frm.Text = "By Item Number Report";
                 frm.Show();
             }
 
@@ -290,6 +291,7 @@ namespace Unified_Price_for_Var
                 Db.NonQuery(DefaultQuery + " WHERE [Item Number] between '{0}' and '{1}' ORDER BY [Item Number],[Current Price]", cmbFrom.SelectedValue, cmbTo.SelectedValue);
                 Cursor.Current = Cursors.Default;
                 ReportViewers.frmByItem_Viewer frm = new ReportViewers.frmByItem_Viewer();
+                frm.Text = "By Range of Item Numbers";
                 frm.Show();
             }
             //-------------------------------------------------------------------------------
@@ -319,6 +321,7 @@ namespace Unified_Price_for_Var
                 Db.NonQuery("INSERT INTO tblByItem_Report ( [Item Number], [Item Description], [Customer Number], [Current Price], InDistrGroup, QuoteDate, Last12MonthQTY ) SELECT tblPricing.[item Number], tblPricing.[item description], tblCustomers.[Customer Number], tblPricing.[Current Price], '' AS InDistrGroup, tblPricing.QuoteDate, tblPricing.Last12MonthQty FROM (tblPricing INNER JOIN tblItems ON tblPricing.[Item Number] = tblItems.[Item Number])  INNER JOIN tblCustomers ON tblPricing.[Customer Number] = tblCustomers.[Customer Number] where tblItems.[Family] = '{0}'", cmbFamily.SelectedValue);
                 Cursor.Current = Cursors.Default;
                 ReportViewers.frmByItem_Viewer frm = new ReportViewers.frmByItem_Viewer();
+                frm.Text = "By Family Report";
                 frm.Show();
             }
 
@@ -353,6 +356,7 @@ namespace Unified_Price_for_Var
                 //}
                 Cursor.Current = Cursors.Default;
                 ReportViewers.frmByItem_Viewer frm = new ReportViewers.frmByItem_Viewer();
+                frm.Text = "All Items Report";
                 frm.Show();
             }
 

@@ -414,16 +414,17 @@ namespace Unified_Price_for_Var
 
                 var cust = Db.ExecuteDataRow("SELECT * FROM tblCustomers WHERE [Customer Number] = '{0}'", custPricings.Rows[i]["Customer Number"]);
 
-                Db.NonQuery("INSERT INTO tblByCustomer_Report ([Customer Number], [Customer Name], [Item Number], [Item Description], [Current Price], [Customer Item Number], [IsNew], [ASR Current Price], [AST Current Price]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}')",
+                Db.NonQuery("INSERT INTO tblByCustomer_Report ([Customer Number], [Customer Name], [Item Number], [Item Description], [Current Price], [Customer Item Number], [IsNew], [ASR Current Price], [AST Current Price], [QuoteDate]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}','{9}')",
                     custPricings.Rows[i]["Customer Number"],
                     cust["Customer Bill Name"].ToString().Replace("'", "''"),
                     custPricings.Rows[i]["Item Number"],
-                    custPricings.Rows[i]["Item Description"].ToString().Replace("'", "''"),
+                    custPricings.Rows[i]["Item Description"].ToString().Replace("'", "''").ToLower(),
                     custPricings.Rows[i]["Current Price"],
                     custPricings.Rows[i]["Customer Item Number"],
                     custPricings.Rows[i]["IsNew"],
                     ASRCurrPriceDec,
-                    ASTCurrPriceDec
+                    ASTCurrPriceDec,
+                    custPricings.Rows[i]["QuoteDate"]
                     );
             }
             Cursor.Current = Cursors.Default;

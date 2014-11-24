@@ -426,6 +426,7 @@ namespace Unified_Price_for_Var
                     ASTCurrPriceDec,
                     custPricings.Rows[i]["QuoteDate"]
                     );
+
             }
             Cursor.Current = Cursors.Default;
             //        frmReportViewer frm = new frmReportViewer();

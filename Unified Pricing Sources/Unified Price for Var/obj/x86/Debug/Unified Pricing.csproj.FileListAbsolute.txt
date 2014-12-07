@@ -1126,3 +1126,4 @@ C:\Users\skasliwal\Dropbox\To Shobhit\completed\unified price for var\obj\x86\De
 C:\Users\skasliwal\Dropbox\To Shobhit\completed\unified price for var\obj\x86\Debug\Unified Pricing.csproj.ResolveComReference.cache
 C:\Users\skasliwal\Dropbox\To Shobhit\completed\unified price for var\obj\x86\Debug\Unified Pricing.exe
 C:\Users\skasliwal\Dropbox\To Shobhit\completed\unified price for var\obj\x86\Debug\Unified Pricing.pdb
+C:\Projects\GitHub Projects\Gary-UnifiedPricing\Unified Pricing Sources\Unified Price for Var\obj\x86\Debug\Unified Pricing.csprojResolveAssemblyReference.cache

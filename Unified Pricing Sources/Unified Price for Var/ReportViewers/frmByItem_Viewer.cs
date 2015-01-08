@@ -44,31 +44,6 @@ namespace Unified_Price_for_Var.ReportViewers
             crystalReportViewer1.Zoom(75);
             WindowState = FormWindowState.Maximized;
             rpt.ReportOptions.EnableSaveDataWithReport = false;
-             
-            CrystalDecisions.CrystalReports.Engine.TextObject txtReportHeader;
-            txtReportHeader = rpt.ReportDefinition.ReportObjects["rptHeader"] as TextObject;
-            txtReportHeader.Text = this.Text;
-            CrystalDecisions.CrystalReports.Engine.FieldObject txtFamilyHeader;
-            CrystalDecisions.CrystalReports.Engine.TextObject txtFamilyHeaderLabel;
-            CrystalDecisions.CrystalReports.Engine.FieldObject txtItemNumberHeader;
-            CrystalDecisions.CrystalReports.Engine.TextObject txtItemNumberHeaderLabel;
-            txtFamilyHeader = rpt.ReportDefinition.ReportObjects["txtFamilyHeader"] as FieldObject;
-            txtFamilyHeaderLabel = rpt.ReportDefinition.ReportObjects["txtFamilyHeaderLabel"] as TextObject;
-            txtItemNumberHeader = rpt.ReportDefinition.ReportObjects["txtItemNumberHeader"] as FieldObject;
-            txtItemNumberHeaderLabel = rpt.ReportDefinition.ReportObjects["txtItemNumberHeaderLabel"] as TextObject;
-            if (this.Text == "By Family Report")
-            {
-                txtItemNumberHeader.Width = 0;
-                txtItemNumberHeader.Height = 0;
-                txtItemNumberHeaderLabel.Text = "";
-            }
-            else
-            {
-                txtFamilyHeader.Width = 0;
-                txtFamilyHeader.Height = 0;
-                txtFamilyHeaderLabel.Text = "";
-            }
-
         }
 
     }

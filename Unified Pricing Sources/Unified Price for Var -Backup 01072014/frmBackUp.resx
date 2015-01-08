@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Open BACKUP window and press "BackUp To External Drive"
+button.
+Shortly you'll recieve message "BackUp completed successfully".
+All data base elements will be copied to remote drive.
+The data/time extention will be added to data base file name.
+Turn the remote drive OFF. 
+Disconnect it from computer and power.</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Open the BackUped files on drive E:\ and select the file you
+ would like to restore from.
+Rename selected file to its original name, by removing the 
+   DATE / TIME part.
+Open BACKUP window and press "RESTORE" button.
+Shortly you'll recieve message:
+  "Data Base UnnifiedPricing.accdb restored successfully".
+Rename file on drive E:\ back to its saved name
+ (put back DATE. part) 
+Turn the remote drive OFF. 
+Disconnect it from computer and power. 
+</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox1.ErrorImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        /9j/4AAQSkZJRgABAQEAAAAAAAD/4QEyRXhpZgAATU0AKgAAAAgABgExAAIAAAAHAAAAVgEyAAIAAAAU
+        AAAAXgE7AAIAAAAHAAAAchABAAQAAAABAAABOhACAAQAAAABAAABOodpAAQAAAABAAAAegAAAABQaWNh
+        c2EAADIwMTI6MDM6MjQgMDk6NTY6NDAAUGljYXNhAAAABpAAAAcAAAAEMDIyMJADAAIAAAAUAAAAyKAC
+        AAQAAAABAAAAIKADAAQAAAABAAAAIKAFAAQAAAABAAAA3KQgAAIAAAAhAAABCAAAAAAyMDEyOjAzOjIy
+        IDE5OjIxOjM0AAADAAIABwAAAAQwMTAwEAEABAAAAAEAAAE6EAIABAAAAAEAAAE6AAAAAAAAZjBlZjEw
+        ZjU1NWEyMzE0ZDIxZmMwZjdhMGYwNGJjOTEAAP/hAtdodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+        ADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+DQo8eDp4
+        bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJYTVAgQ29yZSA1LjEuMiI+DQoJ
+        PHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgt
+        bnMjIj4NCgkJPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMu
+        YWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpleGlmPSJodHRwOi8vbnMuYWRvYmUuY29tL2V4aWYvMS4w
+        LyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIiB4bXA6TW9kaWZ5RGF0
+        ZT0iMjAxMi0wMy0yNFQwOTo1Njo0MC0wNTowMCIgZXhpZjpEYXRlVGltZU9yaWdpbmFsPSIyMDEyLTAz
+        LTIyVDE5OjIxOjM0LTA1OjAwIj4NCgkJCTxkYzpjcmVhdG9yPg0KCQkJCTxyZGY6U2VxPg0KCQkJCQk8
+        cmRmOmxpPlBpY2FzYTwvcmRmOmxpPg0KCQkJCTwvcmRmOlNlcT4NCgkJCTwvZGM6Y3JlYXRvcj4NCgkJ
+        PC9yZGY6RGVzY3JpcHRpb24+DQoJPC9yZGY6UkRGPg0KPC94OnhtcG1ldGE+DQogICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgPD94cGFja2V0IGVuZD0ndyc/Pv/sABFEdWNreQABAAQAAABGAAD/7QB2
+        UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAD4cAQAAAgAEHAFaAAMbJUccAgAAAgAEHAI3AAgyMDEyMDMy
+        MhwCPAALMTkyMTM0KzAwMDAcAlAABlBpY2FzYThCSU0EJQAAAAAAEP2dq8T1pCd/5HeQIL6wl/z/2wBD
+        AAsICAoIBwsKCQoNDAsNERwSEQ8PESIZGhQcKSQrKigkJyctMkA3LTA9MCcnOEw5PUNFSElIKzZPVU5G
+        VEBHSEX/2wBDAQwNDREPESESEiFFLicuRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVF
+        RUVFRUVFRUVFRUVFRUX/wAARCAAgACADASIAAhEBAxEB/8QAGAABAQADAAAAAAAAAAAAAAAABwYCAwX/
+        xAAqEAACAQMDAwMDBQAAAAAAAAABAgMABBEFBhITITEHQWEyUbFCcXOBof/EABUBAQEAAAAAAAAAAAAA
+        AAAAAAAB/8QAFREBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhEDEQA/ALzdu4J9As4Xt4UkkmYqC5OF
+        wPt70aXO69au7xZJdQmj4q5CxHio7fYef7q19SRmysP5G/FHdvGJL+BfHLkp7A+3zVgzi3jrysCNZlPw
+        0YNLu0b+fU9uWt1dSdSaTlybGM98eKKrfSEE5LPzUn6TEmB/lK+2I44dGjiiUKiMwAAwPNWwcD1KOLTT
+        /mVvxR9EyQX0EkjBEUkknwOxpY3Zt2TcNpAkUyxvCxYBwcHIx7UfX+0NbgkVTYPMB+qEhgakG+1MBidm
+        ZuoccOPg1fbSmWfRuaMGXquMj96J4dlbh62I9JkWLIyHbA+e2cUsbR0+40zQ0t7uPpyiR245BwCe3ira
+        P//Z
+</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Close the "Lordahl Pricing" application you worked with.
+Double click on the icon "My Computer" located on top 
+left corner of your screen.
+Be sure you can recognize the drive named Z:\.
+If you can not find the drive named Z: - please, 
+                              inform your System Administrator.
+Otherwise press button "BackUp To Computer".
+Shortly you'll recieve the message: 
+                                   "BackUp Completed successfuly".
+
+
+
+</value>
+  </data>
+</root>

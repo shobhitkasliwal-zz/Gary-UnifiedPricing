@@ -22,37 +22,37 @@ namespace Unified_Price_for_Var
         {
             //Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US", false);
             InitializeComponent();
-           
+
         }
 
         public void FillGridByCustomer()
         {
             btnSave.Enabled = false;
             btnCancel.Enabled = false;
-		//old	var prices = Db.ExecuteDataTable("SELECT * FROM tblPricing WHERE [Customer Number] = '{0}' ORDER BY [Item Number]", cmbCustomers.SelectedValue);
+            //old	var prices = Db.ExecuteDataTable("SELECT * FROM tblPricing WHERE [Customer Number] = '{0}' ORDER BY [Item Number]", cmbCustomers.SelectedValue);
 
-            var prices = Db.ExecuteDataTable("SELECT P.[ID] as IDn, P.[Customer Number], P.[Item Number] as [ItemN], P.[Current Price] as [CurP], I.[Item Description] as [ItemDS], P.[Customer Item Number] as [CustIN], P.[Old Price] as [OldP], P.[Notes] as [NotesP], format(P.[QuoteDate],'mmm dd yyyy') as[QuoteDateP], P.[Last12MonthQTY] as [Last12MonthQTYP]  FROM tblPricing P left join tblItems I on P.[Item Number] = I.[Item Number] WHERE P.[Customer Number] = '{0}' ORDER BY P.[Item Number]", cmbCustomers.SelectedValue);  
-            
+            var prices = Db.ExecuteDataTable("SELECT P.[ID] as IDn, P.[Customer Number], P.[Item Number] as [ItemN], P.[Current Price] as [CurP], I.[Item Description] as [ItemDS], P.[Customer Item Number] as [CustIN], P.[Old Price] as [OldP], P.[Notes] as [NotesP], format(P.[QuoteDate],'mmm dd yyyy') as[QuoteDateP], P.[Last12MonthQTY] as [Last12MonthQTYP]  FROM tblPricing P left join tblItems I on P.[Item Number] = I.[Item Number] WHERE P.[Customer Number] = '{0}' ORDER BY P.[Item Number]", cmbCustomers.SelectedValue);
+
             gridPrices.Rows.Clear();
             foreach (DataRow price in prices.Rows)
             {
-          //old      gridPrices.Rows.Add(price["Item Number"], ((decimal)price["Current Price"]).ToString("0.0000"), ((decimal)price["Old Price"]).ToString("0.0000"), price["Item Description"], price["Customer Item Number"], price["ID"]);
+                //old      gridPrices.Rows.Add(price["Item Number"], ((decimal)price["Current Price"]).ToString("0.0000"), ((decimal)price["Old Price"]).ToString("0.0000"), price["Item Description"], price["Customer Item Number"], price["ID"]);
                 gridPrices.Rows.Add(price["ItemN"], ((decimal)price["CurP"]).ToString("0.0000"), ((decimal)price["OldP"]).ToString("0.0000"), price["ItemDS"], price["NotesP"], price["CustIN"], price["Last12MonthQTYP"], price["QuoteDateP"], price["IDn"]);
             }
             lblTotalPricesForCust.Text = "Total: " + prices.Rows.Count;
-            lbl11.Text = cmbCustomers.SelectedValue.ToString().Replace("&","&&");  //Showing up customers number like: AS or CFT
-            
+            lbl11.Text = cmbCustomers.SelectedValue.ToString().Replace("&", "&&");  //Showing up customers number like: AS or CFT
+
         }
 
         private void frmViewPricing_Load(object sender, EventArgs e)
         {
-           // this.Visible = false;
+            // this.Visible = false;
 
             var dataTable = Db.ExecuteDataTable("SELECT [Customer Number], [Customer Bill Name] + ' (' + [Customer Number] + ')' AS [Combinet Name] FROM tblCustomers ORDER BY [Customer Bill Name]");
             cmbCustomers.DataSource = dataTable;
             cmbCustomers.DisplayMember = "Combinet Name";
             cmbCustomers.ValueMember = "Customer Number";
-         
+
 
             FillGridByCustomer();
 
@@ -62,12 +62,12 @@ namespace Unified_Price_for_Var
             cmbQuick_Check.DisplayMember = "Item Number";
             cmbQuick_Check.ValueMember = "Item Number";
 
-          //  this.Visible = true;
+            //  this.Visible = true;
         }
 
         private void btnAddPrice_Click(object sender, EventArgs e)
         {
-            
+
             cmbCustomers.Enabled = false;
             gridPrices.Enabled = false;
 
@@ -89,10 +89,10 @@ namespace Unified_Price_for_Var
 
             cmbItemNumb.Enabled = true;
             txtCurrent_Price.Enabled = true;
-      //               txtCurrent_Price.Text = "0.0000";
+            //               txtCurrent_Price.Text = "0.0000";
             txtCurrent_Price.Text = " ";
-      //               txtItem_description.Enabled = true;
-            txtItem_description.Enabled = false;        
+            //               txtItem_description.Enabled = true;
+            txtItem_description.Enabled = false;
             txtItem_description.Text = " ";
             txtCustomer_Item_Number.Enabled = true;
             txtNotes.Enabled = true;
@@ -109,7 +109,7 @@ namespace Unified_Price_for_Var
         {
 
         }
-//---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
         private void txtChange_Price_Click(object sender, EventArgs e)
         {
 
@@ -125,8 +125,8 @@ namespace Unified_Price_for_Var
                 MessageBox.Show("Std Pac QTY - should be number");
                 return;
             }
-            
-            
+
+
             if (change == DialogResult.Yes)
             {
                 var rows = gridPrices.SelectedRows;
@@ -139,7 +139,7 @@ namespace Unified_Price_for_Var
 
                 var row = rows[0];
 
-               
+
                 decimal currentPrice;
                 if (!Decimal.TryParse(textBox2.Text, out currentPrice))
                 {
@@ -147,19 +147,19 @@ namespace Unified_Price_for_Var
                     return;
                 }
 
-                 if (txtNotes.Text == "")
+                if (txtNotes.Text == "")
                 {
                     MessageBox.Show("Std Pak QTY can not be empty.");
                     return;
                 }
-              
+
                 try
                 {
                     row.Cells["PreviousPrice"].Value = row.Cells["CurrentPrice"].Value;
                     row.Cells["CurrentPrice"].Value = currentPrice;
 
                     Db.NonQuery("UPDATE tblPricing SET [Old Price] = [Current Price], [Current Price] = '{0}', IsNew = 1, Notes = '{1}', QuoteDate=Now()  WHERE ID = {2}", currentPrice, txtNotes.Text, row.Cells["ID"].Value.ToString());
-  
+
                     var lead = Db.ExecuteDataRow("SELECT * FROM tblDistributionGroupDetail WHERE [Group_Customer_Name] = '{0}' AND Modifier = 'Lead'", cmbCustomers.SelectedValue);
                     if (lead != null)
                     {
@@ -184,7 +184,7 @@ namespace Unified_Price_for_Var
             txtNotes.Text = "";
             FillGridByCustomer();
         }
-//================================================================================
+        //================================================================================
         private void txtDelete_Click(object sender, EventArgs e)
         {
             var numbersStr = string.Empty;
@@ -207,7 +207,7 @@ namespace Unified_Price_for_Var
                 try
                 {
                     Db.NonQuery("DELETE * FROM tblPricing WHERE ID {0}", idsStr);
-                    
+
                     foreach (DataGridViewRow row in gridPrices.SelectedRows)
                     {
                         gridPrices.Rows.RemoveAt(row.Index);
@@ -215,14 +215,14 @@ namespace Unified_Price_for_Var
 
                     MessageBox.Show("Item Deleted.", "Good News");
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                     //MessageBox.Show("Item NOT Deleted", "Error");
                 }
             }
         }
-//========================================================================================================
+        //========================================================================================================
         private void btnMarkAsOld_Click(object sender, EventArgs e)
         {
             if (cmbCustomers.SelectedValue.ToString().Equals("-1"))
@@ -255,7 +255,7 @@ namespace Unified_Price_for_Var
                 }
             }
         }
-//====================================================
+        //====================================================
         private void btnCopy_Click(object sender, EventArgs e)
         {
             if (cmbCustomers.SelectedValue.ToString().Equals("-1"))
@@ -270,18 +270,18 @@ namespace Unified_Price_for_Var
                 FillGridByCustomer();
             this.Visible = true;
         }
-//===========================================================
+        //===========================================================
         private void btnCheckDuplicate_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Will be done on the next stage.");
         }
-        
+
         //=============================================================        
         private void btnPrint_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-          
-            var custPricings = Db.ExecuteDataTable("SELECT * FROM tblPricing WHERE [Customer Number] = '{0}' ORDER BY [Item Number] ASC", cmbCustomers.SelectedValue); 
+
+            var custPricings = Db.ExecuteDataTable("SELECT * FROM tblPricing WHERE [Customer Number] = '{0}' ORDER BY [Item Number] ASC", cmbCustomers.SelectedValue);
             Db.NonQuery("DELETE FROM tblByCustomer_Report");
 
             for (int i = 0; i < custPricings.Rows.Count; i++)
@@ -289,17 +289,17 @@ namespace Unified_Price_for_Var
                 decimal ASRCurrPriceDec = 0;
                 decimal ASTCurrPriceDec = 0;
 
-      //          var ASRCurrPrice = Db.ExecuteDataRow("SELECT TOP 1 [Current Price] FROM tblPricing WHERE [Customer Number] = 'ASR' AND [Item Number] = '{0}'", custPricings.Rows[i]["Item Number"]);
-      //          var ASTCurrPrice = Db.ExecuteDataRow("SELECT TOP 1 [Current Price] FROM tblPricing WHERE [Customer Number] = 'AST' AND [Item Number] = '{0}'", custPricings.Rows[i]["Item Number"]);
+                //          var ASRCurrPrice = Db.ExecuteDataRow("SELECT TOP 1 [Current Price] FROM tblPricing WHERE [Customer Number] = 'ASR' AND [Item Number] = '{0}'", custPricings.Rows[i]["Item Number"]);
+                //          var ASTCurrPrice = Db.ExecuteDataRow("SELECT TOP 1 [Current Price] FROM tblPricing WHERE [Customer Number] = 'AST' AND [Item Number] = '{0}'", custPricings.Rows[i]["Item Number"]);
 
-      //          if (ASRCurrPrice != null)
-      //              ASRCurrPriceDec = (decimal)ASRCurrPrice[0];
-      //          if (ASTCurrPrice != null)
-      //              ASTCurrPriceDec = (decimal)ASTCurrPrice[0];
+                //          if (ASRCurrPrice != null)
+                //              ASRCurrPriceDec = (decimal)ASRCurrPrice[0];
+                //          if (ASTCurrPrice != null)
+                //              ASTCurrPriceDec = (decimal)ASTCurrPrice[0];
 
                 var cust = Db.ExecuteDataRow("SELECT * FROM tblCustomers WHERE [Customer Number] = '{0}'", custPricings.Rows[i]["Customer Number"]);
 
-                Db.NonQuery("INSERT INTO tblByCustomer_Report ([Customer Number], [Customer Name], [Item Number], [Item Description], [Current Price], [Customer Item Number], [IsNew], [ASR Current Price], [AST Current Price], [Notes]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}')",
+                Db.NonQuery("INSERT INTO tblByCustomer_Report ([Customer Number], [Customer Name], [Item Number], [Item Description], [Current Price], [Customer Item Number], [IsNew], [ASR Current Price], [AST Current Price], [Notes],[Last12MonthQTY]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}','{10}')",
                     custPricings.Rows[i]["Customer Number"],
                     cust["Customer Bill Name"].ToString().Replace("'", "''"),
                     custPricings.Rows[i]["Item Number"],
@@ -309,33 +309,34 @@ namespace Unified_Price_for_Var
                     custPricings.Rows[i]["IsNew"],
                     ASRCurrPriceDec,
                     ASTCurrPriceDec,
-                    custPricings.Rows[i]["Notes"]
+                    custPricings.Rows[i]["Notes"],
+                    custPricings.Rows[i]["Last12MonthQTY"]
                     );
             }
             Cursor.Current = Cursors.Default;
 
-             var result = MessageBox.Show("\"Click on YES to print only NEW / CHANGED prices, or click NO to print all\"", "Warning", MessageBoxButtons.YesNo);
-             if (result == DialogResult.No)
-             {
-                 Cursor.Current = Cursors.WaitCursor;
-                 frmReport2_all_Viewer frm = new frmReport2_all_Viewer();
-                 frm.Show();
-                 Cursor.Current = Cursors.Default;
-             }
-             else
-             {
-                 Cursor.Current = Cursors.WaitCursor;
-                 frmReport2_new_Viewer frm = new frmReport2_new_Viewer();
-                 frm.Show();
-                 Cursor.Current = Cursors.Default;
-                
-             }            
-          }        
-//==============================================================================================
-        
+            var result = MessageBox.Show("\"Click on YES to print only NEW / CHANGED prices, or click NO to print all\"", "Warning", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No)
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                frmReport2_all_Viewer frm = new frmReport2_all_Viewer();
+                frm.Show();
+                Cursor.Current = Cursors.Default;
+            }
+            else
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                frmReport2_new_Viewer frm = new frmReport2_new_Viewer();
+                frm.Show();
+                Cursor.Current = Cursors.Default;
+
+            }
+        }
+        //==============================================================================================
+
         private void btnChangePrices_Click(object sender, EventArgs e)
         {
-            
+
             Cursor.Current = Cursors.WaitCursor;
 
             var custPricings = Db.ExecuteDataTable("SELECT * FROM tblPricing WHERE [Customer Number] = '{0}' ORDER BY [Item Number] ASC", cmbCustomers.SelectedValue);
@@ -346,14 +347,14 @@ namespace Unified_Price_for_Var
             Db.NonQuery("insert into tblAst ([Item Number], [Current price]) select tblPricing.[Item Number],  tblPricing.[Current Price] from tblPricing where tblPricing.[Customer number] = 'AST' ");
             Db.NonQuery("insert into tblAsr ([Item Number], [Current price]) select tblPricing.[Item Number],  tblPricing.[Current Price] from tblPricing where tblPricing.[Customer number] = 'ASR' ");
 
-            
+
             for (int i = 0; i < custPricings.Rows.Count; i++)
             {
                 decimal ASRCurrPriceDec = 0;
                 decimal ASTCurrPriceDec = 0;
 
-           //     var ASRCurrPrice = Db.ExecuteDataRow("SELECT TOP 1 [Current Price] FROM tblPricing WHERE [Customer Number] = 'ASR' AND [Item Number] = '{0}'", custPricings.Rows[i]["Item Number"]);
-           //     var ASTCurrPrice = Db.ExecuteDataRow("SELECT TOP 1 [Current Price] FROM tblPricing WHERE [Customer Number] = 'AST' AND [Item Number] = '{0}'", custPricings.Rows[i]["Item Number"]);
+                //     var ASRCurrPrice = Db.ExecuteDataRow("SELECT TOP 1 [Current Price] FROM tblPricing WHERE [Customer Number] = 'ASR' AND [Item Number] = '{0}'", custPricings.Rows[i]["Item Number"]);
+                //     var ASTCurrPrice = Db.ExecuteDataRow("SELECT TOP 1 [Current Price] FROM tblPricing WHERE [Customer Number] = 'AST' AND [Item Number] = '{0}'", custPricings.Rows[i]["Item Number"]);
 
                 var ASRCurrPrice = Db.ExecuteDataRow("SELECT [Current Price] FROM tblASR WHERE [Item Number] = '{0}'", custPricings.Rows[i]["Item Number"]);
                 var ASTCurrPrice = Db.ExecuteDataRow("SELECT [Current Price] FROM tblAST WHERE [Item Number] = '{0}'", custPricings.Rows[i]["Item Number"]);
@@ -365,7 +366,7 @@ namespace Unified_Price_for_Var
 
                 var cust = Db.ExecuteDataRow("SELECT * FROM tblCustomers WHERE [Customer Number] = '{0}'", custPricings.Rows[i]["Customer Number"]);
 
-                Db.NonQuery("INSERT INTO tblByCustomer_Report ([Customer Number], [Customer Name], [Item Number], [Item Description], [Current Price], [Customer Item Number], [IsNew], [ASR Current Price], [AST Current Price], [Notes], [QuoteDate]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}','{10}')",
+                Db.NonQuery("INSERT INTO tblByCustomer_Report ([Customer Number], [Customer Name], [Item Number], [Item Description], [Current Price], [Customer Item Number], [IsNew], [ASR Current Price], [AST Current Price], [Notes], [QuoteDate], [Last12MonthQTY]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}','{10}','{11}')",
                     custPricings.Rows[i]["Customer Number"],
                     cust["Customer Bill Name"].ToString().Replace("'", "''"),
                     custPricings.Rows[i]["Item Number"],
@@ -376,7 +377,8 @@ namespace Unified_Price_for_Var
                     ASRCurrPriceDec,
                     ASTCurrPriceDec,
                     custPricings.Rows[i]["Notes"],
-                    custPricings.Rows[i]["QuoteDate"]
+                    custPricings.Rows[i]["QuoteDate"],
+                    custPricings.Rows[i]["Last12MonthQTY"]
                     );
             }
             Cursor.Current = Cursors.Default;
@@ -396,61 +398,61 @@ namespace Unified_Price_for_Var
                 frm.Show();
                 Cursor.Current = Cursors.Default;
 
-            }            
+            }
         }
-//================================================================================================
+        //================================================================================================
         private void btnRollBack_Click(object sender, EventArgs e)
         {
             var confirm = MessageBox.Show("Please confirm to Roll Back All prices for selected customer", "Conformation", MessageBoxButtons.YesNo);
             if (confirm == DialogResult.Yes)
             {
-            var rollback = Db.ExecuteDataRow("SELECT * FROM tblPricing WHERE [Customer Number] = '{0}' AND IsNew = Yes ", cmbCustomers.SelectedValue);
-                             
-               if (rollback != null)
-                  {
-                      var rollbackTable = Db.ExecuteDataTable("SELECT * FROM tblPricing WHERE [Customer Number] = '{0}' AND IsNew = Yes ", cmbCustomers.SelectedValue);
-                       
-                   foreach (DataRow itemRow in rollbackTable.Rows)
-                       {
+                var rollback = Db.ExecuteDataRow("SELECT * FROM tblPricing WHERE [Customer Number] = '{0}' AND IsNew = Yes ", cmbCustomers.SelectedValue);
+
+                if (rollback != null)
+                {
+                    var rollbackTable = Db.ExecuteDataTable("SELECT * FROM tblPricing WHERE [Customer Number] = '{0}' AND IsNew = Yes ", cmbCustomers.SelectedValue);
+
+                    foreach (DataRow itemRow in rollbackTable.Rows)
+                    {
                         var eachRow = Db.ExecuteDataRow("SELECT * FROM tblPricing WHERE [Customer Number] = '{0}' AND IsNew = Yes ", cmbCustomers.SelectedValue);
-                                        
-                       Db.NonQuery("UPDATE tblPricing SET [Current Price] = [Old Price], [Old Price] = 0, IsNew = No WHERE ID = {0}", eachRow["ID"]);
-               
-                       }
-                  }
-               FillGridByCustomer();
+
+                        Db.NonQuery("UPDATE tblPricing SET [Current Price] = [Old Price], [Old Price] = 0, IsNew = No WHERE ID = {0}", eachRow["ID"]);
+
+                    }
+                }
+                FillGridByCustomer();
             }
-         }
-//================================================================================================
+        }
+        //================================================================================================
         private void btnEmail_Click(object sender, EventArgs e)
         {
-           
-                        var custInformation = Db.ExecuteDataRow("Select [Email Address] From tblCustomers Where [Customer Number] = '{0}'", cmbCustomers.SelectedValue.ToString());
 
-                                TextBox tB = new TextBox();
-                                tB.Text = custInformation["Email Address"].ToString();
+            var custInformation = Db.ExecuteDataRow("Select [Email Address] From tblCustomers Where [Customer Number] = '{0}'", cmbCustomers.SelectedValue.ToString());
 
-                                if (tB.Text != "")
-                                {
-                                    if (Validation.IsValidEmail(tB))
-                                    {
-                                        frmEmail1 nextScreen = new frmEmail1(tB.Text);
-                                        DialogResult result = nextScreen.ShowDialog();
-                                    }
-                                }
-                                else
-                                {
-                                   var answer =  MessageBox.Show("Customer does not have Email address. \n Would you like to process anyway?", "Importent",MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                                    if (answer == DialogResult.Yes)
-                                    {
-                               //       frmEmail1 nextScreen = new frmEmail1(tB.Text);
-                                        frmEmail1 nextScreen = new frmEmail1("empty");
-                                        DialogResult result = nextScreen.ShowDialog();
-                                    }
-                                }
+            TextBox tB = new TextBox();
+            tB.Text = custInformation["Email Address"].ToString();
+
+            if (tB.Text != "")
+            {
+                if (Validation.IsValidEmail(tB))
+                {
+                    frmEmail1 nextScreen = new frmEmail1(tB.Text);
+                    DialogResult result = nextScreen.ShowDialog();
+                }
+            }
+            else
+            {
+                var answer = MessageBox.Show("Customer does not have Email address. \n Would you like to process anyway?", "Importent", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (answer == DialogResult.Yes)
+                {
+                    //       frmEmail1 nextScreen = new frmEmail1(tB.Text);
+                    frmEmail1 nextScreen = new frmEmail1("empty");
+                    DialogResult result = nextScreen.ShowDialog();
+                }
+            }
         }
-//============================================================================================
-            
+        //============================================================================================
+
         private void btnCancel_Click_1(object sender, EventArgs e)
         {
             cmbCustomers.Enabled = true;
@@ -463,8 +465,8 @@ namespace Unified_Price_for_Var
             btnMarkAsOld.Enabled = true;
             btnCopy.Enabled = true;
             btnCheckDuplicate.Enabled = true;
-            btnRollBack.Enabled = true ;
-            btnEmail.Enabled =  true;
+            btnRollBack.Enabled = true;
+            btnEmail.Enabled = true;
             btnChange_Price.Enabled = true;
             btnDeletePrice.Enabled = true;
             btnSave.Enabled = false;
@@ -478,7 +480,7 @@ namespace Unified_Price_for_Var
             txtItem_description.Enabled = false;
             txtCustomer_Item_Number.Enabled = false;
         }
-//==============================================================================
+        //==============================================================================
         private void btnSave_Click(object sender, EventArgs e)
         {
             var existsItem = Db.ExecuteDataTable("SELECT * FROM tblItems WHERE [Item Number] = '{0}'", cmbItemNumb.Text);
@@ -487,50 +489,50 @@ namespace Unified_Price_for_Var
                 MessageBox.Show("Item not exists in item master table. Before pricing new item ADD it to master table.", "Warning");
                 return;
             }
-         
+
             var exists = Db.ExecuteDataTable("SELECT * FROM tblPricing WHERE [Customer Number] = '{0}' and [Item Number] = '{1}'", cmbCustomers.SelectedValue, cmbItemNumb.Text);
             if (exists.Rows.Count > 0)
             {
                 MessageBox.Show("Item already exists in customer list");
                 return;
             }
-            
+
             if (cmbItemNumb.Text == "")
             {
                 MessageBox.Show("You must select the Item to quote this Customer a Price for. \n Please select an Item");
-            	return;
-			}
+                return;
+            }
 
-	//		if (txtItem_description.Text == "")
-	//		{
-	//			MessageBox.Show("You must enter Item Description");
-	//			return;
-	//		}
+            //		if (txtItem_description.Text == "")
+            //		{
+            //			MessageBox.Show("You must enter Item Description");
+            //			return;
+            //		}
 
-			if(txtCurrent_Price.Text.Length == 0)
-			{
-				MessageBox.Show("You must enter Current Price");
-				return;				
-			}
+            if (txtCurrent_Price.Text.Length == 0)
+            {
+                MessageBox.Show("You must enter Current Price");
+                return;
+            }
 
-        	var strPrice = txtCurrent_Price.Text;
-			if(strPrice.Contains("."))
-			{				
-				if (strPrice.Substring(strPrice.IndexOf(".")).Length > 5)
-				{
-					MessageBox.Show("Digits after '.' could not be more than 4");
-					return;
-				}
-			}
+            var strPrice = txtCurrent_Price.Text;
+            if (strPrice.Contains("."))
+            {
+                if (strPrice.Substring(strPrice.IndexOf(".")).Length > 5)
+                {
+                    MessageBox.Show("Digits after '.' could not be more than 4");
+                    return;
+                }
+            }
 
-			if (strPrice.Contains(","))
-			{
-				if (strPrice.Substring(strPrice.IndexOf(",")).Length > 5)
-				{
-					MessageBox.Show("Digits after ',' could not be more than 4");
-					return;
-				}
-			}
+            if (strPrice.Contains(","))
+            {
+                if (strPrice.Substring(strPrice.IndexOf(",")).Length > 5)
+                {
+                    MessageBox.Show("Digits after ',' could not be more than 4");
+                    return;
+                }
+            }
 
             decimal currentPrice;
             if (!Decimal.TryParse(txtCurrent_Price.Text, out currentPrice))
@@ -539,27 +541,27 @@ namespace Unified_Price_for_Var
                 return;
             }
 
-            		
+
             {
-               //  Db.NonQuery("INSERT INTO tblPricing ([Customer Number], [Item Number], [Item Description], [Current Price], [Customer Item Number], [IsNew]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}' )",
-                   Db.NonQuery("INSERT INTO tblPricing ([Customer Number], [Item Number], [Current Price], [Customer Item Number], [IsNew], [Notes], QuoteDate) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}',Now() )",
-        
-                    cmbCustomers.SelectedValue.ToString(),
-                    cmbItemNumb.SelectedValue.ToString(),
-               //    txtItem_description.Text,
-               //    txtCurrent_Price.Text.Replace('.', ','),
-                    txtCurrent_Price.Text,
-                    txtCustomer_Item_Number.Text,
-                    1,
-                    txtStdQTY_Add.Text
-                    );
+                //  Db.NonQuery("INSERT INTO tblPricing ([Customer Number], [Item Number], [Item Description], [Current Price], [Customer Item Number], [IsNew]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}' )",
+                Db.NonQuery("INSERT INTO tblPricing ([Customer Number], [Item Number], [Current Price], [Customer Item Number], [IsNew], [Notes], QuoteDate) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}',Now() )",
+
+                 cmbCustomers.SelectedValue.ToString(),
+                 cmbItemNumb.SelectedValue.ToString(),
+                    //    txtItem_description.Text,
+                    //    txtCurrent_Price.Text.Replace('.', ','),
+                 txtCurrent_Price.Text,
+                 txtCustomer_Item_Number.Text,
+                 1,
+                 txtStdQTY_Add.Text
+                 );
 
                 var lead = Db.ExecuteDataRow("SELECT * FROM tblDistributionGroupDetail WHERE [Group_Customer_Name] = '{0}' AND Modifier = 'Lead'", cmbCustomers.SelectedValue);
                 if (lead != null)
                 {
                     var customers = Db.ExecuteDataTable("SELECT * FROM tblDistributionGroupDetail WHERE [Group number] = '{0}' AND Modifier <> 'Lead'", lead["Group number"]);
                     foreach (DataRow custRow in customers.Rows)
-                    {                        
+                    {
                         decimal dec = Convert.ToDecimal(custRow["Percent"]) / 100;
 
                         Db.NonQuery("INSERT INTO tblPricing ([Customer Number], [Item Number], [Item Description], [Current Price],QuoteDate) VALUES ('{0}', '{1}', '{2}', '{3}',Now())",
@@ -602,7 +604,7 @@ namespace Unified_Price_for_Var
                 FillGridByCustomer();
             }
         }
-//==============================================================================================================
+        //==============================================================================================================
         private void cmbCustomers_SelectedIndexChanged(object sender, EventArgs e)
         {
             FillGridByCustomer();
@@ -612,14 +614,14 @@ namespace Unified_Price_for_Var
         {
             var rows = gridPrices.SelectedRows;
 
-            if(rows.Count != 1)
+            if (rows.Count != 1)
             {
                 grpPriceChange.Enabled = false;
             }
             else if (rows.Count == 1)
             {
                 grpPriceChange.Enabled = true;
-                var row = rows[0];       
+                var row = rows[0];
                 textBox1.Text = row.Cells["ItemNumber"].Value.ToString();
                 textBox2.Text = row.Cells["CurrentPrice"].Value.ToString();
                 textBox3.Text = row.Cells["ItemDescription"].Value.ToString();
@@ -630,7 +632,7 @@ namespace Unified_Price_for_Var
 
         private void cmbQuick_Check_KeyUp(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
                 foreach (DataGridViewRow row in gridPrices.Rows)
                     if (row.Cells["ItemNumber"].Value.ToString().Equals(cmbQuick_Check.Text))
                     {
@@ -641,39 +643,39 @@ namespace Unified_Price_for_Var
 
         private void txtItem_description_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.KeyChar = Char.ToUpper(e.KeyChar);  
+            e.KeyChar = Char.ToUpper(e.KeyChar);
         }
 
         private void cmbQuick_Check_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.KeyChar = Char.ToUpper(e.KeyChar);  
+            e.KeyChar = Char.ToUpper(e.KeyChar);
         }
 
         private void cmbItemNumb_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.KeyChar = Char.ToUpper(e.KeyChar);  
+            e.KeyChar = Char.ToUpper(e.KeyChar);
         }
 
         private void txtCustomer_Item_Number_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.KeyChar = Char.ToUpper(e.KeyChar);  
+            e.KeyChar = Char.ToUpper(e.KeyChar);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-//=====================================================================================================
-		private void cmbQuick_Check_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			foreach (DataGridViewRow row in gridPrices.Rows)
-				if (row.Cells["ItemNumber"].Value.ToString().Equals(cmbQuick_Check.Text))
-				{
-					row.Selected = true;
-					gridPrices.FirstDisplayedScrollingRowIndex = row.Index;
-				}
-		}
-//====================================================================================================
+        //=====================================================================================================
+        private void cmbQuick_Check_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in gridPrices.Rows)
+                if (row.Cells["ItemNumber"].Value.ToString().Equals(cmbQuick_Check.Text))
+                {
+                    row.Selected = true;
+                    gridPrices.FirstDisplayedScrollingRowIndex = row.Index;
+                }
+        }
+        //====================================================================================================
         private void cmbItemNumb_SelectedIndexChanged(object sender, EventArgs e)
         {
             var item = Db.ExecuteDataRow("SELECT * FROM tblItems WHERE [Item Number] = '{0}'", cmbItemNumb.SelectedValue);
@@ -693,22 +695,22 @@ namespace Unified_Price_for_Var
 
         private void btnUpdSPQ_Click(object sender, EventArgs e)
         {
-                      
+
             var change = MessageBox.Show("Are you sure you like to change Std Pak Qty?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             double num;
-            bool isNumber = double.TryParse(txtNotes.Text, out num); 
-            if (isNumber) 
+            bool isNumber = double.TryParse(txtNotes.Text, out num);
+            if (isNumber)
             {
-            }  
+            }
             else
             {
                 MessageBox.Show("Std Pac QTY - should be number");
                 return;
             }
-            
-            
-            
+
+
+
             if (change == DialogResult.Yes)
             {
                 var rows = gridPrices.SelectedRows;
@@ -726,14 +728,14 @@ namespace Unified_Price_for_Var
                     MessageBox.Show("Std Pak QTY can not be empty.");
                     return;
                 }
-                                                                       
+
                 Db.NonQuery("UPDATE tblPricing SET Notes = '{0}'  WHERE ID = {1}", txtNotes.Text, row.Cells["ID"].Value.ToString());
-    
+
                 txtNotes.Text = "";
                 FillGridByCustomer();
-                
+
             }
         }
-//===================================================================================================
+        //===================================================================================================
     }
 }

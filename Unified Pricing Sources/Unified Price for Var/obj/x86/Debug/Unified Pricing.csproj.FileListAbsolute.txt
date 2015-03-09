@@ -1039,4 +1039,3 @@ C:\Projects\GitHub Projects\Gary-UnifiedPricing\Unified Pricing Sources\Unified 
 C:\Projects\GitHub Projects\Gary-UnifiedPricing\Unified Pricing Sources\Unified Price for Var\obj\x86\Debug\Unified_Price_for_Var.frmReportViewer.resources
 C:\Projects\GitHub Projects\Gary-UnifiedPricing\Unified Pricing Sources\Unified Price for Var\obj\x86\Debug\Unified_Price_for_Var.frmReportViewerJustNew.resources
 C:\Projects\GitHub Projects\Gary-UnifiedPricing\Unified Pricing Sources\Unified Price for Var\obj\x86\Debug\Unified Pricing.csproj.GenerateResource.Cache
-C:\Projects\GitHub Projects\Gary-UnifiedPricing\Unified Pricing Sources\Unified Price for Var\obj\x86\Debug\Unified Pricing.csprojResolveAssemblyReference.cache

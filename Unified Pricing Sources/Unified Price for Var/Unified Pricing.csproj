@@ -85,7 +85,7 @@
       <DependentUpon>ByItem_Comparison_Report.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CrystalReports\ByItem_Report.cs">
+    <Compile Include="CrystalReports\ByItem_Report1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ByItem_Report.rpt</DependentUpon>
@@ -344,7 +344,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CrystalReports\ByItem_Report.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ByItem_Report.cs</LastGenOutput>
+      <LastGenOutput>ByItem_Report1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="CrystalReports\BySwing_Report.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

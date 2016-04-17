@@ -33,5 +33,11 @@ namespace Unified_Price_for_Var
             frmViewSwing nextScreen2 = new frmViewSwing();
             DialogResult result = nextScreen2.ShowDialog();
         }
+
+        private void managerInformation_Click(object sender, EventArgs e)
+        {
+            frmManagersInformation newScreen3 = new frmManagersInformation();
+            DialogResult result = newScreen3.ShowDialog();
+        }
     }
 }

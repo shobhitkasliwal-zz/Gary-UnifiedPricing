@@ -158,6 +158,12 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Db.cs" />
+    <Compile Include="Distribution\frmManagersInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Distribution\frmManagersInformation.Designer.cs">
+      <DependentUpon>frmManagersInformation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Distribution\frmViewDistributionGroup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +200,7 @@
     <Compile Include="Email\frmEmail1.Designer.cs">
       <DependentUpon>frmEmail1.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelperClasses\US_States.cs" />
     <Compile Include="ItemConversion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -333,6 +340,11 @@
       <DependentUpon>frmReportViewerJustNew.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <Compile Include="UnifiedPricingDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UnifiedPricingDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Validation.cs" />
     <EmbeddedResource Include="CrystalReports\ByDistr_Group_Report.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -392,6 +404,9 @@
     <EmbeddedResource Include="CrystalReports\ByCustomer_Comparison_report.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ByCustomer_Comparison_report.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Distribution\frmManagersInformation.resx">
+      <DependentUpon>frmManagersInformation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Distribution\frmViewDistributionGroup.resx">
       <DependentUpon>frmViewDistributionGroup.cs</DependentUpon>
@@ -505,6 +520,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="UnifiedPricingDBDataSet.xsc">
+      <DependentUpon>UnifiedPricingDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="UnifiedPricingDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>UnifiedPricingDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="UnifiedPricingDBDataSet.xss">
+      <DependentUpon>UnifiedPricingDBDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\16129.png" />

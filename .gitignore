@@ -15,6 +15,7 @@ $RECYCLE.BIN/
 *.msp
 *.accdb
 /Unified Pricing Sources/Unified Price for Var/obj/**
+/Unified Pricing Sources/Unified Price for Var/bin/**
 
 # =========================
 # Operating System Files

@@ -126,12 +126,13 @@
   <metadata name="item_NumberLabel.GenerateMember" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="label7.Text" xml:space="preserve">
+    <value>This process will replace "OLD" item number with "NEW" item number only in the tblPricing Table and tblCustomerItems Table.
+
+Removing "OLD" item number from tblItem Table should be done manually if needed.</value>
+  </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Using this screen, you can copy one Item to a new Item number and 
-have it change all of its reference across Unified to match.   
-Simple select the Item Number you want to change, then type in the 
-new Item Number beneath it. 
-When you are sure have what you want, click on "Copy Item..".   </value>
+    <value>Using this screen, you can copy one Item to a new Item number and have it change all of its reference across Unified to match. Simple select the Item Number you want to change, then type in the new Item Number beneath it. When you are sure have what you want, click on "Copy Item..".   </value>
   </data>
   <metadata name="pricing_for_Tanya_DataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>548, 17</value>

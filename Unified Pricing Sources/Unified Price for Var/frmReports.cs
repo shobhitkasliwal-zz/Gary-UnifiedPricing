@@ -236,27 +236,31 @@ namespace Unified_Price_for_Var
 
             if (rdoPrintByItemNumb.Checked)
             {
-                var items = Db.ExecuteDataTable("SELECT [Item Number], [Item Description], [Customer Number], [Current Price], [QuoteDate], [Last12MonthQTY] FROM tblPricing WHERE [Item Number] = '{0}' ORDER BY [Current Price] DESC", cmbItem.SelectedValue);
+                Db.NonQuery(String.Format("INSERT INTO tblByItem_Report ([Item Number], [Item Description], [Customer Number], [Customer Name], [Current Price], [InDistrGroup],[QuoteDate],[Last12MonthQTY]) SELECT [Item Number], [Item Description], a.[Customer Number], b.[Customer Bill Name],[Current price],'', [QuoteDate], iif(isnull([Last12MonthQTY]),0, a.[Last12MonthQTY])  as [Last12MonthQTYs] FROM tblPricing a inner join tblCustomers b on a.[Customer Number] = b.[Customer Number] WHERE [Item Number] = '{0}' ORDER BY [Current Price] DESC, [Item Number]", cmbItem.SelectedValue));
 
-                foreach (DataRow row in items.Rows)
-                {
+                //var items = Db.ExecuteDataTable("SELECT [Item Number], [Item Description], [Customer Number], [Current Price], [QuoteDate], IIF(ISNULL([Last12MonthQTY]), 0, [Last12MonthQTY]) as[Last12MonthQTY] FROM tblPricing WHERE [Item Number] = '{0}' ORDER BY [Current Price] DESC", cmbItem.SelectedValue);
 
-                    var cust = Db.ExecuteDataRow("SELECT * FROM tblCustomers WHERE [Customer Number] = '{0}'", row["Customer Number"]);
-                    if (cust != null)
-                    {
-                        Db.NonQuery("INSERT INTO tblByItem_Report ([Item Number], [Item Description], [Customer Number], [Customer Name], [Current Price], [InDistrGroup],[QuoteDate],[Last12MonthQTY]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}','{6}','{7}')",
-                            row["Item Number"],
-                            row["Item Description"].ToString().Replace("'", "''"),
-                            row["Customer Number"],
-                            cust["Customer Bill Name"].ToString().Replace("'", "''"),
-                            row["Current Price"],
-                            " ",
-                            row["QuoteDate"],
-                            row["Last12MonthQTY"]
-                            //isInGroup
-                            );
-                    }
-                }
+                //foreach (DataRow row in items.Rows)
+                //{
+
+                //    var cust = Db.ExecuteDataRow("SELECT * FROM tblCustomers WHERE [Customer Number] = '{0}'", row["Customer Number"]);
+                //    if (cust != null)
+                //    {
+                //        Db.NonQuery("INSERT INTO tblByItem_Report ([Item Number], [Item Description], [Customer Number], [Customer Name], [Current Price], [InDistrGroup],[QuoteDate],[Last12MonthQTY]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}','{6}','{7}')",
+                //            row["Item Number"],
+                //            row["Item Description"].ToString().Replace("'", "''"),
+                //            row["Customer Number"],
+                //            cust["Customer Bill Name"].ToString().Replace("'", "''"),
+                //            row["Current Price"],
+                //            " ",
+                //            row["QuoteDate"],
+                //            row["Last12MonthQTY"]
+                //            //isInGroup
+                //            );
+                //    }
+                //}
+                Db.NonQuery("UPDATE tblByItem_Report a INNER JOIN tblDistributionGroupDetail b ON a.[Customer Number] = b.[Group_Customer_Name] SET a.[FullItemList] = 1 where b.[Group number] = '2'");
+
                 Cursor.Current = Cursors.Default;
                 ReportViewers.frmByItem_Viewer frm = new ReportViewers.frmByItem_Viewer();
                 frm.Show();
@@ -266,25 +270,29 @@ namespace Unified_Price_for_Var
 
             if (rdoPrintByRange.Checked)
             {
-                var items = Db.ExecuteDataTable("SELECT [Item Number], [Item Description], [Customer Number], [Current price], [QuoteDate], [Last12MonthQTY] FROM tblPricing WHERE [Item Number] between '{0}' and '{1}' ORDER BY [Item Number],[Current Price]", cmbFrom.SelectedValue, cmbTo.SelectedValue);
-                foreach (DataRow row in items.Rows)
-                {
 
-                    var cust = Db.ExecuteDataRow("SELECT [Customer Bill Name] FROM tblCustomers WHERE [Customer Number] = '{0}'", row["Customer Number"]);
-                    if (cust != null)
-                    {
-                        Db.NonQuery("INSERT INTO tblByItem_Report ([Item Number], [Item Description], [Customer Number], [Customer Name], [Current Price], [InDistrGroup],[QuoteDate],[Last12MonthQTY]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}','{6}','{7}')",
-                            row["Item Number"],
-                            row["Item Description"].ToString().Replace("'", "''"),
-                            row["Customer Number"],
-                            cust["Customer Bill Name"].ToString().Replace("'", "''"),
-                            row["Current Price"],
-                            " ",
-                            row["QuoteDate"],
-                            row["Last12MonthQTY"]
-                            );
-                    }
-                }
+                Db.NonQuery(String.Format("INSERT INTO tblByItem_Report ([Item Number], [Item Description], [Customer Number], [Customer Name], [Current Price], [InDistrGroup],[QuoteDate],[Last12MonthQTY]) SELECT [Item Number], [Item Description], a.[Customer Number], b.[Customer Bill Name],[Current price],'', [QuoteDate], iif(isnull([Last12MonthQTY]),0, a.[Last12MonthQTY])  as [Last12MonthQTYs] FROM tblPricing a inner join tblCustomers b on a.[Customer Number] = b.[Customer Number] WHERE [Item Number] between '{0}' and '{1}' ORDER BY [Current Price] DESC, [Item Number]", cmbFrom.SelectedValue, cmbTo.SelectedValue));
+                /* var items = Db.ExecuteDataTable("SELECT [Item Number], [Item Description], [Customer Number], [Current price], [QuoteDate], IIF(ISNULL( [Last12MonthQTY]), 0, [Last12MonthQTY]) as [Last12MonthQTY] FROM tblPricing WHERE [Item Number] between '{0}' and '{1}' ORDER BY [Current Price] DESC, [Item Number]", cmbFrom.SelectedValue, cmbTo.SelectedValue);
+                 foreach (DataRow row in items.Rows)
+                 {
+
+                     var cust = Db.ExecuteDataRow("SELECT [Customer Bill Name] FROM tblCustomers WHERE [Customer Number] = '{0}'", row["Customer Number"]);
+                     if (cust != null)
+                     {
+                         Db.NonQuery("INSERT INTO tblByItem_Report ([Item Number], [Item Description], [Customer Number], [Customer Name], [Current Price], [InDistrGroup],[QuoteDate],[Last12MonthQTY]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}','{6}','{7}')",
+                             row["Item Number"],
+                             row["Item Description"].ToString().Replace("'", "''"),
+                             row["Customer Number"],
+                             cust["Customer Bill Name"].ToString().Replace("'", "''"),
+                             row["Current Price"],
+                             " ",
+                             row["QuoteDate"],
+                             row["Last12MonthQTY"]
+                             );
+                     }
+                 }*/
+                Db.NonQuery("UPDATE tblByItem_Report a INNER JOIN tblDistributionGroupDetail b ON a.[Customer Number] = b.[Group_Customer_Name] SET a.[FullItemList] = 1 where b.[Group number] = '2'");
+
                 Cursor.Current = Cursors.Default;
                 ReportViewers.frmByItem_Viewer frm = new ReportViewers.frmByItem_Viewer();
                 frm.Show();
@@ -292,27 +300,30 @@ namespace Unified_Price_for_Var
             //-------------------------------------------------------------------------------
             if (rdoPrintByFamily.Checked)
             {
-                var items = Db.ExecuteDataTable("Select [P.Item Number],[P.Customer Number], [P.Current Price], [I.Family], [I.Item Description], [QuoteDate], [Last12MonthQTY] From tblPricing P left join tblItems I on P.[Item Number] = I.[Item number] where I.[Family] = '{0}'", cmbFamily.SelectedValue);
+                Db.NonQuery(string.Format("INSERT INTO tblByItem_Report ([Item Number], [Item Description], [Customer Number], [Customer Name], [Current Price], [InDistrGroup],[QuoteDate],[Last12MonthQTY]) SELECT  a.[Item Number], a.[Item Description], b.[Customer Number], c.[Customer Bill Name],[Current price],'', b.[QuoteDate] as [Qt_DATE], iif(isnull([Last12MonthQTY]),0, b.[Last12MonthQTY]) FROM ((tblItems a inner join tblPricing b on a.[Item Number] = b.[Item Number]) inner join tblCustomers c on c.[Customer Number] = b.[Customer Number]) where a.Family ='{0}' ORDER BY [Current Price] DESC, b.[Item Number]", cmbFamily.SelectedValue));
+                /* var items = Db.ExecuteDataTable("Select [P.Item Number],[P.Customer Number], [P.Current Price], [I.Family], [I.Item Description], [QuoteDate], IIF(ISNULL( [Last12MonthQTY]), 0, [Last12MonthQTY]) as [Last12MonthQTY] From tblPricing P left join tblItems I on P.[Item Number] = I.[Item number] where I.[Family] = '{0}' order by [P.Current Price] DESC", cmbFamily.SelectedValue);
 
-                foreach (DataRow row in items.Rows)
-                {
+                 foreach (DataRow row in items.Rows)
+                 {
 
-                    var cust = Db.ExecuteDataRow("SELECT * FROM tblCustomers WHERE [Customer Number] = '{0}'", row["P.Customer Number"]);
-                    if (cust != null)
-                    {
-                        Db.NonQuery("INSERT INTO tblByItem_Report ([Item Number], [Item Description], [Customer Number], [Customer Name], [Current Price], [InDistrGroup],[QuoteDate],[Last12MonthQTY]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}','{6}','{7}')",
-                            row["P.Item Number"],
-                            row["I.Item Description"].ToString().Replace("'", "''"),
-                            row["P.Customer Number"],
-                            cust["Customer Bill Name"].ToString().Replace("'", "''"),
-                            row["P.Current Price"],
-                            row["I.Family"],
-                            row["QuoteDate"],
-                            row["Last12MonthQTY"]
+                     var cust = Db.ExecuteDataRow("SELECT * FROM tblCustomers WHERE [Customer Number] = '{0}'", row["P.Customer Number"]);
+                     if (cust != null)
+                     {
+                         Db.NonQuery("INSERT INTO tblByItem_Report ([Item Number], [Item Description], [Customer Number], [Customer Name], [Current Price], [InDistrGroup],[QuoteDate],[Last12MonthQTY]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}','{6}','{7}')",
+                             row["P.Item Number"],
+                             row["I.Item Description"].ToString().Replace("'", "''"),
+                             row["P.Customer Number"],
+                             cust["Customer Bill Name"].ToString().Replace("'", "''"),
+                             row["P.Current Price"],
+                             row["I.Family"],
+                             row["QuoteDate"],
+                             row["Last12MonthQTY"]
 
-                            );
-                    }
-                }
+                             );
+                     }
+                 }*/
+                Db.NonQuery("UPDATE tblByItem_Report a INNER JOIN tblDistributionGroupDetail b ON a.[Customer Number] = b.[Group_Customer_Name] SET a.[FullItemList] = 1 where b.[Group number] = '2'");
+
                 Cursor.Current = Cursors.Default;
                 ReportViewers.frmByItem_Viewer frm = new ReportViewers.frmByItem_Viewer();
                 frm.Show();
@@ -321,38 +332,45 @@ namespace Unified_Price_for_Var
             //-------------------------------------------------------------------------------
             if (rdoPrintAll.Checked)
             {
-                var reallyItems = Db.ExecuteDataTable("SELECT * FROM tblItems");
-                Db.NonQuery("DELETE FROM tblByItem_Report");
+                Db.NonQuery(String.Format("INSERT INTO tblByItem_Report ([Item Number], [Item Description], [Customer Number], [Customer Name], [Current Price], [InDistrGroup],[QuoteDate],[Last12MonthQTY]) SELECT [Item Number], [Item Description], a.[Customer Number], b.[Customer Bill Name],[Current price],'', [QuoteDate], iif(isnull([Last12MonthQTY]),0, a.[Last12MonthQTY])  as [Last12MonthQTYs] FROM tblPricing a inner join tblCustomers b on a.[Customer Number] = b.[Customer Number] ORDER BY [Current Price] DESC, [Item Number]"));
 
-                foreach (DataRow itemRow in reallyItems.Rows)
-                {
-                    var items = Db.ExecuteDataTable("SELECT * FROM tblPricing WHERE [Item Number] = '{0}' ORDER BY [Current Price] DESC", itemRow["Item Number"]);
-                    foreach (DataRow row in items.Rows)
-                    {
+                /* var reallyItems = Db.ExecuteDataTable("SELECT * FROM tblItems");
+                 Db.NonQuery("DELETE FROM tblByItem_Report");
 
-                        var cust = Db.ExecuteDataRow("SELECT * FROM tblCustomers WHERE [Customer Number] = '{0}'", row["Customer Number"]);
-                        if (cust != null)
-                        {
-                            Db.NonQuery("INSERT INTO tblByItem_Report ([Item Number], [Item Description], [Customer Number], [Customer Name], [Current Price], [InDistrGroup],[QuoteDate],[Last12MonthQTY]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}','{6}','{7}')",
-                                row["Item Number"],
-                                row["Item Description"].ToString().Replace("'", "''"),
-                                row["Customer Number"],
-                                cust["Customer Bill Name"].ToString().Replace("'", "''"),
-                                row["Current Price"],
-                                " ",
-                                row["QuoteDate"],
-                                row["Last12MonthQTY"]
-                            );
-                        }
-                    }
-                }
+                 foreach (DataRow itemRow in reallyItems.Rows)
+                 {
+                     var items = Db.ExecuteDataTable("SELECT * FROM tblPricing WHERE [Item Number] = '{0}' ORDER BY [Current Price] DESC", itemRow["Item Number"]);
+                     foreach (DataRow row in items.Rows)
+                     {
+
+                         var cust = Db.ExecuteDataRow("SELECT * FROM tblCustomers WHERE [Customer Number] = '{0}'", row["Customer Number"]);
+                         if (cust != null)
+                         {
+                             string Last12MonthQty = System.DBNull.Value.Equals(row["Last12MonthQTY"]) ? "0" : row["Last12MonthQTY"].ToString();
+                             Db.NonQuery("INSERT INTO tblByItem_Report ([Item Number], [Item Description], [Customer Number], [Customer Name], [Current Price], [InDistrGroup],[QuoteDate],[Last12MonthQTY]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}','{6}','{7}')",
+                                 row["Item Number"],
+                                 row["Item Description"].ToString().Replace("'", "''"),
+                                 row["Customer Number"],
+                                 cust["Customer Bill Name"].ToString().Replace("'", "''"),
+                                 row["Current Price"],
+                                 " ",
+                                 row["QuoteDate"],
+                                 Last12MonthQty
+                             );
+                         }
+                     }
+                 }*/
+                Db.NonQuery("UPDATE tblByItem_Report a INNER JOIN tblDistributionGroupDetail b ON a.[Customer Number] = b.[Group_Customer_Name] SET a.[FullItemList] = 1 where b.[Group number] = '2'");
+
                 Cursor.Current = Cursors.Default;
+                ReportViewers.frmByItem_Viewer frm = new ReportViewers.frmByItem_Viewer();
+                frm.Show();
             }
 
             //-------------------------------------------------------------------------------
             if (rdoPrintByCustFamily.Checked)
             {
-                var items = Db.ExecuteDataTable("Select [P.Item Number],[P.Customer Number], [P.Current Price], [I.Family], [I.Item Description], [QuoteDate], [Last12MonthQTY] From tblPricing P left join tblItems I on P.[Item Number] = I.[Item number] where P.[Customer Number] = '{0}' and I.[Family] = '{1}' ", cmbCust1.SelectedValue, cmbFamily1.SelectedValue);
+                var items = Db.ExecuteDataTable("Select [P.Item Number],[P.Customer Number], [P.Current Price], [I.Family], [I.Item Description], [QuoteDate],  IIF(ISNULL([Last12MonthQTY]), 0, [Last12MonthQTY]) as [Last12MonthQTY] From tblPricing P left join tblItems I on P.[Item Number] = I.[Item number] where P.[Customer Number] = '{0}' and I.[Family] = '{1}' order by [P.Current Price] desc ", cmbCust1.SelectedValue, cmbFamily1.SelectedValue);
 
                 foreach (DataRow row in items.Rows)
                 {
@@ -373,6 +391,7 @@ namespace Unified_Price_for_Var
                             );
                     }
                 }
+                Db.NonQuery("UPDATE tblByItem_Report a INNER JOIN tblDistributionGroupDetail b ON a.[Customer Number] = b.[Group_Customer_Name] SET a.[FullItemList] = 1 where b.[Group number] = '2'");
 
                 Cursor.Current = Cursors.Default;
                 ReportViewers.frmItemsByCustFamily_Viewer frm = new ReportViewers.frmItemsByCustFamily_Viewer();
@@ -400,6 +419,7 @@ namespace Unified_Price_for_Var
                     ASTCurrPriceDec = (decimal)ASTCurrPrice[0];
 
                 var cust = Db.ExecuteDataRow("SELECT * FROM tblCustomers WHERE [Customer Number] = '{0}'", custPricings.Rows[i]["Customer Number"]);
+                string Last12MonthQty = System.DBNull.Value.Equals(custPricings.Rows[i]["Last12MonthQTY"]) ? "0" : custPricings.Rows[i]["Last12MonthQTY"].ToString();
 
                 Db.NonQuery("INSERT INTO tblByCustomer_Report ([Customer Number], [Customer Name], [Item Number], [Item Description], [Current Price], [Customer Item Number], [IsNew], [ASR Current Price], [AST Current Price],[Last12MonthQTY]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}','{9}')",
                     custPricings.Rows[i]["Customer Number"],
@@ -411,7 +431,7 @@ namespace Unified_Price_for_Var
                     custPricings.Rows[i]["IsNew"],
                     ASRCurrPriceDec,
                     ASTCurrPriceDec,
-                    custPricings.Rows[i]["Last12MonthQTY"]
+                   Last12MonthQty
                     );
             }
             Cursor.Current = Cursors.Default;

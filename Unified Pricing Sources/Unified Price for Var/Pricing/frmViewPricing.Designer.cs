@@ -39,8 +39,8 @@
             System.Windows.Forms.Label label9;
             System.Windows.Forms.Label label12;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmViewPricing));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cmbItemNumb = new System.Windows.Forms.ComboBox();
             this.txtCurrent_Price = new System.Windows.Forms.TextBox();
             this.txtCustomer_Item_Number = new System.Windows.Forms.TextBox();
@@ -77,11 +77,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.cmbCustomers = new System.Windows.Forms.ComboBox();
             this.gridPrices = new System.Windows.Forms.DataGridView();
-            this.lblTotalPricesForCust = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.lbl11 = new System.Windows.Forms.Label();
-            this.btnUpdSPQ = new System.Windows.Forms.Button();
             this.ItemNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CurrentPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PreviousPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -91,6 +86,13 @@
             this.Last12MonthQTY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QuoteDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblTotalPricesForCust = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lbl11 = new System.Windows.Forms.Label();
+            this.btnUpdSPQ = new System.Windows.Forms.Button();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label13 = new System.Windows.Forms.Label();
             item_NumberLabel = new System.Windows.Forms.Label();
             current_PriceLabel = new System.Windows.Forms.Label();
             item_DescriptionLabel = new System.Windows.Forms.Label();
@@ -110,7 +112,7 @@
             // 
             item_NumberLabel.AutoSize = true;
             item_NumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            item_NumberLabel.Location = new System.Drawing.Point(17, 32);
+            item_NumberLabel.Location = new System.Drawing.Point(5, 32);
             item_NumberLabel.Name = "item_NumberLabel";
             item_NumberLabel.Size = new System.Drawing.Size(82, 15);
             item_NumberLabel.TabIndex = 2;
@@ -120,7 +122,7 @@
             // 
             current_PriceLabel.AutoSize = true;
             current_PriceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            current_PriceLabel.Location = new System.Drawing.Point(143, 32);
+            current_PriceLabel.Location = new System.Drawing.Point(128, 32);
             current_PriceLabel.Name = "current_PriceLabel";
             current_PriceLabel.Size = new System.Drawing.Size(81, 15);
             current_PriceLabel.TabIndex = 4;
@@ -130,17 +132,18 @@
             // 
             item_DescriptionLabel.AutoSize = true;
             item_DescriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            item_DescriptionLabel.Location = new System.Drawing.Point(308, 32);
+            item_DescriptionLabel.Location = new System.Drawing.Point(272, 32);
             item_DescriptionLabel.Name = "item_DescriptionLabel";
-            item_DescriptionLabel.Size = new System.Drawing.Size(99, 15);
+            item_DescriptionLabel.Size = new System.Drawing.Size(123, 15);
             item_DescriptionLabel.TabIndex = 6;
-            item_DescriptionLabel.Text = "Item Description:";
+            item_DescriptionLabel.Text = "Item Descriptionssss:";
+            item_DescriptionLabel.Click += new System.EventHandler(this.item_DescriptionLabel_Click);
             // 
             // customer_Item_NumberLabel
             // 
             customer_Item_NumberLabel.AutoSize = true;
             customer_Item_NumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            customer_Item_NumberLabel.Location = new System.Drawing.Point(600, 32);
+            customer_Item_NumberLabel.Location = new System.Drawing.Point(576, 32);
             customer_Item_NumberLabel.Name = "customer_Item_NumberLabel";
             customer_Item_NumberLabel.Size = new System.Drawing.Size(138, 15);
             customer_Item_NumberLabel.TabIndex = 8;
@@ -150,7 +153,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label11.Location = new System.Drawing.Point(235, 17);
+            label11.Location = new System.Drawing.Point(216, 17);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(54, 30);
             label11.TabIndex = 10;
@@ -160,7 +163,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label6.Location = new System.Drawing.Point(18, 23);
+            label6.Location = new System.Drawing.Point(2, 23);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(82, 15);
             label6.TabIndex = 5;
@@ -170,7 +173,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label7.Location = new System.Drawing.Point(155, 25);
+            label7.Location = new System.Drawing.Point(140, 25);
             label7.Name = "label7";
             label7.Size = new System.Drawing.Size(81, 15);
             label7.TabIndex = 6;
@@ -180,7 +183,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label8.Location = new System.Drawing.Point(248, 10);
+            label8.Location = new System.Drawing.Point(227, 10);
             label8.Name = "label8";
             label8.Size = new System.Drawing.Size(54, 30);
             label8.TabIndex = 11;
@@ -190,7 +193,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label9.Location = new System.Drawing.Point(308, 25);
+            label9.Location = new System.Drawing.Point(283, 25);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(99, 15);
             label9.TabIndex = 12;
@@ -200,7 +203,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label12.Location = new System.Drawing.Point(603, 25);
+            label12.Location = new System.Drawing.Point(557, 25);
             label12.Name = "label12";
             label12.Size = new System.Drawing.Size(138, 15);
             label12.TabIndex = 13;
@@ -213,7 +216,7 @@
             this.cmbItemNumb.DisplayMember = "Item Number";
             this.cmbItemNumb.DropDownWidth = 121;
             this.cmbItemNumb.FormattingEnabled = true;
-            this.cmbItemNumb.Location = new System.Drawing.Point(17, 51);
+            this.cmbItemNumb.Location = new System.Drawing.Point(5, 51);
             this.cmbItemNumb.Name = "cmbItemNumb";
             this.cmbItemNumb.Size = new System.Drawing.Size(121, 21);
             this.cmbItemNumb.TabIndex = 0;
@@ -223,7 +226,7 @@
             // 
             // txtCurrent_Price
             // 
-            this.txtCurrent_Price.Location = new System.Drawing.Point(157, 51);
+            this.txtCurrent_Price.Location = new System.Drawing.Point(131, 51);
             this.txtCurrent_Price.MaxLength = 9;
             this.txtCurrent_Price.Name = "txtCurrent_Price";
             this.txtCurrent_Price.Size = new System.Drawing.Size(78, 20);
@@ -231,9 +234,9 @@
             // 
             // txtCustomer_Item_Number
             // 
-            this.txtCustomer_Item_Number.Location = new System.Drawing.Point(597, 51);
+            this.txtCustomer_Item_Number.Location = new System.Drawing.Point(579, 51);
             this.txtCustomer_Item_Number.Name = "txtCustomer_Item_Number";
-            this.txtCustomer_Item_Number.Size = new System.Drawing.Size(145, 20);
+            this.txtCustomer_Item_Number.Size = new System.Drawing.Size(177, 20);
             this.txtCustomer_Item_Number.TabIndex = 11;
             this.txtCustomer_Item_Number.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustomer_Item_Number_KeyPress);
             // 
@@ -282,10 +285,10 @@
             // 
             // txtItem_description
             // 
-            this.txtItem_description.Location = new System.Drawing.Point(302, 51);
+            this.txtItem_description.Location = new System.Drawing.Point(275, 51);
             this.txtItem_description.Name = "txtItem_description";
             this.txtItem_description.ReadOnly = true;
-            this.txtItem_description.Size = new System.Drawing.Size(284, 20);
+            this.txtItem_description.Size = new System.Drawing.Size(282, 20);
             this.txtItem_description.TabIndex = 9;
             this.txtItem_description.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItem_description_KeyPress);
             // 
@@ -313,7 +316,7 @@
             // 
             // txtStdQTY_Add
             // 
-            this.txtStdQTY_Add.Location = new System.Drawing.Point(241, 51);
+            this.txtStdQTY_Add.Location = new System.Drawing.Point(218, 51);
             this.txtStdQTY_Add.MaxLength = 5;
             this.txtStdQTY_Add.Name = "txtStdQTY_Add";
             this.txtStdQTY_Add.Size = new System.Drawing.Size(47, 20);
@@ -321,7 +324,7 @@
             // 
             // txtNotes
             // 
-            this.txtNotes.Location = new System.Drawing.Point(246, 42);
+            this.txtNotes.Location = new System.Drawing.Point(228, 42);
             this.txtNotes.MaxLength = 5;
             this.txtNotes.Name = "txtNotes";
             this.txtNotes.Size = new System.Drawing.Size(48, 20);
@@ -538,6 +541,8 @@
             // grpPriceChange
             // 
             this.grpPriceChange.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.grpPriceChange.Controls.Add(this.label13);
+            this.grpPriceChange.Controls.Add(this.dateTimePicker2);
             this.grpPriceChange.Controls.Add(this.txtNotes);
             this.grpPriceChange.Controls.Add(label12);
             this.grpPriceChange.Controls.Add(label9);
@@ -550,36 +555,36 @@
             this.grpPriceChange.Controls.Add(this.textBox1);
             this.grpPriceChange.Location = new System.Drawing.Point(38, 472);
             this.grpPriceChange.Name = "grpPriceChange";
-            this.grpPriceChange.Size = new System.Drawing.Size(755, 73);
+            this.grpPriceChange.Size = new System.Drawing.Size(791, 73);
             this.grpPriceChange.TabIndex = 40;
             this.grpPriceChange.TabStop = false;
             this.grpPriceChange.Text = "Price Change";
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(599, 41);
+            this.textBox4.Location = new System.Drawing.Point(563, 41);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(143, 20);
+            this.textBox4.Size = new System.Drawing.Size(132, 20);
             this.textBox4.TabIndex = 3;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(304, 42);
+            this.textBox3.Location = new System.Drawing.Point(285, 42);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(284, 20);
+            this.textBox3.Size = new System.Drawing.Size(271, 20);
             this.textBox3.TabIndex = 4;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(153, 41);
+            this.textBox2.Location = new System.Drawing.Point(138, 41);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(83, 20);
             this.textBox2.TabIndex = 1;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(13, 41);
+            this.textBox1.Location = new System.Drawing.Point(5, 41);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(127, 20);
             this.textBox1.TabIndex = 0;
@@ -603,14 +608,14 @@
             this.gridPrices.AllowUserToDeleteRows = false;
             this.gridPrices.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.gridPrices.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridPrices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridPrices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.gridPrices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridPrices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemNumber,
@@ -622,14 +627,14 @@
             this.Last12MonthQTY,
             this.QuoteDate,
             this.ID});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridPrices.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridPrices.DefaultCellStyle = dataGridViewCellStyle4;
             this.gridPrices.Location = new System.Drawing.Point(38, 194);
             this.gridPrices.Name = "gridPrices";
             this.gridPrices.ReadOnly = true;
@@ -637,61 +642,6 @@
             this.gridPrices.Size = new System.Drawing.Size(772, 264);
             this.gridPrices.TabIndex = 42;
             this.gridPrices.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPrices_CellEnter);
-            // 
-            // lblTotalPricesForCust
-            // 
-            this.lblTotalPricesForCust.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblTotalPricesForCust.AutoSize = true;
-            this.lblTotalPricesForCust.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lblTotalPricesForCust.Location = new System.Drawing.Point(719, 175);
-            this.lblTotalPricesForCust.Name = "lblTotalPricesForCust";
-            this.lblTotalPricesForCust.Size = new System.Drawing.Size(60, 16);
-            this.lblTotalPricesForCust.TabIndex = 43;
-            this.lblTotalPricesForCust.Text = "Total: 0";
-            // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.Location = new System.Drawing.Point(835, 580);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 23);
-            this.button1.TabIndex = 44;
-            this.button1.Text = "Exit";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label10
-            // 
-            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(460, 123);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(195, 16);
-            this.label10.TabIndex = 47;
-            this.label10.Text = "You are viewing prices for :";
-            // 
-            // lbl11
-            // 
-            this.lbl11.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbl11.AutoSize = true;
-            this.lbl11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl11.Location = new System.Drawing.Point(460, 147);
-            this.lbl11.Name = "lbl11";
-            this.lbl11.Size = new System.Drawing.Size(195, 16);
-            this.lbl11.TabIndex = 48;
-            this.lbl11.Text = "You are viewing prices for :";
-            // 
-            // btnUpdSPQ
-            // 
-            this.btnUpdSPQ.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnUpdSPQ.Location = new System.Drawing.Point(303, 580);
-            this.btnUpdSPQ.Name = "btnUpdSPQ";
-            this.btnUpdSPQ.Size = new System.Drawing.Size(151, 23);
-            this.btnUpdSPQ.TabIndex = 49;
-            this.btnUpdSPQ.Text = "Update Std Pak QTY (Only)";
-            this.btnUpdSPQ.UseVisualStyleBackColor = true;
-            this.btnUpdSPQ.Click += new System.EventHandler(this.btnUpdSPQ_Click);
             // 
             // ItemNumber
             // 
@@ -752,6 +702,78 @@
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
             this.ID.Visible = false;
+            // 
+            // lblTotalPricesForCust
+            // 
+            this.lblTotalPricesForCust.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblTotalPricesForCust.AutoSize = true;
+            this.lblTotalPricesForCust.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblTotalPricesForCust.Location = new System.Drawing.Point(719, 175);
+            this.lblTotalPricesForCust.Name = "lblTotalPricesForCust";
+            this.lblTotalPricesForCust.Size = new System.Drawing.Size(60, 16);
+            this.lblTotalPricesForCust.TabIndex = 43;
+            this.lblTotalPricesForCust.Text = "Total: 0";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.Location = new System.Drawing.Point(835, 580);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(130, 23);
+            this.button1.TabIndex = 44;
+            this.button1.Text = "Exit";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(460, 123);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(195, 16);
+            this.label10.TabIndex = 47;
+            this.label10.Text = "You are viewing prices for :";
+            // 
+            // lbl11
+            // 
+            this.lbl11.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl11.AutoSize = true;
+            this.lbl11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl11.Location = new System.Drawing.Point(460, 147);
+            this.lbl11.Name = "lbl11";
+            this.lbl11.Size = new System.Drawing.Size(195, 16);
+            this.lbl11.TabIndex = 48;
+            this.lbl11.Text = "You are viewing prices for :";
+            // 
+            // btnUpdSPQ
+            // 
+            this.btnUpdSPQ.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnUpdSPQ.Location = new System.Drawing.Point(303, 580);
+            this.btnUpdSPQ.Name = "btnUpdSPQ";
+            this.btnUpdSPQ.Size = new System.Drawing.Size(151, 23);
+            this.btnUpdSPQ.TabIndex = 49;
+            this.btnUpdSPQ.Text = "Update Std Pak QTY (Only)";
+            this.btnUpdSPQ.UseVisualStyleBackColor = true;
+            this.btnUpdSPQ.Click += new System.EventHandler(this.btnUpdSPQ_Click);
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker2.Location = new System.Drawing.Point(703, 42);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(82, 20);
+            this.dateTimePicker2.TabIndex = 14;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(701, 27);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(65, 13);
+            this.label13.TabIndex = 15;
+            this.label13.Text = "Quote Date:";
             // 
             // frmViewPricing
             // 
@@ -854,5 +876,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Last12MonthQTY;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuoteDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
     }
 }

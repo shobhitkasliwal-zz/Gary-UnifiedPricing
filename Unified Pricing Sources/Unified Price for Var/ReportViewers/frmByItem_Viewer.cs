@@ -23,6 +23,7 @@ namespace Unified_Price_for_Var.ReportViewers
         private void crystalReportViewer1_Load(object sender, EventArgs e)
         {
             CrystalReports.ByItem_Report rpt = new CrystalReports.ByItem_Report();
+           
             crystalReportViewer1.ReportSource = rpt;
             foreach (CrystalDecisions.CrystalReports.Engine.Table tbl in rpt.Database.Tables)
             {
@@ -43,6 +44,7 @@ namespace Unified_Price_for_Var.ReportViewers
             crystalReportViewer1.Refresh();
             crystalReportViewer1.Zoom(75);
             WindowState = FormWindowState.Maximized;
+            crystalReportViewer1.RefreshReport();
             rpt.ReportOptions.EnableSaveDataWithReport = false;
         }
 

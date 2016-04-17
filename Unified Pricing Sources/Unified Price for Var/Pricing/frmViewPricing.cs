@@ -31,7 +31,7 @@ namespace Unified_Price_for_Var
             btnCancel.Enabled = false;
             //old	var prices = Db.ExecuteDataTable("SELECT * FROM tblPricing WHERE [Customer Number] = '{0}' ORDER BY [Item Number]", cmbCustomers.SelectedValue);
 
-            var prices = Db.ExecuteDataTable("SELECT P.[ID] as IDn, P.[Customer Number], P.[Item Number] as [ItemN], P.[Current Price] as [CurP], I.[Item Description] as [ItemDS], P.[Customer Item Number] as [CustIN], P.[Old Price] as [OldP], P.[Notes] as [NotesP], format(P.[QuoteDate],'mmm dd yyyy') as[QuoteDateP], P.[Last12MonthQTY] as [Last12MonthQTYP]  FROM tblPricing P left join tblItems I on P.[Item Number] = I.[Item Number] WHERE P.[Customer Number] = '{0}' ORDER BY P.[Item Number]", cmbCustomers.SelectedValue);
+            var prices = Db.ExecuteDataTable("SELECT P.[ID] as IDn, P.[Customer Number], P.[Item Number] as [ItemN], P.[Current Price] as [CurP], I.[Item Description] as [ItemDS], P.[Customer Item Number] as [CustIN], P.[Old Price] as [OldP], P.[Notes] as [NotesP], format(P.[QuoteDate],'mmm dd yyyy') as[QuoteDateP], IIF(ISNULL( P.[Last12MonthQTY]), 0, P.[Last12MonthQTY]) as [Last12MonthQTYP]  FROM tblPricing P left join tblItems I on P.[Item Number] = I.[Item Number] WHERE P.[Customer Number] = '{0}' ORDER BY P.[Item Number]", cmbCustomers.SelectedValue);
 
             gridPrices.Rows.Clear();
             foreach (DataRow price in prices.Rows)
@@ -153,12 +153,17 @@ namespace Unified_Price_for_Var
                     return;
                 }
 
+                if (dateTimePicker2.Value == null)
+                {
+                    MessageBox.Show("Invalid Quote Date.");
+                    return;
+                }
                 try
                 {
                     row.Cells["PreviousPrice"].Value = row.Cells["CurrentPrice"].Value;
                     row.Cells["CurrentPrice"].Value = currentPrice;
 
-                    Db.NonQuery("UPDATE tblPricing SET [Old Price] = [Current Price], [Current Price] = '{0}', IsNew = 1, Notes = '{1}', QuoteDate=Now()  WHERE ID = {2}", currentPrice, txtNotes.Text, row.Cells["ID"].Value.ToString());
+                    Db.NonQuery("UPDATE tblPricing SET [Old Price] = [Current Price], [Current Price] = '{0}', IsNew = 1, Notes = '{1}', QuoteDate='{3}'  WHERE ID = {2}", currentPrice, txtNotes.Text, row.Cells["ID"].Value.ToString(), dateTimePicker2.Value.ToShortDateString());
 
                     var lead = Db.ExecuteDataRow("SELECT * FROM tblDistributionGroupDetail WHERE [Group_Customer_Name] = '{0}' AND Modifier = 'Lead'", cmbCustomers.SelectedValue);
                     if (lead != null)
@@ -170,7 +175,7 @@ namespace Unified_Price_for_Var
 
                             decimal dec = Convert.ToDecimal(custRow["Percent"]) / 100;
 
-                            Db.NonQuery("UPDATE tblPricing SET [Old Price] = [Current Price], [Current Price] = '{0}', IsNew = 1, QuoteDate=Now() WHERE ID = {1}", custRow["Modifier"].ToString().Equals("Increase") ? (currentPrice + (currentPrice * dec)) : (currentPrice - (currentPrice * dec)), price["ID"]);
+                            Db.NonQuery("UPDATE tblPricing SET [Old Price] = [Current Price], [Current Price] = '{0}', IsNew = 1, QuoteDate='{2}' WHERE ID = {1}", custRow["Modifier"].ToString().Equals("Increase") ? (currentPrice + (currentPrice * dec)) : (currentPrice - (currentPrice * dec)), price["ID"], dateTimePicker2.Value.ToShortDateString());
                         }
                     }
 
@@ -299,7 +304,7 @@ namespace Unified_Price_for_Var
 
                 var cust = Db.ExecuteDataRow("SELECT * FROM tblCustomers WHERE [Customer Number] = '{0}'", custPricings.Rows[i]["Customer Number"]);
 
-                Db.NonQuery("INSERT INTO tblByCustomer_Report ([Customer Number], [Customer Name], [Item Number], [Item Description], [Current Price], [Customer Item Number], [IsNew], [ASR Current Price], [AST Current Price], [Notes],[Last12MonthQTY]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}','{10}')",
+                Db.NonQuery("INSERT INTO tblByCustomer_Report ([Customer Number], [Customer Name], [Item Number], [Item Description], [Current Price], [Customer Item Number], [IsNew], [ASR Current Price], [AST Current Price], [Notes],[Last12MonthQTY],[QuoteDate]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}','{10}','{11}')",
                     custPricings.Rows[i]["Customer Number"],
                     cust["Customer Bill Name"].ToString().Replace("'", "''"),
                     custPricings.Rows[i]["Item Number"],
@@ -310,9 +315,11 @@ namespace Unified_Price_for_Var
                     ASRCurrPriceDec,
                     ASTCurrPriceDec,
                     custPricings.Rows[i]["Notes"],
-                    custPricings.Rows[i]["Last12MonthQTY"]
+                    custPricings.Rows[i]["Last12MonthQTY"],
+                    custPricings.Rows[i]["QuoteDate"]
                     );
             }
+
             Cursor.Current = Cursors.Default;
 
             var result = MessageBox.Show("\"Click on YES to print only NEW / CHANGED prices, or click NO to print all\"", "Warning", MessageBoxButtons.YesNo);
@@ -365,6 +372,7 @@ namespace Unified_Price_for_Var
                     ASTCurrPriceDec = (decimal)ASTCurrPrice[0];
 
                 var cust = Db.ExecuteDataRow("SELECT * FROM tblCustomers WHERE [Customer Number] = '{0}'", custPricings.Rows[i]["Customer Number"]);
+                string Last12MonthQty = System.DBNull.Value.Equals(custPricings.Rows[i]["Last12MonthQTY"]) ? "0" : custPricings.Rows[i]["Last12MonthQTY"].ToString();
 
                 Db.NonQuery("INSERT INTO tblByCustomer_Report ([Customer Number], [Customer Name], [Item Number], [Item Description], [Current Price], [Customer Item Number], [IsNew], [ASR Current Price], [AST Current Price], [Notes], [QuoteDate], [Last12MonthQTY]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}','{10}','{11}')",
                     custPricings.Rows[i]["Customer Number"],
@@ -378,7 +386,7 @@ namespace Unified_Price_for_Var
                     ASTCurrPriceDec,
                     custPricings.Rows[i]["Notes"],
                     custPricings.Rows[i]["QuoteDate"],
-                    custPricings.Rows[i]["Last12MonthQTY"]
+                    Last12MonthQty
                     );
             }
             Cursor.Current = Cursors.Default;
@@ -627,6 +635,9 @@ namespace Unified_Price_for_Var
                 textBox3.Text = row.Cells["ItemDescription"].Value.ToString();
                 textBox4.Text = row.Cells["CustomerItemNumber"].Value.ToString();
                 txtNotes.Text = row.Cells["Notes"].Value.ToString();
+                DateTime dtQuote;
+                if (DateTime.TryParse(row.Cells["QuoteDate"].Value.ToString(), out dtQuote))
+                    dateTimePicker2.Value = dtQuote;
             }
         }
 
@@ -735,6 +746,11 @@ namespace Unified_Price_for_Var
                 FillGridByCustomer();
 
             }
+        }
+
+        private void item_DescriptionLabel_Click(object sender, EventArgs e)
+        {
+
         }
         //===================================================================================================
     }

@@ -16,14 +16,14 @@ namespace Unified_Price_for_Var.CrystalReports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ItemsByCustFamily : ReportClass {
+    public class ByItem_Report : ReportClass {
         
-        public ItemsByCustFamily() {
+        public ByItem_Report() {
         }
         
         public override string ResourceName {
             get {
-                return "ItemsByCustFamily.rpt";
+                return "ByItem_Report.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Unified_Price_for_Var.CrystalReports {
         
         public override string FullResourceName {
             get {
-                return "Unified_Price_for_Var.CrystalReports.ItemsByCustFamily.rpt";
+                return "Unified_Price_for_Var.CrystalReports.ByItem_Report.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace Unified_Price_for_Var.CrystalReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection2 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace Unified_Price_for_Var.CrystalReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,17 +82,41 @@ namespace Unified_Price_for_Var.CrystalReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
             get {
                 return this.ReportDefinition.Sections[4];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection3 {
+            get {
+                return this.ReportDefinition.Sections[5];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+            get {
+                return this.ReportDefinition.Sections[6];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+            get {
+                return this.ReportDefinition.Sections[7];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedItemsByCustFamily : Component, ICachedReport {
+    public class CachedByItem_Report : Component, ICachedReport {
         
-        public CachedItemsByCustFamily() {
+        public CachedByItem_Report() {
         }
         
         [Browsable(false)]
@@ -129,7 +153,7 @@ namespace Unified_Price_for_Var.CrystalReports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ItemsByCustFamily rpt = new ItemsByCustFamily();
+            ByItem_Report rpt = new ByItem_Report();
             rpt.Site = this.Site;
             return rpt;
         }

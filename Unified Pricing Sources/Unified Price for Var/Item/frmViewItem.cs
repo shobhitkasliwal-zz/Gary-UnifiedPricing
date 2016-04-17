@@ -15,16 +15,16 @@ namespace Unified_Price_for_Var
         public frmViewItem()
         {
             InitializeComponent();
-            
+
         }
 
         private void frmViewItem_Load(object sender, EventArgs e)
-        {  
-           // this.Visible = false;
+        {
+            // this.Visible = false;
             RefreshDataset();
             pnlUseDescrip.Visible = false;
-          //  this.Visible = true;
-            
+            //  this.Visible = true;
+
         }
 
         private void btnEdit_Item_Click(object sender, EventArgs e)
@@ -49,7 +49,7 @@ namespace Unified_Price_for_Var
             btnUpdate.Visible = true;
             btnUpdate.Location = new Point(btnDelete_Item.Location.X, btnDelete_Item.Location.Y);
             btnLookUp.Visible = true;
-           
+
             btnLookUp.Enabled = true;
             btnExit.Visible = false;
             btnReturnToMain.Visible = true;  // Text of this buton is EXIT 
@@ -89,7 +89,7 @@ namespace Unified_Price_for_Var
             btnReturnToMain.Visible = true;
             btnReturnToMain.Location = new Point(btnExit.Location.X, btnExit.Location.Y);
             btnLookUp.Visible = true;
-           
+
         }
 
         private void ClearControls()
@@ -121,12 +121,12 @@ namespace Unified_Price_for_Var
             }
             ClearControls();
         }
-//------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-//-------------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------
         private void btnManage_Groups_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
@@ -134,24 +134,24 @@ namespace Unified_Price_for_Var
             DialogResult result = nextScreen1.ShowDialog();
             Cursor.Current = Cursors.Default;
         }
-//-------------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            IsValid();    
+            IsValid();
             try
             {
                 Db.NonQuery("UPDATE tblItems SET [Item Number] = '{0}', [Item Description] = '{1}', [Family] = '{2}', [Item Component 1] = '{3}', [Item Component 2] = '{4}' , [OEM Number] = '{5}' WHERE [Item Number] = '{6}'", txtItem_Number.Text, txtItemDescription.Text, txtItemFamily.Text, txtComp1.Text, txtComp2.Text, txtOEM.Text, txtItem_Number.Text);
                 MessageBox.Show("Item " + cmbItems.Text + " information changed.", "Information");
 
                 ClearControls();
-              
+
             }
             catch (Exception ex)
             {
                 Log.Exception(ex);
             }
         }
-//---------------------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------------------
         private void RefreshDataset()
         {
             this.cmbItems.SelectedIndexChanged -= new System.EventHandler(this.cmbItems_SelectedIndexChanged);
@@ -161,8 +161,8 @@ namespace Unified_Price_for_Var
             cmbItems.ValueMember = "Item Number";
             this.cmbItems.SelectedIndexChanged += new System.EventHandler(this.cmbItems_SelectedIndexChanged);
         }
-       
-//-----------------------------------------------------------------------------------------------------
+
+        //-----------------------------------------------------------------------------------------------------
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (IsValid1())
@@ -172,41 +172,48 @@ namespace Unified_Price_for_Var
                     Db.NonQuery("INSERT INTO tblItems ([Item Number], [Item Description], [Family], [Item Component 1], [Item Component 2], [OEM Number]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')", txtItem_Number.Text, txtItemDescription.Text, txtItemFamily.Text, txtComp1.Text, txtComp2.Text, txtOEM.Text);
 
                     MessageBox.Show("Item number " + txtItem_Number.Text + " added.");
-                    
+
                     ClearControls();
-                   
-            }
-                catch 
+
+                }
+                catch
                 {
-                	MessageBox.Show("Can not insert duplicate Item Number");
+                    MessageBox.Show("Can not insert duplicate Item Number");
                 }
             }
         }
-//--------------------------------------------------------------------------------------------------------
-  
-         private bool IsValid()
+        //--------------------------------------------------------------------------------------------------------
+
+        private bool IsValid()
         {
             return Validation.IsPresent(txtItemDescription);
         }
-        
-//-------------------------------------------------------------------------------------------------
+
+        //-------------------------------------------------------------------------------------------------
         private bool IsValid1()
         {
             return Validation.IsPresent(txtItem_Number) && Validation.IsPresent(txtItemDescription);
         }
-//---------------------------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------------------------
         private void btnCopy_Click(object sender, EventArgs e)
-        {           
+        {
             Cursor.Current = Cursors.WaitCursor;
 
             var dataTable = Db.ExecuteDataTable("SELECT [Item Number] FROM tblItems ORDER BY [Item Number]");
-            comboBox1.DataSource = dataTable;
+
+            comboBox1.DataSource = new DataView(dataTable);
             comboBox1.DisplayMember = "Item Number";
             comboBox1.ValueMember = "Item Number";
+            comboBox3.DataSource = new DataView(dataTable);
+            comboBox4.DisplayMember = "Item Number";
+            comboBox3.ValueMember = "Item Number";
+            comboBox4.DataSource = new DataView(dataTable);
+            comboBox4.DisplayMember = "Item Number";
+            comboBox4.ValueMember = "Item Number";
             pnl1.Visible = true;
             Cursor.Current = Cursors.Default;
         }
-//---------------------------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------------------------
         private void btnCopy_Click_1(object sender, EventArgs e)
         {
             if (txtNewItem.Text != "" && comboBox1.Text != "")
@@ -257,31 +264,55 @@ namespace Unified_Price_for_Var
                 MessageBox.Show("New Item Number can not be Blank.");
             }
         }
-//-------------------------------------------------------------------------------------------------------
+
+        private void btnReplaceItem_Click(object sender, EventArgs e)
+        {
+            if (comboBox3.SelectedIndex < 0 || comboBox4.SelectedIndex < 0)
+            {
+                MessageBox.Show("Please select the correct values.", "Repalce Inventory Item", MessageBoxButtons.OK);
+                return;
+            }
+            if (comboBox3.SelectedValue == comboBox4.SelectedValue)
+            {
+
+                MessageBox.Show("The New and Old values selected are same. Please select differnt values.", "Repalce Inventory Item", MessageBoxButtons.OK);
+                return;
+            }
+            DialogResult dialogResult = MessageBox.Show("Are you sure, you would like to replace the item number " + comboBox3.SelectedValue + " with item number " + comboBox4.SelectedValue + " ?", "Repalce Inventory Item", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Db.NonQuery("UPDATE tblPricing SET [Item Number] = '{0}' WHERE [Item Number] = '{1}'", comboBox4.SelectedValue, comboBox3.SelectedValue);
+                Db.NonQuery("UPDATE tblCustomerItems SET [Our Item Number] = '{0}' WHERE [Our Item Number] = '{1}'", comboBox4.SelectedValue, comboBox3.SelectedValue);
+                MessageBox.Show("Item Number " + comboBox3.SelectedValue + " changed to Item Number " + comboBox4.SelectedValue + " in tblPricing and tblCustomerItems Table.", "Information");
+
+            }
+
+        }
+        //-------------------------------------------------------------------------------------------------------
         private void Exit1_Click(object sender, EventArgs e)
         {
             pnl1.Visible = false;
             RefreshDataset();
         }
-//-------------------------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------------------
         private DataTable dataTable3 = null;
 
         private void btnLookUp_Click(object sender, EventArgs e)
         {
             pnlUseDescrip.Visible = !pnlUseDescrip.Visible;
-            if(dataTable3 == null)
+            if (dataTable3 == null)
                 dataTable3 = Db.ExecuteDataTable("SELECT [Item Number] FROM tblItems ORDER BY [Item Number]");
 
             comboBox2.DataSource = dataTable3;
             comboBox2.DisplayMember = "Item Number";
             comboBox2.ValueMember = "Item Number";
         }
-//-------------------------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------------------
         private void btnCancelLookUp_Click_1(object sender, EventArgs e)
         {
             pnlUseDescrip.Visible = false;
         }
-//--------------------------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------
         private void cmbItems_SelectedIndexChanged(object sender, EventArgs e)
         {
             var itemRow = Db.ExecuteDataRow("SELECT * FROM tblItems WHERE [Item Number] = '{0}'", cmbItems.Text);
@@ -300,7 +331,7 @@ namespace Unified_Price_for_Var
         private void btnUseItem_Click(object sender, EventArgs e)
         {
             var itemCopyFrom = Db.ExecuteDataRow("SELECT [Item Description] FROM tblItems WHERE [Item Number] = '{0}'", comboBox2.Text);
-            txtItemDescription.Text = itemCopyFrom["Item Description"].ToString();            
+            txtItemDescription.Text = itemCopyFrom["Item Description"].ToString();
         }
 
         private void cmbItems_KeyPress(object sender, KeyPressEventArgs e)
@@ -318,20 +349,19 @@ namespace Unified_Price_for_Var
             e.KeyChar = Char.ToUpper(e.KeyChar);
         }
 
-       //private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-       // {
+        //private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        // {
 
-       // }
+        // }
 
-         private void txtNewItem_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtNewItem_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.KeyChar = Char.ToUpper(e.KeyChar);
         }
 
-//---------------------------------------------------------------------------
+        //---------------------------------------------------------------------------
 
         private void btnReturnToMain_Click(object sender, EventArgs e)
-
         {
             btnLookUp.Enabled = false;
             lblComponent1.Visible = false;
@@ -378,7 +408,14 @@ namespace Unified_Price_for_Var
 
         }
 
-       
-     
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
+
     }
 }

@@ -60,6 +60,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnAddNew = new System.Windows.Forms.Button();
             this.pnlDataGrid = new System.Windows.Forms.Panel();
+            this.lblManagerID = new System.Windows.Forms.Label();
             this.pnlManagerInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlDataGrid.SuspendLayout();
@@ -236,6 +237,7 @@
             // rbSameAddressNo
             // 
             this.rbSameAddressNo.AutoSize = true;
+            this.rbSameAddressNo.Checked = true;
             this.rbSameAddressNo.Location = new System.Drawing.Point(195, 334);
             this.rbSameAddressNo.Name = "rbSameAddressNo";
             this.rbSameAddressNo.Size = new System.Drawing.Size(39, 17);
@@ -300,9 +302,11 @@
             this.btnUpdate.TabIndex = 21;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // pnlManagerInformation
             // 
+            this.pnlManagerInformation.Controls.Add(this.lblManagerID);
             this.pnlManagerInformation.Controls.Add(this.btnUpdate);
             this.pnlManagerInformation.Controls.Add(this.btnCancel);
             this.pnlManagerInformation.Controls.Add(this.btnDelete);
@@ -351,6 +355,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(240, 351);
             this.dataGridView1.TabIndex = 14;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // btnAddNew
             // 
@@ -371,6 +376,16 @@
             this.pnlDataGrid.Name = "pnlDataGrid";
             this.pnlDataGrid.Size = new System.Drawing.Size(274, 413);
             this.pnlDataGrid.TabIndex = 17;
+            // 
+            // lblManagerID
+            // 
+            this.lblManagerID.AutoSize = true;
+            this.lblManagerID.Location = new System.Drawing.Point(241, 336);
+            this.lblManagerID.Name = "lblManagerID";
+            this.lblManagerID.Size = new System.Drawing.Size(73, 13);
+            this.lblManagerID.TabIndex = 22;
+            this.lblManagerID.Text = "MgrID Hidden";
+            this.lblManagerID.Visible = false;
             // 
             // frmManagersInformation
             // 
@@ -427,5 +442,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnAddNew;
         private System.Windows.Forms.Panel pnlDataGrid;
+        private System.Windows.Forms.Label lblManagerID;
     }
 }

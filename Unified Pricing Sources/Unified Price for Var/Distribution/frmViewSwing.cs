@@ -44,7 +44,24 @@ namespace Unified_Price_for_Var
             var dataTable = Db.ExecuteDataTable("SELECT [Swing Number] FROM tblSwingNumbers ORDER BY [Swing Number]");
             cmbSwingNumber.DataSource = dataTable;
             cmbSwingNumber.DisplayMember = "Swing Number";
-            cmbSwingNumber.ValueMember = "Swing Number";            
+            cmbSwingNumber.ValueMember = "Swing Number";
+            var dtManagers = Db.ExecuteDataTable("SELECT ManagerName + ManagerEmail as [DisplayValue], ManagerID FROM tblManagerInformation ORDER BY ManagerName");
+            ddlManager1.DataSource = dtManagers;
+            ddlManager1.DisplayMember = "DisplayValue";
+            ddlManager1.ValueMember = "ManagerID";
+            ddlManager1.SelectedIndex = -1;
+            ddlManager2.DataSource = dtManagers;
+            ddlManager2.DisplayMember = "DisplayValue";
+            ddlManager2.ValueMember = "ManagerID";
+            ddlManager2.SelectedIndex = -1;
+            ddlManager3.DataSource = dtManagers;
+            ddlManager3.DisplayMember = "DisplayValue";
+            ddlManager3.ValueMember = "ManagerID";
+            ddlManager3.SelectedIndex = -1;
+            ddlManager4.DataSource = dtManagers;
+            ddlManager4.DisplayMember = "DisplayValue";
+            ddlManager4.ValueMember = "ManagerID";
+            ddlManager4.SelectedIndex = -1;
         }
 
         private void frmViewSwing_Load(object sender, EventArgs e)
@@ -107,7 +124,7 @@ namespace Unified_Price_for_Var
                         var custs1 = Db.ExecuteDataTable("SELECT [Customer Number] FROM tblCustomers WHERE [Swing Number] = '{0}'", cmbSwing1.Text);
                         var custs2 = Db.ExecuteDataTable("SELECT [Customer Number] FROM tblCustomers WHERE [Swing Number] = '{0}'", cmbSwing2.Text);
 
-                        foreach(DataRow row in custs1.Rows)
+                        foreach (DataRow row in custs1.Rows)
                             Db.NonQuery("UPDATE tblCustomers SET [Swing Number] = '{0}' WHERE [Customer Number] = '{1}'", txtNewSwingNumber.Text, row["Customer Number"]);
 
                         foreach (DataRow row in custs2.Rows)
@@ -190,7 +207,7 @@ namespace Unified_Price_for_Var
                 {
                     Db.NonQuery("UPDATE tblCustomers SET [Swing Number] = null WHERE [Customer Number] = '{0}'", row.Cells["CustNumber2"].Value);
                 }
-                
+
                 MessageBox.Show("All itms from Swing number " + groupName + " was removed", "Important");
                 RefreshSwingNumbers();
                 FillCustomersNotInSwing();
@@ -205,6 +222,11 @@ namespace Unified_Price_for_Var
         private void txtNewSwingNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.KeyChar = Char.ToUpper(e.KeyChar);
+        }
+
+        private void btnSaveManagers_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

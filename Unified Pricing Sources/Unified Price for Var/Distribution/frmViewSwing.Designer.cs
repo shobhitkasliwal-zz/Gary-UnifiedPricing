@@ -43,6 +43,8 @@
             this.CustNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grdCustInSwing = new System.Windows.Forms.DataGridView();
+            this.CustNumber2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustName2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -62,8 +64,15 @@
             this.btnCreateSwing = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.CustNumber2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustName2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ddlManager1 = new System.Windows.Forms.ComboBox();
+            this.ddlManager2 = new System.Windows.Forms.ComboBox();
+            this.ddlManager3 = new System.Windows.Forms.ComboBox();
+            this.ddlManager4 = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.btnSaveManagers = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdAvilableCust)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdCustInSwing)).BeginInit();
             this.panel1.SuspendLayout();
@@ -238,6 +247,19 @@
             this.grdCustInSwing.Size = new System.Drawing.Size(370, 238);
             this.grdCustInSwing.TabIndex = 13;
             // 
+            // CustNumber2
+            // 
+            this.CustNumber2.HeaderText = "Customer #";
+            this.CustNumber2.Name = "CustNumber2";
+            this.CustNumber2.ReadOnly = true;
+            // 
+            // CustName2
+            // 
+            this.CustName2.HeaderText = "Customer Name";
+            this.CustName2.Name = "CustName2";
+            this.CustName2.ReadOnly = true;
+            this.CustName2.Width = 280;
+            // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -274,7 +296,7 @@
             this.panel1.Controls.Add(this.btnCreateSwing);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Location = new System.Drawing.Point(24, 25);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(917, 509);
             this.panel1.TabIndex = 16;
@@ -437,18 +459,96 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Create New Swing Number";
             // 
-            // CustNumber2
+            // ddlManager1
             // 
-            this.CustNumber2.HeaderText = "Customer #";
-            this.CustNumber2.Name = "CustNumber2";
-            this.CustNumber2.ReadOnly = true;
+            this.ddlManager1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ddlManager1.FormattingEnabled = true;
+            this.ddlManager1.Location = new System.Drawing.Point(201, 107);
+            this.ddlManager1.Name = "ddlManager1";
+            this.ddlManager1.Size = new System.Drawing.Size(121, 21);
+            this.ddlManager1.TabIndex = 17;
             // 
-            // CustName2
+            // ddlManager2
             // 
-            this.CustName2.HeaderText = "Customer Name";
-            this.CustName2.Name = "CustName2";
-            this.CustName2.ReadOnly = true;
-            this.CustName2.Width = 280;
+            this.ddlManager2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ddlManager2.FormattingEnabled = true;
+            this.ddlManager2.Location = new System.Drawing.Point(341, 108);
+            this.ddlManager2.Name = "ddlManager2";
+            this.ddlManager2.Size = new System.Drawing.Size(121, 21);
+            this.ddlManager2.TabIndex = 18;
+            // 
+            // ddlManager3
+            // 
+            this.ddlManager3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ddlManager3.FormattingEnabled = true;
+            this.ddlManager3.Location = new System.Drawing.Point(483, 108);
+            this.ddlManager3.Name = "ddlManager3";
+            this.ddlManager3.Size = new System.Drawing.Size(121, 21);
+            this.ddlManager3.TabIndex = 19;
+            // 
+            // ddlMaanger4
+            // 
+            this.ddlManager4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ddlManager4.FormattingEnabled = true;
+            this.ddlManager4.Location = new System.Drawing.Point(625, 108);
+            this.ddlManager4.Name = "ddlManager4";
+            this.ddlManager4.Size = new System.Drawing.Size(121, 21);
+            this.ddlManager4.TabIndex = 20;
+            // 
+            // label12
+            // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(198, 89);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(67, 13);
+            this.label12.TabIndex = 21;
+            this.label12.Text = "Manager 1";
+            // 
+            // label13
+            // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(338, 89);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(67, 13);
+            this.label13.TabIndex = 22;
+            this.label13.Text = "Manager 2";
+            // 
+            // label14
+            // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(482, 89);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(63, 13);
+            this.label14.TabIndex = 23;
+            this.label14.Text = "Manage 3";
+            // 
+            // label15
+            // 
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(622, 89);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(67, 13);
+            this.label15.TabIndex = 24;
+            this.label15.Text = "Manager 4";
+            // 
+            // btnSaveManagers
+            // 
+            this.btnSaveManagers.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSaveManagers.Location = new System.Drawing.Point(775, 104);
+            this.btnSaveManagers.Name = "btnSaveManagers";
+            this.btnSaveManagers.Size = new System.Drawing.Size(104, 23);
+            this.btnSaveManagers.TabIndex = 25;
+            this.btnSaveManagers.Text = "Save Managers";
+            this.btnSaveManagers.UseVisualStyleBackColor = true;
+            this.btnSaveManagers.Click += new System.EventHandler(this.btnSaveManagers_Click);
             // 
             // frmViewSwing
             // 
@@ -470,6 +570,15 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.ddlManager4);
+            this.Controls.Add(this.ddlManager3);
+            this.Controls.Add(this.ddlManager2);
+            this.Controls.Add(this.ddlManager1);
+            this.Controls.Add(this.btnSaveManagers);
             this.Name = "frmViewSwing";
             this.Text = "View Swing";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -522,5 +631,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CustName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustNumber2;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustName2;
+        private System.Windows.Forms.ComboBox ddlManager1;
+        private System.Windows.Forms.ComboBox ddlManager2;
+        private System.Windows.Forms.ComboBox ddlManager3;
+        private System.Windows.Forms.ComboBox ddlManager4;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btnSaveManagers;
     }
 }

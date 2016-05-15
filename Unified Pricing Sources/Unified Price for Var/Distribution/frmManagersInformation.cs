@@ -46,7 +46,7 @@ namespace Unified_Price_for_Var
                 MessageBox.Show("Please enter name for manager");
                 return;
             }
-            string query = string.Format("INSERT INTO tblManagerInformation(ManagerName,ManagerEmail,ManagerPhone,ManagerFax,ManagerCell,MailingAddress,City,State,Zip,SameAddress) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')", txtManagerName.Text, txtManagerEmail.Text, txtWorkPhone, txtFax.Text, txtCellPhone.Text, txtMailingAddress.Text, txtCity.Text, ddlState.SelectedValue, txtZipCode.Text, (rbSameAddressYes.Checked ? "1" : "0"));
+            string query = string.Format("INSERT INTO tblManagerInformation(ManagerName,ManagerEmail,ManagerPhone,ManagerFax,ManagerCell,MailingAddress,City,State,Zip,SameAddress) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')", txtManagerName.Text, txtManagerEmail.Text, txtWorkPhone.Text, txtFax.Text, txtCellPhone.Text, txtMailingAddress.Text, txtCity.Text, ddlState.SelectedValue, txtZipCode.Text, (rbSameAddressYes.Checked ? "1" : "0"));
             Db.ExecuteScalar(query);
 
             MessageBox.Show("Manager Added successfully.");
@@ -184,7 +184,7 @@ namespace Unified_Price_for_Var
         {
             if (type == "big")
             {
-                pnlDataGrid.Width = 650 ;
+                pnlDataGrid.Width = 650;
                 dataGridView1.Width = 630;
                 pnlManagerInformation.Visible = false;
                 pnlDataGrid.Enabled = true;

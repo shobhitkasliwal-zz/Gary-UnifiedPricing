@@ -64,6 +64,15 @@
             this.btnCreateSwing = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.ddl_CN_Manager1 = new System.Windows.Forms.ComboBox();
+            this.ddl_CN_Manager4 = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.ddl_CN_Manager3 = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.ddl_CN_Manager2 = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.ddlManager1 = new System.Windows.Forms.ComboBox();
             this.ddlManager2 = new System.Windows.Forms.ComboBox();
             this.ddlManager3 = new System.Windows.Forms.ComboBox();
@@ -77,6 +86,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdCustInSwing)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -296,16 +306,17 @@
             this.panel1.Controls.Add(this.btnCreateSwing);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(917, 509);
+            this.panel1.Size = new System.Drawing.Size(917, 535);
             this.panel1.TabIndex = 16;
             this.panel1.Visible = false;
             // 
             // chkCombine
             // 
             this.chkCombine.AutoSize = true;
-            this.chkCombine.Location = new System.Drawing.Point(267, 297);
+            this.chkCombine.Location = new System.Drawing.Point(267, 341);
             this.chkCombine.Name = "chkCombine";
             this.chkCombine.Size = new System.Drawing.Size(144, 17);
             this.chkCombine.TabIndex = 23;
@@ -320,7 +331,7 @@
             this.panel2.Controls.Add(this.Label);
             this.panel2.Controls.Add(this.cmbSwing2);
             this.panel2.Controls.Add(this.cmbSwing1);
-            this.panel2.Location = new System.Drawing.Point(265, 320);
+            this.panel2.Location = new System.Drawing.Point(265, 372);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(455, 124);
             this.panel2.TabIndex = 22;
@@ -379,7 +390,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(264, 200);
+            this.label10.Location = new System.Drawing.Point(264, 246);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(383, 78);
             this.label10.TabIndex = 21;
@@ -388,7 +399,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(278, 164);
+            this.label9.Location = new System.Drawing.Point(266, 129);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(68, 13);
             this.label9.TabIndex = 20;
@@ -396,7 +407,7 @@
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(361, 161);
+            this.txtDescription.Location = new System.Drawing.Point(361, 126);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(262, 20);
             this.txtDescription.TabIndex = 19;
@@ -405,7 +416,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(264, 134);
+            this.label8.Location = new System.Drawing.Point(264, 99);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(82, 13);
             this.label8.TabIndex = 18;
@@ -413,7 +424,7 @@
             // 
             // txtNewSwingNumber
             // 
-            this.txtNewSwingNumber.Location = new System.Drawing.Point(361, 131);
+            this.txtNewSwingNumber.Location = new System.Drawing.Point(361, 96);
             this.txtNewSwingNumber.Name = "txtNewSwingNumber";
             this.txtNewSwingNumber.Size = new System.Drawing.Size(100, 20);
             this.txtNewSwingNumber.TabIndex = 17;
@@ -421,7 +432,7 @@
             // 
             // btnCancelNew
             // 
-            this.btnCancelNew.Location = new System.Drawing.Point(386, 462);
+            this.btnCancelNew.Location = new System.Drawing.Point(386, 501);
             this.btnCancelNew.Name = "btnCancelNew";
             this.btnCancelNew.Size = new System.Drawing.Size(75, 23);
             this.btnCancelNew.TabIndex = 3;
@@ -431,7 +442,7 @@
             // 
             // btnCreateSwing
             // 
-            this.btnCreateSwing.Location = new System.Drawing.Point(265, 462);
+            this.btnCreateSwing.Location = new System.Drawing.Point(265, 503);
             this.btnCreateSwing.Name = "btnCreateSwing";
             this.btnCreateSwing.Size = new System.Drawing.Size(101, 23);
             this.btnCreateSwing.TabIndex = 2;
@@ -443,7 +454,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(262, 100);
+            this.label7.Location = new System.Drawing.Point(262, 72);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(361, 13);
             this.label7.TabIndex = 1;
@@ -458,6 +469,101 @@
             this.label6.Size = new System.Drawing.Size(252, 24);
             this.label6.TabIndex = 0;
             this.label6.Text = "Create New Swing Number";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label16);
+            this.panel3.Controls.Add(this.ddl_CN_Manager1);
+            this.panel3.Controls.Add(this.ddl_CN_Manager4);
+            this.panel3.Controls.Add(this.label19);
+            this.panel3.Controls.Add(this.ddl_CN_Manager3);
+            this.panel3.Controls.Add(this.label18);
+            this.panel3.Controls.Add(this.ddl_CN_Manager2);
+            this.panel3.Controls.Add(this.label17);
+            this.panel3.Location = new System.Drawing.Point(225, 149);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(524, 81);
+            this.panel3.TabIndex = 27;
+            // 
+            // label16
+            // 
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(41, 15);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(58, 13);
+            this.label16.TabIndex = 24;
+            this.label16.Text = "Manager1:";
+            // 
+            // ddl_CN_Manager1
+            // 
+            this.ddl_CN_Manager1.DisplayMember = "Swing Number";
+            this.ddl_CN_Manager1.FormattingEnabled = true;
+            this.ddl_CN_Manager1.Location = new System.Drawing.Point(136, 13);
+            this.ddl_CN_Manager1.Name = "ddl_CN_Manager1";
+            this.ddl_CN_Manager1.Size = new System.Drawing.Size(142, 21);
+            this.ddl_CN_Manager1.TabIndex = 26;
+            this.ddl_CN_Manager1.ValueMember = "Swing Number";
+            // 
+            // ddl_CN_Manager4
+            // 
+            this.ddl_CN_Manager4.DisplayMember = "Swing Number";
+            this.ddl_CN_Manager4.FormattingEnabled = true;
+            this.ddl_CN_Manager4.Location = new System.Drawing.Point(379, 41);
+            this.ddl_CN_Manager4.Name = "ddl_CN_Manager4";
+            this.ddl_CN_Manager4.Size = new System.Drawing.Size(142, 21);
+            this.ddl_CN_Manager4.TabIndex = 33;
+            this.ddl_CN_Manager4.ValueMember = "Swing Number";
+            // 
+            // label19
+            // 
+            this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(313, 45);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(58, 13);
+            this.label19.TabIndex = 32;
+            this.label19.Text = "Manager4:";
+            // 
+            // ddl_CN_Manager3
+            // 
+            this.ddl_CN_Manager3.DisplayMember = "Swing Number";
+            this.ddl_CN_Manager3.FormattingEnabled = true;
+            this.ddl_CN_Manager3.Location = new System.Drawing.Point(379, 10);
+            this.ddl_CN_Manager3.Name = "ddl_CN_Manager3";
+            this.ddl_CN_Manager3.Size = new System.Drawing.Size(142, 21);
+            this.ddl_CN_Manager3.TabIndex = 31;
+            this.ddl_CN_Manager3.ValueMember = "Swing Number";
+            // 
+            // label18
+            // 
+            this.label18.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(313, 13);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(58, 13);
+            this.label18.TabIndex = 30;
+            this.label18.Text = "Manager3:";
+            // 
+            // ddl_CN_Manager2
+            // 
+            this.ddl_CN_Manager2.DisplayMember = "Swing Number";
+            this.ddl_CN_Manager2.FormattingEnabled = true;
+            this.ddl_CN_Manager2.Location = new System.Drawing.Point(136, 46);
+            this.ddl_CN_Manager2.Name = "ddl_CN_Manager2";
+            this.ddl_CN_Manager2.Size = new System.Drawing.Size(142, 21);
+            this.ddl_CN_Manager2.TabIndex = 29;
+            this.ddl_CN_Manager2.ValueMember = "Swing Number";
+            // 
+            // label17
+            // 
+            this.label17.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(41, 49);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(58, 13);
+            this.label17.TabIndex = 28;
+            this.label17.Text = "Manager2:";
             // 
             // ddlManager1
             // 
@@ -486,7 +592,7 @@
             this.ddlManager3.Size = new System.Drawing.Size(121, 21);
             this.ddlManager3.TabIndex = 19;
             // 
-            // ddlMaanger4
+            // ddlManager4
             // 
             this.ddlManager4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ddlManager4.FormattingEnabled = true;
@@ -589,6 +695,8 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -640,5 +748,14 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btnSaveManagers;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox ddl_CN_Manager1;
+        private System.Windows.Forms.ComboBox ddl_CN_Manager4;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox ddl_CN_Manager3;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox ddl_CN_Manager2;
+        private System.Windows.Forms.Label label17;
     }
 }

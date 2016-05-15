@@ -214,6 +214,11 @@
     <Compile Include="frmBackUp.designer.cs">
       <DependentUpon>frmBackUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pricing_for_Tanya_DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pricing_for_Tanya_DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ReportViewers\frmItemsByCustFamily_Viewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -319,11 +324,7 @@
     </Compile>
     <Compile Include="Pricing_for_Tanya_DataSet1.cs">
       <DependentUpon>Pricing_for_Tanya_DataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Pricing_for_Tanya_DataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pricing_for_Tanya_DataSet1.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -505,8 +506,8 @@
     </None>
     <None Include="Pricing_for_Tanya_DataSet1.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Pricing_for_Tanya_DataSet1.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Pricing_for_Tanya_DataSet1.Designer.cs</LastGenOutput>
     </None>
     <None Include="Pricing_for_Tanya_DataSet1.xss">
       <DependentUpon>Pricing_for_Tanya_DataSet1.xsd</DependentUpon>

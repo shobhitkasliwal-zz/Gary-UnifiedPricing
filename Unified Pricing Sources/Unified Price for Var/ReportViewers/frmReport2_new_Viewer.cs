@@ -20,6 +20,8 @@ namespace Unified_Price_for_Var
             InitializeComponent();
         }
 
+        public string DisplayManagerInfo { get; set; }
+
         private void crystalReportViewer1_Load(object sender, EventArgs e)
         {
             CrystalReports.Report2_new rpt = new CrystalReports.Report2_new();
@@ -44,7 +46,7 @@ namespace Unified_Price_for_Var
             crystalReportViewer1.Zoom(75);
             WindowState = FormWindowState.Maximized;
             rpt.ReportOptions.EnableSaveDataWithReport = false;
-         
+
         }
     }
 }

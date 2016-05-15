@@ -288,7 +288,7 @@ namespace Unified_Price_for_Var
 
             var custPricings = Db.ExecuteDataTable("SELECT * FROM tblPricing WHERE [Customer Number] = '{0}' ORDER BY [Item Number] ASC", cmbCustomers.SelectedValue);
             Db.NonQuery("DELETE FROM tblByCustomer_Report");
-
+            string SwingNumber = "";
             for (int i = 0; i < custPricings.Rows.Count; i++)
             {
                 decimal ASRCurrPriceDec = 0;
@@ -318,15 +318,63 @@ namespace Unified_Price_for_Var
                     custPricings.Rows[i]["Last12MonthQTY"],
                     custPricings.Rows[i]["QuoteDate"]
                     );
+                SwingNumber = cust["Swing Number"].ReplaceNulls();
             }
 
             Cursor.Current = Cursors.Default;
+            List<string> ManagerName = new List<string>();
+            List<string> ManagerPhone = new List<string>();
+            List<string> ManagerEmail = new List<string>();
+            List<string> ManagerFax = new List<string>();
+            string ManagerDisplay = "";
+            if (SwingNumber.Length > 0)
+            {
+                DataTable dt = Db.ExecuteDataTable("SELECT * From tblSwingNumbers WHERE [Swing Number] ='{0}'", SwingNumber);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    DataTable Mgr = Db.ExecuteDataTable("Select * From tblManagerInformation where ManagerID in ({0},{1},{2},{3})", dt.Rows[0]["Manager1"].ReplaceNulls("-1"), dt.Rows[0]["Manager2"].ReplaceNulls("-1"), dt.Rows[0]["Manager3"].ReplaceNulls("-1"), dt.Rows[0]["Manager4"].ReplaceNulls("-1"));
+                    if (Mgr != null && Mgr.Rows.Count > 0)
+                    {
+                        foreach (DataRow dr in Mgr.Rows)
+                        {
+                            ManagerName.Add(dr["ManagerName"].ReplaceNulls());
+                            ManagerPhone.Add(dr["ManagerPhone"].ReplaceNulls());
+                            ManagerEmail.Add(dr["ManagerEmail"].ReplaceNulls());
+                            ManagerFax.Add(dr["ManagerFax"].ReplaceNulls());
+                        }
 
+                        foreach (string name in ManagerName.Distinct())
+                        {
+                            ManagerDisplay += name + ",";
+                        }
+                        ManagerDisplay = ManagerDisplay.Substring(0, ManagerDisplay.Length - 1) + Environment.NewLine;
+                        ManagerDisplay += "Phone:";
+                        foreach (string phone in ManagerPhone.Distinct())
+                        {
+                            ManagerDisplay += phone + Environment.NewLine;
+                        }
+                        ManagerDisplay = ManagerDisplay.Substring(0, ManagerDisplay.Length - 1);
+                        ManagerDisplay += "Fax:";
+                        foreach (string fax in ManagerFax.Distinct())
+                        {
+                            ManagerDisplay += fax + Environment.NewLine;
+                        }
+                        ManagerDisplay = ManagerDisplay.Substring(0, ManagerDisplay.Length - 1);
+                        ManagerDisplay += "Email:";
+                        foreach (string email in ManagerEmail.Distinct())
+                        {
+                            ManagerDisplay += email + Environment.NewLine;
+                        }
+                    }
+                }
+
+            }
             var result = MessageBox.Show("\"Click on YES to print only NEW / CHANGED prices, or click NO to print all\"", "Warning", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)
             {
                 Cursor.Current = Cursors.WaitCursor;
                 frmReport2_all_Viewer frm = new frmReport2_all_Viewer();
+                frm.DisplayManagerInfo = ManagerDisplay;
                 frm.Show();
                 Cursor.Current = Cursors.Default;
             }
@@ -334,6 +382,7 @@ namespace Unified_Price_for_Var
             {
                 Cursor.Current = Cursors.WaitCursor;
                 frmReport2_new_Viewer frm = new frmReport2_new_Viewer();
+                frm.DisplayManagerInfo = ManagerDisplay;
                 frm.Show();
                 Cursor.Current = Cursors.Default;
 

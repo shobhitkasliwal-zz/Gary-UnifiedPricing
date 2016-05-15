@@ -98,6 +98,8 @@
             this.tblPricingBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tblPricingTableAdapter = new Unified_Price_for_Var.Pricing_for_Tanya_DataSetTableAdapters.tblPricingTableAdapter();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.rdoChange_Price_InActive_ByCust = new System.Windows.Forms.RadioButton();
+            this.rdoChange_Price_Active_ByCust = new System.Windows.Forms.RadioButton();
             this.rdoChange_Price6 = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tblGroupMasterTableAdapter = new Unified_Price_for_Var.Pricing_for_Tanya_DataSetTableAdapters.tblGroupMasterTableAdapter();
@@ -170,7 +172,7 @@
             // rdoChange_Price3
             // 
             this.rdoChange_Price3.AutoSize = true;
-            this.rdoChange_Price3.Location = new System.Drawing.Point(15, 52);
+            this.rdoChange_Price3.Location = new System.Drawing.Point(208, 3);
             this.rdoChange_Price3.Name = "rdoChange_Price3";
             this.rdoChange_Price3.Size = new System.Drawing.Size(183, 17);
             this.rdoChange_Price3.TabIndex = 3;
@@ -181,7 +183,7 @@
             // rdoChange_Price2
             // 
             this.rdoChange_Price2.AutoSize = true;
-            this.rdoChange_Price2.Location = new System.Drawing.Point(15, 29);
+            this.rdoChange_Price2.Location = new System.Drawing.Point(15, 27);
             this.rdoChange_Price2.Name = "rdoChange_Price2";
             this.rdoChange_Price2.Size = new System.Drawing.Size(166, 17);
             this.rdoChange_Price2.TabIndex = 4;
@@ -192,7 +194,7 @@
             // rdoChange_Price4
             // 
             this.rdoChange_Price4.AutoSize = true;
-            this.rdoChange_Price4.Location = new System.Drawing.Point(209, 6);
+            this.rdoChange_Price4.Location = new System.Drawing.Point(209, 27);
             this.rdoChange_Price4.Name = "rdoChange_Price4";
             this.rdoChange_Price4.Size = new System.Drawing.Size(263, 17);
             this.rdoChange_Price4.TabIndex = 5;
@@ -203,7 +205,7 @@
             // rdoChangePrice5
             // 
             this.rdoChangePrice5.AutoSize = true;
-            this.rdoChangePrice5.Location = new System.Drawing.Point(209, 29);
+            this.rdoChangePrice5.Location = new System.Drawing.Point(209, 51);
             this.rdoChangePrice5.Name = "rdoChangePrice5";
             this.rdoChangePrice5.Size = new System.Drawing.Size(247, 17);
             this.rdoChangePrice5.TabIndex = 6;
@@ -215,7 +217,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(59, 62);
+            this.label1.Location = new System.Drawing.Point(59, 57);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(27, 24);
             this.label1.TabIndex = 7;
@@ -225,7 +227,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(95, 67);
+            this.label2.Location = new System.Drawing.Point(95, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(366, 16);
             this.label2.TabIndex = 8;
@@ -270,7 +272,7 @@
             this.label6.Size = new System.Drawing.Size(626, 16);
             this.label6.TabIndex = 12;
             this.label6.Text = "Choose how to change the Prices, either by percent (%) or a fixed number (such as" +
-                " $1.50): ";
+    " $1.50): ";
             // 
             // rdoIncrease_byPercent
             // 
@@ -337,7 +339,7 @@
             this.label8.Size = new System.Drawing.Size(411, 60);
             this.label8.TabIndex = 18;
             this.label8.Text = "Choose how much you want to increase/decrease the Price by.\r\nUse a full number, e" +
-                "ven for a percentage (such as 1.5 percent).\r\n\r\n ";
+    "ven for a percentage (such as 1.5 percent).\r\n\r\n ";
             // 
             // txtIncr_Decr
             // 
@@ -374,7 +376,7 @@
             this.label11.Size = new System.Drawing.Size(449, 45);
             this.label11.TabIndex = 22;
             this.label11.Text = "Click on \"Change\" to change the prices you\'ve selected,or click \"Exit\" \r\nto retur" +
-                "n to the pricing Menu:\r\n \r\n";
+    "n to the pricing Menu:\r\n \r\n";
             // 
             // btnChange_Price
             // 
@@ -788,21 +790,45 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.rdoChange_Price_InActive_ByCust);
+            this.panel1.Controls.Add(this.rdoChange_Price_Active_ByCust);
             this.panel1.Controls.Add(this.rdoChange_Price6);
             this.panel1.Controls.Add(this.rdoChangePrice5);
             this.panel1.Controls.Add(this.rdoChange_Price1);
             this.panel1.Controls.Add(this.rdoChange_Price3);
             this.panel1.Controls.Add(this.rdoChange_Price2);
             this.panel1.Controls.Add(this.rdoChange_Price4);
-            this.panel1.Location = new System.Drawing.Point(83, 95);
+            this.panel1.Location = new System.Drawing.Point(83, 81);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(546, 77);
+            this.panel1.Size = new System.Drawing.Size(546, 98);
             this.panel1.TabIndex = 30;
+            // 
+            // rdoChange_Price_InActive_ByCust
+            // 
+            this.rdoChange_Price_InActive_ByCust.AutoSize = true;
+            this.rdoChange_Price_InActive_ByCust.Location = new System.Drawing.Point(15, 74);
+            this.rdoChange_Price_InActive_ByCust.Name = "rdoChange_Price_InActive_ByCust";
+            this.rdoChange_Price_InActive_ByCust.Size = new System.Drawing.Size(194, 17);
+            this.rdoChange_Price_InActive_ByCust.TabIndex = 9;
+            this.rdoChange_Price_InActive_ByCust.Text = "Change InActive Prices byCustomer";
+            this.rdoChange_Price_InActive_ByCust.UseVisualStyleBackColor = true;
+            this.rdoChange_Price_InActive_ByCust.CheckedChanged += new System.EventHandler(this.rdoChange_Price2_CheckedChanged);
+            // 
+            // rdoChange_Price_Active_ByCust
+            // 
+            this.rdoChange_Price_Active_ByCust.AutoSize = true;
+            this.rdoChange_Price_Active_ByCust.Location = new System.Drawing.Point(15, 51);
+            this.rdoChange_Price_Active_ByCust.Name = "rdoChange_Price_Active_ByCust";
+            this.rdoChange_Price_Active_ByCust.Size = new System.Drawing.Size(185, 17);
+            this.rdoChange_Price_Active_ByCust.TabIndex = 8;
+            this.rdoChange_Price_Active_ByCust.Text = "Change Active Prices byCustomer";
+            this.rdoChange_Price_Active_ByCust.UseVisualStyleBackColor = true;
+            this.rdoChange_Price_Active_ByCust.CheckedChanged += new System.EventHandler(this.rdoChange_Price2_CheckedChanged);
             // 
             // rdoChange_Price6
             // 
             this.rdoChange_Price6.AutoSize = true;
-            this.rdoChange_Price6.Location = new System.Drawing.Point(209, 52);
+            this.rdoChange_Price6.Location = new System.Drawing.Point(209, 74);
             this.rdoChange_Price6.Name = "rdoChange_Price6";
             this.rdoChange_Price6.Size = new System.Drawing.Size(201, 17);
             this.rdoChange_Price6.TabIndex = 7;
@@ -1031,6 +1057,8 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ComboBox cmbFamily6;
         private System.Windows.Forms.ComboBox cmbCust6;
+        private System.Windows.Forms.RadioButton rdoChange_Price_InActive_ByCust;
+        private System.Windows.Forms.RadioButton rdoChange_Price_Active_ByCust;
 
         
        // public System.EventHandler btnCheckAll2_Click { get; set; }

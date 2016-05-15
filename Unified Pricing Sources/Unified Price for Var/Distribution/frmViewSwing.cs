@@ -26,6 +26,40 @@ namespace Unified_Price_for_Var
                 {
                     grdCustInSwing.Rows.Add(price["Customer Number"], price["Customer Bill Name"]);
                 }
+
+
+
+            }
+        }
+
+        private void SelectManagerForSwingNumber()
+        {
+            ddlManager1.SelectedIndex = -1;
+            ddlManager2.SelectedIndex = -1;
+            ddlManager3.SelectedIndex = -1;
+            ddlManager4.SelectedIndex = -1;
+            if (cmbSwingNumber.SelectedValue != null && cmbSwingNumber.SelectedIndex > -1)
+            {
+                var dtManagers = Db.ExecuteDataTable("SELECT Manager1, Manager2,Manager3,Manager4 FROM tblSwingNumbers where [Swing Number] = '{0}'", cmbSwingNumber.SelectedValue.ReplaceNulls());
+                if (dtManagers != null && dtManagers.Rows.Count > 0)
+                {
+                    if (dtManagers.Rows[0]["Manager1"].ReplaceNulls().Length > 0)
+                    {
+                        ddlManager1.SelectedValue = dtManagers.Rows[0]["Manager1"].ReplaceNulls();
+                    }
+                    if (dtManagers.Rows[0]["Manager2"].ReplaceNulls().Length > 0)
+                    {
+                        ddlManager2.SelectedValue = dtManagers.Rows[0]["Manager2"].ReplaceNulls();
+                    }
+                    if (dtManagers.Rows[0]["Manager3"].ReplaceNulls().Length > 0)
+                    {
+                        ddlManager3.SelectedValue = dtManagers.Rows[0]["Manager3"].ReplaceNulls();
+                    }
+                    if (dtManagers.Rows[0]["Manager4"].ReplaceNulls().Length > 0)
+                    {
+                        ddlManager4.SelectedValue = dtManagers.Rows[0]["Manager4"].ReplaceNulls();
+                    }
+                }
             }
         }
 
@@ -45,20 +79,20 @@ namespace Unified_Price_for_Var
             cmbSwingNumber.DataSource = dataTable;
             cmbSwingNumber.DisplayMember = "Swing Number";
             cmbSwingNumber.ValueMember = "Swing Number";
-            var dtManagers = Db.ExecuteDataTable("SELECT ManagerName + ManagerEmail as [DisplayValue], ManagerID FROM tblManagerInformation ORDER BY ManagerName");
-            ddlManager1.DataSource = dtManagers;
+            var dtManagers = Db.ExecuteDataTable("SELECT ManagerName + ' - ' +  ManagerEmail as [DisplayValue], ManagerID FROM tblManagerInformation ORDER BY ManagerName");
+            ddlManager1.DataSource = new DataView(dtManagers);
             ddlManager1.DisplayMember = "DisplayValue";
             ddlManager1.ValueMember = "ManagerID";
             ddlManager1.SelectedIndex = -1;
-            ddlManager2.DataSource = dtManagers;
+            ddlManager2.DataSource = new DataView(dtManagers);
             ddlManager2.DisplayMember = "DisplayValue";
             ddlManager2.ValueMember = "ManagerID";
             ddlManager2.SelectedIndex = -1;
-            ddlManager3.DataSource = dtManagers;
+            ddlManager3.DataSource = new DataView(dtManagers);
             ddlManager3.DisplayMember = "DisplayValue";
             ddlManager3.ValueMember = "ManagerID";
             ddlManager3.SelectedIndex = -1;
-            ddlManager4.DataSource = dtManagers;
+            ddlManager4.DataSource = new DataView(dtManagers);
             ddlManager4.DisplayMember = "DisplayValue";
             ddlManager4.ValueMember = "ManagerID";
             ddlManager4.SelectedIndex = -1;
@@ -68,6 +102,7 @@ namespace Unified_Price_for_Var
         {
             RefreshSwingNumbers();
             FillCustomersNotInSwing();
+            SelectManagerForSwingNumber();
         }
 
         private void cmbSwingNumber_SelectedIndexChanged(object sender, EventArgs e)
@@ -76,6 +111,7 @@ namespace Unified_Price_for_Var
             {
                 FillCustomersInSelectedSwing();
             }
+            SelectManagerForSwingNumber();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -90,6 +126,23 @@ namespace Unified_Price_for_Var
 
             panel1.Visible = true;
             cmbSwingNumber.Visible = grdCustInSwing.Visible = false;
+            var dtManagers = Db.ExecuteDataTable("SELECT ManagerName + ' - ' +  ManagerEmail as [DisplayValue], ManagerID FROM tblManagerInformation ORDER BY ManagerName");
+            ddl_CN_Manager1.DataSource = new DataView(dtManagers);
+            ddl_CN_Manager1.DisplayMember = "DisplayValue";
+            ddl_CN_Manager1.ValueMember = "ManagerID";
+            ddl_CN_Manager1.SelectedIndex = -1;
+            ddl_CN_Manager2.DataSource = new DataView(dtManagers);
+            ddl_CN_Manager2.DisplayMember = "DisplayValue";
+            ddl_CN_Manager2.ValueMember = "ManagerID";
+            ddl_CN_Manager2.SelectedIndex = -1;
+            ddl_CN_Manager3.DataSource = new DataView(dtManagers);
+            ddl_CN_Manager3.DisplayMember = "DisplayValue";
+            ddl_CN_Manager3.ValueMember = "ManagerID";
+            ddl_CN_Manager3.SelectedIndex = -1;
+            ddl_CN_Manager4.DataSource = new DataView(dtManagers);
+            ddl_CN_Manager4.DisplayMember = "DisplayValue";
+            ddl_CN_Manager4.ValueMember = "ManagerID";
+            ddl_CN_Manager4.SelectedIndex = -1;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -111,15 +164,18 @@ namespace Unified_Price_for_Var
             }
             else
             {
+                string insertQuery = string.Format("INSERT INTO tblSwingNumbers ([Swing Number], [Swing Name],Manager1, Manager2,Manager3,Manager4) VALUES ('{0}', '{1}',{2},{3},{4},{5})", txtNewSwingNumber.Text, txtDescription.Text, (ddl_CN_Manager1.SelectedIndex > -1 ? ddl_CN_Manager1.SelectedValue.ReplaceNulls() : "NULL"), (ddl_CN_Manager2.SelectedIndex > -1 ? ddl_CN_Manager2.SelectedValue.ReplaceNulls() : "NULL"), (ddl_CN_Manager3.SelectedIndex > -1 ? ddl_CN_Manager3.SelectedValue.ReplaceNulls() : "NULL"), (ddl_CN_Manager4.SelectedIndex > -1 ? ddl_CN_Manager4.SelectedValue.ReplaceNulls() : "NULL"));
+
+
                 if (chkCombine.Checked == false)
                 {
-                    Db.NonQuery("INSERT INTO tblSwingNumbers ([Swing Number], [Swing Name]) VALUES ('{0}', '{1}')", txtNewSwingNumber.Text, txtDescription.Text);
+                    Db.NonQuery(insertQuery);
                 }
                 else
                 {
                     try
                     {
-                        Db.NonQuery("INSERT INTO tblSwingNumbers ([Swing Number], [Swing Name]) VALUES ('{0}', '{1}')", txtNewSwingNumber.Text, txtDescription.Text);
+                        Db.NonQuery(insertQuery);
 
                         var custs1 = Db.ExecuteDataTable("SELECT [Customer Number] FROM tblCustomers WHERE [Swing Number] = '{0}'", cmbSwing1.Text);
                         var custs2 = Db.ExecuteDataTable("SELECT [Customer Number] FROM tblCustomers WHERE [Swing Number] = '{0}'", cmbSwing2.Text);
@@ -226,7 +282,40 @@ namespace Unified_Price_for_Var
 
         private void btnSaveManagers_Click(object sender, EventArgs e)
         {
+            if (ddlManager1.SelectedIndex == -1 && ddlManager2.SelectedIndex == -1 && ddlManager3.SelectedIndex == -1 && ddlManager4.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select at least one manager.");
+                return;
+            }
+            if (cmbSwingNumber.SelectedValue == null && cmbSwingNumber.SelectedIndex == -1)
+            {
 
+                MessageBox.Show("Please select the swing number.");
+                return;
+            }
+
+            string Query = "UPDATE tblSwingNumbers SET [Swing Name] =[Swing Name]";
+            if (ddlManager1.SelectedValue != null && ddlManager1.SelectedIndex > -1)
+            {
+                Query = Query + ", Manager1=" + ddlManager1.SelectedValue;
+            }
+            if (ddlManager2.SelectedValue != null && ddlManager2.SelectedIndex > -1)
+            {
+                Query = Query + ", Manager2=" + ddlManager2.SelectedValue;
+            }
+            if (ddlManager3.SelectedValue != null && ddlManager3.SelectedIndex > -1)
+            {
+                Query = Query + ", Manager3=" + ddlManager3.SelectedValue;
+            }
+            if (ddlManager4.SelectedValue != null && ddlManager4.SelectedIndex > -1)
+            {
+                Query = Query + ", Manager4=" + ddlManager4.SelectedValue;
+            }
+            Query = Query + " WHERE [Swing Number]='" + cmbSwingNumber.SelectedValue + "'";
+
+            Db.NonQuery(Query);
+
+            MessageBox.Show("Manager updated successfully.");
         }
     }
 }

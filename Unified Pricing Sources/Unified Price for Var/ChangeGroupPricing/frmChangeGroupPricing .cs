@@ -15,6 +15,7 @@ namespace Unified_Price_for_Var
     {
         public DataTable _dataTableFamily;
         public DataTable _dataTableFamily6;
+        public DataTable _dataTableCustomers;
 
         public frmChangeGroupPricing()
         {
@@ -41,7 +42,16 @@ namespace Unified_Price_for_Var
             cmbFamily.DisplayMember = "Family";
             cmbFamily.ValueMember = "Family";
 
+            _dataTableCustomers = Db.ExecuteDataTable("Select [Customer Number] , [Customer Bill Name],  [Customer Bill Name] + '(' + [Customer Number] + ')'as [DisplayField] FROM tblCustomers order by [Customer Bill Name]");
+            cmbCust6.DataSource = _dataTableCustomers;
+            cmbCust6.DisplayMember = "DisplayField";
+            cmbCust6.ValueMember = "Customer Number";
 
+
+            _dataTableCustomers = Db.ExecuteDataTable("Select [Customer Number] , [Customer Bill Name],  [Customer Bill Name] + '(' + [Customer Number] + ')'as [DisplayField] FROM tblCustomers order by [Customer Bill Name]");
+            cmbCustomer.DataSource = new DataView(_dataTableCustomers);
+            cmbCustomer.DisplayMember = "DisplayField";
+            cmbCustomer.ValueMember = "Customer Bill Name";
 
         }
         //==================================================================
@@ -257,6 +267,7 @@ namespace Unified_Price_for_Var
 
                     }
                     Cursor.Current = Cursors.Default;
+                    MessageBox.Show("Update Completed.", "Information");
                 }
 
                 //==========================================================================================
@@ -353,7 +364,7 @@ namespace Unified_Price_for_Var
                     }
 
                     Cursor.Current = Cursors.Default;
-                    //MessageBox.Show("Update Completed.", "Information");
+                    MessageBox.Show("Update Completed.", "Information");
                 }
                 //==========================================================================================
                 //=============== rdoChange3 Checked =======================================================
@@ -426,6 +437,7 @@ namespace Unified_Price_for_Var
                             //----------------------------
                         }
                         //  ---- END LOOP  -----
+                        MessageBox.Show("Update Completed.", "Information");
                     }
                     Cursor.Current = Cursors.Default;
                 }
@@ -660,6 +672,7 @@ namespace Unified_Price_for_Var
                             }
                         }
                     }
+                    MessageBox.Show("Update Completed.", "Information");
 
                 }
                 //-----------------------------------
@@ -804,6 +817,21 @@ namespace Unified_Price_for_Var
         {
             this.ItemGrid.SelectAll();
         }
+
+        private void cmbCustomer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CustomGrid.ClearSelection();
+            foreach (DataGridViewRow row in CustomGrid.Rows)
+            {
+                if (row.Cells[1].Value != null && row.Cells[1].Value.ToString().Equals(cmbCustomer.SelectedValue))
+                {
+                    row.Selected = true;
+                    break;
+                }
+            }
+        }
+
+
 
 
 

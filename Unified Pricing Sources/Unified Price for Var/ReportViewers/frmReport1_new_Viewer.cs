@@ -19,6 +19,7 @@ namespace Unified_Price_for_Var
         {
             InitializeComponent();
         }
+        public string DisplayManagerInfo { get; set; }
 
         private void crystalReportViewer1_Load(object sender, EventArgs e)
         {
@@ -39,12 +40,17 @@ namespace Unified_Price_for_Var
                 tblLogOnInfor.ConnectionInfo = conInfo;
                 tbl.ApplyLogOnInfo(tblLogOnInfor);
             }
+            // if (DisplayManagerInfo.ReplaceNulls().Length > 0)
+            {
+                ((TextObject)rpt.ReportDefinition.ReportObjects["Text9"]).Text = DisplayManagerInfo;
+                ((TextObject)rpt.ReportDefinition.ReportObjects["Text18"]).Text = DisplayManagerInfo;
+            }
             rpt.ReportOptions.EnableSaveDataWithReport = false;
             crystalReportViewer1.Refresh();
             crystalReportViewer1.Zoom(75);
             WindowState = FormWindowState.Maximized;
             rpt.ReportOptions.EnableSaveDataWithReport = false;
-         
+
         }
     }
 }

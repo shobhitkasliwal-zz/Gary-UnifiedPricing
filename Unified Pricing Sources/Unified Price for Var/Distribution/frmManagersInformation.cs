@@ -11,6 +11,7 @@ namespace Unified_Price_for_Var
 {
     public partial class frmManagersInformation : Form
     {
+        System.Text.RegularExpressions.Regex emailExpr = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z][\w\.-]{2,28}[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
         public frmManagersInformation()
         {
             InitializeComponent();
@@ -46,7 +47,12 @@ namespace Unified_Price_for_Var
                 MessageBox.Show("Please enter name for manager");
                 return;
             }
-            string query = string.Format("INSERT INTO tblManagerInformation(ManagerName,ManagerEmail,ManagerPhone,ManagerFax,ManagerCell,MailingAddress,City,State,Zip,SameAddress) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')", txtManagerName.Text, txtManagerEmail.Text, txtWorkPhone.Text, txtFax.Text, txtCellPhone.Text, txtMailingAddress.Text, txtCity.Text, ddlState.SelectedValue, txtZipCode.Text, (rbSameAddressYes.Checked ? "1" : "0"));
+            if (!emailExpr.IsMatch(txtManagerEmail.Text))
+            {
+                MessageBox.Show("Please enter a valid email address for manager");
+                return;
+            }
+            string query = string.Format("INSERT INTO tblManagerInformation(ManagerName,ManagerEmail,ManagerPhone,ManagerFax,ManagerCell,MailingAddress,City,State,Zip,SameAddress) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')", txtManagerName.Text, txtManagerEmail.Text, txtWorkPhone.Text.Replace("(   )    -", ""), txtFax.Text.Replace("(   )    -", ""), txtCellPhone.Text.Replace("(   )    -", ""), txtMailingAddress.Text, txtCity.Text, ddlState.SelectedValue, txtZipCode.Text, (rbSameAddressYes.Checked ? "1" : "0"));
             Db.ExecuteScalar(query);
 
             MessageBox.Show("Manager Added successfully.");
@@ -160,12 +166,17 @@ namespace Unified_Price_for_Var
                 MessageBox.Show("Please enter name for manager");
                 return;
             }
+            if (!emailExpr.IsMatch(txtManagerEmail.Text))
+            {
+                MessageBox.Show("Please enter a valid email address for manager");
+                return;
+            }
             string query = "UPDATE tblManagerInformation ";
             query += "SET ManagerName ='" + txtManagerName.Text + "'";
             query += ",ManagerEmail ='" + txtManagerEmail.Text + "'";
-            query += ",ManagerPhone ='" + txtWorkPhone.Text + "'";
-            query += ",ManagerFax ='" + txtFax.Text + "'";
-            query += ",ManagerCell ='" + txtCellPhone.Text + "'";
+            query += ",ManagerPhone ='" + txtWorkPhone.Text.Replace("(   )    -", "") + "'";
+            query += ",ManagerFax ='" + txtFax.Text.Replace("(   )    -", "") + "'";
+            query += ",ManagerCell ='" + txtCellPhone.Text.Replace("(   )    -", "") + "'";
             query += ",MailingAddress ='" + txtMailingAddress.Text + "'";
             query += ",City ='" + txtCity.Text + "'";
             query += ",State ='" + ddlState.SelectedValue + "'";

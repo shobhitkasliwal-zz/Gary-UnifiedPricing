@@ -35,15 +35,11 @@
             this.txtManagerName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtManagerEmail = new System.Windows.Forms.TextBox();
-            this.txtWorkPhone = new System.Windows.Forms.TextBox();
-            this.txtFax = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtCellPhone = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtMailingAddress = new System.Windows.Forms.TextBox();
             this.txtCity = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtZipCode = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,11 +52,15 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.pnlManagerInformation = new System.Windows.Forms.Panel();
+            this.lblManagerID = new System.Windows.Forms.Label();
             this.exit = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnAddNew = new System.Windows.Forms.Button();
             this.pnlDataGrid = new System.Windows.Forms.Panel();
-            this.lblManagerID = new System.Windows.Forms.Label();
+            this.txtCellPhone = new System.Windows.Forms.MaskedTextBox();
+            this.txtZipCode = new System.Windows.Forms.MaskedTextBox();
+            this.txtFax = new System.Windows.Forms.MaskedTextBox();
+            this.txtWorkPhone = new System.Windows.Forms.MaskedTextBox();
             this.pnlManagerInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlDataGrid.SuspendLayout();
@@ -126,20 +126,6 @@
             this.txtManagerEmail.Size = new System.Drawing.Size(204, 20);
             this.txtManagerEmail.TabIndex = 4;
             // 
-            // txtWorkPhone
-            // 
-            this.txtWorkPhone.Location = new System.Drawing.Point(103, 69);
-            this.txtWorkPhone.Name = "txtWorkPhone";
-            this.txtWorkPhone.Size = new System.Drawing.Size(204, 20);
-            this.txtWorkPhone.TabIndex = 6;
-            // 
-            // txtFax
-            // 
-            this.txtFax.Location = new System.Drawing.Point(104, 99);
-            this.txtFax.Name = "txtFax";
-            this.txtFax.Size = new System.Drawing.Size(203, 20);
-            this.txtFax.TabIndex = 8;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -148,13 +134,6 @@
             this.label7.Size = new System.Drawing.Size(24, 13);
             this.label7.TabIndex = 9;
             this.label7.Text = "City";
-            // 
-            // txtCellPhone
-            // 
-            this.txtCellPhone.Location = new System.Drawing.Point(104, 129);
-            this.txtCellPhone.Name = "txtCellPhone";
-            this.txtCellPhone.Size = new System.Drawing.Size(203, 20);
-            this.txtCellPhone.TabIndex = 9;
             // 
             // label8
             // 
@@ -188,13 +167,6 @@
             this.label9.Size = new System.Drawing.Size(50, 13);
             this.label9.TabIndex = 11;
             this.label9.Text = "Zip Code";
-            // 
-            // txtZipCode
-            // 
-            this.txtZipCode.Location = new System.Drawing.Point(103, 302);
-            this.txtZipCode.Name = "txtZipCode";
-            this.txtZipCode.Size = new System.Drawing.Size(203, 20);
-            this.txtZipCode.TabIndex = 13;
             // 
             // label10
             // 
@@ -306,6 +278,10 @@
             // 
             // pnlManagerInformation
             // 
+            this.pnlManagerInformation.Controls.Add(this.txtWorkPhone);
+            this.pnlManagerInformation.Controls.Add(this.txtFax);
+            this.pnlManagerInformation.Controls.Add(this.txtZipCode);
+            this.pnlManagerInformation.Controls.Add(this.txtCellPhone);
             this.pnlManagerInformation.Controls.Add(this.lblManagerID);
             this.pnlManagerInformation.Controls.Add(this.btnUpdate);
             this.pnlManagerInformation.Controls.Add(this.btnCancel);
@@ -318,15 +294,11 @@
             this.pnlManagerInformation.Controls.Add(this.label1);
             this.pnlManagerInformation.Controls.Add(this.label2);
             this.pnlManagerInformation.Controls.Add(this.label10);
-            this.pnlManagerInformation.Controls.Add(this.txtZipCode);
             this.pnlManagerInformation.Controls.Add(this.label9);
             this.pnlManagerInformation.Controls.Add(this.txtCity);
             this.pnlManagerInformation.Controls.Add(this.txtMailingAddress);
             this.pnlManagerInformation.Controls.Add(this.label8);
-            this.pnlManagerInformation.Controls.Add(this.txtCellPhone);
             this.pnlManagerInformation.Controls.Add(this.label7);
-            this.pnlManagerInformation.Controls.Add(this.txtFax);
-            this.pnlManagerInformation.Controls.Add(this.txtWorkPhone);
             this.pnlManagerInformation.Controls.Add(this.txtManagerEmail);
             this.pnlManagerInformation.Controls.Add(this.label6);
             this.pnlManagerInformation.Controls.Add(this.txtManagerName);
@@ -337,6 +309,16 @@
             this.pnlManagerInformation.Name = "pnlManagerInformation";
             this.pnlManagerInformation.Size = new System.Drawing.Size(331, 386);
             this.pnlManagerInformation.TabIndex = 13;
+            // 
+            // lblManagerID
+            // 
+            this.lblManagerID.AutoSize = true;
+            this.lblManagerID.Location = new System.Drawing.Point(241, 336);
+            this.lblManagerID.Name = "lblManagerID";
+            this.lblManagerID.Size = new System.Drawing.Size(73, 13);
+            this.lblManagerID.TabIndex = 22;
+            this.lblManagerID.Text = "MgrID Hidden";
+            this.lblManagerID.Visible = false;
             // 
             // exit
             // 
@@ -377,15 +359,37 @@
             this.pnlDataGrid.Size = new System.Drawing.Size(274, 413);
             this.pnlDataGrid.TabIndex = 17;
             // 
-            // lblManagerID
+            // txtCellPhone
             // 
-            this.lblManagerID.AutoSize = true;
-            this.lblManagerID.Location = new System.Drawing.Point(241, 336);
-            this.lblManagerID.Name = "lblManagerID";
-            this.lblManagerID.Size = new System.Drawing.Size(73, 13);
-            this.lblManagerID.TabIndex = 22;
-            this.lblManagerID.Text = "MgrID Hidden";
-            this.lblManagerID.Visible = false;
+            this.txtCellPhone.Location = new System.Drawing.Point(104, 129);
+            this.txtCellPhone.Mask = "(999) 000-0000";
+            this.txtCellPhone.Name = "txtCellPhone";
+            this.txtCellPhone.Size = new System.Drawing.Size(203, 20);
+            this.txtCellPhone.TabIndex = 23;
+            // 
+            // txtZipCode
+            // 
+            this.txtZipCode.Location = new System.Drawing.Point(104, 302);
+            this.txtZipCode.Mask = "00000-9999";
+            this.txtZipCode.Name = "txtZipCode";
+            this.txtZipCode.Size = new System.Drawing.Size(202, 20);
+            this.txtZipCode.TabIndex = 24;
+            // 
+            // txtFax
+            // 
+            this.txtFax.Location = new System.Drawing.Point(104, 99);
+            this.txtFax.Mask = "(999) 000-0000";
+            this.txtFax.Name = "txtFax";
+            this.txtFax.Size = new System.Drawing.Size(202, 20);
+            this.txtFax.TabIndex = 25;
+            // 
+            // txtWorkPhone
+            // 
+            this.txtWorkPhone.Location = new System.Drawing.Point(104, 69);
+            this.txtWorkPhone.Mask = "(999) 000-0000";
+            this.txtWorkPhone.Name = "txtWorkPhone";
+            this.txtWorkPhone.Size = new System.Drawing.Size(202, 20);
+            this.txtWorkPhone.TabIndex = 26;
             // 
             // frmManagersInformation
             // 
@@ -417,15 +421,11 @@
         private System.Windows.Forms.TextBox txtManagerName;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtManagerEmail;
-        private System.Windows.Forms.TextBox txtWorkPhone;
-        private System.Windows.Forms.TextBox txtFax;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtCellPhone;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtMailingAddress;
         private System.Windows.Forms.TextBox txtCity;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtZipCode;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -443,5 +443,9 @@
         private System.Windows.Forms.Button btnAddNew;
         private System.Windows.Forms.Panel pnlDataGrid;
         private System.Windows.Forms.Label lblManagerID;
+        private System.Windows.Forms.MaskedTextBox txtCellPhone;
+        private System.Windows.Forms.MaskedTextBox txtWorkPhone;
+        private System.Windows.Forms.MaskedTextBox txtFax;
+        private System.Windows.Forms.MaskedTextBox txtZipCode;
     }
 }

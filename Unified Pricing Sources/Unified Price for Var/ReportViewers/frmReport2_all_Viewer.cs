@@ -41,7 +41,7 @@ namespace Unified_Price_for_Var
                 tblLogOnInfor.ConnectionInfo = conInfo;
                 tbl.ApplyLogOnInfo(tblLogOnInfor);
             }
-            if (DisplayManagerInfo.ReplaceNulls().Length > 0)
+           // if (DisplayManagerInfo.ReplaceNulls().Length > 0)
             {
                 ((TextObject)rpt.ReportDefinition.ReportObjects["Text30"]).Text = DisplayManagerInfo;
                 ((TextObject)rpt.ReportDefinition.ReportObjects["Text35"]).Text = DisplayManagerInfo;

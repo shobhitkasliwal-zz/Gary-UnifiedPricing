@@ -594,6 +594,7 @@
             this.cmbCustomer.Size = new System.Drawing.Size(358, 21);
             this.cmbCustomer.TabIndex = 0;
             this.cmbCustomer.ValueMember = "Customer Bill Name";
+            this.cmbCustomer.SelectionChangeCommitted += new System.EventHandler(this.cmbCustomer_SelectedIndexChanged);
             // 
             // pnl4
             // 
@@ -904,7 +905,6 @@
             // 
             // cmbCust6
             // 
-            this.cmbCust6.DataSource = this.tblCustomersBindingSource;
             this.cmbCust6.DisplayMember = "Customer Number";
             this.cmbCust6.FormattingEnabled = true;
             this.cmbCust6.Location = new System.Drawing.Point(87, 58);
@@ -1060,7 +1060,7 @@
         private System.Windows.Forms.RadioButton rdoChange_Price_InActive_ByCust;
         private System.Windows.Forms.RadioButton rdoChange_Price_Active_ByCust;
 
-        
-       // public System.EventHandler btnCheckAll2_Click { get; set; }
+
+        // public System.EventHandler btnCheckAll2_Click { get; set; }
     }
 }

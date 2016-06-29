@@ -405,7 +405,7 @@ namespace Unified_Price_for_Var
 
             var custPricings = Db.ExecuteDataTable("SELECT * FROM tblPricing WHERE [Customer Number] = '{0}'", cmbCust.SelectedValue);
             Db.NonQuery("DELETE FROM tblByCustomer_Report");
-
+            string SwingNumber = "";
             for (int i = 0; i < custPricings.Rows.Count; i++)
             {
                 decimal ASRCurrPriceDec = 0;
@@ -433,10 +433,60 @@ namespace Unified_Price_for_Var
                     ASTCurrPriceDec,
                    Last12MonthQty
                     );
+
+                SwingNumber = cust["Swing Number"].ReplaceNulls();
             }
             Cursor.Current = Cursors.Default;
+            List<string> ManagerName = new List<string>();
+            List<string> ManagerPhone = new List<string>();
+            List<string> ManagerEmail = new List<string>();
+            List<string> ManagerFax = new List<string>();
+            string ManagerDisplay = "";
+            if (SwingNumber.Length > 0)
+            {
+                DataTable dt = Db.ExecuteDataTable("SELECT * From tblSwingNumbers WHERE [Swing Number] ='{0}'", SwingNumber);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    DataTable Mgr = Db.ExecuteDataTable("Select * From tblManagerInformation where ManagerID in ({0},{1},{2},{3})", dt.Rows[0]["Manager1"].ReplaceNulls("-1"), dt.Rows[0]["Manager2"].ReplaceNulls("-1"), dt.Rows[0]["Manager3"].ReplaceNulls("-1"), dt.Rows[0]["Manager4"].ReplaceNulls("-1"));
+                    if (Mgr != null && Mgr.Rows.Count > 0)
+                    {
+                        foreach (DataRow dr in Mgr.Rows)
+                        {
+                            ManagerName.Add(dr["ManagerName"].ReplaceNulls());
+                            ManagerPhone.Add(dr["ManagerPhone"].ReplaceNulls());
+                            ManagerEmail.Add(dr["ManagerEmail"].ReplaceNulls());
+                            ManagerFax.Add(dr["ManagerFax"].ReplaceNulls());
+                        }
+
+                        foreach (string name in ManagerName.Distinct())
+                        {
+                            ManagerDisplay += name + ",";
+                        }
+                        ManagerDisplay = ManagerDisplay.Substring(0, ManagerDisplay.Length - 1) + Environment.NewLine;
+                        ManagerDisplay += "Phone:";
+                        foreach (string phone in ManagerPhone.Distinct())
+                        {
+                            ManagerDisplay += phone + Environment.NewLine;
+                        }
+                        ManagerDisplay = ManagerDisplay.Substring(0, ManagerDisplay.Length - 1);
+                        ManagerDisplay += "Fax:";
+                        foreach (string fax in ManagerFax.Distinct())
+                        {
+                            ManagerDisplay += fax + Environment.NewLine;
+                        }
+                        ManagerDisplay = ManagerDisplay.Substring(0, ManagerDisplay.Length - 1);
+                        ManagerDisplay += "Email:";
+                        foreach (string email in ManagerEmail.Distinct())
+                        {
+                            ManagerDisplay += email + Environment.NewLine;
+                        }
+                    }
+                }
+
+            }
             //        frmReportViewer frm = new frmReportViewer();
             frmReport2_all_Viewer frm = new frmReport2_all_Viewer();
+            frm.DisplayManagerInfo = ManagerDisplay;
             frm.Show();
 
         }
@@ -575,7 +625,7 @@ namespace Unified_Price_for_Var
             var custPricings = Db.ExecuteDataTable("SELECT [Customer Number], [Item Number], [Current Price], [Customer Item Number],[IsNew] FROM tblPricing WHERE [Customer Number] = '{0}' and [Item Number] between '{1}' and '{2}'", cmbCust5.SelectedValue, cmbFrom5.SelectedValue, cmbTo5.SelectedValue);
 
             Db.NonQuery("DELETE FROM tblByCustomer_Report");
-
+            string SwingNumber = "";
             for (int i = 0; i < custPricings.Rows.Count; i++)
             {
                 decimal ASRCurrPriceDec = 0;
@@ -589,7 +639,7 @@ namespace Unified_Price_for_Var
                     ASTCurrPriceDec = (decimal)ASTCurrPrice[0];
 
                 //            var cust = Db.ExecuteDataRow("SELECT * FROM tblCustomers WHERE [Customer Number] = '{0}'", custPricings.Rows[i]["Customer Number"]);
-                var cust = Db.ExecuteDataRow("SELECT [Customer Bill Name] FROM tblCustomers WHERE [Customer Number] = '{0}'", custPricings.Rows[i]["Customer Number"]);
+                var cust = Db.ExecuteDataRow("SELECT [Customer Bill Name],[Swing Number] FROM tblCustomers WHERE [Customer Number] = '{0}'", custPricings.Rows[i]["Customer Number"]);
                 var itemDscr = Db.ExecuteDataRow("SELECT [Item Description] FROM tblItems WHERE [Item Number] = '{0}'", custPricings.Rows[i]["Item Number"]);
 
                 Db.NonQuery("INSERT INTO tblByCustomer_Report ([Customer Number], [Customer Name], [Item Number], [Item Description], [Current Price], [Customer Item Number], [IsNew], [ASR Current Price], [AST Current Price]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}')",
@@ -603,9 +653,58 @@ namespace Unified_Price_for_Var
                     ASRCurrPriceDec,
                     ASTCurrPriceDec
                     );
+                SwingNumber = cust["Swing Number"].ReplaceNulls();
             }
             Cursor.Current = Cursors.Default;
+            List<string> ManagerName = new List<string>();
+            List<string> ManagerPhone = new List<string>();
+            List<string> ManagerEmail = new List<string>();
+            List<string> ManagerFax = new List<string>();
+            string ManagerDisplay = "";
+            if (SwingNumber.Length > 0)
+            {
+                DataTable dt = Db.ExecuteDataTable("SELECT * From tblSwingNumbers WHERE [Swing Number] ='{0}'", SwingNumber);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    DataTable Mgr = Db.ExecuteDataTable("Select * From tblManagerInformation where ManagerID in ({0},{1},{2},{3})", dt.Rows[0]["Manager1"].ReplaceNulls("-1"), dt.Rows[0]["Manager2"].ReplaceNulls("-1"), dt.Rows[0]["Manager3"].ReplaceNulls("-1"), dt.Rows[0]["Manager4"].ReplaceNulls("-1"));
+                    if (Mgr != null && Mgr.Rows.Count > 0)
+                    {
+                        foreach (DataRow dr in Mgr.Rows)
+                        {
+                            ManagerName.Add(dr["ManagerName"].ReplaceNulls());
+                            ManagerPhone.Add(dr["ManagerPhone"].ReplaceNulls());
+                            ManagerEmail.Add(dr["ManagerEmail"].ReplaceNulls());
+                            ManagerFax.Add(dr["ManagerFax"].ReplaceNulls());
+                        }
+
+                        foreach (string name in ManagerName.Distinct())
+                        {
+                            ManagerDisplay += name + ",";
+                        }
+                        ManagerDisplay = ManagerDisplay.Substring(0, ManagerDisplay.Length - 1) + Environment.NewLine;
+                        ManagerDisplay += "Phone:";
+                        foreach (string phone in ManagerPhone.Distinct())
+                        {
+                            ManagerDisplay += phone + Environment.NewLine;
+                        }
+                        ManagerDisplay = ManagerDisplay.Substring(0, ManagerDisplay.Length - 1);
+                        ManagerDisplay += "Fax:";
+                        foreach (string fax in ManagerFax.Distinct())
+                        {
+                            ManagerDisplay += fax + Environment.NewLine;
+                        }
+                        ManagerDisplay = ManagerDisplay.Substring(0, ManagerDisplay.Length - 1);
+                        ManagerDisplay += "Email:";
+                        foreach (string email in ManagerEmail.Distinct())
+                        {
+                            ManagerDisplay += email + Environment.NewLine;
+                        }
+                    }
+                }
+
+            }
             frmReport2_all_Viewer frm = new frmReport2_all_Viewer();
+            frm.DisplayManagerInfo = ManagerDisplay;
             frm.Show();
 
         }

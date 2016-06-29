@@ -52,15 +52,15 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.pnlManagerInformation = new System.Windows.Forms.Panel();
+            this.txtWorkPhone = new System.Windows.Forms.MaskedTextBox();
+            this.txtFax = new System.Windows.Forms.MaskedTextBox();
+            this.txtZipCode = new System.Windows.Forms.MaskedTextBox();
+            this.txtCellPhone = new System.Windows.Forms.MaskedTextBox();
             this.lblManagerID = new System.Windows.Forms.Label();
             this.exit = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnAddNew = new System.Windows.Forms.Button();
             this.pnlDataGrid = new System.Windows.Forms.Panel();
-            this.txtCellPhone = new System.Windows.Forms.MaskedTextBox();
-            this.txtZipCode = new System.Windows.Forms.MaskedTextBox();
-            this.txtFax = new System.Windows.Forms.MaskedTextBox();
-            this.txtWorkPhone = new System.Windows.Forms.MaskedTextBox();
             this.pnlManagerInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlDataGrid.SuspendLayout();
@@ -150,14 +150,14 @@
             this.txtMailingAddress.Multiline = true;
             this.txtMailingAddress.Name = "txtMailingAddress";
             this.txtMailingAddress.Size = new System.Drawing.Size(205, 73);
-            this.txtMailingAddress.TabIndex = 10;
+            this.txtMailingAddress.TabIndex = 8;
             // 
             // txtCity
             // 
             this.txtCity.Location = new System.Drawing.Point(104, 243);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(204, 20);
-            this.txtCity.TabIndex = 11;
+            this.txtCity.TabIndex = 9;
             // 
             // label9
             // 
@@ -198,10 +198,10 @@
             // rbSameAddressYes
             // 
             this.rbSameAddressYes.AutoSize = true;
-            this.rbSameAddressYes.Location = new System.Drawing.Point(135, 334);
+            this.rbSameAddressYes.Location = new System.Drawing.Point(122, 334);
             this.rbSameAddressYes.Name = "rbSameAddressYes";
             this.rbSameAddressYes.Size = new System.Drawing.Size(43, 17);
-            this.rbSameAddressYes.TabIndex = 14;
+            this.rbSameAddressYes.TabIndex = 12;
             this.rbSameAddressYes.TabStop = true;
             this.rbSameAddressYes.Text = "Yes";
             this.rbSameAddressYes.UseVisualStyleBackColor = true;
@@ -210,10 +210,10 @@
             // 
             this.rbSameAddressNo.AutoSize = true;
             this.rbSameAddressNo.Checked = true;
-            this.rbSameAddressNo.Location = new System.Drawing.Point(195, 334);
+            this.rbSameAddressNo.Location = new System.Drawing.Point(167, 334);
             this.rbSameAddressNo.Name = "rbSameAddressNo";
             this.rbSameAddressNo.Size = new System.Drawing.Size(39, 17);
-            this.rbSameAddressNo.TabIndex = 15;
+            this.rbSameAddressNo.TabIndex = 13;
             this.rbSameAddressNo.TabStop = true;
             this.rbSameAddressNo.Text = "No";
             this.rbSameAddressNo.UseVisualStyleBackColor = true;
@@ -224,7 +224,7 @@
             this.ddlState.Location = new System.Drawing.Point(104, 272);
             this.ddlState.Name = "ddlState";
             this.ddlState.Size = new System.Drawing.Size(204, 21);
-            this.ddlState.TabIndex = 16;
+            this.ddlState.TabIndex = 10;
             // 
             // btnEdit
             // 
@@ -241,7 +241,7 @@
             this.btnSave.Location = new System.Drawing.Point(56, 361);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 18;
+            this.btnSave.TabIndex = 14;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -261,7 +261,7 @@
             this.btnCancel.Location = new System.Drawing.Point(231, 362);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 20;
+            this.btnCancel.TabIndex = 15;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -271,13 +271,15 @@
             this.btnUpdate.Location = new System.Drawing.Point(56, 362);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 21;
+            this.btnUpdate.TabIndex = 14;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // pnlManagerInformation
             // 
+            this.pnlManagerInformation.Controls.Add(this.rbSameAddressYes);
+            this.pnlManagerInformation.Controls.Add(this.rbSameAddressNo);
             this.pnlManagerInformation.Controls.Add(this.txtWorkPhone);
             this.pnlManagerInformation.Controls.Add(this.txtFax);
             this.pnlManagerInformation.Controls.Add(this.txtZipCode);
@@ -289,8 +291,6 @@
             this.pnlManagerInformation.Controls.Add(this.btnSave);
             this.pnlManagerInformation.Controls.Add(this.btnEdit);
             this.pnlManagerInformation.Controls.Add(this.ddlState);
-            this.pnlManagerInformation.Controls.Add(this.rbSameAddressNo);
-            this.pnlManagerInformation.Controls.Add(this.rbSameAddressYes);
             this.pnlManagerInformation.Controls.Add(this.label1);
             this.pnlManagerInformation.Controls.Add(this.label2);
             this.pnlManagerInformation.Controls.Add(this.label10);
@@ -309,6 +309,38 @@
             this.pnlManagerInformation.Name = "pnlManagerInformation";
             this.pnlManagerInformation.Size = new System.Drawing.Size(331, 386);
             this.pnlManagerInformation.TabIndex = 13;
+            // 
+            // txtWorkPhone
+            // 
+            this.txtWorkPhone.Location = new System.Drawing.Point(104, 69);
+            this.txtWorkPhone.Mask = "(999) 000-0000";
+            this.txtWorkPhone.Name = "txtWorkPhone";
+            this.txtWorkPhone.Size = new System.Drawing.Size(202, 20);
+            this.txtWorkPhone.TabIndex = 5;
+            // 
+            // txtFax
+            // 
+            this.txtFax.Location = new System.Drawing.Point(104, 99);
+            this.txtFax.Mask = "(999) 000-0000";
+            this.txtFax.Name = "txtFax";
+            this.txtFax.Size = new System.Drawing.Size(202, 20);
+            this.txtFax.TabIndex = 6;
+            // 
+            // txtZipCode
+            // 
+            this.txtZipCode.Location = new System.Drawing.Point(104, 302);
+            this.txtZipCode.Mask = "00000-9999";
+            this.txtZipCode.Name = "txtZipCode";
+            this.txtZipCode.Size = new System.Drawing.Size(202, 20);
+            this.txtZipCode.TabIndex = 11;
+            // 
+            // txtCellPhone
+            // 
+            this.txtCellPhone.Location = new System.Drawing.Point(104, 129);
+            this.txtCellPhone.Mask = "(999) 000-0000";
+            this.txtCellPhone.Name = "txtCellPhone";
+            this.txtCellPhone.Size = new System.Drawing.Size(203, 20);
+            this.txtCellPhone.TabIndex = 7;
             // 
             // lblManagerID
             // 
@@ -358,38 +390,6 @@
             this.pnlDataGrid.Name = "pnlDataGrid";
             this.pnlDataGrid.Size = new System.Drawing.Size(274, 413);
             this.pnlDataGrid.TabIndex = 17;
-            // 
-            // txtCellPhone
-            // 
-            this.txtCellPhone.Location = new System.Drawing.Point(104, 129);
-            this.txtCellPhone.Mask = "(999) 000-0000";
-            this.txtCellPhone.Name = "txtCellPhone";
-            this.txtCellPhone.Size = new System.Drawing.Size(203, 20);
-            this.txtCellPhone.TabIndex = 23;
-            // 
-            // txtZipCode
-            // 
-            this.txtZipCode.Location = new System.Drawing.Point(104, 302);
-            this.txtZipCode.Mask = "00000-9999";
-            this.txtZipCode.Name = "txtZipCode";
-            this.txtZipCode.Size = new System.Drawing.Size(202, 20);
-            this.txtZipCode.TabIndex = 24;
-            // 
-            // txtFax
-            // 
-            this.txtFax.Location = new System.Drawing.Point(104, 99);
-            this.txtFax.Mask = "(999) 000-0000";
-            this.txtFax.Name = "txtFax";
-            this.txtFax.Size = new System.Drawing.Size(202, 20);
-            this.txtFax.TabIndex = 25;
-            // 
-            // txtWorkPhone
-            // 
-            this.txtWorkPhone.Location = new System.Drawing.Point(104, 69);
-            this.txtWorkPhone.Mask = "(999) 000-0000";
-            this.txtWorkPhone.Name = "txtWorkPhone";
-            this.txtWorkPhone.Size = new System.Drawing.Size(202, 20);
-            this.txtWorkPhone.TabIndex = 26;
             // 
             // frmManagersInformation
             // 

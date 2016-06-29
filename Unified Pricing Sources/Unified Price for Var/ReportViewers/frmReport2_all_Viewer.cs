@@ -41,10 +41,19 @@ namespace Unified_Price_for_Var
                 tblLogOnInfor.ConnectionInfo = conInfo;
                 tbl.ApplyLogOnInfo(tblLogOnInfor);
             }
-           // if (DisplayManagerInfo.ReplaceNulls().Length > 0)
+            // if (DisplayManagerInfo.ReplaceNulls().Length > 0)
             {
-                ((TextObject)rpt.ReportDefinition.ReportObjects["Text30"]).Text = DisplayManagerInfo;
-                ((TextObject)rpt.ReportDefinition.ReportObjects["Text35"]).Text = DisplayManagerInfo;
+                try
+                {
+                    TextObject txt1 = (TextObject)rpt.ReportDefinition.ReportObjects["Text30"];
+                    if (txt1 != null)
+                        txt1.Text = DisplayManagerInfo;
+                    TextObject txt2 = (TextObject)rpt.ReportDefinition.ReportObjects["Text35"];
+                    if (txt2 != null)
+                        txt2.Text = DisplayManagerInfo;
+                }
+                catch (Exception ex)
+                { }
             }
             rpt.ReportOptions.EnableSaveDataWithReport = false;
             crystalReportViewer1.Refresh();

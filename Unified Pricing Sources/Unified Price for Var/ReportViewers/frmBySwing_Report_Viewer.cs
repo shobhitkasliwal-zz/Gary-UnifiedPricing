@@ -20,6 +20,8 @@ namespace Unified_Price_for_Var.ReportViewers
             InitializeComponent();
         }
 
+        public string DisplayManagerInfo { get; set; }
+
         private void crystalReportViewer1_Load(object sender, EventArgs e)
         {
             CrystalReports.BySwing_Report rpt = new CrystalReports.BySwing_Report();
@@ -27,7 +29,7 @@ namespace Unified_Price_for_Var.ReportViewers
             foreach (CrystalDecisions.CrystalReports.Engine.Table tbl in rpt.Database.Tables)
             {
                 CrystalDecisions.Shared.TableLogOnInfo tblLogOnInfor = tbl.LogOnInfo;
-                TableLogOnInfo curTblLogOnInfor = tbl.LogOnInfo;   
+                TableLogOnInfo curTblLogOnInfor = tbl.LogOnInfo;
                 ConnectionInfo curConInfo = tbl.LogOnInfo.ConnectionInfo;
 
                 ConnectionInfo conInfo = new ConnectionInfo();
@@ -39,6 +41,16 @@ namespace Unified_Price_for_Var.ReportViewers
                 tblLogOnInfor.ConnectionInfo = conInfo;
                 tbl.ApplyLogOnInfo(tblLogOnInfor);
             }
+            try
+            {
+                TextObject txt1 = (TextObject)rpt.ReportDefinition.ReportObjects["txtManagerInfo"];
+
+                if (txt1 != null)
+                    txt1.Text = DisplayManagerInfo;
+
+            }
+            catch (Exception ex)
+            { }
             rpt.ReportOptions.EnableSaveDataWithReport = false;
             crystalReportViewer1.Refresh();
             crystalReportViewer1.Zoom(75);

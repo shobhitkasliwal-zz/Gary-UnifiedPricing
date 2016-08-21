@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Data.OleDb;
 using Unified_Price_for_Var.Properties;
+using System.Linq;
 
 namespace Unified_Price_for_Var
 {
@@ -322,10 +323,6 @@ namespace Unified_Price_for_Var
             }
 
             Cursor.Current = Cursors.Default;
-            List<string> ManagerName = new List<string>();
-            List<string> ManagerPhone = new List<string>();
-            List<string> ManagerEmail = new List<string>();
-            List<string> ManagerFax = new List<string>();
             string ManagerDisplay = "";
             if (SwingNumber.Length > 0)
             {
@@ -335,36 +332,67 @@ namespace Unified_Price_for_Var
                     DataTable Mgr = Db.ExecuteDataTable("Select * From tblManagerInformation where ManagerID in ({0},{1},{2},{3})", dt.Rows[0]["Manager1"].ReplaceNulls("-1"), dt.Rows[0]["Manager2"].ReplaceNulls("-1"), dt.Rows[0]["Manager3"].ReplaceNulls("-1"), dt.Rows[0]["Manager4"].ReplaceNulls("-1"));
                     if (Mgr != null && Mgr.Rows.Count > 0)
                     {
-                        foreach (DataRow dr in Mgr.Rows)
+                        DataTable dtManagerDisplay = new DataTable();
+                        dtManagerDisplay.Columns.Add("RowID", System.Type.GetType("System.Int16"));
+                        dtManagerDisplay.Columns.Add("ManagerName");
+                        dtManagerDisplay.Columns.Add("ManagerPhone");
+                        dtManagerDisplay.Columns.Add("ManagerFax");
+                        dtManagerDisplay.Columns.Add("ManagerCell");
+                        dtManagerDisplay.Columns.Add("ManagerEmail");
+                        for (int i = 1; i < 5; i++)
                         {
-                            ManagerName.Add(dr["ManagerName"].ReplaceNulls());
-                            ManagerPhone.Add(dr["ManagerPhone"].ReplaceNulls());
-                            ManagerEmail.Add(dr["ManagerEmail"].ReplaceNulls());
-                            ManagerFax.Add(dr["ManagerFax"].ReplaceNulls());
+                            Int16 MgrID = -1;
+
+                            if (Int16.TryParse(dt.Rows[0]["Manager" + i].ReplaceNulls(), out MgrID))
+                            {
+                                DataView dvMgr = new DataView(Mgr);
+                                dvMgr.RowFilter = "ManagerID =" + MgrID.ToString();
+                                if (dvMgr.Count > 0)
+                                {
+                                    DataRow dr = dtManagerDisplay.NewRow();
+                                    dr["RowID"] = i;
+                                    dr["ManagerName"] = (dvMgr[0]["ManagerName"].ReplaceNulls());
+                                    dr["ManagerPhone"] = (dvMgr[0]["ManagerPhone"].ReplaceNulls());
+                                    dr["ManagerEmail"] = (dvMgr[0]["ManagerEmail"].ReplaceNulls());
+                                    dr["ManagerFax"] = (dvMgr[0]["ManagerFax"].ReplaceNulls());
+                                    dr["ManagerCell"] = (dvMgr[0]["ManagerCell"].ReplaceNulls());
+                                    dtManagerDisplay.Rows.Add(dr);
+                                }
+                            }
+
                         }
 
-                        foreach (string name in ManagerName.Distinct())
+                        var groupedUsers = from row in dtManagerDisplay.AsEnumerable()
+                                           orderby row.Field<Int16>("RowID")
+                                           group row
+                                           by new
+                                           {
+                                               ManagerPhone = row.Field<string>("ManagerPhone"),
+                                               ManagerFax = row.Field<string>("ManagerFax"),
+                                           } into grp
+
+                                           select new
+                                           {
+                                               ManagerName = String.Join(", ", grp.Select(m => m.Field<string>("ManagerName")).ToArray()),
+                                               ManagerPhone = grp.Key.ManagerPhone,
+                                               ManagerFax = grp.Key.ManagerFax,
+                                               ManagerCell = String.Join(Environment.NewLine + "Cell:", grp.Select(m => m.Field<string>("ManagerCell")).Where(y => !string.IsNullOrEmpty(y)).ToArray()),
+                                               ManagerEmail = String.Join(Environment.NewLine + "Email:", grp.Select(m => m.Field<string>("ManagerEmail")).Where(y => !string.IsNullOrEmpty(y)).ToArray()),
+
+                                           };
+
+
+                        foreach (var obj in groupedUsers)
                         {
-                            ManagerDisplay += name + ",";
+                            ManagerDisplay += obj.ManagerName + Environment.NewLine +
+                                            "Phone:" + obj.ManagerPhone + Environment.NewLine +
+                                            "Fax:" + obj.ManagerFax + Environment.NewLine +
+                                             "Cell:" + obj.ManagerCell + Environment.NewLine +
+                                             "Email:" + obj.ManagerEmail + Environment.NewLine + Environment.NewLine;
+
                         }
-                        ManagerDisplay = ManagerDisplay.Substring(0, ManagerDisplay.Length - 1) + Environment.NewLine;
-                        ManagerDisplay += "Phone:";
-                        foreach (string phone in ManagerPhone.Distinct())
-                        {
-                            ManagerDisplay += phone + Environment.NewLine;
-                        }
-                        ManagerDisplay = ManagerDisplay.Substring(0, ManagerDisplay.Length - 1);
-                        ManagerDisplay += "Fax:";
-                        foreach (string fax in ManagerFax.Distinct())
-                        {
-                            ManagerDisplay += fax + Environment.NewLine;
-                        }
-                        ManagerDisplay = ManagerDisplay.Substring(0, ManagerDisplay.Length - 1);
-                        ManagerDisplay += "Email:";
-                        foreach (string email in ManagerEmail.Distinct())
-                        {
-                            ManagerDisplay += email + Environment.NewLine;
-                        }
+
+
                     }
                 }
 
@@ -440,10 +468,6 @@ namespace Unified_Price_for_Var
                 SwingNumber = cust["Swing Number"].ReplaceNulls();
             }
             Cursor.Current = Cursors.Default;
-            List<string> ManagerName = new List<string>();
-            List<string> ManagerPhone = new List<string>();
-            List<string> ManagerEmail = new List<string>();
-            List<string> ManagerFax = new List<string>();
             string ManagerDisplay = "";
             if (SwingNumber.Length > 0)
             {
@@ -453,36 +477,67 @@ namespace Unified_Price_for_Var
                     DataTable Mgr = Db.ExecuteDataTable("Select * From tblManagerInformation where ManagerID in ({0},{1},{2},{3})", dt.Rows[0]["Manager1"].ReplaceNulls("-1"), dt.Rows[0]["Manager2"].ReplaceNulls("-1"), dt.Rows[0]["Manager3"].ReplaceNulls("-1"), dt.Rows[0]["Manager4"].ReplaceNulls("-1"));
                     if (Mgr != null && Mgr.Rows.Count > 0)
                     {
-                        foreach (DataRow dr in Mgr.Rows)
+                        DataTable dtManagerDisplay = new DataTable();
+                        dtManagerDisplay.Columns.Add("RowID", System.Type.GetType("System.Int16"));
+                        dtManagerDisplay.Columns.Add("ManagerName");
+                        dtManagerDisplay.Columns.Add("ManagerPhone");
+                        dtManagerDisplay.Columns.Add("ManagerFax");
+                        dtManagerDisplay.Columns.Add("ManagerCell");
+                        dtManagerDisplay.Columns.Add("ManagerEmail");
+                        for (int i = 1; i < 5; i++)
                         {
-                            ManagerName.Add(dr["ManagerName"].ReplaceNulls());
-                            ManagerPhone.Add(dr["ManagerPhone"].ReplaceNulls());
-                            ManagerEmail.Add(dr["ManagerEmail"].ReplaceNulls());
-                            ManagerFax.Add(dr["ManagerFax"].ReplaceNulls());
+                            Int16 MgrID = -1;
+
+                            if (Int16.TryParse(dt.Rows[0]["Manager" + i].ReplaceNulls(), out MgrID))
+                            {
+                                DataView dvMgr = new DataView(Mgr);
+                                dvMgr.RowFilter = "ManagerID =" + MgrID.ToString();
+                                if (dvMgr.Count > 0)
+                                {
+                                    DataRow dr = dtManagerDisplay.NewRow();
+                                    dr["RowID"] = i;
+                                    dr["ManagerName"] = (dvMgr[0]["ManagerName"].ReplaceNulls());
+                                    dr["ManagerPhone"] = (dvMgr[0]["ManagerPhone"].ReplaceNulls());
+                                    dr["ManagerEmail"] = (dvMgr[0]["ManagerEmail"].ReplaceNulls());
+                                    dr["ManagerFax"] = (dvMgr[0]["ManagerFax"].ReplaceNulls());
+                                    dr["ManagerCell"] = (dvMgr[0]["ManagerCell"].ReplaceNulls());
+                                    dtManagerDisplay.Rows.Add(dr);
+                                }
+                            }
+
                         }
 
-                        foreach (string name in ManagerName.Distinct())
+                        var groupedUsers = from row in dtManagerDisplay.AsEnumerable()
+                                           orderby row.Field<Int16>("RowID")
+                                           group row
+                                           by new
+                                           {
+                                               ManagerPhone = row.Field<string>("ManagerPhone"),
+                                               ManagerFax = row.Field<string>("ManagerFax"),
+                                           } into grp
+
+                                           select new
+                                           {
+                                               ManagerName = String.Join(", ", grp.Select(m => m.Field<string>("ManagerName")).ToArray()),
+                                               ManagerPhone = grp.Key.ManagerPhone,
+                                               ManagerFax = grp.Key.ManagerFax,
+                                               ManagerCell = String.Join(Environment.NewLine + "Cell:", grp.Select(m => m.Field<string>("ManagerCell")).Where(y => !string.IsNullOrEmpty(y)).ToArray()),
+                                               ManagerEmail = String.Join(Environment.NewLine + "Email:", grp.Select(m => m.Field<string>("ManagerEmail")).Where(y => !string.IsNullOrEmpty(y)).ToArray()),
+
+                                           };
+
+
+                        foreach (var obj in groupedUsers)
                         {
-                            ManagerDisplay += name + ",";
+                            ManagerDisplay += obj.ManagerName + Environment.NewLine +
+                                            "Phone:" + obj.ManagerPhone + Environment.NewLine +
+                                            "Fax:" + obj.ManagerFax + Environment.NewLine +
+                                             "Cell:" + obj.ManagerCell + Environment.NewLine +
+                                             "Email:" + obj.ManagerEmail + Environment.NewLine + Environment.NewLine;
+
                         }
-                        ManagerDisplay = ManagerDisplay.Substring(0, ManagerDisplay.Length - 1) + Environment.NewLine;
-                        ManagerDisplay += "Phone:";
-                        foreach (string phone in ManagerPhone.Distinct())
-                        {
-                            ManagerDisplay += phone + Environment.NewLine;
-                        }
-                        ManagerDisplay = ManagerDisplay.Substring(0, ManagerDisplay.Length - 1);
-                        ManagerDisplay += "Fax:";
-                        foreach (string fax in ManagerFax.Distinct())
-                        {
-                            ManagerDisplay += fax + Environment.NewLine;
-                        }
-                        ManagerDisplay = ManagerDisplay.Substring(0, ManagerDisplay.Length - 1);
-                        ManagerDisplay += "Email:";
-                        foreach (string email in ManagerEmail.Distinct())
-                        {
-                            ManagerDisplay += email + Environment.NewLine;
-                        }
+
+
                     }
                 }
 

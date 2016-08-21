@@ -217,6 +217,7 @@ namespace Unified_Price_for_Var
             }
             FillCustomersNotInSwing();
             FillCustomersInSelectedSwing();
+            lnkSelectAllAvailableCustomers.Text = "Select All";
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -227,6 +228,7 @@ namespace Unified_Price_for_Var
             }
             FillCustomersNotInSwing();
             FillCustomersInSelectedSwing();
+            lnkSelectAllCustInSwing.Text = "Select All";
         }
 
         private void cmbSwingNumber_KeyPress(object sender, KeyPressEventArgs e)
@@ -316,6 +318,34 @@ namespace Unified_Price_for_Var
             Db.NonQuery(Query);
 
             MessageBox.Show("Manager updated successfully.");
+        }
+
+        private void lnkSelectAllCustInSwing_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (lnkSelectAllCustInSwing.Text.ToUpper().Equals("SELECT ALL"))
+            {
+                grdCustInSwing.SelectAll();
+                lnkSelectAllCustInSwing.Text = "Clear Selection";
+            }
+            else
+            {
+                grdCustInSwing.ClearSelection();
+                lnkSelectAllCustInSwing.Text = "Select All";
+            }
+        }
+
+        private void lnkSelectAllAvailableCustomers_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (lnkSelectAllAvailableCustomers.Text.ToUpper().Equals("SELECT ALL"))
+            {
+                grdAvilableCust.SelectAll();
+                lnkSelectAllAvailableCustomers.Text = "Clear Selection";
+            }
+            else
+            {
+                grdAvilableCust.ClearSelection();
+                lnkSelectAllAvailableCustomers.Text = "Select All";
+            }
         }
     }
 }

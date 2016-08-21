@@ -176,7 +176,7 @@
             this.rdoChange_Price3.Name = "rdoChange_Price3";
             this.rdoChange_Price3.Size = new System.Drawing.Size(183, 17);
             this.rdoChange_Price3.TabIndex = 3;
-            this.rdoChange_Price3.Text = "Change All Pries for All Customers";
+            this.rdoChange_Price3.Text = "Change All Prices for All Customers";
             this.rdoChange_Price3.UseVisualStyleBackColor = true;
             this.rdoChange_Price3.CheckedChanged += new System.EventHandler(this.rdoChange_Price3_CheckedChanged);
             // 

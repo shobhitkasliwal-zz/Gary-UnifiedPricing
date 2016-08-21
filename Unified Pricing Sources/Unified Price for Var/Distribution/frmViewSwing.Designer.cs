@@ -82,6 +82,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.btnSaveManagers = new System.Windows.Forms.Button();
+            this.lnkSelectAllAvailableCustomers = new System.Windows.Forms.LinkLabel();
+            this.lnkSelectAllCustInSwing = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.grdAvilableCust)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdCustInSwing)).BeginInit();
             this.panel1.SuspendLayout();
@@ -656,6 +658,30 @@
             this.btnSaveManagers.UseVisualStyleBackColor = true;
             this.btnSaveManagers.Click += new System.EventHandler(this.btnSaveManagers_Click);
             // 
+            // lnkSelectAllAvailableCustomers
+            // 
+            this.lnkSelectAllAvailableCustomers.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lnkSelectAllAvailableCustomers.AutoSize = true;
+            this.lnkSelectAllAvailableCustomers.Location = new System.Drawing.Point(34, 517);
+            this.lnkSelectAllAvailableCustomers.Name = "lnkSelectAllAvailableCustomers";
+            this.lnkSelectAllAvailableCustomers.Size = new System.Drawing.Size(51, 13);
+            this.lnkSelectAllAvailableCustomers.TabIndex = 26;
+            this.lnkSelectAllAvailableCustomers.TabStop = true;
+            this.lnkSelectAllAvailableCustomers.Text = "Select All";
+            this.lnkSelectAllAvailableCustomers.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSelectAllAvailableCustomers_LinkClicked);
+            // 
+            // lnkSelectAllCustInSwing
+            // 
+            this.lnkSelectAllCustInSwing.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lnkSelectAllCustInSwing.AutoSize = true;
+            this.lnkSelectAllCustInSwing.Location = new System.Drawing.Point(537, 517);
+            this.lnkSelectAllCustInSwing.Name = "lnkSelectAllCustInSwing";
+            this.lnkSelectAllCustInSwing.Size = new System.Drawing.Size(51, 13);
+            this.lnkSelectAllCustInSwing.TabIndex = 27;
+            this.lnkSelectAllCustInSwing.TabStop = true;
+            this.lnkSelectAllCustInSwing.Text = "Select All";
+            this.lnkSelectAllCustInSwing.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSelectAllCustInSwing_LinkClicked);
+            // 
             // frmViewSwing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -685,6 +711,8 @@
             this.Controls.Add(this.ddlManager2);
             this.Controls.Add(this.ddlManager1);
             this.Controls.Add(this.btnSaveManagers);
+            this.Controls.Add(this.lnkSelectAllCustInSwing);
+            this.Controls.Add(this.lnkSelectAllAvailableCustomers);
             this.Name = "frmViewSwing";
             this.Text = "View Swing";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -757,5 +785,7 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox ddl_CN_Manager2;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.LinkLabel lnkSelectAllAvailableCustomers;
+        private System.Windows.Forms.LinkLabel lnkSelectAllCustInSwing;
     }
 }

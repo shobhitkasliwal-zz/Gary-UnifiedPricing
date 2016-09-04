@@ -449,11 +449,13 @@ namespace Unified_Price_for_Var
                     {
                         DataTable dtManagerDisplay = new DataTable();
                         dtManagerDisplay.Columns.Add("RowID", System.Type.GetType("System.Int16"));
+                        dtManagerDisplay.Columns.Add("CompanyName");
                         dtManagerDisplay.Columns.Add("ManagerName");
                         dtManagerDisplay.Columns.Add("ManagerPhone");
                         dtManagerDisplay.Columns.Add("ManagerFax");
                         dtManagerDisplay.Columns.Add("ManagerCell");
                         dtManagerDisplay.Columns.Add("ManagerEmail");
+                        dtManagerDisplay.Columns.Add("SameAddress");
                         for (int i = 1; i < 5; i++)
                         {
                             Int16 MgrID = -1;
@@ -466,17 +468,82 @@ namespace Unified_Price_for_Var
                                 {
                                     DataRow dr = dtManagerDisplay.NewRow();
                                     dr["RowID"] = i;
+                                    dr["CompanyName"] = (dvMgr[0]["CompanyName"].ReplaceNulls());
                                     dr["ManagerName"] = (dvMgr[0]["ManagerName"].ReplaceNulls());
                                     dr["ManagerPhone"] = (dvMgr[0]["ManagerPhone"].ReplaceNulls());
                                     dr["ManagerEmail"] = (dvMgr[0]["ManagerEmail"].ReplaceNulls());
                                     dr["ManagerFax"] = (dvMgr[0]["ManagerFax"].ReplaceNulls());
                                     dr["ManagerCell"] = (dvMgr[0]["ManagerCell"].ReplaceNulls());
+                                    bool SameAddress = false;
+                                    Boolean.TryParse(dvMgr[0]["SameAddress"].ReplaceNulls(), out SameAddress);
+                                    dr["SameAddress"] = SameAddress;
                                     dtManagerDisplay.Rows.Add(dr);
                                 }
                             }
 
                         }
 
+                        if (dtManagerDisplay != null && dtManagerDisplay.Rows.Count > 0)
+                        {
+                            ManagerDisplay += dtManagerDisplay.Rows[0]["CompanyName"] + Environment.NewLine +
+                                dtManagerDisplay.Rows[0]["ManagerName"] + Environment.NewLine +
+                                 "Phone:" + dtManagerDisplay.Rows[0]["ManagerPhone"] + Environment.NewLine +
+                                                  "Fax:" + dtManagerDisplay.Rows[0]["ManagerFax"] + Environment.NewLine +
+                                                   "Cell:" + dtManagerDisplay.Rows[0]["ManagerCell"] + Environment.NewLine +
+                                                   "Email:" + dtManagerDisplay.Rows[0]["ManagerEmail"] + Environment.NewLine + Environment.NewLine;
+                            DataView dv = new DataView(dtManagerDisplay);
+                            dv.RowFilter = "RowID <> 1 and SameAddress='True'";
+                            string sameAddressCompanyName = "";
+                            string sameAddressManagerName = "";
+                            string sameAddressPhone = "";
+                            string sameAddressCell = "";
+                            string sameAddressFax = "";
+                            string sameAddressEmail = "";
+                            foreach (DataRowView rw in dv)
+                            {
+                                if (sameAddressCompanyName.Length == 0)
+                                {
+                                    sameAddressCompanyName = rw["CompanyName"].ReplaceNulls();
+                                }
+                                if (!sameAddressCompanyName.Equals(rw["CompanyName"].ReplaceNulls()))
+                                {
+                                    MessageBox.Show("Company Name does not match.");
+                                    this.Close();
+                                    return;
+                                }
+                                if (rw["ManagerName"].ReplaceNulls().Length == 0) sameAddressManagerName = rw["ManagerName"].ReplaceNulls();
+                                else if (!sameAddressManagerName.Contains(rw["ManagerName"].ReplaceNulls())) sameAddressManagerName += ", " + rw["ManagerName"].ReplaceNulls();
+
+                                if (rw["ManagerPhone"].ReplaceNulls().Length == 0) sameAddressPhone = rw["ManagerPhone"].ReplaceNulls();
+                                else if (!sameAddressPhone.Contains(rw["ManagerPhone"].ReplaceNulls())) sameAddressPhone += ", " + rw["ManagerPhone"].ReplaceNulls();
+
+                                if (rw["ManagerFax"].ReplaceNulls().Length == 0) sameAddressFax = rw["ManagerFax"].ReplaceNulls();
+                                else if (!sameAddressFax.Contains(rw["ManagerFax"].ReplaceNulls())) sameAddressFax += ", " + rw["ManagerFax"].ReplaceNulls();
+
+
+                                sameAddressCell += rw["ManagerName"] + " Cell:" + rw["ManagerCell"] + Environment.NewLine;
+                                sameAddressEmail += rw["ManagerName"] + " Email:" + rw["ManagerEmail"] + Environment.NewLine;
+
+                            }
+                            ManagerDisplay += sameAddressCompanyName + Environment.NewLine +
+                                               sameAddressManagerName + Environment.NewLine +
+                                               "Phone: " + sameAddressPhone + Environment.NewLine +
+                                               "Fax: " + sameAddressFax + Environment.NewLine +
+                                               sameAddressCell + sameAddressEmail + Environment.NewLine + Environment.NewLine;
+                            DataView dv1 = new DataView(dtManagerDisplay);
+                            dv1.RowFilter = "RowID <> 1 and SameAddress='False'";
+                            foreach (DataRowView rw in dv1)
+                            {
+                                ManagerDisplay += rw["CompanyName"] + Environment.NewLine +
+                                                   rw["ManagerName"] + Environment.NewLine +
+                                                  "Phone:" + rw["ManagerPhone"] + Environment.NewLine +
+                                                  "Fax:" + rw["ManagerFax"] + Environment.NewLine +
+                                                   "Cell:" + rw["ManagerCell"] + Environment.NewLine +
+                                                   "Email:" + rw["ManagerEmail"] + Environment.NewLine + Environment.NewLine;
+
+                            }
+                        }
+                        /*
                         var groupedUsers = from row in dtManagerDisplay.AsEnumerable()
                                            orderby row.Field<Int16>("RowID")
                                            group row
@@ -506,7 +573,7 @@ namespace Unified_Price_for_Var
                                              "Email:" + obj.ManagerEmail + Environment.NewLine + Environment.NewLine;
 
                         }
-
+                        */
 
                     }
                 }
@@ -553,11 +620,13 @@ namespace Unified_Price_for_Var
                         {
                             DataTable dtManagerDisplay = new DataTable();
                             dtManagerDisplay.Columns.Add("RowID", System.Type.GetType("System.Int16"));
+                            dtManagerDisplay.Columns.Add("CompanyName");
                             dtManagerDisplay.Columns.Add("ManagerName");
                             dtManagerDisplay.Columns.Add("ManagerPhone");
                             dtManagerDisplay.Columns.Add("ManagerFax");
                             dtManagerDisplay.Columns.Add("ManagerCell");
                             dtManagerDisplay.Columns.Add("ManagerEmail");
+                            dtManagerDisplay.Columns.Add("SameAddress");
                             for (int i = 1; i < 5; i++)
                             {
                                 Int16 MgrID = -1;
@@ -570,17 +639,72 @@ namespace Unified_Price_for_Var
                                     {
                                         DataRow dr = dtManagerDisplay.NewRow();
                                         dr["RowID"] = i;
+                                        dr["CompanyName"] = (dvMgr[0]["CompanyName"].ReplaceNulls());
                                         dr["ManagerName"] = (dvMgr[0]["ManagerName"].ReplaceNulls());
                                         dr["ManagerPhone"] = (dvMgr[0]["ManagerPhone"].ReplaceNulls());
                                         dr["ManagerEmail"] = (dvMgr[0]["ManagerEmail"].ReplaceNulls());
                                         dr["ManagerFax"] = (dvMgr[0]["ManagerFax"].ReplaceNulls());
                                         dr["ManagerCell"] = (dvMgr[0]["ManagerCell"].ReplaceNulls());
+                                        bool SameAddress = false;
+                                        Boolean.TryParse(dvMgr[0]["SameAddress"].ReplaceNulls(), out SameAddress);
+                                        dr["SameAddress"] = SameAddress;
                                         dtManagerDisplay.Rows.Add(dr);
                                     }
                                 }
 
                             }
+                            if (dtManagerDisplay != null && dtManagerDisplay.Rows.Count > 0)
+                            {
+                                ManagerDisplay += dtManagerDisplay.Rows[0]["CompanyName"] + " " +
+                                    dtManagerDisplay.Rows[0]["ManagerName"] + Environment.NewLine;
 
+                                DataView dv = new DataView(dtManagerDisplay);
+                                dv.RowFilter = "RowID <> 1 and SameAddress='True'";
+                                string sameAddressCompanyName = "";
+                                string sameAddressManagerName = "";
+                                string sameAddressPhone = "";
+                                string sameAddressCell = "";
+                                string sameAddressFax = "";
+                                string sameAddressEmail = "";
+                                foreach (DataRowView rw in dv)
+                                {
+                                    if (sameAddressCompanyName.Length == 0)
+                                    {
+                                        sameAddressCompanyName = rw["CompanyName"].ReplaceNulls();
+                                    }
+                                    if (!sameAddressCompanyName.Equals(rw["CompanyName"].ReplaceNulls()))
+                                    {
+                                        MessageBox.Show("Company Name does not match.");
+                                        this.Close();
+                                        return;
+                                    }
+                                    if (rw["ManagerName"].ReplaceNulls().Length == 0) sameAddressManagerName = rw["ManagerName"].ReplaceNulls();
+                                    else if (!sameAddressManagerName.Contains(rw["ManagerName"].ReplaceNulls())) sameAddressManagerName += ", " + rw["ManagerName"].ReplaceNulls();
+
+                                    if (rw["ManagerPhone"].ReplaceNulls().Length == 0) sameAddressPhone = rw["ManagerPhone"].ReplaceNulls();
+                                    else if (!sameAddressPhone.Contains(rw["ManagerPhone"].ReplaceNulls())) sameAddressPhone += ", " + rw["ManagerPhone"].ReplaceNulls();
+
+                                    if (rw["ManagerFax"].ReplaceNulls().Length == 0) sameAddressFax = rw["ManagerFax"].ReplaceNulls();
+                                    else if (!sameAddressFax.Contains(rw["ManagerFax"].ReplaceNulls())) sameAddressFax += ", " + rw["ManagerFax"].ReplaceNulls();
+
+
+                                    sameAddressCell += rw["ManagerName"] + " Cell:" + rw["ManagerCell"] + Environment.NewLine;
+                                    sameAddressEmail += rw["ManagerName"] + " Email:" + rw["ManagerEmail"] + Environment.NewLine;
+
+                                }
+                                ManagerDisplay += sameAddressCompanyName + " " +
+                                                   sameAddressManagerName + Environment.NewLine;
+
+                                DataView dv1 = new DataView(dtManagerDisplay);
+                                dv1.RowFilter = "RowID <> 1 and SameAddress='False'";
+                                foreach (DataRowView rw in dv1)
+                                {
+                                    ManagerDisplay += rw["CompanyName"] + " " +
+                                                       rw["ManagerName"] + Environment.NewLine;
+
+                                }
+                            }
+                            /*
                             var groupedUsers = from row in dtManagerDisplay.AsEnumerable()
                                                orderby row.Field<Int16>("RowID")
                                                group row
@@ -607,7 +731,7 @@ namespace Unified_Price_for_Var
 
 
                             }
-
+                            */
 
                         }
                     }
@@ -770,11 +894,13 @@ namespace Unified_Price_for_Var
                     {
                         DataTable dtManagerDisplay = new DataTable();
                         dtManagerDisplay.Columns.Add("RowID", System.Type.GetType("System.Int16"));
+                        dtManagerDisplay.Columns.Add("CompanyName");
                         dtManagerDisplay.Columns.Add("ManagerName");
                         dtManagerDisplay.Columns.Add("ManagerPhone");
                         dtManagerDisplay.Columns.Add("ManagerFax");
                         dtManagerDisplay.Columns.Add("ManagerCell");
                         dtManagerDisplay.Columns.Add("ManagerEmail");
+                        dtManagerDisplay.Columns.Add("SameAddress");
                         for (int i = 1; i < 5; i++)
                         {
                             Int16 MgrID = -1;
@@ -787,17 +913,81 @@ namespace Unified_Price_for_Var
                                 {
                                     DataRow dr = dtManagerDisplay.NewRow();
                                     dr["RowID"] = i;
+                                    dr["CompanyName"] = (dvMgr[0]["CompanyName"].ReplaceNulls());
                                     dr["ManagerName"] = (dvMgr[0]["ManagerName"].ReplaceNulls());
                                     dr["ManagerPhone"] = (dvMgr[0]["ManagerPhone"].ReplaceNulls());
                                     dr["ManagerEmail"] = (dvMgr[0]["ManagerEmail"].ReplaceNulls());
                                     dr["ManagerFax"] = (dvMgr[0]["ManagerFax"].ReplaceNulls());
                                     dr["ManagerCell"] = (dvMgr[0]["ManagerCell"].ReplaceNulls());
+                                    bool SameAddress = false;
+                                    Boolean.TryParse(dvMgr[0]["SameAddress"].ReplaceNulls(), out SameAddress);
+                                    dr["SameAddress"] = SameAddress;
                                     dtManagerDisplay.Rows.Add(dr);
                                 }
                             }
 
                         }
+                        if (dtManagerDisplay != null && dtManagerDisplay.Rows.Count > 0)
+                        {
+                            ManagerDisplay += dtManagerDisplay.Rows[0]["CompanyName"] + Environment.NewLine +
+                                dtManagerDisplay.Rows[0]["ManagerName"] + Environment.NewLine +
+                                 "Phone:" + dtManagerDisplay.Rows[0]["ManagerPhone"] + Environment.NewLine +
+                                                  "Fax:" + dtManagerDisplay.Rows[0]["ManagerFax"] + Environment.NewLine +
+                                                   "Cell:" + dtManagerDisplay.Rows[0]["ManagerCell"] + Environment.NewLine +
+                                                   "Email:" + dtManagerDisplay.Rows[0]["ManagerEmail"] + Environment.NewLine + Environment.NewLine;
+                            DataView dv = new DataView(dtManagerDisplay);
+                            dv.RowFilter = "RowID <> 1 and SameAddress='True'";
+                            string sameAddressCompanyName = "";
+                            string sameAddressManagerName = "";
+                            string sameAddressPhone = "";
+                            string sameAddressCell = "";
+                            string sameAddressFax = "";
+                            string sameAddressEmail = "";
+                            foreach (DataRowView rw in dv)
+                            {
+                                if (sameAddressCompanyName.Length == 0)
+                                {
+                                    sameAddressCompanyName = rw["CompanyName"].ReplaceNulls();
+                                }
+                                if (!sameAddressCompanyName.Equals(rw["CompanyName"].ReplaceNulls()))
+                                {
+                                    MessageBox.Show("Company Name does not match.");
+                                    this.Close();
+                                    return;
+                                }
+                                if (rw["ManagerName"].ReplaceNulls().Length == 0) sameAddressManagerName = rw["ManagerName"].ReplaceNulls();
+                                else if (!sameAddressManagerName.Contains(rw["ManagerName"].ReplaceNulls())) sameAddressManagerName += ", " + rw["ManagerName"].ReplaceNulls();
 
+                                if (rw["ManagerPhone"].ReplaceNulls().Length == 0) sameAddressPhone = rw["ManagerPhone"].ReplaceNulls();
+                                else if (!sameAddressPhone.Contains(rw["ManagerPhone"].ReplaceNulls())) sameAddressPhone += ", " + rw["ManagerPhone"].ReplaceNulls();
+
+                                if (rw["ManagerFax"].ReplaceNulls().Length == 0) sameAddressFax = rw["ManagerFax"].ReplaceNulls();
+                                else if (!sameAddressFax.Contains(rw["ManagerFax"].ReplaceNulls())) sameAddressFax += ", " + rw["ManagerFax"].ReplaceNulls();
+
+
+                                sameAddressCell += rw["ManagerName"] + " Cell:" + rw["ManagerCell"] + Environment.NewLine;
+                                sameAddressEmail += rw["ManagerName"] + " Email:" + rw["ManagerEmail"] + Environment.NewLine;
+
+                            }
+                            ManagerDisplay += sameAddressCompanyName + Environment.NewLine +
+                                               sameAddressManagerName + Environment.NewLine +
+                                               "Phone: " + sameAddressPhone + Environment.NewLine +
+                                               "Fax: " + sameAddressFax + Environment.NewLine +
+                                               sameAddressCell + sameAddressEmail + Environment.NewLine + Environment.NewLine;
+                            DataView dv1 = new DataView(dtManagerDisplay);
+                            dv1.RowFilter = "RowID <> 1 and SameAddress='False'";
+                            foreach (DataRowView rw in dv1)
+                            {
+                                ManagerDisplay += rw["CompanyName"] + Environment.NewLine +
+                                                   rw["ManagerName"] + Environment.NewLine +
+                                                  "Phone:" + rw["ManagerPhone"] + Environment.NewLine +
+                                                  "Fax:" + rw["ManagerFax"] + Environment.NewLine +
+                                                   "Cell:" + rw["ManagerCell"] + Environment.NewLine +
+                                                   "Email:" + rw["ManagerEmail"] + Environment.NewLine + Environment.NewLine;
+
+                            }
+                        }
+                        /*
                         var groupedUsers = from row in dtManagerDisplay.AsEnumerable()
                                            orderby row.Field<Int16>("RowID")
                                            group row
@@ -827,7 +1017,7 @@ namespace Unified_Price_for_Var
                                              "Email:" + obj.ManagerEmail + Environment.NewLine + Environment.NewLine;
 
                         }
-
+                        */
 
                     }
                 }

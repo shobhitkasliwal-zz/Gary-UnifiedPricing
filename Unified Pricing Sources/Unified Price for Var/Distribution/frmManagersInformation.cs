@@ -42,6 +42,12 @@ namespace Unified_Price_for_Var
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (txtCompanyName.Text.Length == 0)
+            {
+                MessageBox.Show("Please enter company name for manager");
+                return;
+
+            }
             if (txtManagerName.Text.Length == 0)
             {
                 MessageBox.Show("Please enter name for manager");
@@ -52,7 +58,7 @@ namespace Unified_Price_for_Var
                 MessageBox.Show("Please enter a valid email address for manager");
                 return;
             }
-            string query = string.Format("INSERT INTO tblManagerInformation(ManagerName,ManagerEmail,ManagerPhone,ManagerFax,ManagerCell,MailingAddress,City,State,Zip,SameAddress) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')", txtManagerName.Text, txtManagerEmail.Text, txtWorkPhone.Text.Replace("(   )    -", ""), txtFax.Text.Replace("(   )    -", ""), txtCellPhone.Text.Replace("(   )    -", ""), txtMailingAddress.Text, txtCity.Text, ddlState.SelectedValue, txtZipCode.Text, (rbSameAddressYes.Checked ? "1" : "0"));
+            string query = string.Format("INSERT INTO tblManagerInformation(CompanyName,ManagerName,ManagerEmail,ManagerPhone,ManagerFax,ManagerCell,MailingAddress,City,State,Zip,SameAddress) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}')", txtCompanyName.Text, txtManagerName.Text, txtManagerEmail.Text, txtWorkPhone.Text.Replace("(   )    -", ""), txtFax.Text.Replace("(   )    -", ""), txtCellPhone.Text.Replace("(   )    -", ""), txtMailingAddress.Text, txtCity.Text, ddlState.SelectedValue, txtZipCode.Text, (rbSameAddressYes.Checked ? "1" : "0"));
             Db.ExecuteScalar(query);
 
             MessageBox.Show("Manager Added successfully.");
@@ -95,6 +101,7 @@ namespace Unified_Price_for_Var
 
         private void ResetForm()
         {
+            txtCompanyName.Text = string.Empty;
             txtManagerName.Text = string.Empty;
             txtManagerEmail.Text = string.Empty;
             txtWorkPhone.Text = string.Empty;
@@ -114,7 +121,7 @@ namespace Unified_Price_for_Var
         private void LoadGrid()
         {
 
-            DataTable dt = Db.ExecuteDataTable("Select * from tblManagerInformation");
+            DataTable dt = Db.ExecuteDataTable("Select ManagerID,CompanyName,ManagerName,ManagerEmail,ManagerPhone,ManagerFax,ManagerCell,MailingAddress,City,State,Zip,SameAddress from tblManagerInformation");
             dataGridView1.DataSource = dt;
             dataGridView1.Columns[0].Visible = false;
 
@@ -132,18 +139,19 @@ namespace Unified_Price_for_Var
             ResetForm();
             //  you can perform (any operation) delete action on selected row like
             lblManagerID.Text = (dataGridView1.Rows[e.RowIndex]).Cells[0].Value.ReplaceNulls();
-            txtManagerName.Text = (dataGridView1.Rows[e.RowIndex]).Cells[1].Value.ReplaceNulls();
-            txtManagerEmail.Text = (dataGridView1.Rows[e.RowIndex]).Cells[2].Value.ReplaceNulls();
-            txtWorkPhone.Text = (dataGridView1.Rows[e.RowIndex]).Cells[3].Value.ReplaceNulls();
-            txtFax.Text = (dataGridView1.Rows[e.RowIndex]).Cells[4].Value.ReplaceNulls();
-            txtCellPhone.Text = (dataGridView1.Rows[e.RowIndex]).Cells[5].Value.ReplaceNulls();
-            txtMailingAddress.Text = (dataGridView1.Rows[e.RowIndex]).Cells[6].Value.ReplaceNulls();
-            txtCity.Text = (dataGridView1.Rows[e.RowIndex]).Cells[7].Value.ReplaceNulls();
-            if ((dataGridView1.Rows[e.RowIndex]).Cells[8].Value.ReplaceNulls().Length > 0)
-                ddlState.SelectedIndex = ddlState.Items.IndexOf((dataGridView1.Rows[e.RowIndex]).Cells[8].Value.ReplaceNulls());
-            txtZipCode.Text = (dataGridView1.Rows[e.RowIndex]).Cells[9].Value.ReplaceNulls();
+            txtCompanyName.Text = (dataGridView1.Rows[e.RowIndex]).Cells[1].Value.ReplaceNulls();
+            txtManagerName.Text = (dataGridView1.Rows[e.RowIndex]).Cells[2].Value.ReplaceNulls();
+            txtManagerEmail.Text = (dataGridView1.Rows[e.RowIndex]).Cells[3].Value.ReplaceNulls();
+            txtWorkPhone.Text = (dataGridView1.Rows[e.RowIndex]).Cells[4].Value.ReplaceNulls();
+            txtFax.Text = (dataGridView1.Rows[e.RowIndex]).Cells[5].Value.ReplaceNulls();
+            txtCellPhone.Text = (dataGridView1.Rows[e.RowIndex]).Cells[6].Value.ReplaceNulls();
+            txtMailingAddress.Text = (dataGridView1.Rows[e.RowIndex]).Cells[7].Value.ReplaceNulls();
+            txtCity.Text = (dataGridView1.Rows[e.RowIndex]).Cells[8].Value.ReplaceNulls();
+            if ((dataGridView1.Rows[e.RowIndex]).Cells[9].Value.ReplaceNulls().Length > 0)
+                ddlState.SelectedIndex = ddlState.Items.IndexOf((dataGridView1.Rows[e.RowIndex]).Cells[9].Value.ReplaceNulls());
+            txtZipCode.Text = (dataGridView1.Rows[e.RowIndex]).Cells[10].Value.ReplaceNulls();
             bool sameaddress = false;
-            if (Boolean.TryParse((dataGridView1.Rows[e.RowIndex]).Cells[10].Value.ReplaceNulls(), out sameaddress))
+            if (Boolean.TryParse((dataGridView1.Rows[e.RowIndex]).Cells[11].Value.ReplaceNulls(), out sameaddress))
             {
                 if (sameaddress)
                     rbSameAddressYes.Checked = true;
@@ -161,6 +169,12 @@ namespace Unified_Price_for_Var
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (txtCompanyName.Text.Length == 0)
+            {
+                MessageBox.Show("Please enter company name for manager");
+                return;
+
+            }
             if (txtManagerName.Text.Length == 0)
             {
                 MessageBox.Show("Please enter name for manager");
@@ -173,6 +187,7 @@ namespace Unified_Price_for_Var
             }
             string query = "UPDATE tblManagerInformation ";
             query += "SET ManagerName ='" + txtManagerName.Text + "'";
+            query += ",CompanyName ='" + txtCompanyName.Text + "'";
             query += ",ManagerEmail ='" + txtManagerEmail.Text + "'";
             query += ",ManagerPhone ='" + txtWorkPhone.Text.Replace("(   )    -", "") + "'";
             query += ",ManagerFax ='" + txtFax.Text.Replace("(   )    -", "") + "'";

@@ -61,6 +61,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnAddNew = new System.Windows.Forms.Button();
             this.pnlDataGrid = new System.Windows.Forms.Panel();
+            this.lblCompanyName = new System.Windows.Forms.Label();
+            this.txtCompanyName = new System.Windows.Forms.TextBox();
             this.pnlManagerInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlDataGrid.SuspendLayout();
@@ -79,7 +81,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(19, 132);
+            this.label5.Location = new System.Drawing.Point(19, 172);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 13);
             this.label5.TabIndex = 7;
@@ -88,7 +90,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 102);
+            this.label4.Location = new System.Drawing.Point(21, 142);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(24, 13);
             this.label4.TabIndex = 6;
@@ -97,7 +99,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 72);
+            this.label3.Location = new System.Drawing.Point(18, 112);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 13);
             this.label3.TabIndex = 5;
@@ -105,7 +107,7 @@
             // 
             // txtManagerName
             // 
-            this.txtManagerName.Location = new System.Drawing.Point(103, 9);
+            this.txtManagerName.Location = new System.Drawing.Point(103, 49);
             this.txtManagerName.Name = "txtManagerName";
             this.txtManagerName.Size = new System.Drawing.Size(205, 20);
             this.txtManagerName.TabIndex = 3;
@@ -113,7 +115,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(19, 185);
+            this.label6.Location = new System.Drawing.Point(19, 225);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(81, 13);
             this.label6.TabIndex = 8;
@@ -121,7 +123,7 @@
             // 
             // txtManagerEmail
             // 
-            this.txtManagerEmail.Location = new System.Drawing.Point(104, 39);
+            this.txtManagerEmail.Location = new System.Drawing.Point(104, 79);
             this.txtManagerEmail.Name = "txtManagerEmail";
             this.txtManagerEmail.Size = new System.Drawing.Size(204, 20);
             this.txtManagerEmail.TabIndex = 4;
@@ -129,7 +131,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(21, 246);
+            this.label7.Location = new System.Drawing.Point(21, 286);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(24, 13);
             this.label7.TabIndex = 9;
@@ -138,7 +140,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(21, 275);
+            this.label8.Location = new System.Drawing.Point(21, 315);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 13);
             this.label8.TabIndex = 10;
@@ -146,7 +148,7 @@
             // 
             // txtMailingAddress
             // 
-            this.txtMailingAddress.Location = new System.Drawing.Point(103, 159);
+            this.txtMailingAddress.Location = new System.Drawing.Point(103, 199);
             this.txtMailingAddress.Multiline = true;
             this.txtMailingAddress.Name = "txtMailingAddress";
             this.txtMailingAddress.Size = new System.Drawing.Size(205, 73);
@@ -154,7 +156,7 @@
             // 
             // txtCity
             // 
-            this.txtCity.Location = new System.Drawing.Point(104, 243);
+            this.txtCity.Location = new System.Drawing.Point(104, 283);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(204, 20);
             this.txtCity.TabIndex = 9;
@@ -162,7 +164,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(21, 305);
+            this.label9.Location = new System.Drawing.Point(21, 345);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(50, 13);
             this.label9.TabIndex = 11;
@@ -171,7 +173,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(18, 336);
+            this.label10.Location = new System.Drawing.Point(18, 376);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(98, 13);
             this.label10.TabIndex = 12;
@@ -180,7 +182,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 42);
+            this.label2.Location = new System.Drawing.Point(21, 82);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 13);
             this.label2.TabIndex = 4;
@@ -189,7 +191,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 12);
+            this.label1.Location = new System.Drawing.Point(18, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 13);
             this.label1.TabIndex = 2;
@@ -198,7 +200,7 @@
             // rbSameAddressYes
             // 
             this.rbSameAddressYes.AutoSize = true;
-            this.rbSameAddressYes.Location = new System.Drawing.Point(122, 334);
+            this.rbSameAddressYes.Location = new System.Drawing.Point(122, 374);
             this.rbSameAddressYes.Name = "rbSameAddressYes";
             this.rbSameAddressYes.Size = new System.Drawing.Size(43, 17);
             this.rbSameAddressYes.TabIndex = 12;
@@ -210,7 +212,7 @@
             // 
             this.rbSameAddressNo.AutoSize = true;
             this.rbSameAddressNo.Checked = true;
-            this.rbSameAddressNo.Location = new System.Drawing.Point(167, 334);
+            this.rbSameAddressNo.Location = new System.Drawing.Point(167, 374);
             this.rbSameAddressNo.Name = "rbSameAddressNo";
             this.rbSameAddressNo.Size = new System.Drawing.Size(39, 17);
             this.rbSameAddressNo.TabIndex = 13;
@@ -221,14 +223,14 @@
             // ddlState
             // 
             this.ddlState.FormattingEnabled = true;
-            this.ddlState.Location = new System.Drawing.Point(104, 272);
+            this.ddlState.Location = new System.Drawing.Point(104, 312);
             this.ddlState.Name = "ddlState";
             this.ddlState.Size = new System.Drawing.Size(204, 21);
             this.ddlState.TabIndex = 10;
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(56, 362);
+            this.btnEdit.Location = new System.Drawing.Point(56, 401);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 17;
@@ -238,7 +240,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(56, 361);
+            this.btnSave.Location = new System.Drawing.Point(56, 401);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 14;
@@ -248,7 +250,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(232, 362);
+            this.btnDelete.Location = new System.Drawing.Point(232, 401);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 19;
@@ -258,7 +260,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(231, 362);
+            this.btnCancel.Location = new System.Drawing.Point(231, 401);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 15;
@@ -268,7 +270,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(56, 362);
+            this.btnUpdate.Location = new System.Drawing.Point(56, 401);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 14;
@@ -278,6 +280,8 @@
             // 
             // pnlManagerInformation
             // 
+            this.pnlManagerInformation.Controls.Add(this.txtCompanyName);
+            this.pnlManagerInformation.Controls.Add(this.lblCompanyName);
             this.pnlManagerInformation.Controls.Add(this.rbSameAddressYes);
             this.pnlManagerInformation.Controls.Add(this.rbSameAddressNo);
             this.pnlManagerInformation.Controls.Add(this.txtWorkPhone);
@@ -307,12 +311,12 @@
             this.pnlManagerInformation.Controls.Add(this.label5);
             this.pnlManagerInformation.Location = new System.Drawing.Point(306, 39);
             this.pnlManagerInformation.Name = "pnlManagerInformation";
-            this.pnlManagerInformation.Size = new System.Drawing.Size(331, 386);
+            this.pnlManagerInformation.Size = new System.Drawing.Size(331, 427);
             this.pnlManagerInformation.TabIndex = 13;
             // 
             // txtWorkPhone
             // 
-            this.txtWorkPhone.Location = new System.Drawing.Point(104, 69);
+            this.txtWorkPhone.Location = new System.Drawing.Point(104, 109);
             this.txtWorkPhone.Mask = "(999) 000-0000";
             this.txtWorkPhone.Name = "txtWorkPhone";
             this.txtWorkPhone.Size = new System.Drawing.Size(202, 20);
@@ -320,7 +324,7 @@
             // 
             // txtFax
             // 
-            this.txtFax.Location = new System.Drawing.Point(104, 99);
+            this.txtFax.Location = new System.Drawing.Point(104, 139);
             this.txtFax.Mask = "(999) 000-0000";
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(202, 20);
@@ -328,7 +332,7 @@
             // 
             // txtZipCode
             // 
-            this.txtZipCode.Location = new System.Drawing.Point(104, 302);
+            this.txtZipCode.Location = new System.Drawing.Point(104, 342);
             this.txtZipCode.Mask = "00000-9999";
             this.txtZipCode.Name = "txtZipCode";
             this.txtZipCode.Size = new System.Drawing.Size(202, 20);
@@ -336,7 +340,7 @@
             // 
             // txtCellPhone
             // 
-            this.txtCellPhone.Location = new System.Drawing.Point(104, 129);
+            this.txtCellPhone.Location = new System.Drawing.Point(104, 169);
             this.txtCellPhone.Mask = "(999) 000-0000";
             this.txtCellPhone.Name = "txtCellPhone";
             this.txtCellPhone.Size = new System.Drawing.Size(203, 20);
@@ -345,7 +349,7 @@
             // lblManagerID
             // 
             this.lblManagerID.AutoSize = true;
-            this.lblManagerID.Location = new System.Drawing.Point(241, 336);
+            this.lblManagerID.Location = new System.Drawing.Point(241, 376);
             this.lblManagerID.Name = "lblManagerID";
             this.lblManagerID.Size = new System.Drawing.Size(73, 13);
             this.lblManagerID.TabIndex = 22;
@@ -354,7 +358,7 @@
             // 
             // exit
             // 
-            this.exit.Location = new System.Drawing.Point(101, 388);
+            this.exit.Location = new System.Drawing.Point(101, 428);
             this.exit.Name = "exit";
             this.exit.Size = new System.Drawing.Size(75, 23);
             this.exit.TabIndex = 1;
@@ -367,7 +371,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(19, 31);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 351);
+            this.dataGridView1.Size = new System.Drawing.Size(240, 382);
             this.dataGridView1.TabIndex = 14;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -388,14 +392,30 @@
             this.pnlDataGrid.Controls.Add(this.exit);
             this.pnlDataGrid.Location = new System.Drawing.Point(12, 12);
             this.pnlDataGrid.Name = "pnlDataGrid";
-            this.pnlDataGrid.Size = new System.Drawing.Size(274, 413);
+            this.pnlDataGrid.Size = new System.Drawing.Size(274, 454);
             this.pnlDataGrid.TabIndex = 17;
+            // 
+            // lblCompanyName
+            // 
+            this.lblCompanyName.AutoSize = true;
+            this.lblCompanyName.Location = new System.Drawing.Point(21, 22);
+            this.lblCompanyName.Name = "lblCompanyName";
+            this.lblCompanyName.Size = new System.Drawing.Size(82, 13);
+            this.lblCompanyName.TabIndex = 23;
+            this.lblCompanyName.Text = "Company Name";
+            // 
+            // txtCompanyName
+            // 
+            this.txtCompanyName.Location = new System.Drawing.Point(103, 19);
+            this.txtCompanyName.Name = "txtCompanyName";
+            this.txtCompanyName.Size = new System.Drawing.Size(203, 20);
+            this.txtCompanyName.TabIndex = 24;
             // 
             // frmManagersInformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 428);
+            this.ClientSize = new System.Drawing.Size(658, 478);
             this.Controls.Add(this.pnlDataGrid);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.pnlManagerInformation);
@@ -447,5 +467,7 @@
         private System.Windows.Forms.MaskedTextBox txtWorkPhone;
         private System.Windows.Forms.MaskedTextBox txtFax;
         private System.Windows.Forms.MaskedTextBox txtZipCode;
+        private System.Windows.Forms.TextBox txtCompanyName;
+        private System.Windows.Forms.Label lblCompanyName;
     }
 }

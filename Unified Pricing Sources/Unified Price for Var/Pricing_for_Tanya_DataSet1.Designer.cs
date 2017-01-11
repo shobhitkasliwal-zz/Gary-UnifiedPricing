@@ -3210,6 +3210,10 @@ namespace Unified_Price_for_Var {
             
             private global::System.Data.DataColumn columnMin_Per_Order;
             
+            private global::System.Data.DataColumn columnMin_Per_Line1;
+            
+            private global::System.Data.DataColumn columnMin_Per_Order1;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public tblCustomersDataTable() {
@@ -3485,6 +3489,22 @@ namespace Unified_Price_for_Var {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Min_Per_Line1Column {
+                get {
+                    return this.columnMin_Per_Line1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Min_Per_Order1Column {
+                get {
+                    return this.columnMin_Per_Order1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3550,7 +3570,9 @@ namespace Unified_Price_for_Var {
                         short Territory, 
                         string Freight_Terms, 
                         string Min_Per_Line, 
-                        string Min_Per_Order) {
+                        string Min_Per_Order, 
+                        string Min_Per_Line1, 
+                        string Min_Per_Order1) {
                 tblCustomersRow rowtblCustomersRow = ((tblCustomersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Customer_Number,
@@ -3582,7 +3604,9 @@ namespace Unified_Price_for_Var {
                         Territory,
                         Freight_Terms,
                         Min_Per_Line,
-                        Min_Per_Order};
+                        Min_Per_Order,
+                        Min_Per_Line1,
+                        Min_Per_Order1};
                 rowtblCustomersRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowtblCustomersRow);
                 return rowtblCustomersRow;
@@ -3642,6 +3666,8 @@ namespace Unified_Price_for_Var {
                 this.columnFreight_Terms = base.Columns["Freight Terms"];
                 this.columnMin_Per_Line = base.Columns["Min Per Line"];
                 this.columnMin_Per_Order = base.Columns["Min Per Order"];
+                this.columnMin_Per_Line1 = base.Columns["Min Per Line1"];
+                this.columnMin_Per_Order1 = base.Columns["Min Per Order1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3707,6 +3733,10 @@ namespace Unified_Price_for_Var {
                 base.Columns.Add(this.columnMin_Per_Line);
                 this.columnMin_Per_Order = new global::System.Data.DataColumn("Min Per Order", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMin_Per_Order);
+                this.columnMin_Per_Line1 = new global::System.Data.DataColumn("Min Per Line1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMin_Per_Line1);
+                this.columnMin_Per_Order1 = new global::System.Data.DataColumn("Min Per Order1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMin_Per_Order1);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnCustomer_Number}, true));
                 this.columnCustomer_Number.AllowDBNull = false;
@@ -3732,6 +3762,8 @@ namespace Unified_Price_for_Var {
                 this.columnEmail_Address.MaxLength = 50;
                 this.columnSwing_Number.MaxLength = 50;
                 this.columnWho_Entered.MaxLength = 50;
+                this.columnMin_Per_Line1.MaxLength = 255;
+                this.columnMin_Per_Order1.MaxLength = 255;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12568,6 +12600,38 @@ namespace Unified_Price_for_Var {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Min_Per_Line1 {
+                get {
+                    try {
+                        return ((string)(this[this.tabletblCustomers.Min_Per_Line1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Min Per Line1\' in table \'tblCustomers\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletblCustomers.Min_Per_Line1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Min_Per_Order1 {
+                get {
+                    try {
+                        return ((string)(this[this.tabletblCustomers.Min_Per_Order1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Min Per Order1\' in table \'tblCustomers\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletblCustomers.Min_Per_Order1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsCustomer_Bill_NameNull() {
                 return this.IsNull(this.tabletblCustomers.Customer_Bill_NameColumn);
             }
@@ -12912,6 +12976,30 @@ namespace Unified_Price_for_Var {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetMin_Per_OrderNull() {
                 this[this.tabletblCustomers.Min_Per_OrderColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMin_Per_Line1Null() {
+                return this.IsNull(this.tabletblCustomers.Min_Per_Line1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMin_Per_Line1Null() {
+                this[this.tabletblCustomers.Min_Per_Line1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMin_Per_Order1Null() {
+                return this.IsNull(this.tabletblCustomers.Min_Per_Order1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMin_Per_Order1Null() {
+                this[this.tabletblCustomers.Min_Per_Order1Column] = global::System.Convert.DBNull;
             }
         }
         
@@ -20206,6 +20294,10 @@ namespace Unified_Price_for_Var.Pricing_for_Tanya_DataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Customer Credit Limit", "Customer Credit Limit");
             tableMapping.ColumnMappings.Add("Territory", "Territory");
             tableMapping.ColumnMappings.Add("Freight Terms", "Freight Terms");
+            tableMapping.ColumnMappings.Add("Min Per Line", "Min Per Line");
+            tableMapping.ColumnMappings.Add("Min Per Order", "Min Per Order");
+            tableMapping.ColumnMappings.Add("Min Per Line1", "Min Per Line1");
+            tableMapping.ColumnMappings.Add("Min Per Order1", "Min Per Order1");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -20232,7 +20324,10 @@ namespace Unified_Price_for_Var.Pricing_for_Tanya_DataSetTableAdapters {
                 "S NULL) OR (`Decimal Points` = ?)) AND ((? = 1 AND `Customer Credit Limit` IS NU" +
                 "LL) OR (`Customer Credit Limit` = ?)) AND ((? = 1 AND `Territory` IS NULL) OR (`" +
                 "Territory` = ?)) AND ((? = 1 AND `Freight Terms` IS NULL) OR (`Freight Terms` = " +
-                "?)))";
+                "?)) AND ((? = 1 AND `Min Per Line` IS NULL) OR (`Min Per Line` = ?)) AND ((? = 1" +
+                " AND `Min Per Order` IS NULL) OR (`Min Per Order` = ?)) AND ((? = 1 AND `Min Per" +
+                " Line1` IS NULL) OR (`Min Per Line1` = ?)) AND ((? = 1 AND `Min Per Order1` IS N" +
+                "ULL) OR (`Min Per Order1` = ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Customer_Number", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Customer Number", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Customer_Bill_Name", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Customer Bill Name", global::System.Data.DataRowVersion.Original, true, null));
@@ -20289,9 +20384,17 @@ namespace Unified_Price_for_Var.Pricing_for_Tanya_DataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Territory", global::System.Data.OleDb.OleDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Territory", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Freight_Terms", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Freight Terms", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Freight_Terms", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Freight Terms", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Min_Per_Line", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Line", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Min_Per_Line", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Line", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Min_Per_Order", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Order", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Min_Per_Order", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Order", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Min_Per_Line1", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Line1", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Min_Per_Line1", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Line1", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Min_Per_Order1", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Order1", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Min_Per_Order1", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Order1", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO `tblCustomers` (`Customer Number`, `Customer Bill Name`, `Bill Address 1`, `Bill Address 2`, `Bill City`, `Bill State`, `Bill Zip`, `Bill Country`, `Customer Ship Name`, `Ship Address 1`, `Ship Address 2`, `Ship City`, `Ship State`, `Ship Zip`, `Ship Country`, `Days Due`, `Discount Days Due`, `Discount Percent`, `Phone Number`, `Fax Number`, `Contact Person`, `Email Address`, `Swing Number`, `Who Entered`, `Decimal Points`, `Customer Credit Limit`, `Territory`, `Freight Terms`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO `tblCustomers` (`Customer Number`, `Customer Bill Name`, `Bill Address 1`, `Bill Address 2`, `Bill City`, `Bill State`, `Bill Zip`, `Bill Country`, `Customer Ship Name`, `Ship Address 1`, `Ship Address 2`, `Ship City`, `Ship State`, `Ship Zip`, `Ship Country`, `Days Due`, `Discount Days Due`, `Discount Percent`, `Phone Number`, `Fax Number`, `Contact Person`, `Email Address`, `Swing Number`, `Who Entered`, `Decimal Points`, `Customer Credit Limit`, `Territory`, `Freight Terms`, `Min Per Line`, `Min Per Order`, `Min Per Line1`, `Min Per Order1`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Customer_Number", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Customer Number", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Customer_Bill_Name", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Customer Bill Name", global::System.Data.DataRowVersion.Current, false, null));
@@ -20321,6 +20424,10 @@ namespace Unified_Price_for_Var.Pricing_for_Tanya_DataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Customer_Credit_Limit", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Customer Credit Limit", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Territory", global::System.Data.OleDb.OleDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Territory", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Freight_Terms", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Freight Terms", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Min_Per_Line", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Line", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Min_Per_Order", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Order", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Min_Per_Line1", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Line1", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Min_Per_Order1", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Order1", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE `tblCustomers` SET `Customer Number` = ?, `Customer Bill Name` = ?, `Bill " +
@@ -20330,30 +20437,34 @@ namespace Unified_Price_for_Var.Pricing_for_Tanya_DataSetTableAdapters {
                 "try` = ?, `Days Due` = ?, `Discount Days Due` = ?, `Discount Percent` = ?, `Phon" +
                 "e Number` = ?, `Fax Number` = ?, `Contact Person` = ?, `Email Address` = ?, `Swi" +
                 "ng Number` = ?, `Who Entered` = ?, `Decimal Points` = ?, `Customer Credit Limit`" +
-                " = ?, `Territory` = ?, `Freight Terms` = ? WHERE ((`Customer Number` = ?) AND ((" +
-                "? = 1 AND `Customer Bill Name` IS NULL) OR (`Customer Bill Name` = ?)) AND ((? =" +
-                " 1 AND `Bill Address 1` IS NULL) OR (`Bill Address 1` = ?)) AND ((? = 1 AND `Bil" +
-                "l Address 2` IS NULL) OR (`Bill Address 2` = ?)) AND ((? = 1 AND `Bill City` IS " +
-                "NULL) OR (`Bill City` = ?)) AND ((? = 1 AND `Bill State` IS NULL) OR (`Bill Stat" +
-                "e` = ?)) AND ((? = 1 AND `Bill Zip` IS NULL) OR (`Bill Zip` = ?)) AND ((? = 1 AN" +
-                "D `Bill Country` IS NULL) OR (`Bill Country` = ?)) AND ((? = 1 AND `Customer Shi" +
-                "p Name` IS NULL) OR (`Customer Ship Name` = ?)) AND ((? = 1 AND `Ship Address 1`" +
-                " IS NULL) OR (`Ship Address 1` = ?)) AND ((? = 1 AND `Ship Address 2` IS NULL) O" +
-                "R (`Ship Address 2` = ?)) AND ((? = 1 AND `Ship City` IS NULL) OR (`Ship City` =" +
-                " ?)) AND ((? = 1 AND `Ship State` IS NULL) OR (`Ship State` = ?)) AND ((? = 1 AN" +
-                "D `Ship Zip` IS NULL) OR (`Ship Zip` = ?)) AND ((? = 1 AND `Ship Country` IS NUL" +
-                "L) OR (`Ship Country` = ?)) AND ((? = 1 AND `Days Due` IS NULL) OR (`Days Due` =" +
-                " ?)) AND ((? = 1 AND `Discount Days Due` IS NULL) OR (`Discount Days Due` = ?)) " +
-                "AND ((? = 1 AND `Discount Percent` IS NULL) OR (`Discount Percent` = ?)) AND ((?" +
-                " = 1 AND `Phone Number` IS NULL) OR (`Phone Number` = ?)) AND ((? = 1 AND `Fax N" +
-                "umber` IS NULL) OR (`Fax Number` = ?)) AND ((? = 1 AND `Contact Person` IS NULL)" +
-                " OR (`Contact Person` = ?)) AND ((? = 1 AND `Email Address` IS NULL) OR (`Email " +
-                "Address` = ?)) AND ((? = 1 AND `Swing Number` IS NULL) OR (`Swing Number` = ?)) " +
-                "AND ((? = 1 AND `Who Entered` IS NULL) OR (`Who Entered` = ?)) AND ((? = 1 AND `" +
-                "Decimal Points` IS NULL) OR (`Decimal Points` = ?)) AND ((? = 1 AND `Customer Cr" +
-                "edit Limit` IS NULL) OR (`Customer Credit Limit` = ?)) AND ((? = 1 AND `Territor" +
-                "y` IS NULL) OR (`Territory` = ?)) AND ((? = 1 AND `Freight Terms` IS NULL) OR (`" +
-                "Freight Terms` = ?)))";
+                " = ?, `Territory` = ?, `Freight Terms` = ?, `Min Per Line` = ?, `Min Per Order` " +
+                "= ?, `Min Per Line1` = ?, `Min Per Order1` = ? WHERE ((`Customer Number` = ?) AN" +
+                "D ((? = 1 AND `Customer Bill Name` IS NULL) OR (`Customer Bill Name` = ?)) AND (" +
+                "(? = 1 AND `Bill Address 1` IS NULL) OR (`Bill Address 1` = ?)) AND ((? = 1 AND " +
+                "`Bill Address 2` IS NULL) OR (`Bill Address 2` = ?)) AND ((? = 1 AND `Bill City`" +
+                " IS NULL) OR (`Bill City` = ?)) AND ((? = 1 AND `Bill State` IS NULL) OR (`Bill " +
+                "State` = ?)) AND ((? = 1 AND `Bill Zip` IS NULL) OR (`Bill Zip` = ?)) AND ((? = " +
+                "1 AND `Bill Country` IS NULL) OR (`Bill Country` = ?)) AND ((? = 1 AND `Customer" +
+                " Ship Name` IS NULL) OR (`Customer Ship Name` = ?)) AND ((? = 1 AND `Ship Addres" +
+                "s 1` IS NULL) OR (`Ship Address 1` = ?)) AND ((? = 1 AND `Ship Address 2` IS NUL" +
+                "L) OR (`Ship Address 2` = ?)) AND ((? = 1 AND `Ship City` IS NULL) OR (`Ship Cit" +
+                "y` = ?)) AND ((? = 1 AND `Ship State` IS NULL) OR (`Ship State` = ?)) AND ((? = " +
+                "1 AND `Ship Zip` IS NULL) OR (`Ship Zip` = ?)) AND ((? = 1 AND `Ship Country` IS" +
+                " NULL) OR (`Ship Country` = ?)) AND ((? = 1 AND `Days Due` IS NULL) OR (`Days Du" +
+                "e` = ?)) AND ((? = 1 AND `Discount Days Due` IS NULL) OR (`Discount Days Due` = " +
+                "?)) AND ((? = 1 AND `Discount Percent` IS NULL) OR (`Discount Percent` = ?)) AND" +
+                " ((? = 1 AND `Phone Number` IS NULL) OR (`Phone Number` = ?)) AND ((? = 1 AND `F" +
+                "ax Number` IS NULL) OR (`Fax Number` = ?)) AND ((? = 1 AND `Contact Person` IS N" +
+                "ULL) OR (`Contact Person` = ?)) AND ((? = 1 AND `Email Address` IS NULL) OR (`Em" +
+                "ail Address` = ?)) AND ((? = 1 AND `Swing Number` IS NULL) OR (`Swing Number` = " +
+                "?)) AND ((? = 1 AND `Who Entered` IS NULL) OR (`Who Entered` = ?)) AND ((? = 1 A" +
+                "ND `Decimal Points` IS NULL) OR (`Decimal Points` = ?)) AND ((? = 1 AND `Custome" +
+                "r Credit Limit` IS NULL) OR (`Customer Credit Limit` = ?)) AND ((? = 1 AND `Terr" +
+                "itory` IS NULL) OR (`Territory` = ?)) AND ((? = 1 AND `Freight Terms` IS NULL) O" +
+                "R (`Freight Terms` = ?)) AND ((? = 1 AND `Min Per Line` IS NULL) OR (`Min Per Li" +
+                "ne` = ?)) AND ((? = 1 AND `Min Per Order` IS NULL) OR (`Min Per Order` = ?)) AND" +
+                " ((? = 1 AND `Min Per Line1` IS NULL) OR (`Min Per Line1` = ?)) AND ((? = 1 AND " +
+                "`Min Per Order1` IS NULL) OR (`Min Per Order1` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Customer_Number", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Customer Number", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Customer_Bill_Name", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Customer Bill Name", global::System.Data.DataRowVersion.Current, false, null));
@@ -20383,6 +20494,10 @@ namespace Unified_Price_for_Var.Pricing_for_Tanya_DataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Customer_Credit_Limit", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Customer Credit Limit", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Territory", global::System.Data.OleDb.OleDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Territory", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Freight_Terms", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Freight Terms", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Min_Per_Line", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Line", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Min_Per_Order", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Order", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Min_Per_Line1", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Line1", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Min_Per_Order1", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Order1", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Customer_Number", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Customer Number", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Customer_Bill_Name", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Customer Bill Name", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Customer_Bill_Name", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Customer Bill Name", global::System.Data.DataRowVersion.Original, false, null));
@@ -20438,6 +20553,14 @@ namespace Unified_Price_for_Var.Pricing_for_Tanya_DataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Territory", global::System.Data.OleDb.OleDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Territory", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Freight_Terms", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Freight Terms", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Freight_Terms", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Freight Terms", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Min_Per_Line", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Line", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Min_Per_Line", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Line", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Min_Per_Order", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Order", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Min_Per_Order", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Order", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Min_Per_Line1", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Line1", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Min_Per_Line1", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Line1", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Min_Per_Order1", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Order1", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Min_Per_Order1", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Order1", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -20453,33 +20576,37 @@ namespace Unified_Price_for_Var.Pricing_for_Tanya_DataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[11];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT [Customer Number], [Customer Bill Name], [Bill Address 1], [Bill Address 2], [Bill City], [Bill State], [Bill Zip], [Bill Country], [Customer Ship Name], [Ship Address 1], [Ship Address 2], [Ship City], [Ship State], [Ship Zip], [Ship Country], [Days Due], [Discount Days Due], [Discount Percent], [Phone Number], [Fax Number], [Contact Person], [Email Address], [Swing Number], [Who Entered], [Decimal Points], [Customer Credit Limit], Territory, [Freight Terms] FROM tblCustomers";
+            this._commandCollection[0].CommandText = @"SELECT        [Customer Number], [Customer Bill Name], [Bill Address 1], [Bill Address 2], [Bill City], [Bill State], [Bill Zip], [Bill Country], [Customer Ship Name], [Ship Address 1], 
+                         [Ship Address 2], [Ship City], [Ship State], [Ship Zip], [Ship Country], [Days Due], [Discount Days Due], [Discount Percent], [Phone Number], [Fax Number], 
+                         [Contact Person], [Email Address], [Swing Number], [Who Entered], [Decimal Points], [Customer Credit Limit], Territory, [Freight Terms], [Min Per Line], 
+                         [Min Per Order], [Min Per Line1], [Min Per Order1]
+FROM            tblCustomers";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT [Bill Address 1], [Bill Address 2], [Bill City], [Bill Country], [Bill State], [Bill Zip], [Contact Person], [Customer Bill Name], [Customer Credit Limit], [Customer Number], [Customer Ship Name], [Days Due], [Decimal Points], [Discount Days Due], [Discount Percent], [Email Address], [Fax Number], [Freight Terms], [Phone Number], [Ship Address 1], [Ship Address 2], [Ship City], [Ship Country], [Ship State], [Ship Zip], [Swing Number], Territory, [Who Entered] FROM tblCustomers WHERE ([Swing Number] = ?)";
+            this._commandCollection[1].CommandText = @"SELECT [Bill Address 1], [Bill Address 2], [Bill City], [Bill Country], [Bill State], [Bill Zip], [Contact Person], [Customer Bill Name], [Customer Credit Limit], [Customer Number], [Customer Ship Name], [Days Due], [Decimal Points], [Discount Days Due], [Discount Percent], [Email Address], [Fax Number], [Freight Terms], [Min Per Line], [Min Per Line1], [Min Per Order], [Min Per Order1], [Phone Number], [Ship Address 1], [Ship Address 2], [Ship City], [Ship Country], [Ship State], [Ship Zip], [Swing Number], Territory, [Who Entered] FROM tblCustomers WHERE ([Swing Number] = ?)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Swing_Number", global::System.Data.OleDb.OleDbType.WChar, 50, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Swing Number", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[2] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = @"SELECT [Bill Address 1], [Bill Address 2], [Bill City], [Bill Country], [Bill State], [Bill Zip], [Contact Person], [Customer Bill Name], [Customer Credit Limit], [Customer Number], [Customer Ship Name], [Days Due], [Decimal Points], [Discount Days Due], [Discount Percent], [Email Address], [Fax Number], [Freight Terms], [Phone Number], [Ship Address 1], [Ship Address 2], [Ship City], [Ship Country], [Ship State], [Ship Zip], [Swing Number], Territory, [Who Entered] FROM tblCustomers WHERE ([Swing Number] IS NULL)";
+            this._commandCollection[2].CommandText = @"SELECT [Bill Address 1], [Bill Address 2], [Bill City], [Bill Country], [Bill State], [Bill Zip], [Contact Person], [Customer Bill Name], [Customer Credit Limit], [Customer Number], [Customer Ship Name], [Days Due], [Decimal Points], [Discount Days Due], [Discount Percent], [Email Address], [Fax Number], [Freight Terms], [Min Per Line], [Min Per Line1], [Min Per Order], [Min Per Order1], [Phone Number], [Ship Address 1], [Ship Address 2], [Ship City], [Ship Country], [Ship State], [Ship Zip], [Swing Number], Territory, [Who Entered] FROM tblCustomers WHERE ([Swing Number] IS NULL)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = @"SELECT [Bill Address 1], [Bill Address 2], [Bill City], [Bill Country], [Bill State], [Bill Zip], [Contact Person], [Customer Bill Name], [Customer Credit Limit], [Customer Number], [Customer Ship Name], [Days Due], [Decimal Points], [Discount Days Due], [Discount Percent], [Email Address], [Fax Number], [Freight Terms], [Phone Number], [Ship Address 1], [Ship Address 2], [Ship City], [Ship Country], [Ship State], [Ship Zip], [Swing Number], Territory, [Who Entered] FROM tblCustomers WHERE (Territory = ?)";
+            this._commandCollection[3].CommandText = @"SELECT [Bill Address 1], [Bill Address 2], [Bill City], [Bill Country], [Bill State], [Bill Zip], [Contact Person], [Customer Bill Name], [Customer Credit Limit], [Customer Number], [Customer Ship Name], [Days Due], [Decimal Points], [Discount Days Due], [Discount Percent], [Email Address], [Fax Number], [Freight Terms], [Min Per Line], [Min Per Line1], [Min Per Order], [Min Per Order1], [Phone Number], [Ship Address 1], [Ship Address 2], [Ship City], [Ship Country], [Ship State], [Ship Zip], [Swing Number], Territory, [Who Entered] FROM tblCustomers WHERE (Territory = ?)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Territory", global::System.Data.OleDb.OleDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Territory", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[4] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = @"SELECT [Bill Address 1], [Bill Address 2], [Bill City], [Bill Country], [Bill State], [Bill Zip], [Contact Person], [Customer Bill Name], [Customer Credit Limit], [Customer Number], [Customer Ship Name], [Days Due], [Decimal Points], [Discount Days Due], [Discount Percent], [Email Address], [Fax Number], [Freight Terms], [Phone Number], [Ship Address 1], [Ship Address 2], [Ship City], [Ship Country], [Ship State], [Ship Zip], [Swing Number], Territory, [Who Entered] FROM tblCustomers ORDER BY [Customer Bill Name]";
+            this._commandCollection[4].CommandText = @"SELECT [Bill Address 1], [Bill Address 2], [Bill City], [Bill Country], [Bill State], [Bill Zip], [Contact Person], [Customer Bill Name], [Customer Credit Limit], [Customer Number], [Customer Ship Name], [Days Due], [Decimal Points], [Discount Days Due], [Discount Percent], [Email Address], [Fax Number], [Freight Terms], [Min Per Line], [Min Per Line1], [Min Per Order], [Min Per Order1], [Phone Number], [Ship Address 1], [Ship Address 2], [Ship City], [Ship Country], [Ship State], [Ship Zip], [Swing Number], Territory, [Who Entered] FROM tblCustomers ORDER BY [Customer Bill Name]";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[5] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[5].Connection = this.Connection;
             this._commandCollection[5].CommandText = @"INSERT INTO tblCustomers
                          ([Customer Number], [Customer Bill Name], [Bill Address 1], [Bill Address 2], [Bill City], [Bill State], [Bill Zip], [Bill Country], [Customer Ship Name], [Ship Address 1], 
                          [Ship Address 2], [Ship City], [Ship State], [Ship Zip], [Ship Country], [Days Due], [Discount Days Due], [Discount Percent], [Phone Number], [Fax Number], 
-                         [Contact Person], [Email Address], [Swing Number], [Who Entered], [Decimal Points], [Customer Credit Limit], Territory, [Freight Terms], [Min Per Line], [Min Per Order])
-VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                         [Contact Person], [Email Address], [Swing Number], [Who Entered], [Decimal Points], [Customer Credit Limit], Territory, [Freight Terms], [Min Per Line], [Min Per Order],[Min Per Line1], [Min Per Order1])
+VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Customer_Number", global::System.Data.OleDb.OleDbType.WChar, 50, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Customer Number", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Customer_Bill_Name", global::System.Data.OleDb.OleDbType.WChar, 50, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Customer Bill Name", global::System.Data.DataRowVersion.Current, false, null));
@@ -20509,20 +20636,22 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
             this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Customer_Credit_Limit", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(15)), ((byte)(0)), "Customer Credit Limit", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Territory", global::System.Data.OleDb.OleDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Territory", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Freight_Terms", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Freight Terms", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Min_Per_Line", global::System.Data.OleDb.OleDbType.Variant, 1024, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Line", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Min_Per_Order", global::System.Data.OleDb.OleDbType.Variant, 1024, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Order", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Min_Per_Line", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Line", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Min_Per_Order", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Order", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Min_Per_Line1", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Line1", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Min_Per_Order1", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Min Per Order1", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[6] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = @"SELECT [Bill Address 1], [Bill Address 2], [Bill City], [Bill Country], [Bill State], [Bill Zip], [Contact Person], [Customer Bill Name], [Customer Credit Limit], [Customer Number], [Customer Ship Name], [Days Due], [Decimal Points], [Discount Days Due], [Discount Percent], [Email Address], [Fax Number], [Freight Terms], [Phone Number], [Ship Address 1], [Ship Address 2], [Ship City], [Ship Country], [Ship State], [Ship Zip], [Swing Number], Territory, [Who Entered] FROM tblCustomers";
+            this._commandCollection[6].CommandText = @"SELECT [Bill Address 1], [Bill Address 2], [Bill City], [Bill Country], [Bill State], [Bill Zip], [Contact Person], [Customer Bill Name], [Customer Credit Limit], [Customer Number], [Customer Ship Name], [Days Due], [Decimal Points], [Discount Days Due], [Discount Percent], [Email Address], [Fax Number], [Freight Terms], [Min Per Line], [Min Per Line1], [Min Per Order], [Min Per Order1], [Phone Number], [Ship Address 1], [Ship Address 2], [Ship City], [Ship Country], [Ship State], [Ship Zip], [Swing Number], Territory, [Who Entered] FROM tblCustomers";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[7] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[7].Connection = this.Connection;
-            this._commandCollection[7].CommandText = @"SELECT [Bill Address 1], [Bill Address 2], [Bill City], [Bill Country], [Bill State], [Bill Zip], [Contact Person], [Customer Bill Name], [Customer Credit Limit], [Customer Number], [Customer Ship Name], [Days Due], [Decimal Points], [Discount Days Due], [Discount Percent], [Email Address], [Fax Number], [Freight Terms], [Phone Number], [Ship Address 1], [Ship Address 2], [Ship City], [Ship Country], [Ship State], [Ship Zip], [Swing Number], Territory, [Who Entered] FROM tblCustomers WHERE ([Swing Number] = ?)";
+            this._commandCollection[7].CommandText = @"SELECT [Bill Address 1], [Bill Address 2], [Bill City], [Bill Country], [Bill State], [Bill Zip], [Contact Person], [Customer Bill Name], [Customer Credit Limit], [Customer Number], [Customer Ship Name], [Days Due], [Decimal Points], [Discount Days Due], [Discount Percent], [Email Address], [Fax Number], [Freight Terms], [Min Per Line], [Min Per Line1], [Min Per Order], [Min Per Order1], [Phone Number], [Ship Address 1], [Ship Address 2], [Ship City], [Ship Country], [Ship State], [Ship Zip], [Swing Number], Territory, [Who Entered] FROM tblCustomers WHERE ([Swing Number] = ?)";
             this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[7].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Swing_Number", global::System.Data.OleDb.OleDbType.WChar, 50, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Swing Number", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[8] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[8].Connection = this.Connection;
-            this._commandCollection[8].CommandText = @"SELECT [Bill Address 1], [Bill Address 2], [Bill City], [Bill Country], [Bill State], [Bill Zip], [Contact Person], [Customer Bill Name], [Customer Credit Limit], [Customer Number], [Customer Ship Name], [Days Due], [Decimal Points], [Discount Days Due], [Discount Percent], [Email Address], [Fax Number], [Freight Terms], [Phone Number], [Ship Address 1], [Ship Address 2], [Ship City], [Ship Country], [Ship State], [Ship Zip], [Swing Number], Territory, [Who Entered] ,[Min Per Line], [Min Per Order], [Customer Bill Name] + '(' + [Customer Number] + ')' AS [Combinet Name]   FROM tblCustomers ORDER BY [Customer Bill Name]";
+            this._commandCollection[8].CommandText = @"SELECT [Bill Address 1], [Bill Address 2], [Bill City], [Bill Country], [Bill State], [Bill Zip], [Contact Person], [Customer Bill Name], [Customer Credit Limit], [Customer Number], [Customer Ship Name], [Days Due], [Decimal Points], [Discount Days Due], [Discount Percent], [Email Address], [Fax Number], [Freight Terms], [Min Per Line], [Min Per Line1], [Min Per Order], [Min Per Order1], [Phone Number], [Ship Address 1], [Ship Address 2], [Ship City], [Ship Country], [Ship State], [Ship Zip], [Swing Number], Territory, [Who Entered] FROM tblCustomers ORDER BY [Customer Bill Name]";
             this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[9] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[9].Connection = this.Connection;
@@ -20805,9 +20934,13 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
                     global::System.Nullable<short> Original_Decimal_Points, 
                     global::System.Nullable<double> Original_Customer_Credit_Limit, 
                     global::System.Nullable<short> Original_Territory, 
-                    string Original_Freight_Terms) {
+                    string Original_Freight_Terms, 
+                    string Original_Min_Per_Line, 
+                    string Original_Min_Per_Order, 
+                    string Original_Min_Per_Line1, 
+                    string Original_Min_Per_Order1) {
             if ((Original_Customer_Number == null)) {
-                this.Adapter.DeleteCommand.Parameters[0].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Original_Customer_Number");
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_Customer_Number));
@@ -21028,6 +21161,38 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
                 this.Adapter.DeleteCommand.Parameters[53].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[54].Value = ((string)(Original_Freight_Terms));
             }
+            if ((Original_Min_Per_Line == null)) {
+                this.Adapter.DeleteCommand.Parameters[55].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[56].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[55].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[56].Value = ((string)(Original_Min_Per_Line));
+            }
+            if ((Original_Min_Per_Order == null)) {
+                this.Adapter.DeleteCommand.Parameters[57].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[58].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[57].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[58].Value = ((string)(Original_Min_Per_Order));
+            }
+            if ((Original_Min_Per_Line1 == null)) {
+                this.Adapter.DeleteCommand.Parameters[59].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[60].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[59].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[60].Value = ((string)(Original_Min_Per_Line1));
+            }
+            if ((Original_Min_Per_Order1 == null)) {
+                this.Adapter.DeleteCommand.Parameters[61].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[62].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[61].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[62].Value = ((string)(Original_Min_Per_Order1));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -21076,9 +21241,13 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
                     global::System.Nullable<short> Decimal_Points, 
                     global::System.Nullable<double> Customer_Credit_Limit, 
                     global::System.Nullable<short> Territory, 
-                    string Freight_Terms) {
+                    string Freight_Terms, 
+                    string Min_Per_Line, 
+                    string Min_Per_Order, 
+                    string Min_Per_Line1, 
+                    string Min_Per_Order1) {
             if ((Customer_Number == null)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Customer_Number");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Customer_Number));
@@ -21245,6 +21414,30 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
             else {
                 this.Adapter.InsertCommand.Parameters[27].Value = ((string)(Freight_Terms));
             }
+            if ((Min_Per_Line == null)) {
+                this.Adapter.InsertCommand.Parameters[28].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[28].Value = ((string)(Min_Per_Line));
+            }
+            if ((Min_Per_Order == null)) {
+                this.Adapter.InsertCommand.Parameters[29].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[29].Value = ((string)(Min_Per_Order));
+            }
+            if ((Min_Per_Line1 == null)) {
+                this.Adapter.InsertCommand.Parameters[30].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[30].Value = ((string)(Min_Per_Line1));
+            }
+            if ((Min_Per_Order1 == null)) {
+                this.Adapter.InsertCommand.Parameters[31].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[31].Value = ((string)(Min_Per_Order1));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -21294,6 +21487,10 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
                     global::System.Nullable<double> Customer_Credit_Limit, 
                     global::System.Nullable<short> Territory, 
                     string Freight_Terms, 
+                    string Min_Per_Line, 
+                    string Min_Per_Order, 
+                    string Min_Per_Line1, 
+                    string Min_Per_Order1, 
                     string Original_Customer_Number, 
                     string Original_Customer_Bill_Name, 
                     string Original_Bill_Address_1, 
@@ -21321,9 +21518,13 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
                     global::System.Nullable<short> Original_Decimal_Points, 
                     global::System.Nullable<double> Original_Customer_Credit_Limit, 
                     global::System.Nullable<short> Original_Territory, 
-                    string Original_Freight_Terms) {
+                    string Original_Freight_Terms, 
+                    string Original_Min_Per_Line, 
+                    string Original_Min_Per_Order, 
+                    string Original_Min_Per_Line1, 
+                    string Original_Min_Per_Order1) {
             if ((Customer_Number == null)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Customer_Number");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Customer_Number));
@@ -21490,227 +21691,283 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
             else {
                 this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(Freight_Terms));
             }
-            if ((Original_Customer_Number == null)) {
+            if ((Min_Per_Line == null)) {
                 this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(Original_Customer_Number));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(Min_Per_Line));
             }
-            if ((Original_Customer_Bill_Name == null)) {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
+            if ((Min_Per_Order == null)) {
+                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((string)(Min_Per_Order));
+            }
+            if ((Min_Per_Line1 == null)) {
                 this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((string)(Original_Customer_Bill_Name));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((string)(Min_Per_Line1));
             }
-            if ((Original_Bill_Address_1 == null)) {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
+            if ((Min_Per_Order1 == null)) {
+                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(Original_Bill_Address_1));
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((string)(Min_Per_Order1));
             }
-            if ((Original_Bill_Address_2 == null)) {
+            if ((Original_Customer_Number == null)) {
+                throw new global::System.ArgumentNullException("Original_Customer_Number");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(Original_Customer_Number));
+            }
+            if ((Original_Customer_Bill_Name == null)) {
                 this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((string)(Original_Bill_Address_2));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((string)(Original_Customer_Bill_Name));
             }
-            if ((Original_Bill_City == null)) {
+            if ((Original_Bill_Address_1 == null)) {
                 this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((string)(Original_Bill_City));
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((string)(Original_Bill_Address_1));
             }
-            if ((Original_Bill_State == null)) {
+            if ((Original_Bill_Address_2 == null)) {
                 this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((string)(Original_Bill_State));
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((string)(Original_Bill_Address_2));
             }
-            if ((Original_Bill_Zip == null)) {
+            if ((Original_Bill_City == null)) {
                 this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((string)(Original_Bill_Zip));
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((string)(Original_Bill_City));
             }
-            if ((Original_Bill_Country == null)) {
+            if ((Original_Bill_State == null)) {
                 this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((string)(Original_Bill_Country));
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((string)(Original_Bill_State));
             }
-            if ((Original_Customer_Ship_Name == null)) {
+            if ((Original_Bill_Zip == null)) {
                 this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[44].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((string)(Original_Customer_Ship_Name));
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((string)(Original_Bill_Zip));
             }
-            if ((Original_Ship_Address_1 == null)) {
+            if ((Original_Bill_Country == null)) {
                 this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[46].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[46].Value = ((string)(Original_Ship_Address_1));
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((string)(Original_Bill_Country));
             }
-            if ((Original_Ship_Address_2 == null)) {
+            if ((Original_Customer_Ship_Name == null)) {
                 this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[48].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[48].Value = ((string)(Original_Ship_Address_2));
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((string)(Original_Customer_Ship_Name));
             }
-            if ((Original_Ship_City == null)) {
+            if ((Original_Ship_Address_1 == null)) {
                 this.Adapter.UpdateCommand.Parameters[49].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[50].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[49].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[50].Value = ((string)(Original_Ship_City));
+                this.Adapter.UpdateCommand.Parameters[50].Value = ((string)(Original_Ship_Address_1));
             }
-            if ((Original_Ship_State == null)) {
+            if ((Original_Ship_Address_2 == null)) {
                 this.Adapter.UpdateCommand.Parameters[51].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[52].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[51].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[52].Value = ((string)(Original_Ship_State));
+                this.Adapter.UpdateCommand.Parameters[52].Value = ((string)(Original_Ship_Address_2));
             }
-            if ((Original_Ship_Zip == null)) {
+            if ((Original_Ship_City == null)) {
                 this.Adapter.UpdateCommand.Parameters[53].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[54].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[53].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[54].Value = ((string)(Original_Ship_Zip));
+                this.Adapter.UpdateCommand.Parameters[54].Value = ((string)(Original_Ship_City));
             }
-            if ((Original_Ship_Country == null)) {
+            if ((Original_Ship_State == null)) {
                 this.Adapter.UpdateCommand.Parameters[55].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[56].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[55].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[56].Value = ((string)(Original_Ship_Country));
+                this.Adapter.UpdateCommand.Parameters[56].Value = ((string)(Original_Ship_State));
             }
-            if ((Original_Days_Due.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[57].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[58].Value = ((short)(Original_Days_Due.Value));
-            }
-            else {
+            if ((Original_Ship_Zip == null)) {
                 this.Adapter.UpdateCommand.Parameters[57].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[58].Value = global::System.DBNull.Value;
             }
-            if ((Original_Discount_Days_Due.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[59].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[60].Value = ((short)(Original_Discount_Days_Due.Value));
-            }
             else {
+                this.Adapter.UpdateCommand.Parameters[57].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[58].Value = ((string)(Original_Ship_Zip));
+            }
+            if ((Original_Ship_Country == null)) {
                 this.Adapter.UpdateCommand.Parameters[59].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[60].Value = global::System.DBNull.Value;
             }
-            if ((Original_Discount_Percent.HasValue == true)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[59].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[60].Value = ((string)(Original_Ship_Country));
+            }
+            if ((Original_Days_Due.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[61].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[62].Value = ((double)(Original_Discount_Percent.Value));
+                this.Adapter.UpdateCommand.Parameters[62].Value = ((short)(Original_Days_Due.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[61].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[62].Value = global::System.DBNull.Value;
             }
-            if ((Original_Phone_Number == null)) {
+            if ((Original_Discount_Days_Due.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[63].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[64].Value = ((short)(Original_Discount_Days_Due.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[63].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[64].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[63].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[64].Value = ((string)(Original_Phone_Number));
+            if ((Original_Discount_Percent.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[65].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[66].Value = ((double)(Original_Discount_Percent.Value));
             }
-            if ((Original_Fax_Number == null)) {
+            else {
                 this.Adapter.UpdateCommand.Parameters[65].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[66].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[65].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[66].Value = ((string)(Original_Fax_Number));
-            }
-            if ((Original_Contact_Person == null)) {
+            if ((Original_Phone_Number == null)) {
                 this.Adapter.UpdateCommand.Parameters[67].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[68].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[67].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[68].Value = ((string)(Original_Contact_Person));
+                this.Adapter.UpdateCommand.Parameters[68].Value = ((string)(Original_Phone_Number));
             }
-            if ((Original_Email_Address == null)) {
+            if ((Original_Fax_Number == null)) {
                 this.Adapter.UpdateCommand.Parameters[69].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[70].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[69].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[70].Value = ((string)(Original_Email_Address));
+                this.Adapter.UpdateCommand.Parameters[70].Value = ((string)(Original_Fax_Number));
             }
-            if ((Original_Swing_Number == null)) {
+            if ((Original_Contact_Person == null)) {
                 this.Adapter.UpdateCommand.Parameters[71].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[72].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[71].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[72].Value = ((string)(Original_Swing_Number));
+                this.Adapter.UpdateCommand.Parameters[72].Value = ((string)(Original_Contact_Person));
             }
-            if ((Original_Who_Entered == null)) {
+            if ((Original_Email_Address == null)) {
                 this.Adapter.UpdateCommand.Parameters[73].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[74].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[73].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[74].Value = ((string)(Original_Who_Entered));
+                this.Adapter.UpdateCommand.Parameters[74].Value = ((string)(Original_Email_Address));
             }
-            if ((Original_Decimal_Points.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[75].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[76].Value = ((short)(Original_Decimal_Points.Value));
-            }
-            else {
+            if ((Original_Swing_Number == null)) {
                 this.Adapter.UpdateCommand.Parameters[75].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[76].Value = global::System.DBNull.Value;
             }
-            if ((Original_Customer_Credit_Limit.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[77].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[78].Value = ((double)(Original_Customer_Credit_Limit.Value));
-            }
             else {
+                this.Adapter.UpdateCommand.Parameters[75].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[76].Value = ((string)(Original_Swing_Number));
+            }
+            if ((Original_Who_Entered == null)) {
                 this.Adapter.UpdateCommand.Parameters[77].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[78].Value = global::System.DBNull.Value;
             }
-            if ((Original_Territory.HasValue == true)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[77].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[78].Value = ((string)(Original_Who_Entered));
+            }
+            if ((Original_Decimal_Points.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[79].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[80].Value = ((short)(Original_Territory.Value));
+                this.Adapter.UpdateCommand.Parameters[80].Value = ((short)(Original_Decimal_Points.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[79].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[80].Value = global::System.DBNull.Value;
             }
-            if ((Original_Freight_Terms == null)) {
+            if ((Original_Customer_Credit_Limit.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[81].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[82].Value = ((double)(Original_Customer_Credit_Limit.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[81].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[82].Value = global::System.DBNull.Value;
             }
+            if ((Original_Territory.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[83].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[84].Value = ((short)(Original_Territory.Value));
+            }
             else {
-                this.Adapter.UpdateCommand.Parameters[81].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[82].Value = ((string)(Original_Freight_Terms));
+                this.Adapter.UpdateCommand.Parameters[83].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[84].Value = global::System.DBNull.Value;
+            }
+            if ((Original_Freight_Terms == null)) {
+                this.Adapter.UpdateCommand.Parameters[85].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[86].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[85].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[86].Value = ((string)(Original_Freight_Terms));
+            }
+            if ((Original_Min_Per_Line == null)) {
+                this.Adapter.UpdateCommand.Parameters[87].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[88].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[87].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[88].Value = ((string)(Original_Min_Per_Line));
+            }
+            if ((Original_Min_Per_Order == null)) {
+                this.Adapter.UpdateCommand.Parameters[89].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[90].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[89].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[90].Value = ((string)(Original_Min_Per_Order));
+            }
+            if ((Original_Min_Per_Line1 == null)) {
+                this.Adapter.UpdateCommand.Parameters[91].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[92].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[91].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[92].Value = ((string)(Original_Min_Per_Line1));
+            }
+            if ((Original_Min_Per_Order1 == null)) {
+                this.Adapter.UpdateCommand.Parameters[93].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[94].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[93].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[94].Value = ((string)(Original_Min_Per_Order1));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -21760,6 +22017,10 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
                     global::System.Nullable<double> Customer_Credit_Limit, 
                     global::System.Nullable<short> Territory, 
                     string Freight_Terms, 
+                    string Min_Per_Line, 
+                    string Min_Per_Order, 
+                    string Min_Per_Line1, 
+                    string Min_Per_Order1, 
                     string Original_Customer_Number, 
                     string Original_Customer_Bill_Name, 
                     string Original_Bill_Address_1, 
@@ -21787,8 +22048,12 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
                     global::System.Nullable<short> Original_Decimal_Points, 
                     global::System.Nullable<double> Original_Customer_Credit_Limit, 
                     global::System.Nullable<short> Original_Territory, 
-                    string Original_Freight_Terms) {
-            return this.Update(Original_Customer_Number, Customer_Bill_Name, Bill_Address_1, Bill_Address_2, Bill_City, Bill_State, Bill_Zip, Bill_Country, Customer_Ship_Name, Ship_Address_1, Ship_Address_2, Ship_City, Ship_State, Ship_Zip, Ship_Country, Days_Due, Discount_Days_Due, Discount_Percent, Phone_Number, Fax_Number, Contact_Person, Email_Address, Swing_Number, Who_Entered, Decimal_Points, Customer_Credit_Limit, Territory, Freight_Terms, Original_Customer_Number, Original_Customer_Bill_Name, Original_Bill_Address_1, Original_Bill_Address_2, Original_Bill_City, Original_Bill_State, Original_Bill_Zip, Original_Bill_Country, Original_Customer_Ship_Name, Original_Ship_Address_1, Original_Ship_Address_2, Original_Ship_City, Original_Ship_State, Original_Ship_Zip, Original_Ship_Country, Original_Days_Due, Original_Discount_Days_Due, Original_Discount_Percent, Original_Phone_Number, Original_Fax_Number, Original_Contact_Person, Original_Email_Address, Original_Swing_Number, Original_Who_Entered, Original_Decimal_Points, Original_Customer_Credit_Limit, Original_Territory, Original_Freight_Terms);
+                    string Original_Freight_Terms, 
+                    string Original_Min_Per_Line, 
+                    string Original_Min_Per_Order, 
+                    string Original_Min_Per_Line1, 
+                    string Original_Min_Per_Order1) {
+            return this.Update(Original_Customer_Number, Customer_Bill_Name, Bill_Address_1, Bill_Address_2, Bill_City, Bill_State, Bill_Zip, Bill_Country, Customer_Ship_Name, Ship_Address_1, Ship_Address_2, Ship_City, Ship_State, Ship_Zip, Ship_Country, Days_Due, Discount_Days_Due, Discount_Percent, Phone_Number, Fax_Number, Contact_Person, Email_Address, Swing_Number, Who_Entered, Decimal_Points, Customer_Credit_Limit, Territory, Freight_Terms, Min_Per_Line, Min_Per_Order, Min_Per_Line1, Min_Per_Order1, Original_Customer_Number, Original_Customer_Bill_Name, Original_Bill_Address_1, Original_Bill_Address_2, Original_Bill_City, Original_Bill_State, Original_Bill_Zip, Original_Bill_Country, Original_Customer_Ship_Name, Original_Ship_Address_1, Original_Ship_Address_2, Original_Ship_City, Original_Ship_State, Original_Ship_Zip, Original_Ship_Country, Original_Days_Due, Original_Discount_Days_Due, Original_Discount_Percent, Original_Phone_Number, Original_Fax_Number, Original_Contact_Person, Original_Email_Address, Original_Swing_Number, Original_Who_Entered, Original_Decimal_Points, Original_Customer_Credit_Limit, Original_Territory, Original_Freight_Terms, Original_Min_Per_Line, Original_Min_Per_Order, Original_Min_Per_Line1, Original_Min_Per_Order1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -21824,8 +22089,10 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
                     global::System.Nullable<decimal> Customer_Credit_Limit, 
                     global::System.Nullable<short> Territory, 
                     string Freight_Terms, 
-                    object Min_Per_Line, 
-                    object Min_Per_Order) {
+                    string Min_Per_Line, 
+                    string Min_Per_Order, 
+                    string Min_Per_Line1, 
+                    string Min_Per_Order1) {
             global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[5];
             if ((Customer_Number == null)) {
                 throw new global::System.ArgumentNullException("Customer_Number");
@@ -21996,16 +22263,28 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
                 command.Parameters[27].Value = ((string)(Freight_Terms));
             }
             if ((Min_Per_Line == null)) {
-                throw new global::System.ArgumentNullException("Min_Per_Line");
+                command.Parameters[28].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[28].Value = ((object)(Min_Per_Line));
+                command.Parameters[28].Value = ((string)(Min_Per_Line));
             }
             if ((Min_Per_Order == null)) {
-                throw new global::System.ArgumentNullException("Min_Per_Order");
+                command.Parameters[29].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[29].Value = ((object)(Min_Per_Order));
+                command.Parameters[29].Value = ((string)(Min_Per_Order));
+            }
+            if ((Min_Per_Line1 == null)) {
+                command.Parameters[30].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[30].Value = ((string)(Min_Per_Line1));
+            }
+            if ((Min_Per_Order1 == null)) {
+                command.Parameters[31].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[31].Value = ((string)(Min_Per_Order1));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 

@@ -49,7 +49,7 @@ namespace Unified_Price_for_Var
             cmbTo5.DisplayMember = "Item Number";
             cmbTo5.ValueMember = "Item Number";
 
-            _dataTableCustomer = Db.ExecuteDataTable("SELECT [Customer Number], [Customer Bill Name] + ' (' + [Customer Number] + ')' AS [Combinet Name] FROM tblCustomers ORDER BY [Customer Number]");
+            _dataTableCustomer = Db.ExecuteDataTable("SELECT [Customer Number], [Customer Bill Name] + ' (' + [Customer Number] + ')' AS [Combinet Name] FROM tblCustomers ORDER BY [Customer Bill Name] + ' (' + [Customer Number] + ')'");
             cmbCust.DataSource = _dataTableCustomer;
             cmbCust.DisplayMember = "Combinet Name";
             cmbCust.ValueMember = "Customer Number";

@@ -57,6 +57,8 @@
             System.Windows.Forms.Label freight_TermsLabel;
             System.Windows.Forms.Label min_Per_LineLabel;
             System.Windows.Forms.Label min_Per_OrderLabel;
+            System.Windows.Forms.Label label2;
+            System.Windows.Forms.Label label3;
             this.lbl2 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnDelCustomer = new System.Windows.Forms.Button();
@@ -81,8 +83,11 @@
             this.txtViewbill_Address_1 = new System.Windows.Forms.TextBox();
             this.txtViewCustomer_Bill_Name = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtMinPerOrder1 = new System.Windows.Forms.TextBox();
+            this.txtMinPerLine1 = new System.Windows.Forms.TextBox();
             this.txtMinPerOrder = new System.Windows.Forms.TextBox();
             this.txtMinPerLine = new System.Windows.Forms.TextBox();
+            this.cmbSwing = new System.Windows.Forms.ComboBox();
             this.txtFreight = new System.Windows.Forms.TextBox();
             this.txtViewDiscount_Percent = new System.Windows.Forms.TextBox();
             this.txtViewTerritory = new System.Windows.Forms.TextBox();
@@ -95,7 +100,6 @@
             this.txtViewEmail_Address = new System.Windows.Forms.TextBox();
             this.txtViewContact_Person = new System.Windows.Forms.TextBox();
             this.txtViewCustomer_Number = new System.Windows.Forms.TextBox();
-            this.cmbSwing = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbCustomers = new System.Windows.Forms.ComboBox();
             this.tblCustomersTableAdapter = new Unified_Price_for_Var.Pricing_for_Tanya_DataSetTableAdapters.tblCustomersTableAdapter();
@@ -131,6 +135,8 @@
             freight_TermsLabel = new System.Windows.Forms.Label();
             min_Per_LineLabel = new System.Windows.Forms.Label();
             min_Per_OrderLabel = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tblCustomersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pricing_for_Tanya_DataSet)).BeginInit();
@@ -390,6 +396,24 @@
             min_Per_OrderLabel.TabIndex = 30;
             min_Per_OrderLabel.Text = "Min Per Order:";
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(238, 132);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(81, 13);
+            label2.TabIndex = 33;
+            label2.Text = "Min Per Order1:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(19, 132);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(75, 13);
+            label3.TabIndex = 32;
+            label3.Text = "Min Per Line1:";
+            // 
             // lbl2
             // 
             this.lbl2.AutoSize = true;
@@ -403,7 +427,7 @@
             // btnExit
             // 
             this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnExit.Location = new System.Drawing.Point(790, 385);
+            this.btnExit.Location = new System.Drawing.Point(790, 441);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 24;
@@ -413,7 +437,7 @@
             // 
             // btnDelCustomer
             // 
-            this.btnDelCustomer.Location = new System.Drawing.Point(672, 385);
+            this.btnDelCustomer.Location = new System.Drawing.Point(672, 413);
             this.btnDelCustomer.Name = "btnDelCustomer";
             this.btnDelCustomer.Size = new System.Drawing.Size(100, 23);
             this.btnDelCustomer.TabIndex = 22;
@@ -423,7 +447,7 @@
             // 
             // btnAddCustomer
             // 
-            this.btnAddCustomer.Location = new System.Drawing.Point(566, 385);
+            this.btnAddCustomer.Location = new System.Drawing.Point(566, 413);
             this.btnAddCustomer.Name = "btnAddCustomer";
             this.btnAddCustomer.Size = new System.Drawing.Size(93, 23);
             this.btnAddCustomer.TabIndex = 21;
@@ -433,7 +457,7 @@
             // 
             // btnModifyCustomer
             // 
-            this.btnModifyCustomer.Location = new System.Drawing.Point(450, 385);
+            this.btnModifyCustomer.Location = new System.Drawing.Point(450, 413);
             this.btnModifyCustomer.Name = "btnModifyCustomer";
             this.btnModifyCustomer.Size = new System.Drawing.Size(106, 23);
             this.btnModifyCustomer.TabIndex = 20;
@@ -458,7 +482,7 @@
             this.groupBox3.Controls.Add(this.txtViewShip_Address_1);
             this.groupBox3.Controls.Add(customer_Ship_NameLabel);
             this.groupBox3.Controls.Add(this.txtViewCustomer_Ship_Name);
-            this.groupBox3.Location = new System.Drawing.Point(431, 243);
+            this.groupBox3.Location = new System.Drawing.Point(431, 267);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(411, 130);
             this.groupBox3.TabIndex = 19;
@@ -568,7 +592,7 @@
             this.groupBox2.Controls.Add(customer_Bill_NameLabel);
             this.groupBox2.Controls.Add(this.txtViewCustomer_Bill_Name);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(8, 243);
+            this.groupBox2.Location = new System.Drawing.Point(8, 267);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(422, 130);
             this.groupBox2.TabIndex = 18;
@@ -653,6 +677,10 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.Controls.Add(label2);
+            this.groupBox1.Controls.Add(this.txtMinPerOrder1);
+            this.groupBox1.Controls.Add(label3);
+            this.groupBox1.Controls.Add(this.txtMinPerLine1);
             this.groupBox1.Controls.Add(min_Per_OrderLabel);
             this.groupBox1.Controls.Add(this.txtMinPerOrder);
             this.groupBox1.Controls.Add(min_Per_LineLabel);
@@ -685,10 +713,28 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox1.Location = new System.Drawing.Point(8, 107);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(833, 150);
+            this.groupBox1.Size = new System.Drawing.Size(833, 154);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Information";
+            // 
+            // txtMinPerOrder1
+            // 
+            this.txtMinPerOrder1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tblCustomersBindingSource, "Min Per Order1", true));
+            this.txtMinPerOrder1.Location = new System.Drawing.Point(324, 129);
+            this.txtMinPerOrder1.Name = "txtMinPerOrder1";
+            this.txtMinPerOrder1.ReadOnly = true;
+            this.txtMinPerOrder1.Size = new System.Drawing.Size(43, 20);
+            this.txtMinPerOrder1.TabIndex = 35;
+            // 
+            // txtMinPerLine1
+            // 
+            this.txtMinPerLine1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tblCustomersBindingSource, "Min Per Line1", true));
+            this.txtMinPerLine1.Location = new System.Drawing.Point(115, 129);
+            this.txtMinPerLine1.Name = "txtMinPerLine1";
+            this.txtMinPerLine1.ReadOnly = true;
+            this.txtMinPerLine1.Size = new System.Drawing.Size(40, 20);
+            this.txtMinPerLine1.TabIndex = 34;
             // 
             // txtMinPerOrder
             // 
@@ -707,6 +753,14 @@
             this.txtMinPerLine.ReadOnly = true;
             this.txtMinPerLine.Size = new System.Drawing.Size(40, 20);
             this.txtMinPerLine.TabIndex = 30;
+            // 
+            // cmbSwing
+            // 
+            this.cmbSwing.FormattingEnabled = true;
+            this.cmbSwing.Location = new System.Drawing.Point(708, 46);
+            this.cmbSwing.Name = "cmbSwing";
+            this.cmbSwing.Size = new System.Drawing.Size(100, 21);
+            this.cmbSwing.TabIndex = 10;
             // 
             // txtFreight
             // 
@@ -826,14 +880,6 @@
             this.txtViewCustomer_Number.Tag = "\"Customer number\"";
             this.txtViewCustomer_Number.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbCustomers_KeyPress);
             // 
-            // cmbSwing
-            // 
-            this.cmbSwing.FormattingEnabled = true;
-            this.cmbSwing.Location = new System.Drawing.Point(708, 46);
-            this.cmbSwing.Name = "cmbSwing";
-            this.cmbSwing.Size = new System.Drawing.Size(100, 21);
-            this.cmbSwing.TabIndex = 10;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -908,7 +954,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(218, 385);
+            this.btnUpdate.Location = new System.Drawing.Point(218, 413);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(100, 23);
             this.btnUpdate.TabIndex = 27;
@@ -919,7 +965,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(113, 385);
+            this.btnAdd.Location = new System.Drawing.Point(113, 413);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(100, 23);
             this.btnAdd.TabIndex = 28;
@@ -932,7 +978,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(886, 430);
+            this.ClientSize = new System.Drawing.Size(886, 486);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.lblHidden_CustNumber);
@@ -1011,5 +1057,7 @@
         private System.Windows.Forms.ComboBox cmbSwing;
         private System.Windows.Forms.TextBox txtMinPerOrder;
         private System.Windows.Forms.TextBox txtMinPerLine;
+        private System.Windows.Forms.TextBox txtMinPerOrder1;
+        private System.Windows.Forms.TextBox txtMinPerLine1;
     }
 }

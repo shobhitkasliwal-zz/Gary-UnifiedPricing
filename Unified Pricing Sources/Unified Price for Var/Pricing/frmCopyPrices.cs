@@ -18,6 +18,7 @@ namespace Unified_Price_for_Var
             InitializeComponent();
             _copyToCustomerNumber = copyToCustomerNumber;
             lblCopy_To.Text = copyToCustomerCombinetName;
+            
         }
 
         public void FillGridByCustomer()
@@ -27,7 +28,7 @@ namespace Unified_Price_for_Var
             foreach (DataRow price in prices.Rows)
             {
                 gridPrices.Rows.Add(price["Item Number"], ((decimal)price["Current Price"]).ToString("0.0000"), ((decimal)price["Old Price"]).ToString("0.0000"), price["Item Description"], price["Customer Item Number"], price["ID"]);
-            }            
+            }
         }
 
         private void frmCopyPrices_Load(object sender, EventArgs e)
@@ -38,17 +39,17 @@ namespace Unified_Price_for_Var
             cmbCustomers.DataSource = dataTable;
             cmbCustomers.DisplayMember = "Combinet Name";
             cmbCustomers.ValueMember = "Customer Number";
-        	FillGridByCustomer();
+            FillGridByCustomer();
         }
 
         private void cmbSelect_Customer_SelectedIndexChanged(object sender, EventArgs e)
         {
             FillGridByCustomer();
         }
-//======================================================================================================
+        //======================================================================================================
         private void btnCopy_Prices_Click(object sender, EventArgs e)
         {
-            if(chbRepDup.Checked == false || rdoSkip.Checked == true)
+            if (chbRepDup.Checked == false || rdoSkip.Checked == true)
             {
                 foreach (DataGridViewRow row in gridPrices.SelectedRows)
                 {
@@ -63,8 +64,8 @@ namespace Unified_Price_for_Var
                 }
             }
             else
-            {                
-                if(rdoReplace.Checked)
+            {
+                if (rdoReplace.Checked)
                 {
                     foreach (DataGridViewRow row in gridPrices.SelectedRows)
                     {
@@ -77,16 +78,16 @@ namespace Unified_Price_for_Var
                             row.Cells["PreviousPrice"].Value.ToString(),
                             row.Cells["CustomerItemNumber"].Value.ToString()
                             );
-                    }                    
+                    }
                 }
-                else if(rdoExcept.Checked)
+                else if (rdoExcept.Checked)
                 {
                     foreach (DataGridViewRow row in gridPrices.SelectedRows)
                     {
                         var c2 = Db.ExecuteDataRow("SELECT * FROM tblPricing WHERE [Item Number] = '{0}'", row.Cells["ItemNumber"].Value);
-                        if(c2 != null)
+                        if (c2 != null)
                         {
-                            if(Convert.ToDecimal(row.Cells["CurrentPrice"]) > Convert.ToDecimal(c2["Current Price"]))
+                            if (Convert.ToDecimal(row.Cells["CurrentPrice"]) > Convert.ToDecimal(c2["Current Price"]))
                             {
                                 Db.NonQuery("DELETE FROM tblPricing WHERE [Customer Number] = '{0}' AND [Item Number] = '{1}", _copyToCustomerNumber, c2["Item Number"]);
                                 Db.NonQuery("INSERT INTO tblPricing ([Customer Number], [Item Number], [Item Description], [Current Price], [Old Price], [Customer Item Number]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')",
@@ -96,7 +97,7 @@ namespace Unified_Price_for_Var
                                     row.Cells["CurrentPrice"].Value.ToString(),
                                     row.Cells["PreviousPrice"].Value.ToString(),
                                     row.Cells["CustomerItemNumber"].Value.ToString()
-                                    );     
+                                    );
                             }
                         }
                         else
@@ -108,9 +109,9 @@ namespace Unified_Price_for_Var
                                 row.Cells["CurrentPrice"].Value.ToString(),
                                 row.Cells["PreviousPrice"].Value.ToString(),
                                 row.Cells["CustomerItemNumber"].Value.ToString()
-                                );                            
-                        }                        
-                    }      
+                                );
+                        }
+                    }
                 }
             }
 
@@ -123,7 +124,7 @@ namespace Unified_Price_for_Var
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
-//====================================================================================================
+        //====================================================================================================
         private void Exit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -136,13 +137,13 @@ namespace Unified_Price_for_Var
 
         private void btnCheckAll_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in gridPrices.Rows)            
-                row.Selected = true;            
+            foreach (DataGridViewRow row in gridPrices.Rows)
+                row.Selected = true;
         }
 
         private void rdoReplace_CheckedChanged(object sender, EventArgs e)
         {
-            if(rdoReplace.Checked)
+            if (rdoReplace.Checked)
                 rdoReplace.Font = new Font(rdoReplace.Font.FontFamily, rdoReplace.Font.Size, FontStyle.Bold);
             else
                 rdoReplace.Font = new Font(rdoReplace.Font.FontFamily, rdoReplace.Font.Size, FontStyle.Regular);
@@ -166,9 +167,9 @@ namespace Unified_Price_for_Var
 
         private void cmbCustomers_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.KeyChar = Char.ToUpper(e.KeyChar);  
+            e.KeyChar = Char.ToUpper(e.KeyChar);
         }
 
-       
+
     }
 }

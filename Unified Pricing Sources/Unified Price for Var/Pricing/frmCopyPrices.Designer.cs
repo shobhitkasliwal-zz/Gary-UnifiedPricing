@@ -110,7 +110,7 @@
             this.lblCopy_To.Size = new System.Drawing.Size(88, 16);
             this.lblCopy_To.TabIndex = 4;
             this.lblCopy_To.Text = "lblCopy_To";
-     
+            this.lblCopy_To.UseMnemonic = false;
             // 
             // cmbCustomers
             // 
@@ -136,7 +136,7 @@
             this.label5.Size = new System.Drawing.Size(521, 15);
             this.label5.TabIndex = 7;
             this.label5.Text = "Below are all of the Items for the Customer you are copying from. Select Items yo" +
-                "u want to copy:";
+    "u want to copy:";
             // 
             // btnCopy_Prices
             // 

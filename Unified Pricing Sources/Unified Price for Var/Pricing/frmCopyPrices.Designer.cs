@@ -52,6 +52,7 @@
             this.ItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerItemNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuoteDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpReplace.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPrices)).BeginInit();
             this.SuspendLayout();
@@ -256,7 +257,8 @@
             this.PreviousPrice,
             this.ItemDescription,
             this.CustomerItemNumber,
-            this.ID});
+            this.ID,
+            this.QuoteDate});
             this.gridPrices.Location = new System.Drawing.Point(43, 249);
             this.gridPrices.Name = "gridPrices";
             this.gridPrices.ReadOnly = true;
@@ -304,6 +306,12 @@
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
             this.ID.Visible = false;
+            // 
+            // QuoteDate
+            // 
+            this.QuoteDate.HeaderText = "QuoteDate";
+            this.QuoteDate.Name = "QuoteDate";
+            this.QuoteDate.ReadOnly = true;
             // 
             // frmCopyPrices
             // 
@@ -361,5 +369,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerItemNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QuoteDate;
     }
 }

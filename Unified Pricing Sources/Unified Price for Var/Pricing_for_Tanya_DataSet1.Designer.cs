@@ -3214,6 +3214,8 @@ namespace Unified_Price_for_Var {
             
             private global::System.Data.DataColumn columnMin_Per_Order1;
             
+            private global::System.Data.DataColumn columnCombinet_Name;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public tblCustomersDataTable() {
@@ -3505,6 +3507,14 @@ namespace Unified_Price_for_Var {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Combinet_NameColumn {
+                get {
+                    return this.columnCombinet_Name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3572,7 +3582,8 @@ namespace Unified_Price_for_Var {
                         string Min_Per_Line, 
                         string Min_Per_Order, 
                         string Min_Per_Line1, 
-                        string Min_Per_Order1) {
+                        string Min_Per_Order1, 
+                        string Combinet_Name) {
                 tblCustomersRow rowtblCustomersRow = ((tblCustomersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Customer_Number,
@@ -3606,7 +3617,8 @@ namespace Unified_Price_for_Var {
                         Min_Per_Line,
                         Min_Per_Order,
                         Min_Per_Line1,
-                        Min_Per_Order1};
+                        Min_Per_Order1,
+                        Combinet_Name};
                 rowtblCustomersRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowtblCustomersRow);
                 return rowtblCustomersRow;
@@ -3668,6 +3680,7 @@ namespace Unified_Price_for_Var {
                 this.columnMin_Per_Order = base.Columns["Min Per Order"];
                 this.columnMin_Per_Line1 = base.Columns["Min Per Line1"];
                 this.columnMin_Per_Order1 = base.Columns["Min Per Order1"];
+                this.columnCombinet_Name = base.Columns["Combinet Name"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3737,6 +3750,8 @@ namespace Unified_Price_for_Var {
                 base.Columns.Add(this.columnMin_Per_Line1);
                 this.columnMin_Per_Order1 = new global::System.Data.DataColumn("Min Per Order1", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMin_Per_Order1);
+                this.columnCombinet_Name = new global::System.Data.DataColumn("Combinet Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCombinet_Name);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnCustomer_Number}, true));
                 this.columnCustomer_Number.AllowDBNull = false;
@@ -3764,6 +3779,8 @@ namespace Unified_Price_for_Var {
                 this.columnWho_Entered.MaxLength = 50;
                 this.columnMin_Per_Line1.MaxLength = 255;
                 this.columnMin_Per_Order1.MaxLength = 255;
+                this.columnCombinet_Name.ReadOnly = true;
+                this.columnCombinet_Name.MaxLength = 536870910;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12632,6 +12649,22 @@ namespace Unified_Price_for_Var {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Combinet_Name {
+                get {
+                    try {
+                        return ((string)(this[this.tabletblCustomers.Combinet_NameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Combinet Name\' in table \'tblCustomers\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletblCustomers.Combinet_NameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsCustomer_Bill_NameNull() {
                 return this.IsNull(this.tabletblCustomers.Customer_Bill_NameColumn);
             }
@@ -13000,6 +13033,18 @@ namespace Unified_Price_for_Var {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetMin_Per_Order1Null() {
                 this[this.tabletblCustomers.Min_Per_Order1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCombinet_NameNull() {
+                return this.IsNull(this.tabletblCustomers.Combinet_NameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCombinet_NameNull() {
+                this[this.tabletblCustomers.Combinet_NameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -20298,6 +20343,7 @@ namespace Unified_Price_for_Var.Pricing_for_Tanya_DataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Min Per Order", "Min Per Order");
             tableMapping.ColumnMappings.Add("Min Per Line1", "Min Per Line1");
             tableMapping.ColumnMappings.Add("Min Per Order1", "Min Per Order1");
+            tableMapping.ColumnMappings.Add("Combinet Name", "Combinet Name");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -20579,7 +20625,7 @@ namespace Unified_Price_for_Var.Pricing_for_Tanya_DataSetTableAdapters {
             this._commandCollection[0].CommandText = @"SELECT        [Customer Number], [Customer Bill Name], [Bill Address 1], [Bill Address 2], [Bill City], [Bill State], [Bill Zip], [Bill Country], [Customer Ship Name], [Ship Address 1], 
                          [Ship Address 2], [Ship City], [Ship State], [Ship Zip], [Ship Country], [Days Due], [Discount Days Due], [Discount Percent], [Phone Number], [Fax Number], 
                          [Contact Person], [Email Address], [Swing Number], [Who Entered], [Decimal Points], [Customer Credit Limit], Territory, [Freight Terms], [Min Per Line], 
-                         [Min Per Order], [Min Per Line1], [Min Per Order1]
+                         [Min Per Order], [Min Per Line1], [Min Per Order1],[Customer Bill Name] + ' (' + [Customer Number] + ')' AS [Combinet Name]
 FROM            tblCustomers";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.OleDb.OleDbCommand();
@@ -20651,7 +20697,7 @@ VALUES        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
             this._commandCollection[7].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Swing_Number", global::System.Data.OleDb.OleDbType.WChar, 50, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Swing Number", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[8] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[8].Connection = this.Connection;
-            this._commandCollection[8].CommandText = @"SELECT [Bill Address 1], [Bill Address 2], [Bill City], [Bill Country], [Bill State], [Bill Zip], [Contact Person], [Customer Bill Name], [Customer Credit Limit], [Customer Number], [Customer Ship Name], [Days Due], [Decimal Points], [Discount Days Due], [Discount Percent], [Email Address], [Fax Number], [Freight Terms], [Min Per Line], [Min Per Line1], [Min Per Order], [Min Per Order1], [Phone Number], [Ship Address 1], [Ship Address 2], [Ship City], [Ship Country], [Ship State], [Ship Zip], [Swing Number], Territory, [Who Entered] FROM tblCustomers ORDER BY [Customer Bill Name]";
+            this._commandCollection[8].CommandText = @"SELECT [Bill Address 1], [Bill Address 2], [Bill City], [Bill Country], [Bill State], [Bill Zip], [Customer Bill Name] + ' (' + [Customer Number] + ')' AS [Combinet Name], [Contact Person], [Customer Bill Name], [Customer Credit Limit], [Customer Number], [Customer Ship Name], [Days Due], [Decimal Points], [Discount Days Due], [Discount Percent], [Email Address], [Fax Number], [Freight Terms], [Min Per Line], [Min Per Line1], [Min Per Order], [Min Per Order1], [Phone Number], [Ship Address 1], [Ship Address 2], [Ship City], [Ship Country], [Ship State], [Ship Zip], [Swing Number], Territory, [Who Entered] FROM tblCustomers ORDER BY [Customer Bill Name]";
             this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[9] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[9].Connection = this.Connection;

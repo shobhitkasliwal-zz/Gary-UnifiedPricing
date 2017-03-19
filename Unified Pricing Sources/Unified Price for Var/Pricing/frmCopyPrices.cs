@@ -27,7 +27,7 @@ namespace Unified_Price_for_Var
             gridPrices.Rows.Clear();
             foreach (DataRow price in prices.Rows)
             {
-                gridPrices.Rows.Add(price["Item Number"], ((decimal)price["Current Price"]).ToString("0.0000"), ((decimal)price["Old Price"]).ToString("0.0000"), price["Item Description"], price["Customer Item Number"], price["ID"]);
+                gridPrices.Rows.Add(price["Item Number"], ((decimal)price["Current Price"]).ToString("0.0000"), ((decimal)price["Old Price"]).ToString("0.0000"), price["Item Description"], price["Customer Item Number"], price["ID"], price["QuoteDate"]);
             }
         }
 
@@ -53,13 +53,14 @@ namespace Unified_Price_for_Var
             {
                 foreach (DataGridViewRow row in gridPrices.SelectedRows)
                 {
-                    Db.NonQuery("INSERT INTO tblPricing ([Customer Number], [Item Number], [Item Description], [Current Price], [Old Price], [Customer Item Number]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')",
+                    Db.NonQuery("INSERT INTO tblPricing ([Customer Number], [Item Number], [Item Description], [Current Price], [Old Price], [Customer Item Number], [QuoteDate]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}','{6}')",
                         _copyToCustomerNumber,
                         row.Cells["ItemNumber"].Value.ToString(),
                         Db.AddSlashes(row.Cells["ItemDescription"].Value.ToString()),
                         row.Cells["CurrentPrice"].Value.ToString(),
                         row.Cells["PreviousPrice"].Value.ToString(),
-                        row.Cells["CustomerItemNumber"].Value.ToString()
+                        row.Cells["CustomerItemNumber"].Value.ToString(),
+                        row.Cells["QuoteDate"].Value.ToString()
                         );
                 }
             }
@@ -70,13 +71,15 @@ namespace Unified_Price_for_Var
                     foreach (DataGridViewRow row in gridPrices.SelectedRows)
                     {
                         Db.NonQuery("DELETE FROM tblPricing WHERE [Customer Number] = '{0}' AND [Item Number] = '{1}", _copyToCustomerNumber, row.Cells["ItemNumber"].Value);
-                        Db.NonQuery("INSERT INTO tblPricing ([Customer Number], [Item Number], [Item Description], [Current Price], [Old Price], [Customer Item Number]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')",
+                        Db.NonQuery("INSERT INTO tblPricing ([Customer Number], [Item Number], [Item Description], [Current Price], [Old Price], [Customer Item Number], [QuoteDate]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}')",
                             _copyToCustomerNumber,
                             row.Cells["ItemNumber"].Value.ToString(),
                             Db.AddSlashes(row.Cells["ItemDescription"].Value.ToString()),
                             row.Cells["CurrentPrice"].Value.ToString(),
                             row.Cells["PreviousPrice"].Value.ToString(),
-                            row.Cells["CustomerItemNumber"].Value.ToString()
+                            row.Cells["CustomerItemNumber"].Value.ToString(),
+                            row.Cells["QuoteDate"].Value.ToString()
+
                             );
                     }
                 }
@@ -90,25 +93,29 @@ namespace Unified_Price_for_Var
                             if (Convert.ToDecimal(row.Cells["CurrentPrice"]) > Convert.ToDecimal(c2["Current Price"]))
                             {
                                 Db.NonQuery("DELETE FROM tblPricing WHERE [Customer Number] = '{0}' AND [Item Number] = '{1}", _copyToCustomerNumber, c2["Item Number"]);
-                                Db.NonQuery("INSERT INTO tblPricing ([Customer Number], [Item Number], [Item Description], [Current Price], [Old Price], [Customer Item Number]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')",
+                                Db.NonQuery("INSERT INTO tblPricing ([Customer Number], [Item Number], [Item Description], [Current Price], [Old Price], [Customer Item Number], [QuoteDate]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}')",
                                     _copyToCustomerNumber,
                                     row.Cells["ItemNumber"].Value.ToString(),
                                     Db.AddSlashes(row.Cells["ItemDescription"].Value.ToString()),
                                     row.Cells["CurrentPrice"].Value.ToString(),
                                     row.Cells["PreviousPrice"].Value.ToString(),
-                                    row.Cells["CustomerItemNumber"].Value.ToString()
+                                    row.Cells["CustomerItemNumber"].Value.ToString(),
+                                    row.Cells["QuoteDate"].Value.ToString()
+
                                     );
                             }
                         }
                         else
                         {
-                            Db.NonQuery("INSERT INTO tblPricing ([Customer Number], [Item Number], [Item Description], [Current Price], [Old Price], [Customer Item Number]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')",
+                            Db.NonQuery("INSERT INTO tblPricing ([Customer Number], [Item Number], [Item Description], [Current Price], [Old Price], [Customer Item Number], [QuoteDate]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}')",
                                 _copyToCustomerNumber,
                                 row.Cells["ItemNumber"].Value.ToString(),
                                 Db.AddSlashes(row.Cells["ItemDescription"].Value.ToString()),
                                 row.Cells["CurrentPrice"].Value.ToString(),
                                 row.Cells["PreviousPrice"].Value.ToString(),
-                                row.Cells["CustomerItemNumber"].Value.ToString()
+                                row.Cells["CustomerItemNumber"].Value.ToString(),
+                                row.Cells["QuoteDate"].Value.ToString()
+
                                 );
                         }
                     }

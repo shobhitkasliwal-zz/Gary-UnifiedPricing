@@ -895,7 +895,7 @@
             this.cmbCustomers.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cmbCustomers.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbCustomers.DataSource = this.tblCustomersBindingSource;
-            this.cmbCustomers.DisplayMember = "Customer Number";
+            this.cmbCustomers.DisplayMember = "Combinet Name";
             this.cmbCustomers.FormattingEnabled = true;
             this.cmbCustomers.Location = new System.Drawing.Point(95, 70);
             this.cmbCustomers.Name = "cmbCustomers";

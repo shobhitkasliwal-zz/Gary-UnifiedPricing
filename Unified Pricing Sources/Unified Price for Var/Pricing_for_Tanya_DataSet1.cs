@@ -1,7 +1,9 @@
-﻿namespace Unified_Price_for_Var {
-    
-    
-    public partial class Pricing_for_Tanya_DataSet {
+﻿namespace Unified_Price_for_Var
+{
+
+
+    public partial class Pricing_for_Tanya_DataSet
+    {
     }
 }
 

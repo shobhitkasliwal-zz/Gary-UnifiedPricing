@@ -810,16 +810,18 @@
             // 
             // cmbSalesPerson
             // 
+            this.cmbSalesPerson.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmbSalesPerson.FormattingEnabled = true;
-            this.cmbSalesPerson.Location = new System.Drawing.Point(266, 517);
+            this.cmbSalesPerson.Location = new System.Drawing.Point(266, 519);
             this.cmbSalesPerson.Name = "cmbSalesPerson";
             this.cmbSalesPerson.Size = new System.Drawing.Size(169, 21);
             this.cmbSalesPerson.TabIndex = 49;
             // 
             // label26
             // 
+            this.label26.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(263, 501);
+            this.label26.Location = new System.Drawing.Point(263, 503);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(110, 13);
             this.label26.TabIndex = 50;

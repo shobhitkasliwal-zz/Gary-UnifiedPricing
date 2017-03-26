@@ -204,15 +204,7 @@ namespace Unified_Price_for_Var
                 rdoPrintCustBySalesPer.Font = new Font(rdoSwing1.Font.FontFamily, rdoSwing1.Font.Size, FontStyle.Regular);
 
         }
-        //=========================================================================================================
-        private void rdoSwing2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rdoSwing2.Checked)
-                rdoSwing2.Font = new Font(rdoSwing2.Font.FontFamily, rdoSwing2.Font.Size, FontStyle.Bold);
-            else
-                rdoSwing2.Font = new Font(rdoSwing2.Font.FontFamily, rdoSwing2.Font.Size, FontStyle.Regular);
-
-        }
+       
         //=========================================================================================================
         private void rdoSwing1_CheckedChanged(object sender, EventArgs e)
         {

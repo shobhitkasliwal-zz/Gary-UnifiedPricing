@@ -129,6 +129,9 @@
     </Compile>
     <Compile Include="CrystalReports\Report1_new.cs">
       <SubType>Component</SubType>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Report1_new.rpt</DependentUpon>
     </Compile>
     <Compile Include="CrystalReports\Report2_new.cs">
       <DependentUpon>Report2_new.rpt</DependentUpon>
@@ -321,6 +324,7 @@
     </Compile>
     <Compile Include="Pricing_for_Tanya_DataSet1.cs">
       <DependentUpon>Pricing_for_Tanya_DataSet1.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -28,7 +28,7 @@ namespace Unified_Price_for_Var
         public DataTable _dataTableItemsFrom5;
         public DataTable _dataTableItemsTo5;
         public DataTable _dataTableCustomer5;
-
+        public DataTable _dataTableSalesPerson;
 
         public frmReports()
         {
@@ -59,10 +59,11 @@ namespace Unified_Price_for_Var
             cmbCust5.DisplayMember = "Combinet Name";
             cmbCust5.ValueMember = "Customer Number";
 
-            _dataTableSwing = Db.ExecuteDataTable("SELECT [Swing Number], [Swing Name], [Swing Number] + ' - ' + [Swing Name] AS [Header] FROM tblSwingNumbers ORDER BY [Swing Name]");
-            cmbSwing.DataSource = _dataTableSwing;
-            cmbSwing.DisplayMember = "Header";
-            cmbSwing.ValueMember = "Swing Number";
+            //Since we are not showing this report anymore so not populating the combobox
+            // _dataTableSwing = Db.ExecuteDataTable("SELECT [Swing Number], [Swing Name], [Swing Number] + ' - ' + [Swing Name] AS [Header] FROM tblSwingNumbers ORDER BY [Swing Name]");
+            /// cmbSwing.DataSource = _dataTableSwing;
+            //cmbSwing.DisplayMember = "Header";
+            ///cmbSwing.ValueMember = "Swing Number";
 
             _dataTableCustomerFrom = Db.ExecuteDataTable("SELECT [Customer Number], [Customer Bill Name] + ' (' + [Customer Number] + ')' AS [Combinet Name] FROM tblCustomers ORDER BY [Customer Number]");
             cmbCustFrom.DataSource = _dataTableCustomerFrom;
@@ -78,6 +79,11 @@ namespace Unified_Price_for_Var
             cmbCompItem.DataSource = _dataTableCompItems;
             cmbCompItem.DisplayMember = "Item Number";
             cmbCompItem.ValueMember = "Item Number";
+
+            _dataTableSalesPerson = Db.ExecuteDataTable("SELECT [Swing Number], [Swing Name], [Swing Number] + ' - ' + [Swing Name] AS [Header] FROM tblSwingNumbers ORDER BY [Swing Name]");
+            cmbSalesPerson.DataSource = _dataTableSalesPerson;
+            cmbSalesPerson.DisplayMember = "Header";
+            cmbSalesPerson.ValueMember = "Swing Number";
 
             this.Visible = true;
         }
@@ -188,6 +194,25 @@ namespace Unified_Price_for_Var
 
         }
 
+
+        //=========================================================================================================
+        private void rdoPrintCustBySalesPer_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdoPrintCustBySalesPer.Checked)
+                rdoPrintCustBySalesPer.Font = new Font(rdoSwing1.Font.FontFamily, rdoSwing1.Font.Size, FontStyle.Bold);
+            else
+                rdoPrintCustBySalesPer.Font = new Font(rdoSwing1.Font.FontFamily, rdoSwing1.Font.Size, FontStyle.Regular);
+
+        }
+        //=========================================================================================================
+        private void rdoSwing2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdoSwing2.Checked)
+                rdoSwing2.Font = new Font(rdoSwing2.Font.FontFamily, rdoSwing2.Font.Size, FontStyle.Bold);
+            else
+                rdoSwing2.Font = new Font(rdoSwing2.Font.FontFamily, rdoSwing2.Font.Size, FontStyle.Regular);
+
+        }
         //=========================================================================================================
         private void rdoSwing1_CheckedChanged(object sender, EventArgs e)
         {
@@ -735,12 +760,17 @@ namespace Unified_Price_for_Var
 
                         }
                     }
+                    ReportViewers.frmBySwing_Report_Viewer frm = new ReportViewers.frmBySwing_Report_Viewer();
+                    frm.DisplayManagerInfo = ManagerDisplay;
+                    frm.Show();
+
 
                 }
-                ReportViewers.frmBySwing_Report_Viewer frm = new ReportViewers.frmBySwing_Report_Viewer();
-                frm.DisplayManagerInfo = ManagerDisplay;
-                frm.Show();
-
+                else if (rdoPrintCustBySalesPer.Checked)
+                { 
+                
+                }
+                
             }
             else
             {

@@ -87,6 +87,9 @@
             this.label24 = new System.Windows.Forms.Label();
             this.cmbFamily1 = new System.Windows.Forms.ComboBox();
             this.cmbCust1 = new System.Windows.Forms.ComboBox();
+            this.rdoPrintCustBySalesPer = new System.Windows.Forms.RadioButton();
+            this.cmbSalesPerson = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             this.pnlCompItems.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -97,7 +100,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(61, 45);
+            this.label1.Location = new System.Drawing.Point(61, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(215, 31);
             this.label1.TabIndex = 0;
@@ -108,7 +111,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(14, 112);
+            this.label2.Location = new System.Drawing.Point(14, 120);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(347, 15);
             this.label2.TabIndex = 1;
@@ -119,19 +122,19 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(34, 146);
+            this.label3.Location = new System.Drawing.Point(34, 154);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(453, 30);
             this.label3.TabIndex = 3;
             this.label3.Text = "You can print a report showing a selected item and who buys it, in descending ord" +
-                "er\r\n(Highest Price to Lowest)";
+    "er\r\n(Highest Price to Lowest)";
             // 
             // rdoPrintAll
             // 
             this.rdoPrintAll.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rdoPrintAll.AutoSize = true;
             this.rdoPrintAll.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoPrintAll.Location = new System.Drawing.Point(45, 246);
+            this.rdoPrintAll.Location = new System.Drawing.Point(45, 254);
             this.rdoPrintAll.Name = "rdoPrintAll";
             this.rdoPrintAll.Size = new System.Drawing.Size(100, 19);
             this.rdoPrintAll.TabIndex = 3;
@@ -145,7 +148,7 @@
             this.rdoPrintByFamily.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rdoPrintByFamily.AutoSize = true;
             this.rdoPrintByFamily.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoPrintByFamily.Location = new System.Drawing.Point(45, 225);
+            this.rdoPrintByFamily.Location = new System.Drawing.Point(45, 233);
             this.rdoPrintByFamily.Name = "rdoPrintByFamily";
             this.rdoPrintByFamily.Size = new System.Drawing.Size(106, 19);
             this.rdoPrintByFamily.TabIndex = 2;
@@ -159,7 +162,7 @@
             this.rdoPrintByRange.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rdoPrintByRange.AutoSize = true;
             this.rdoPrintByRange.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoPrintByRange.Location = new System.Drawing.Point(45, 204);
+            this.rdoPrintByRange.Location = new System.Drawing.Point(45, 212);
             this.rdoPrintByRange.Name = "rdoPrintByRange";
             this.rdoPrintByRange.Size = new System.Drawing.Size(195, 19);
             this.rdoPrintByRange.TabIndex = 1;
@@ -173,7 +176,7 @@
             this.rdoPrintByItemNumb.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rdoPrintByItemNumb.AutoSize = true;
             this.rdoPrintByItemNumb.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoPrintByItemNumb.Location = new System.Drawing.Point(45, 183);
+            this.rdoPrintByItemNumb.Location = new System.Drawing.Point(45, 191);
             this.rdoPrintByItemNumb.Name = "rdoPrintByItemNumb";
             this.rdoPrintByItemNumb.Size = new System.Drawing.Size(138, 19);
             this.rdoPrintByItemNumb.TabIndex = 0;
@@ -186,7 +189,7 @@
             // 
             this.btnViewReport1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnViewReport1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewReport1.Location = new System.Drawing.Point(452, 258);
+            this.btnViewReport1.Location = new System.Drawing.Point(452, 266);
             this.btnViewReport1.Name = "btnViewReport1";
             this.btnViewReport1.Size = new System.Drawing.Size(148, 23);
             this.btnViewReport1.TabIndex = 5;
@@ -202,7 +205,7 @@
             this.cmbFamily.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbFamily.FormattingEnabled = true;
             this.cmbFamily.IntegralHeight = false;
-            this.cmbFamily.Location = new System.Drawing.Point(507, 199);
+            this.cmbFamily.Location = new System.Drawing.Point(507, 207);
             this.cmbFamily.Name = "cmbFamily";
             this.cmbFamily.Size = new System.Drawing.Size(121, 23);
             this.cmbFamily.TabIndex = 7;
@@ -212,7 +215,7 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(349, 183);
+            this.label4.Location = new System.Drawing.Point(349, 191);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(78, 15);
             this.label4.TabIndex = 8;
@@ -223,7 +226,7 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(510, 183);
+            this.label5.Location = new System.Drawing.Point(510, 191);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(45, 15);
             this.label5.TabIndex = 9;
@@ -234,7 +237,7 @@
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(11, 391);
+            this.label7.Location = new System.Drawing.Point(11, 399);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(213, 15);
             this.label7.TabIndex = 11;
@@ -248,7 +251,7 @@
             this.cmbCust.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCust.FormattingEnabled = true;
             this.cmbCust.IntegralHeight = false;
-            this.cmbCust.Location = new System.Drawing.Point(105, 437);
+            this.cmbCust.Location = new System.Drawing.Point(105, 445);
             this.cmbCust.Name = "cmbCust";
             this.cmbCust.Size = new System.Drawing.Size(330, 23);
             this.cmbCust.TabIndex = 12;
@@ -257,7 +260,7 @@
             // 
             this.btnViewReport2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnViewReport2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewReport2.Location = new System.Drawing.Point(452, 437);
+            this.btnViewReport2.Location = new System.Drawing.Point(452, 445);
             this.btnViewReport2.Name = "btnViewReport2";
             this.btnViewReport2.Size = new System.Drawing.Size(148, 23);
             this.btnViewReport2.TabIndex = 13;
@@ -270,7 +273,7 @@
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(42, 441);
+            this.label9.Location = new System.Drawing.Point(42, 449);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(64, 15);
             this.label9.TabIndex = 16;
@@ -281,7 +284,7 @@
             this.chkNotDisplayDup.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chkNotDisplayDup.AutoSize = true;
             this.chkNotDisplayDup.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkNotDisplayDup.Location = new System.Drawing.Point(266, 463);
+            this.chkNotDisplayDup.Location = new System.Drawing.Point(266, 471);
             this.chkNotDisplayDup.Name = "chkNotDisplayDup";
             this.chkNotDisplayDup.Size = new System.Drawing.Size(169, 19);
             this.chkNotDisplayDup.TabIndex = 17;
@@ -293,7 +296,7 @@
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(15, 481);
+            this.label8.Location = new System.Drawing.Point(15, 489);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(232, 15);
             this.label8.TabIndex = 18;
@@ -304,7 +307,7 @@
             this.rdoSwing2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rdoSwing2.AutoSize = true;
             this.rdoSwing2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoSwing2.Location = new System.Drawing.Point(41, 529);
+            this.rdoSwing2.Location = new System.Drawing.Point(41, 537);
             this.rdoSwing2.Name = "rdoSwing2";
             this.rdoSwing2.Size = new System.Drawing.Size(180, 19);
             this.rdoSwing2.TabIndex = 1;
@@ -319,13 +322,14 @@
             this.rdoSwing1.AutoSize = true;
             this.rdoSwing1.Enabled = false;
             this.rdoSwing1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoSwing1.Location = new System.Drawing.Point(41, 506);
+            this.rdoSwing1.Location = new System.Drawing.Point(615, 501);
             this.rdoSwing1.Name = "rdoSwing1";
             this.rdoSwing1.Size = new System.Drawing.Size(191, 19);
             this.rdoSwing1.TabIndex = 0;
             this.rdoSwing1.TabStop = true;
             this.rdoSwing1.Text = "Print a Swing Number for a Rep";
             this.rdoSwing1.UseVisualStyleBackColor = true;
+            this.rdoSwing1.Visible = false;
             this.rdoSwing1.CheckedChanged += new System.EventHandler(this.rdoSwing1_CheckedChanged);
             // 
             // cmbSwing
@@ -336,27 +340,29 @@
             this.cmbSwing.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSwing.FormattingEnabled = true;
             this.cmbSwing.IntegralHeight = false;
-            this.cmbSwing.Location = new System.Drawing.Point(314, 515);
+            this.cmbSwing.Location = new System.Drawing.Point(703, 537);
             this.cmbSwing.Name = "cmbSwing";
             this.cmbSwing.Size = new System.Drawing.Size(121, 23);
             this.cmbSwing.TabIndex = 20;
+            this.cmbSwing.Visible = false;
             // 
             // label10
             // 
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(314, 496);
+            this.label10.Location = new System.Drawing.Point(695, 519);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(129, 15);
             this.label10.TabIndex = 21;
             this.label10.Text = "Select a Swing Number";
+            this.label10.Visible = false;
             // 
             // btnViewReport3
             // 
             this.btnViewReport3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnViewReport3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewReport3.Location = new System.Drawing.Point(452, 513);
+            this.btnViewReport3.Location = new System.Drawing.Point(452, 521);
             this.btnViewReport3.Name = "btnViewReport3";
             this.btnViewReport3.Size = new System.Drawing.Size(148, 23);
             this.btnViewReport3.TabIndex = 22;
@@ -369,7 +375,7 @@
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Times New Roman", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(14, 558);
+            this.label11.Location = new System.Drawing.Point(14, 572);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(119, 15);
             this.label11.TabIndex = 23;
@@ -380,7 +386,7 @@
             this.rdoCompareCust.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rdoCompareCust.AutoSize = true;
             this.rdoCompareCust.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoCompareCust.Location = new System.Drawing.Point(40, 607);
+            this.rdoCompareCust.Location = new System.Drawing.Point(40, 621);
             this.rdoCompareCust.Name = "rdoCompareCust";
             this.rdoCompareCust.Size = new System.Drawing.Size(132, 19);
             this.rdoCompareCust.TabIndex = 0;
@@ -394,7 +400,7 @@
             this.rdoCompareItems.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rdoCompareItems.AutoSize = true;
             this.rdoCompareItems.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoCompareItems.Location = new System.Drawing.Point(40, 630);
+            this.rdoCompareItems.Location = new System.Drawing.Point(40, 644);
             this.rdoCompareItems.Name = "rdoCompareItems";
             this.rdoCompareItems.Size = new System.Drawing.Size(104, 19);
             this.rdoCompareItems.TabIndex = 1;
@@ -408,12 +414,12 @@
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(37, 583);
+            this.label12.Location = new System.Drawing.Point(37, 597);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(806, 15);
             this.label12.TabIndex = 25;
             this.label12.Text = "Comparasion Reports are a way to compare between two Customers who gets lower or " +
-                "higher prices, as well as what Items are sold for the lowest Price";
+    "higher prices, as well as what Items are sold for the lowest Price";
             // 
             // cmbCustFrom
             // 
@@ -423,7 +429,7 @@
             this.cmbCustFrom.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCustFrom.FormattingEnabled = true;
             this.cmbCustFrom.IntegralHeight = false;
-            this.cmbCustFrom.Location = new System.Drawing.Point(181, 626);
+            this.cmbCustFrom.Location = new System.Drawing.Point(181, 640);
             this.cmbCustFrom.Name = "cmbCustFrom";
             this.cmbCustFrom.Size = new System.Drawing.Size(283, 23);
             this.cmbCustFrom.TabIndex = 26;
@@ -436,7 +442,7 @@
             this.cmbCustTo.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCustTo.FormattingEnabled = true;
             this.cmbCustTo.IntegralHeight = false;
-            this.cmbCustTo.Location = new System.Drawing.Point(475, 626);
+            this.cmbCustTo.Location = new System.Drawing.Point(475, 640);
             this.cmbCustTo.Name = "cmbCustTo";
             this.cmbCustTo.Size = new System.Drawing.Size(372, 23);
             this.cmbCustTo.TabIndex = 27;
@@ -446,7 +452,7 @@
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(256, 611);
+            this.label13.Location = new System.Drawing.Point(256, 625);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(107, 15);
             this.label13.TabIndex = 28;
@@ -457,7 +463,7 @@
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(470, 611);
+            this.label15.Location = new System.Drawing.Point(470, 625);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(102, 15);
             this.label15.TabIndex = 30;
@@ -467,7 +473,7 @@
             // 
             this.btnViewReport4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnViewReport4.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewReport4.Location = new System.Drawing.Point(452, 663);
+            this.btnViewReport4.Location = new System.Drawing.Point(452, 677);
             this.btnViewReport4.Name = "btnViewReport4";
             this.btnViewReport4.Size = new System.Drawing.Size(148, 23);
             this.btnViewReport4.TabIndex = 31;
@@ -480,7 +486,7 @@
             this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(42, 419);
+            this.label16.Location = new System.Drawing.Point(42, 427);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(335, 15);
             this.label16.TabIndex = 32;
@@ -491,12 +497,12 @@
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(327, 53);
+            this.label6.Location = new System.Drawing.Point(327, 61);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(394, 30);
             this.label6.TabIndex = 33;
             this.label6.Text = "Under each heading are groups of reports that you can view and print.\r\nFollow the" +
-                " directoris for each to displaythe report(s) you are looking for: ";
+    " directoris for each to displaythe report(s) you are looking for: ";
             // 
             // panel4
             // 
@@ -505,7 +511,7 @@
             this.panel4.Controls.Add(this.cmbFrom);
             this.panel4.Controls.Add(this.label17);
             this.panel4.Controls.Add(this.label14);
-            this.panel4.Location = new System.Drawing.Point(330, 165);
+            this.panel4.Location = new System.Drawing.Point(330, 173);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(358, 69);
             this.panel4.TabIndex = 34;
@@ -562,7 +568,7 @@
             this.pnlCompItems.Controls.Add(this.label18);
             this.pnlCompItems.Controls.Add(this.chkAll);
             this.pnlCompItems.Controls.Add(this.cmbCompItem);
-            this.pnlCompItems.Location = new System.Drawing.Point(181, 611);
+            this.pnlCompItems.Location = new System.Drawing.Point(181, 625);
             this.pnlCompItems.Name = "pnlCompItems";
             this.pnlCompItems.Size = new System.Drawing.Size(677, 46);
             this.pnlCompItems.TabIndex = 36;
@@ -609,7 +615,7 @@
             this.cmbItem.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbItem.FormattingEnabled = true;
             this.cmbItem.IntegralHeight = false;
-            this.cmbItem.Location = new System.Drawing.Point(347, 199);
+            this.cmbItem.Location = new System.Drawing.Point(347, 207);
             this.cmbItem.Name = "cmbItem";
             this.cmbItem.Size = new System.Drawing.Size(121, 23);
             this.cmbItem.TabIndex = 6;
@@ -617,7 +623,7 @@
             // btnExit
             // 
             this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnExit.Location = new System.Drawing.Point(615, 663);
+            this.btnExit.Location = new System.Drawing.Point(615, 677);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(148, 23);
             this.btnExit.TabIndex = 37;
@@ -630,7 +636,7 @@
             this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Times New Roman", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(15, 295);
+            this.label19.Location = new System.Drawing.Point(15, 303);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(315, 15);
             this.label19.TabIndex = 38;
@@ -641,7 +647,7 @@
             this.label20.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(42, 317);
+            this.label20.Location = new System.Drawing.Point(42, 325);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(335, 15);
             this.label20.TabIndex = 39;
@@ -652,7 +658,7 @@
             this.label21.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(42, 345);
+            this.label21.Location = new System.Drawing.Point(42, 353);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(64, 15);
             this.label21.TabIndex = 40;
@@ -666,7 +672,7 @@
             this.cmbCust5.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCust5.FormattingEnabled = true;
             this.cmbCust5.IntegralHeight = false;
-            this.cmbCust5.Location = new System.Drawing.Point(105, 342);
+            this.cmbCust5.Location = new System.Drawing.Point(105, 350);
             this.cmbCust5.Name = "cmbCust5";
             this.cmbCust5.Size = new System.Drawing.Size(330, 23);
             this.cmbCust5.TabIndex = 41;
@@ -678,7 +684,7 @@
             this.cmbFrom5.DropDownHeight = 200;
             this.cmbFrom5.FormattingEnabled = true;
             this.cmbFrom5.IntegralHeight = false;
-            this.cmbFrom5.Location = new System.Drawing.Point(454, 345);
+            this.cmbFrom5.Location = new System.Drawing.Point(454, 353);
             this.cmbFrom5.Name = "cmbFrom5";
             this.cmbFrom5.Size = new System.Drawing.Size(121, 21);
             this.cmbFrom5.TabIndex = 42;
@@ -690,7 +696,7 @@
             this.cmbTo5.DropDownHeight = 200;
             this.cmbTo5.FormattingEnabled = true;
             this.cmbTo5.IntegralHeight = false;
-            this.cmbTo5.Location = new System.Drawing.Point(600, 345);
+            this.cmbTo5.Location = new System.Drawing.Point(600, 353);
             this.cmbTo5.Name = "cmbTo5";
             this.cmbTo5.Size = new System.Drawing.Size(121, 21);
             this.cmbTo5.TabIndex = 43;
@@ -700,7 +706,7 @@
             this.label22.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(453, 317);
+            this.label22.Location = new System.Drawing.Point(453, 325);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(85, 15);
             this.label22.TabIndex = 44;
@@ -711,7 +717,7 @@
             this.label23.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(597, 317);
+            this.label23.Location = new System.Drawing.Point(597, 325);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(78, 15);
             this.label23.TabIndex = 45;
@@ -721,7 +727,7 @@
             // 
             this.btnViewReport5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnViewReport5.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewReport5.Location = new System.Drawing.Point(452, 372);
+            this.btnViewReport5.Location = new System.Drawing.Point(452, 380);
             this.btnViewReport5.Name = "btnViewReport5";
             this.btnViewReport5.Size = new System.Drawing.Size(148, 23);
             this.btnViewReport5.TabIndex = 46;
@@ -733,7 +739,7 @@
             // 
             this.rdoPrintByCustFamily.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rdoPrintByCustFamily.AutoSize = true;
-            this.rdoPrintByCustFamily.Location = new System.Drawing.Point(46, 268);
+            this.rdoPrintByCustFamily.Location = new System.Drawing.Point(46, 276);
             this.rdoPrintByCustFamily.Name = "rdoPrintByCustFamily";
             this.rdoPrintByCustFamily.Size = new System.Drawing.Size(156, 17);
             this.rdoPrintByCustFamily.TabIndex = 47;
@@ -749,7 +755,7 @@
             this.panel1.Controls.Add(this.label24);
             this.panel1.Controls.Add(this.cmbFamily1);
             this.panel1.Controls.Add(this.cmbCust1);
-            this.panel1.Location = new System.Drawing.Point(330, 161);
+            this.panel1.Location = new System.Drawing.Point(330, 169);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(361, 73);
             this.panel1.TabIndex = 6;
@@ -788,11 +794,45 @@
             this.cmbCust1.Size = new System.Drawing.Size(157, 21);
             this.cmbCust1.TabIndex = 0;
             // 
+            // rdoPrintCustBySalesPer
+            // 
+            this.rdoPrintCustBySalesPer.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rdoPrintCustBySalesPer.AutoSize = true;
+            this.rdoPrintCustBySalesPer.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoPrintCustBySalesPer.Location = new System.Drawing.Point(41, 512);
+            this.rdoPrintCustBySalesPer.Name = "rdoPrintCustBySalesPer";
+            this.rdoPrintCustBySalesPer.Size = new System.Drawing.Size(192, 19);
+            this.rdoPrintCustBySalesPer.TabIndex = 48;
+            this.rdoPrintCustBySalesPer.TabStop = true;
+            this.rdoPrintCustBySalesPer.Text = "Print Customer by Sales person";
+            this.rdoPrintCustBySalesPer.UseVisualStyleBackColor = true;
+            this.rdoPrintCustBySalesPer.CheckedChanged += new System.EventHandler(this.rdoPrintCustBySalesPer_CheckedChanged);
+            // 
+            // cmbSalesPerson
+            // 
+            this.cmbSalesPerson.FormattingEnabled = true;
+            this.cmbSalesPerson.Location = new System.Drawing.Point(266, 517);
+            this.cmbSalesPerson.Name = "cmbSalesPerson";
+            this.cmbSalesPerson.Size = new System.Drawing.Size(169, 21);
+            this.cmbSalesPerson.TabIndex = 49;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(263, 501);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(110, 13);
+            this.label26.TabIndex = 50;
+            this.label26.Text = "Select a Sales person";
+            // 
             // frmReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(870, 701);
+            this.ClientSize = new System.Drawing.Size(870, 716);
+            this.Controls.Add(this.label26);
+            this.Controls.Add(this.cmbSalesPerson);
+            this.Controls.Add(this.rdoPrintCustBySalesPer);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.rdoPrintByCustFamily);
@@ -918,5 +958,8 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.ComboBox cmbFamily1;
         private System.Windows.Forms.ComboBox cmbCust1;
+        private System.Windows.Forms.RadioButton rdoPrintCustBySalesPer;
+        private System.Windows.Forms.ComboBox cmbSalesPerson;
+        private System.Windows.Forms.Label label26;
     }
 }

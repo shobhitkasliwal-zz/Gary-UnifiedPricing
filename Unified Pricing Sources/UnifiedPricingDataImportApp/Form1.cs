@@ -104,6 +104,11 @@ namespace UnifiedPricingDataImportApp
                 backgroundWorker1.ReportProgress(((j * 100) / dt.Rows.Count));
                 var itemNum = ReplaceNull(dt.Rows[j]["Item Number"]);
                 var custNum = ReplaceNull(dt.Rows[j]["Customer Number"]);
+                string curPriceString = ReplaceNull(dt.Rows[j]["Current Price"]);
+                double curPrice = 0;
+                Double.TryParse(curPriceString, out curPrice);
+
+
                 if (itemNum.Length > 0 && custNum.Length > 0)
                 {
                     var existingItems = Db.ExecuteDataTable("SELECT UCase([Item Number]) FROM tblPricing where [Item Number] = '" + itemNum.ToString().ToUpper() + "' and UCase([Customer Number]) ='" + custNum.ToUpper() + "'");
@@ -113,21 +118,42 @@ namespace UnifiedPricingDataImportApp
                         query = "UPDATE tblPricing set ";
                         query = query + "[Item Description]='" + ReplaceNull(dt.Rows[j]["Item Description"]) + "',";
                         query = query + "[OEM Number]='" + ReplaceNull(dt.Rows[j]["OEM Number"]) + "',";
-                        query = query + "[Current Price]='" + Convert.ToDouble(ReplaceNull(dt.Rows[j]["Current Price"])) + "'";
+                        query = query + "[Current Price]=" + curPrice.ToString();
                         query = query + " where [Item Number]='" + itemNum.ToString() + "' and [Customer Number]='" + custNum.ToString() + "'";
                         Db.ExecuteScalar(query);
                     }
                     else
                     {
-                        query = "insert into tblPricing([Customer Number],[Item Number],[Item Description],[OEM Number],[Current Price]) Values ('{0}','{1}','{2}','{3}',{4})";
-                        query = string.Format(query, ReplaceNull(dt.Rows[0]["Customer Number"]), ReplaceNull(dt.Rows[0]["Item Number"]), ReplaceNull(dt.Rows[0]["Item Description"]), ReplaceNull(dt.Rows[0]["OEM Number"]), Convert.ToDouble(ReplaceNull(dt.Rows[0]["Current Price"])));
+                        query = "insert into tblPricing([Customer Number],[Item Number],[Item Description],[OEM Number],[Current Price],[Old Price],[New Price]) Values ('{0}','{1}','{2}','{3}',{4},{5},{6})";
+                        query = string.Format(query, ReplaceNull(dt.Rows[j]["Customer Number"]), ReplaceNull(dt.Rows[j]["Item Number"]), ReplaceNull(dt.Rows[j]["Item Description"]), ReplaceNull(dt.Rows[j]["OEM Number"]), curPrice.ToString(), "0", "0");
                         Db.ExecuteScalar(query);
+                    }
+
+                    var existingItemsItemTbl = Db.ExecuteDataTable("SELECT UCase([Item Number]) FROM tblItems where [Item Number] = '" + itemNum.ToString().ToUpper() + "'");
+                    query = "";
+                    if (existingItemsItemTbl != null && existingItemsItemTbl.Rows.Count > 0)
+                    {
+                        query = "UPDATE tblItems set ";
+                        query = query + "[Item Description]='" + ReplaceNull(dt.Rows[j]["Item Description"]) + "',";
+                        query = query + "[OEM Number]='" + ReplaceNull(dt.Rows[j]["OEM Number"]) + "'";
+                        query = query + " where [Item Number]='" + itemNum.ToString() + "'";
+                        Db.ExecuteScalar(query);
+                        Console.WriteLine("Item Updated tblItems" + itemNum.ToString());
+                    }
+                    else
+                    {
+                        query = "insert into tblItems([Item Number],[Item Description],[OEM Number]) Values ('{0}','{1}','{2}')";
+                        query = string.Format(query, ReplaceNull(dt.Rows[j]["Item Number"]), ReplaceNull(dt.Rows[j]["Item Description"]), ReplaceNull(dt.Rows[j]["OEM Number"]));
+                        Db.ExecuteScalar(query);
+                        Console.WriteLine("Item Added tblItems" + itemNum.ToString());
                     }
                 }
 
 
 
             }
+
+            MessageBox.Show("Done");
         }
 
 

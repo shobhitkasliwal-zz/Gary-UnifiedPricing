@@ -38,7 +38,12 @@ namespace Unified_Price_for_Var
             foreach (DataRow price in prices.Rows)
             {
                 //old      gridPrices.Rows.Add(price["Item Number"], ((decimal)price["Current Price"]).ToString("0.0000"), ((decimal)price["Old Price"]).ToString("0.0000"), price["Item Description"], price["Customer Item Number"], price["ID"]);
-                gridPrices.Rows.Add(price["ItemN"], ((decimal)price["CurP"]).ToString("0.0000"), ((decimal)price["OldP"]).ToString("0.0000"), price["ItemDS"], price["NotesP"], price["CustIN"], price["Last12MonthQTYP"], price["QuoteDateP"], price["IDn"]);
+                decimal CurP = 0;
+                Decimal.TryParse(price["CurP"].ReplaceNulls("0"), out CurP);
+                decimal OldP = 0;
+                Decimal.TryParse(price["OldP"].ReplaceNulls("0"), out CurP);
+
+                gridPrices.Rows.Add(price["ItemN"], CurP.ToString("0.0000"), OldP.ToString("0.0000"), price["ItemDS"], price["NotesP"], price["CustIN"], price["Last12MonthQTYP"], price["QuoteDateP"], price["IDn"]);
             }
             lblTotalPricesForCust.Text = "Total: " + prices.Rows.Count;
             lbl11.Text = cmbCustomers.SelectedValue.ToString().Replace("&", "&&");  //Showing up customers number like: AS or CFT

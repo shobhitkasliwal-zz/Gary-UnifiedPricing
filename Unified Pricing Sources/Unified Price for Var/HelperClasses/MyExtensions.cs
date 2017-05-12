@@ -4,14 +4,21 @@ using System.Linq;
 using System.Text;
 
 
-    public static class MyExtensions
+public static class MyExtensions
+{
+    public static string ReplaceNulls(this object value, string replacementValue = "")
     {
-        public static string ReplaceNulls(this object value, string replacementValue = "")
-        {
-            if (value == null || DBNull.Value.Equals(value))
-                return replacementValue;
-            else
-                return value.ToString();
-        }
+        if (value == null || DBNull.Value.Equals(value))
+            return replacementValue;
+        else
+            return value.ToString();
     }
+}
+
+public enum ReportType
+{
+    ACTIVE,
+    INACTIVE,
+    BOTH
+}
 

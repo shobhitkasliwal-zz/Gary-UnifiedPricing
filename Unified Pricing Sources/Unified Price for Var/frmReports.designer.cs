@@ -89,7 +89,7 @@
             this.cmbCust1 = new System.Windows.Forms.ComboBox();
             this.rdoPrintCustBySalesPer = new System.Windows.Forms.RadioButton();
             this.cmbSalesPerson = new System.Windows.Forms.ComboBox();
-            this.label26 = new System.Windows.Forms.Label();
+            this.lblSelectSalesPerson = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             this.pnlCompItems.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -817,22 +817,22 @@
             this.cmbSalesPerson.Size = new System.Drawing.Size(169, 21);
             this.cmbSalesPerson.TabIndex = 49;
             // 
-            // label26
+            // lblSelectSalesPerson
             // 
-            this.label26.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(263, 503);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(110, 13);
-            this.label26.TabIndex = 50;
-            this.label26.Text = "Select a Sales person";
+            this.lblSelectSalesPerson.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblSelectSalesPerson.AutoSize = true;
+            this.lblSelectSalesPerson.Location = new System.Drawing.Point(263, 503);
+            this.lblSelectSalesPerson.Name = "lblSelectSalesPerson";
+            this.lblSelectSalesPerson.Size = new System.Drawing.Size(110, 13);
+            this.lblSelectSalesPerson.TabIndex = 50;
+            this.lblSelectSalesPerson.Text = "Select a Sales person";
             // 
             // frmReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(870, 716);
-            this.Controls.Add(this.label26);
+            this.Controls.Add(this.lblSelectSalesPerson);
             this.Controls.Add(this.cmbSalesPerson);
             this.Controls.Add(this.rdoPrintCustBySalesPer);
             this.Controls.Add(this.panel4);
@@ -962,6 +962,6 @@
         private System.Windows.Forms.ComboBox cmbCust1;
         private System.Windows.Forms.RadioButton rdoPrintCustBySalesPer;
         private System.Windows.Forms.ComboBox cmbSalesPerson;
-        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label lblSelectSalesPerson;
     }
 }

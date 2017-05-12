@@ -32,16 +32,16 @@ namespace Unified_Price_for_Var
             btnCancel.Enabled = false;
             //old	var prices = Db.ExecuteDataTable("SELECT * FROM tblPricing WHERE [Customer Number] = '{0}' ORDER BY [Item Number]", cmbCustomers.SelectedValue);
 
-            var prices = Db.ExecuteDataTable("SELECT P.[ID] as IDn, P.[Customer Number], P.[Item Number] as [ItemN], P.[Current Price] as [CurP], I.[Item Description] as [ItemDS], P.[Customer Item Number] as [CustIN], P.[Old Price] as [OldP], P.[Notes] as [NotesP], format(P.[QuoteDate],'mmm dd yyyy') as[QuoteDateP], IIF(ISNULL( P.[Last12MonthQTY]), 0, P.[Last12MonthQTY]) as [Last12MonthQTYP]  FROM tblPricing P left join tblItems I on P.[Item Number] = I.[Item Number] WHERE P.[Customer Number] = '{0}' ORDER BY P.[Item Number]", cmbCustomers.SelectedValue);
+            var prices = Db.ExecuteDataTable("SELECT P.[ID] as IDn, P.[Customer Number], P.[Item Number] as [ItemN], P.[Current Price] , I.[Item Description] as [ItemDS], P.[Customer Item Number] as [CustIN], P.[Old Price], P.[Notes] as [NotesP], format(P.[QuoteDate],'mmm dd yyyy') as[QuoteDateP], IIF(ISNULL( P.[Last12MonthQTY]), 0, P.[Last12MonthQTY]) as [Last12MonthQTYP]  FROM tblPricing P left join tblItems I on P.[Item Number] = I.[Item Number] WHERE P.[Customer Number] = '{0}' ORDER BY P.[Item Number]", cmbCustomers.SelectedValue);
 
             gridPrices.Rows.Clear();
             foreach (DataRow price in prices.Rows)
             {
                 //old      gridPrices.Rows.Add(price["Item Number"], ((decimal)price["Current Price"]).ToString("0.0000"), ((decimal)price["Old Price"]).ToString("0.0000"), price["Item Description"], price["Customer Item Number"], price["ID"]);
                 decimal CurP = 0;
-                Decimal.TryParse(price["CurP"].ReplaceNulls("0"), out CurP);
+                Decimal.TryParse(price["Current Price"].ReplaceNulls("0"), out CurP);
                 decimal OldP = 0;
-                Decimal.TryParse(price["OldP"].ReplaceNulls("0"), out CurP);
+                Decimal.TryParse(price["Old Price"].ReplaceNulls("0"), out OldP);
 
                 gridPrices.Rows.Add(price["ItemN"], CurP.ToString("0.0000"), OldP.ToString("0.0000"), price["ItemDS"], price["NotesP"], price["CustIN"], price["Last12MonthQTYP"], price["QuoteDateP"], price["IDn"]);
             }
@@ -309,20 +309,23 @@ namespace Unified_Price_for_Var
                 //              ASTCurrPriceDec = (decimal)ASTCurrPrice[0];
 
                 var cust = Db.ExecuteDataRow("SELECT * FROM tblCustomers WHERE [Customer Number] = '{0}'", custPricings.Rows[i]["Customer Number"]);
-
+                decimal curPrice = 0; 
+                Decimal.TryParse(custPricings.Rows[i]["Current Price"].ReplaceNulls(),out curPrice);
+                DateTime QuoteDate = new DateTime(2000, 1, 1);
+                DateTime.TryParse(custPricings.Rows[i]["QuoteDate"].ReplaceNulls(), out QuoteDate);
                 Db.NonQuery("INSERT INTO tblByCustomer_Report ([Customer Number], [Customer Name], [Item Number], [Item Description], [Current Price], [Customer Item Number], [IsNew], [ASR Current Price], [AST Current Price], [Notes],[Last12MonthQTY],[QuoteDate]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}','{10}','{11}')",
                     custPricings.Rows[i]["Customer Number"],
                     cust["Customer Bill Name"].ToString().Replace("'", "''"),
                     custPricings.Rows[i]["Item Number"],
                     custPricings.Rows[i]["Item Description"].ToString().Replace("'", "''"),
-                    custPricings.Rows[i]["Current Price"],
+                    curPrice,
                     custPricings.Rows[i]["Customer Item Number"],
                     custPricings.Rows[i]["IsNew"],
                     ASRCurrPriceDec,
                     ASTCurrPriceDec,
                     custPricings.Rows[i]["Notes"],
                     custPricings.Rows[i]["Last12MonthQTY"],
-                    custPricings.Rows[i]["QuoteDate"]
+                    QuoteDate
                     );
                 SwingNumber = cust["Swing Number"].ReplaceNulls();
             }
@@ -521,19 +524,23 @@ namespace Unified_Price_for_Var
 
                 var cust = Db.ExecuteDataRow("SELECT * FROM tblCustomers WHERE [Customer Number] = '{0}'", custPricings.Rows[i]["Customer Number"]);
                 string Last12MonthQty = System.DBNull.Value.Equals(custPricings.Rows[i]["Last12MonthQTY"]) ? "0" : custPricings.Rows[i]["Last12MonthQTY"].ToString();
-
+                decimal curPrice = 0;
+                Decimal.TryParse(custPricings.Rows[i]["Current Price"].ReplaceNulls(), out curPrice);
+                DateTime QuoteDate = new DateTime(2000, 1, 1);
+                DateTime.TryParse(custPricings.Rows[i]["QuoteDate"].ReplaceNulls(), out QuoteDate);
+               
                 Db.NonQuery("INSERT INTO tblByCustomer_Report ([Customer Number], [Customer Name], [Item Number], [Item Description], [Current Price], [Customer Item Number], [IsNew], [ASR Current Price], [AST Current Price], [Notes], [QuoteDate], [Last12MonthQTY]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}','{10}','{11}')",
                     custPricings.Rows[i]["Customer Number"],
                     cust["Customer Bill Name"].ToString().Replace("'", "''"),
                     custPricings.Rows[i]["Item Number"],
                     custPricings.Rows[i]["Item Description"].ToString().Replace("'", "''"),
-                    custPricings.Rows[i]["Current Price"],
+                    curPrice,
                     custPricings.Rows[i]["Customer Item Number"],
                     custPricings.Rows[i]["IsNew"],
                     ASRCurrPriceDec,
                     ASTCurrPriceDec,
                     custPricings.Rows[i]["Notes"],
-                    custPricings.Rows[i]["QuoteDate"],
+                    QuoteDate,
                     Last12MonthQty
                     );
                 SwingNumber = cust["Swing Number"].ReplaceNulls();

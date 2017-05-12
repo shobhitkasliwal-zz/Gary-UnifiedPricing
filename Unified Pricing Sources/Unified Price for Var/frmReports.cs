@@ -80,10 +80,8 @@ namespace Unified_Price_for_Var
             cmbCompItem.DisplayMember = "Item Number";
             cmbCompItem.ValueMember = "Item Number";
 
-            _dataTableSalesPerson = Db.ExecuteDataTable("SELECT [Swing Number], [Swing Name], [Swing Number] + ' - ' + [Swing Name] AS [Header] FROM tblSwingNumbers ORDER BY [Swing Name]");
-            cmbSalesPerson.DataSource = _dataTableSalesPerson;
-            cmbSalesPerson.DisplayMember = "Header";
-            cmbSalesPerson.ValueMember = "Swing Number";
+            cmbSalesPerson.Visible = false;
+            lblSelectSalesPerson.Visible = false;
 
             this.Visible = true;
         }
@@ -199,12 +197,21 @@ namespace Unified_Price_for_Var
         private void rdoPrintCustBySalesPer_CheckedChanged(object sender, EventArgs e)
         {
             if (rdoPrintCustBySalesPer.Checked)
+            {
                 rdoPrintCustBySalesPer.Font = new Font(rdoSwing1.Font.FontFamily, rdoSwing1.Font.Size, FontStyle.Bold);
+                _dataTableSalesPerson = Db.ExecuteDataTable("SELECT [Swing Number], [Swing Name], [Swing Number] + ' - ' + [Swing Name] AS [Header] FROM tblSwingNumbers ORDER BY [Swing Name]");
+                cmbSalesPerson.DataSource = _dataTableSalesPerson;
+                cmbSalesPerson.DisplayMember = "Header";
+                cmbSalesPerson.ValueMember = "Swing Number";
+                cmbSalesPerson.SelectedIndex = -1;
+                cmbSalesPerson.Visible = true;
+                lblSelectSalesPerson.Visible = true;
+            }
             else
                 rdoPrintCustBySalesPer.Font = new Font(rdoSwing1.Font.FontFamily, rdoSwing1.Font.Size, FontStyle.Regular);
 
         }
-       
+
         //=========================================================================================================
         private void rdoSwing1_CheckedChanged(object sender, EventArgs e)
         {
@@ -758,12 +765,157 @@ namespace Unified_Price_for_Var
 
 
                 }
-                else if (rdoPrintCustBySalesPer.Checked)
-                { 
-                
-                }
-                
+
             }
+            else if (rdoPrintCustBySalesPer.Checked)
+            {
+                if (cmbSalesPerson.SelectedIndex < 0)
+                {
+                    MessageBox.Show("Please select a sales person.");
+                }
+                else
+                {
+                    ReportTypeDialog frmReportTypeSelection = new ReportTypeDialog();
+                    frmReportTypeSelection.StartPosition = FormStartPosition.CenterParent;
+                    frmReportTypeSelection.ShowDialog();
+                    ReportType reportType = ReportType.BOTH;
+                    switch (frmReportTypeSelection.DialogResult)
+                    {
+                        case System.Windows.Forms.DialogResult.Yes:
+                            reportType = ReportType.ACTIVE;
+                            break;
+                        case System.Windows.Forms.DialogResult.No:
+                            reportType = ReportType.INACTIVE;
+                            break;
+
+                    }
+                    string swingNumber = cmbSalesPerson.SelectedValue.ToString();
+                    Cursor.Current = Cursors.WaitCursor;
+                    Db.NonQuery("DELETE FROM tblByCustomer_Report");
+                    Db.NonQuery("INSERT INTO tblByCustomer_Report ([Customer Number], [Customer Name], [Item Number], [Item Description], [Current Price], [Customer Item Number], [IsNew], [QuoteDate],[Last12MonthQty])" +
+                       "SELECT c.[Customer Number], c.[Customer Bill Name], i.[Item Number]" +
+                       ", i.[Item Description],p.[Current Price], p.[Customer Item Number], IIF(p.[IsNew], 'True', 'False') AS [IsNew], p.[Last12MonthQty], p.[QuoteDate]" +
+                       "FROM (tblCustomers c INNER JOIN tblPricing p on p.[Customer Number] = c.[Customer Number])" +
+                       "INNER JOIN tblItems i on i.[Item Number] = p.[Item Number] where c.[Swing Number] = '" + swingNumber + "'");
+
+                    string ManagerDisplay = "";
+                    if (swingNumber.Length > 0)
+                    {
+                        DataTable dt = Db.ExecuteDataTable("SELECT * From tblSwingNumbers WHERE [Swing Number] ='{0}'", swingNumber);
+                        if (dt != null && dt.Rows.Count > 0)
+                        {
+                            DataTable Mgr = Db.ExecuteDataTable("Select * From tblManagerInformation where ManagerID in ({0},{1},{2},{3})", dt.Rows[0]["Manager1"].ReplaceNulls("-1"), dt.Rows[0]["Manager2"].ReplaceNulls("-1"), dt.Rows[0]["Manager3"].ReplaceNulls("-1"), dt.Rows[0]["Manager4"].ReplaceNulls("-1"));
+                            if (Mgr != null && Mgr.Rows.Count > 0)
+                            {
+                                DataTable dtManagerDisplay = new DataTable();
+                                dtManagerDisplay.Columns.Add("RowID", System.Type.GetType("System.Int16"));
+                                dtManagerDisplay.Columns.Add("CompanyName");
+                                dtManagerDisplay.Columns.Add("ManagerName");
+                                dtManagerDisplay.Columns.Add("ManagerPhone");
+                                dtManagerDisplay.Columns.Add("ManagerFax");
+                                dtManagerDisplay.Columns.Add("ManagerCell");
+                                dtManagerDisplay.Columns.Add("ManagerEmail");
+                                dtManagerDisplay.Columns.Add("SameAddress");
+                                for (int i = 1; i < 5; i++)
+                                {
+                                    Int16 MgrID = -1;
+
+                                    if (Int16.TryParse(dt.Rows[0]["Manager" + i].ReplaceNulls(), out MgrID))
+                                    {
+                                        DataView dvMgr = new DataView(Mgr);
+                                        dvMgr.RowFilter = "ManagerID =" + MgrID.ToString();
+                                        if (dvMgr.Count > 0)
+                                        {
+                                            DataRow dr = dtManagerDisplay.NewRow();
+                                            dr["RowID"] = i;
+                                            dr["CompanyName"] = (dvMgr[0]["CompanyName"].ReplaceNulls());
+                                            dr["ManagerName"] = (dvMgr[0]["ManagerName"].ReplaceNulls());
+                                            dr["ManagerPhone"] = (dvMgr[0]["ManagerPhone"].ReplaceNulls());
+                                            dr["ManagerEmail"] = (dvMgr[0]["ManagerEmail"].ReplaceNulls());
+                                            dr["ManagerFax"] = (dvMgr[0]["ManagerFax"].ReplaceNulls());
+                                            dr["ManagerCell"] = (dvMgr[0]["ManagerCell"].ReplaceNulls());
+                                            bool SameAddress = false;
+                                            Boolean.TryParse(dvMgr[0]["SameAddress"].ReplaceNulls(), out SameAddress);
+                                            dr["SameAddress"] = SameAddress;
+                                            dtManagerDisplay.Rows.Add(dr);
+                                        }
+                                    }
+
+                                }
+                                if (dtManagerDisplay != null && dtManagerDisplay.Rows.Count > 0)
+                                {
+                                    ManagerDisplay += dtManagerDisplay.Rows[0]["CompanyName"] + Environment.NewLine +
+                                        dtManagerDisplay.Rows[0]["ManagerName"] + Environment.NewLine +
+                                         "Phone:" + dtManagerDisplay.Rows[0]["ManagerPhone"] + Environment.NewLine +
+                                                          "Fax:" + dtManagerDisplay.Rows[0]["ManagerFax"] + Environment.NewLine +
+                                                           "Cell:" + dtManagerDisplay.Rows[0]["ManagerCell"] + Environment.NewLine +
+                                                           "Email:" + dtManagerDisplay.Rows[0]["ManagerEmail"] + Environment.NewLine + Environment.NewLine;
+                                    DataView dv = new DataView(dtManagerDisplay);
+                                    dv.RowFilter = "RowID <> 1 and SameAddress='True'";
+                                    string sameAddressCompanyName = "";
+                                    string sameAddressManagerName = "";
+                                    string sameAddressPhone = "";
+                                    string sameAddressCell = "";
+                                    string sameAddressFax = "";
+                                    string sameAddressEmail = "";
+                                    foreach (DataRowView rw in dv)
+                                    {
+                                        if (sameAddressCompanyName.Length == 0)
+                                        {
+                                            sameAddressCompanyName = rw["CompanyName"].ReplaceNulls();
+                                        }
+                                        if (!sameAddressCompanyName.Equals(rw["CompanyName"].ReplaceNulls()))
+                                        {
+                                            MessageBox.Show("Company Name does not match.");
+                                            this.Close();
+                                            return;
+                                        }
+                                        if (rw["ManagerName"].ReplaceNulls().Length == 0) sameAddressManagerName = rw["ManagerName"].ReplaceNulls();
+                                        else if (!sameAddressManagerName.Contains(rw["ManagerName"].ReplaceNulls())) sameAddressManagerName += ", " + rw["ManagerName"].ReplaceNulls();
+
+                                        if (rw["ManagerPhone"].ReplaceNulls().Length == 0) sameAddressPhone = rw["ManagerPhone"].ReplaceNulls();
+                                        else if (!sameAddressPhone.Contains(rw["ManagerPhone"].ReplaceNulls())) sameAddressPhone += ", " + rw["ManagerPhone"].ReplaceNulls();
+
+                                        if (rw["ManagerFax"].ReplaceNulls().Length == 0) sameAddressFax = rw["ManagerFax"].ReplaceNulls();
+                                        else if (!sameAddressFax.Contains(rw["ManagerFax"].ReplaceNulls())) sameAddressFax += ", " + rw["ManagerFax"].ReplaceNulls();
+
+
+                                        sameAddressCell += rw["ManagerName"] + " Cell:" + rw["ManagerCell"] + Environment.NewLine;
+                                        sameAddressEmail += rw["ManagerName"] + " Email:" + rw["ManagerEmail"] + Environment.NewLine;
+
+                                    }
+                                    ManagerDisplay += sameAddressCompanyName + Environment.NewLine +
+                                                       sameAddressManagerName + Environment.NewLine +
+                                                       "Phone: " + sameAddressPhone + Environment.NewLine +
+                                                       "Fax: " + sameAddressFax + Environment.NewLine +
+                                                       sameAddressCell + sameAddressEmail + Environment.NewLine + Environment.NewLine;
+                                    DataView dv1 = new DataView(dtManagerDisplay);
+                                    dv1.RowFilter = "RowID <> 1 and SameAddress='False'";
+                                    foreach (DataRowView rw in dv1)
+                                    {
+                                        ManagerDisplay += rw["CompanyName"] + Environment.NewLine +
+                                                           rw["ManagerName"] + Environment.NewLine +
+                                                          "Phone:" + rw["ManagerPhone"] + Environment.NewLine +
+                                                          "Fax:" + rw["ManagerFax"] + Environment.NewLine +
+                                                           "Cell:" + rw["ManagerCell"] + Environment.NewLine +
+                                                           "Email:" + rw["ManagerEmail"] + Environment.NewLine + Environment.NewLine;
+
+                                    }
+                                }
+                            }
+                        }
+
+
+
+                    }
+                    frmReport_Customer_BySalesPerson frm = new frmReport_Customer_BySalesPerson();
+                    frm.reportType = reportType;
+                    frm.DisplayManagerInfo = ManagerDisplay;
+                    frm.Show();
+
+                }
+            }
+
             else
             {
                 MessageBox.Show("Please, press the Swing radio button first.");

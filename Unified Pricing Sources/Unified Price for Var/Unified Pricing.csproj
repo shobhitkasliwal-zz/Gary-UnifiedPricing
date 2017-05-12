@@ -133,6 +133,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Report1_new.rpt</DependentUpon>
     </Compile>
+    <Compile Include="CrystalReports\Report_Customer_BySalesPerson.cs">
+      <DependentUpon>Report_Customer_BySalesPerson.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="CrystalReports\Report2_new.cs">
       <DependentUpon>Report2_new.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -219,11 +225,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Pricing_for_Tanya_DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ReportTypeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportTypeDialog.Designer.cs">
+      <DependentUpon>ReportTypeDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReportViewers\frmItemsByCustFamily_Viewer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ReportViewers\frmItemsByCustFamily_Viewer.Designer.cs">
       <DependentUpon>frmItemsByCustFamily_Viewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportViewers\frmReport_Customer_BySalesPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportViewers\frmReport_Customer_BySalesPerson.Designer.cs">
+      <DependentUpon>frmReport_Customer_BySalesPerson.cs</DependentUpon>
     </Compile>
     <Compile Include="ReportViewers\frmReport2_new_Viewer.cs">
       <SubType>Form</SubType>
@@ -383,6 +401,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Report1_new.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\Report_Customer_BySalesPerson.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Report_Customer_BySalesPerson.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="CrystalReports\Report2_new.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Report2_new.cs</LastGenOutput>
@@ -434,8 +456,14 @@
     <EmbeddedResource Include="frmBackUp.resx">
       <DependentUpon>frmBackUp.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportTypeDialog.resx">
+      <DependentUpon>ReportTypeDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportViewers\frmItemsByCustFamily_Viewer.resx">
       <DependentUpon>frmItemsByCustFamily_Viewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportViewers\frmReport_Customer_BySalesPerson.resx">
+      <DependentUpon>frmReport_Customer_BySalesPerson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportViewers\frmReport2_new_Viewer.resx">
       <DependentUpon>frmReport2_new_Viewer.cs</DependentUpon>

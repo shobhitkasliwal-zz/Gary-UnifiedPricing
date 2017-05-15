@@ -794,7 +794,7 @@ namespace Unified_Price_for_Var
                     Db.NonQuery("DELETE FROM tblByCustomer_Report");
                     Db.NonQuery("INSERT INTO tblByCustomer_Report ([Customer Number], [Customer Name], [Item Number], [Item Description], [Current Price], [Customer Item Number], [IsNew], [QuoteDate],[Last12MonthQty])" +
                        "SELECT c.[Customer Number], c.[Customer Bill Name], i.[Item Number]" +
-                       ", i.[Item Description],p.[Current Price], p.[Customer Item Number], IIF(p.[IsNew], 'True', 'False') AS [IsNew], p.[Last12MonthQty], p.[QuoteDate]" +
+                       ", i.[Item Description],p.[Current Price], p.[Customer Item Number], IIF(p.[IsNew], 'True', 'False') AS [IsNew], p.[QuoteDate] ,p.[Last12MonthQty] " +
                        "FROM (tblCustomers c INNER JOIN tblPricing p on p.[Customer Number] = c.[Customer Number])" +
                        "INNER JOIN tblItems i on i.[Item Number] = p.[Item Number] where c.[Swing Number] = '" + swingNumber + "'");
 
@@ -886,19 +886,20 @@ namespace Unified_Price_for_Var
                                     }
                                     ManagerDisplay += sameAddressCompanyName + Environment.NewLine +
                                                        sameAddressManagerName + Environment.NewLine +
-                                                       "Phone: " + sameAddressPhone + Environment.NewLine +
-                                                       "Fax: " + sameAddressFax + Environment.NewLine +
-                                                       sameAddressCell + sameAddressEmail + Environment.NewLine + Environment.NewLine;
+                                                       (sameAddressPhone.Length > 0 ? "Phone: " + sameAddressPhone + Environment.NewLine : "") +
+                                                       (sameAddressFax.Length > 0 ? "Fax: " + sameAddressFax + Environment.NewLine : "") +
+                                                       (sameAddressCell.Length > 0 ? sameAddressCell + Environment.NewLine : "") +
+                                                       (sameAddressEmail.Length > 0 ? sameAddressEmail + Environment.NewLine : "") + Environment.NewLine;
                                     DataView dv1 = new DataView(dtManagerDisplay);
                                     dv1.RowFilter = "RowID <> 1 and SameAddress='False'";
                                     foreach (DataRowView rw in dv1)
                                     {
                                         ManagerDisplay += rw["CompanyName"] + Environment.NewLine +
                                                            rw["ManagerName"] + Environment.NewLine +
-                                                          "Phone:" + rw["ManagerPhone"] + Environment.NewLine +
-                                                          "Fax:" + rw["ManagerFax"] + Environment.NewLine +
-                                                           "Cell:" + rw["ManagerCell"] + Environment.NewLine +
-                                                           "Email:" + rw["ManagerEmail"] + Environment.NewLine + Environment.NewLine;
+                                                           (rw["ManagerPhone"].ReplaceNulls().Length > 0 ? "Phone:" + rw["ManagerPhone"] + Environment.NewLine : "") +
+                                                          (rw["ManagerFax"].ReplaceNulls().Length > 0 ? "Fax:" + rw["ManagerFax"] + Environment.NewLine : "") +
+                                                           (rw["ManagerCell"].ReplaceNulls().Length > 0 ? "Cell:" + rw["ManagerCell"] + Environment.NewLine : "") +
+                                                          (rw["ManagerEmail"].ReplaceNulls().Length > 0 ? "Email:" + rw["ManagerEmail"] + Environment.NewLine : "") + Environment.NewLine;
 
                                     }
                                 }

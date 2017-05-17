@@ -846,10 +846,10 @@ namespace Unified_Price_for_Var
                                 {
                                     ManagerDisplay += dtManagerDisplay.Rows[0]["CompanyName"] + Environment.NewLine +
                                         dtManagerDisplay.Rows[0]["ManagerName"] + Environment.NewLine +
-                                         "Phone:" + dtManagerDisplay.Rows[0]["ManagerPhone"] + Environment.NewLine +
-                                                          "Fax:" + dtManagerDisplay.Rows[0]["ManagerFax"] + Environment.NewLine +
-                                                           "Cell:" + dtManagerDisplay.Rows[0]["ManagerCell"] + Environment.NewLine +
-                                                           "Email:" + dtManagerDisplay.Rows[0]["ManagerEmail"] + Environment.NewLine + Environment.NewLine;
+                                        (dtManagerDisplay.Rows[0]["ManagerPhone"].ReplaceNulls().Length > 0 ? "Phone:" + dtManagerDisplay.Rows[0]["ManagerPhone"] + Environment.NewLine : "") +
+                                        (dtManagerDisplay.Rows[0]["ManagerFax"].ReplaceNulls().Length > 0 ? "Fax:" + dtManagerDisplay.Rows[0]["ManagerFax"] + Environment.NewLine : "") +
+                                        (dtManagerDisplay.Rows[0]["ManagerCell"].ReplaceNulls().Length > 0 ? "Cell:" + dtManagerDisplay.Rows[0]["ManagerCell"] + Environment.NewLine : "") +
+                                        (dtManagerDisplay.Rows[0]["ManagerEmail"].ReplaceNulls().Length > 0 ? "Email:" + dtManagerDisplay.Rows[0]["ManagerEmail"] + Environment.NewLine : "") + Environment.NewLine;
                                     DataView dv = new DataView(dtManagerDisplay);
                                     dv.RowFilter = "RowID <> 1 and SameAddress='True'";
                                     string sameAddressCompanyName = "";
@@ -880,8 +880,8 @@ namespace Unified_Price_for_Var
                                         else if (!sameAddressFax.Contains(rw["ManagerFax"].ReplaceNulls())) sameAddressFax += ", " + rw["ManagerFax"].ReplaceNulls();
 
 
-                                        sameAddressCell += rw["ManagerName"] + " Cell:" + rw["ManagerCell"] + Environment.NewLine;
-                                        sameAddressEmail += rw["ManagerName"] + " Email:" + rw["ManagerEmail"] + Environment.NewLine;
+                                        sameAddressCell += rw["ManagerCell"].ReplaceNulls().Length > 0 ? rw["ManagerName"] + " Cell:" + rw["ManagerCell"] + Environment.NewLine : "";
+                                        sameAddressEmail += rw["ManagerEmail"].ReplaceNulls().Length > 0 ? rw["ManagerName"] + " Email:" + rw["ManagerEmail"] + Environment.NewLine : "";
 
                                     }
                                     ManagerDisplay += sameAddressCompanyName + Environment.NewLine +

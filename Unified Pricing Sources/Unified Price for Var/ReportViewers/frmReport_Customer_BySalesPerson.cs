@@ -50,10 +50,10 @@ namespace Unified_Price_for_Var
                         txt1.Text = DisplayManagerInfo;
                     if (reportType == ReportType.ACTIVE)
                     {
-                        SubreportObject subReportActive = (SubreportObject)rpt.ReportDefinition.ReportObjects["subReportInActive"];
-                        subReportActive.ObjectFormat.EnableSuppress = true;
+                        SubreportObject subReportInActive = (SubreportObject)rpt.ReportDefinition.ReportObjects["subReportInActive"];
+                        subReportInActive.ObjectFormat.EnableSuppress = true;
                     }
-                    else if (reportType == ReportType.ACTIVE)
+                    else if (reportType == ReportType.INACTIVE)
                     {
                         SubreportObject subReportActive = (SubreportObject)rpt.ReportDefinition.ReportObjects["subReportActive"];
                         subReportActive.ObjectFormat.EnableSuppress = true;

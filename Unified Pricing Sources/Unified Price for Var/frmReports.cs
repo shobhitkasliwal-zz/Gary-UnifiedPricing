@@ -256,6 +256,20 @@ namespace Unified_Price_for_Var
         private void btnViewReport1_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
+            ReportTypeDialog frmReportTypeSelection = new ReportTypeDialog();
+            frmReportTypeSelection.StartPosition = FormStartPosition.CenterParent;
+            frmReportTypeSelection.ShowDialog();
+            ReportType reportType = ReportType.BOTH;
+            switch (frmReportTypeSelection.DialogResult)
+            {
+                case System.Windows.Forms.DialogResult.Yes:
+                    reportType = ReportType.ACTIVE;
+                    break;
+                case System.Windows.Forms.DialogResult.No:
+                    reportType = ReportType.INACTIVE;
+                    break;
+
+            }
             Db.NonQuery("DELETE FROM tblByItem_Report");
 
             if (rdoPrintByItemNumb.Checked)
@@ -287,6 +301,7 @@ namespace Unified_Price_for_Var
 
                 Cursor.Current = Cursors.Default;
                 ReportViewers.frmByItem_Viewer frm = new ReportViewers.frmByItem_Viewer();
+                frm.reportType = reportType;
                 frm.Show();
             }
 
@@ -319,6 +334,7 @@ namespace Unified_Price_for_Var
 
                 Cursor.Current = Cursors.Default;
                 ReportViewers.frmByItem_Viewer frm = new ReportViewers.frmByItem_Viewer();
+                frm.reportType = reportType;
                 frm.Show();
             }
             //-------------------------------------------------------------------------------
@@ -350,6 +366,7 @@ namespace Unified_Price_for_Var
 
                 Cursor.Current = Cursors.Default;
                 ReportViewers.frmByItem_Viewer frm = new ReportViewers.frmByItem_Viewer();
+                frm.reportType = reportType;
                 frm.Show();
             }
 
@@ -388,6 +405,7 @@ namespace Unified_Price_for_Var
 
                 Cursor.Current = Cursors.Default;
                 ReportViewers.frmByItem_Viewer frm = new ReportViewers.frmByItem_Viewer();
+                frm.reportType = reportType;
                 frm.Show();
             }
 

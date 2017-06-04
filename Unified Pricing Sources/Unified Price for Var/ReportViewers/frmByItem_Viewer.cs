@@ -19,7 +19,7 @@ namespace Unified_Price_for_Var.ReportViewers
         {
             InitializeComponent();
         }
-
+        public ReportType reportType { get; set; }
         private void crystalReportViewer1_Load(object sender, EventArgs e)
         {
             CrystalReports.ByItem_Report rpt = new CrystalReports.ByItem_Report();
@@ -41,6 +41,24 @@ namespace Unified_Price_for_Var.ReportViewers
                 tbl.ApplyLogOnInfo(tblLogOnInfor);
             }
             rpt.ReportOptions.EnableSaveDataWithReport = false;
+           
+                try
+                {
+                    
+                    if (reportType == ReportType.ACTIVE)
+                    {
+                        SubreportObject subReportInActive = (SubreportObject)rpt.ReportDefinition.ReportObjects["subReportInActive"];
+                        subReportInActive.ObjectFormat.EnableSuppress = true;
+                    }
+                    else if (reportType == ReportType.INACTIVE)
+                    {
+                        SubreportObject subReportActive = (SubreportObject)rpt.ReportDefinition.ReportObjects["subReportActive"];
+                        subReportActive.ObjectFormat.EnableSuppress = true;
+                    }
+                }
+                catch (Exception ex)
+                { }
+            
             crystalReportViewer1.Refresh();
             crystalReportViewer1.Zoom(75);
             WindowState = FormWindowState.Maximized;

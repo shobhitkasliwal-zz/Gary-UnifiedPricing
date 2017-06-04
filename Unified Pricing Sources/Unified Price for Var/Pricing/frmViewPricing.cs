@@ -291,7 +291,20 @@ namespace Unified_Price_for_Var
         private void btnPrint_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
+            ReportTypeDialog frmReportTypeSelection = new ReportTypeDialog();
+            frmReportTypeSelection.StartPosition = FormStartPosition.CenterParent;
+            frmReportTypeSelection.ShowDialog();
+            ReportType reportType = ReportType.BOTH;
+            switch (frmReportTypeSelection.DialogResult)
+            {
+                case System.Windows.Forms.DialogResult.Yes:
+                    reportType = ReportType.ACTIVE;
+                    break;
+                case System.Windows.Forms.DialogResult.No:
+                    reportType = ReportType.INACTIVE;
+                    break;
 
+            }
             var custPricings = Db.ExecuteDataTable("SELECT * FROM tblPricing WHERE [Customer Number] = '{0}' ORDER BY [Item Number] ASC", cmbCustomers.SelectedValue);
             Db.NonQuery("DELETE FROM tblByCustomer_Report");
             string SwingNumber = "";
@@ -477,6 +490,7 @@ namespace Unified_Price_for_Var
                 Cursor.Current = Cursors.WaitCursor;
                 frmReport2_all_Viewer frm = new frmReport2_all_Viewer();
                 frm.DisplayManagerInfo = ManagerDisplay;
+                frm.reportType = reportType;
                 frm.Show();
                 Cursor.Current = Cursors.Default;
             }
@@ -485,6 +499,7 @@ namespace Unified_Price_for_Var
                 Cursor.Current = Cursors.WaitCursor;
                 frmReport2_new_Viewer frm = new frmReport2_new_Viewer();
                 frm.DisplayManagerInfo = ManagerDisplay;
+                frm.reportType = reportType;
                 frm.Show();
                 Cursor.Current = Cursors.Default;
 
@@ -496,7 +511,20 @@ namespace Unified_Price_for_Var
         {
 
             Cursor.Current = Cursors.WaitCursor;
+            ReportTypeDialog frmReportTypeSelection = new ReportTypeDialog();
+            frmReportTypeSelection.StartPosition = FormStartPosition.CenterParent;
+            frmReportTypeSelection.ShowDialog();
+            ReportType reportType = ReportType.BOTH;
+            switch (frmReportTypeSelection.DialogResult)
+            {
+                case System.Windows.Forms.DialogResult.Yes:
+                    reportType = ReportType.ACTIVE;
+                    break;
+                case System.Windows.Forms.DialogResult.No:
+                    reportType = ReportType.INACTIVE;
+                    break;
 
+            }
             var custPricings = Db.ExecuteDataTable("SELECT * FROM tblPricing WHERE [Customer Number] = '{0}' ORDER BY [Item Number] ASC", cmbCustomers.SelectedValue);
             Db.NonQuery("DELETE FROM tblByCustomer_Report");
             Db.NonQuery("Delete from tblAST");
@@ -693,6 +721,7 @@ namespace Unified_Price_for_Var
                 Cursor.Current = Cursors.WaitCursor;
                 frmReport1_all_Viewer frm = new frmReport1_all_Viewer();
                 frm.DisplayManagerInfo = ManagerDisplay;
+                frm.reportType = reportType;
                 frm.Show();
                 Cursor.Current = Cursors.Default;
             }
@@ -701,6 +730,7 @@ namespace Unified_Price_for_Var
                 Cursor.Current = Cursors.WaitCursor;
                 frmReport1_new_Viewer frm = new frmReport1_new_Viewer();
                 frm.DisplayManagerInfo = ManagerDisplay;
+                frm.reportType = reportType;
                 frm.Show();
                 Cursor.Current = Cursors.Default;
 

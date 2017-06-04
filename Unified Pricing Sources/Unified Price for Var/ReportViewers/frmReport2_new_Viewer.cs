@@ -21,7 +21,7 @@ namespace Unified_Price_for_Var
         }
 
         public string DisplayManagerInfo { get; set; }
-
+        public ReportType reportType { get; set; }
         private void crystalReportViewer1_Load(object sender, EventArgs e)
         {
             CrystalReports.Report2_new rpt = new CrystalReports.Report2_new();
@@ -45,7 +45,16 @@ namespace Unified_Price_for_Var
                     TextObject txt1 = (TextObject)rpt.ReportDefinition.ReportObjects["txtManagerInfo"];
                     if (txt1 != null)
                         txt1.Text = DisplayManagerInfo;
-
+                    if (reportType == ReportType.ACTIVE)
+                    {
+                        SubreportObject subReportInActive = (SubreportObject)rpt.ReportDefinition.ReportObjects["subReportInActive"];
+                        subReportInActive.ObjectFormat.EnableSuppress = true;
+                    }
+                    else if (reportType == ReportType.INACTIVE)
+                    {
+                        SubreportObject subReportActive = (SubreportObject)rpt.ReportDefinition.ReportObjects["subReportActive"];
+                        subReportActive.ObjectFormat.EnableSuppress = true;
+                    }
                 }
                 catch (Exception ex)
                 { }

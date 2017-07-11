@@ -220,6 +220,12 @@
     <Compile Include="frmBackUp.designer.cs">
       <DependentUpon>frmBackUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pricing\frmUpdateLast12MoQty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pricing\frmUpdateLast12MoQty.Designer.cs">
+      <DependentUpon>frmUpdateLast12MoQty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pricing_for_Tanya_DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -455,6 +461,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBackUp.resx">
       <DependentUpon>frmBackUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pricing\frmUpdateLast12MoQty.resx">
+      <DependentUpon>frmUpdateLast12MoQty.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportTypeDialog.resx">
       <DependentUpon>ReportTypeDialog.cs</DependentUpon>

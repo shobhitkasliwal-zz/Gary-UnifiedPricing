@@ -71,6 +71,8 @@
             this.lblHidden_CustomerNumber = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.grpPriceChange = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -91,8 +93,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.lbl11 = new System.Windows.Forms.Label();
             this.btnUpdSPQ = new System.Windows.Forms.Button();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label13 = new System.Windows.Forms.Label();
+            this.btnUpdateLast12MoQtyTo1 = new System.Windows.Forms.Button();
             item_NumberLabel = new System.Windows.Forms.Label();
             current_PriceLabel = new System.Windows.Forms.Label();
             item_DescriptionLabel = new System.Windows.Forms.Label();
@@ -243,7 +244,7 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCancel.Location = new System.Drawing.Point(719, 580);
+            this.btnCancel.Location = new System.Drawing.Point(602, 585);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 10;
@@ -266,7 +267,7 @@
             "When you are sure they have recieved the Price Sheet, you can remove this effect " +
                 "by checking on \"Mark All Prices As Old\".",
             " "});
-            this.lstBox1.Location = new System.Drawing.Point(38, 56);
+            this.lstBox1.Location = new System.Drawing.Point(38, 61);
             this.lstBox1.Name = "lstBox1";
             this.lstBox1.Size = new System.Drawing.Size(975, 60);
             this.lstBox1.TabIndex = 14;
@@ -277,7 +278,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(38, 123);
+            this.label1.Location = new System.Drawing.Point(38, 128);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(253, 16);
             this.label1.TabIndex = 15;
@@ -305,7 +306,7 @@
             this.grpPriceInfo.Controls.Add(item_DescriptionLabel);
             this.grpPriceInfo.Controls.Add(this.txtCustomer_Item_Number);
             this.grpPriceInfo.Controls.Add(customer_Item_NumberLabel);
-            this.grpPriceInfo.Location = new System.Drawing.Point(38, 472);
+            this.grpPriceInfo.Location = new System.Drawing.Point(38, 477);
             this.grpPriceInfo.Name = "grpPriceInfo";
             this.grpPriceInfo.Size = new System.Drawing.Size(772, 100);
             this.grpPriceInfo.TabIndex = 18;
@@ -334,9 +335,9 @@
             // 
             this.btnChange_Price.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnChange_Price.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChange_Price.Location = new System.Drawing.Point(181, 580);
+            this.btnChange_Price.Location = new System.Drawing.Point(113, 585);
             this.btnChange_Price.Name = "btnChange_Price";
-            this.btnChange_Price.Size = new System.Drawing.Size(114, 23);
+            this.btnChange_Price.Size = new System.Drawing.Size(95, 23);
             this.btnChange_Price.TabIndex = 19;
             this.btnChange_Price.Text = "Change price";
             this.btnChange_Price.UseVisualStyleBackColor = true;
@@ -346,7 +347,7 @@
             // 
             this.btnDeletePrice.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnDeletePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeletePrice.Location = new System.Drawing.Point(463, 580);
+            this.btnDeletePrice.Location = new System.Drawing.Point(374, 585);
             this.btnDeletePrice.Name = "btnDeletePrice";
             this.btnDeletePrice.Size = new System.Drawing.Size(117, 23);
             this.btnDeletePrice.TabIndex = 20;
@@ -358,9 +359,9 @@
             // 
             this.btnAddPrice.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAddPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddPrice.Location = new System.Drawing.Point(69, 580);
+            this.btnAddPrice.Location = new System.Drawing.Point(31, 585);
             this.btnAddPrice.Name = "btnAddPrice";
-            this.btnAddPrice.Size = new System.Drawing.Size(103, 23);
+            this.btnAddPrice.Size = new System.Drawing.Size(75, 23);
             this.btnAddPrice.TabIndex = 21;
             this.btnAddPrice.Text = "Add Price";
             this.btnAddPrice.UseVisualStyleBackColor = true;
@@ -373,7 +374,7 @@
             this.cmbQuick_Check.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbQuick_Check.DisplayMember = "Item Number";
             this.cmbQuick_Check.FormattingEnabled = true;
-            this.cmbQuick_Check.Location = new System.Drawing.Point(819, 194);
+            this.cmbQuick_Check.Location = new System.Drawing.Point(819, 199);
             this.cmbQuick_Check.Name = "cmbQuick_Check";
             this.cmbQuick_Check.Size = new System.Drawing.Size(146, 21);
             this.cmbQuick_Check.TabIndex = 22;
@@ -387,7 +388,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(816, 232);
+            this.label2.Location = new System.Drawing.Point(816, 237);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(231, 84);
             this.label2.TabIndex = 23;
@@ -396,7 +397,7 @@
             // btnMarkAsOld
             // 
             this.btnMarkAsOld.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnMarkAsOld.Location = new System.Drawing.Point(835, 347);
+            this.btnMarkAsOld.Location = new System.Drawing.Point(835, 352);
             this.btnMarkAsOld.Name = "btnMarkAsOld";
             this.btnMarkAsOld.Size = new System.Drawing.Size(130, 23);
             this.btnMarkAsOld.TabIndex = 24;
@@ -407,7 +408,7 @@
             // btnCopy
             // 
             this.btnCopy.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCopy.Location = new System.Drawing.Point(835, 377);
+            this.btnCopy.Location = new System.Drawing.Point(835, 382);
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Size = new System.Drawing.Size(130, 23);
             this.btnCopy.TabIndex = 25;
@@ -418,7 +419,7 @@
             // btnCheckDuplicate
             // 
             this.btnCheckDuplicate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCheckDuplicate.Location = new System.Drawing.Point(835, 408);
+            this.btnCheckDuplicate.Location = new System.Drawing.Point(835, 413);
             this.btnCheckDuplicate.Name = "btnCheckDuplicate";
             this.btnCheckDuplicate.Size = new System.Drawing.Size(130, 23);
             this.btnCheckDuplicate.TabIndex = 26;
@@ -429,7 +430,7 @@
             // btnPrint
             // 
             this.btnPrint.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnPrint.Location = new System.Drawing.Point(835, 440);
+            this.btnPrint.Location = new System.Drawing.Point(835, 445);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(130, 23);
             this.btnPrint.TabIndex = 27;
@@ -440,7 +441,7 @@
             // btnChangePrices
             // 
             this.btnChangePrices.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnChangePrices.Location = new System.Drawing.Point(835, 472);
+            this.btnChangePrices.Location = new System.Drawing.Point(835, 477);
             this.btnChangePrices.Name = "btnChangePrices";
             this.btnChangePrices.Size = new System.Drawing.Size(130, 23);
             this.btnChangePrices.TabIndex = 28;
@@ -452,7 +453,7 @@
             // btnRollBack
             // 
             this.btnRollBack.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnRollBack.Location = new System.Drawing.Point(835, 505);
+            this.btnRollBack.Location = new System.Drawing.Point(835, 510);
             this.btnRollBack.Name = "btnRollBack";
             this.btnRollBack.Size = new System.Drawing.Size(130, 23);
             this.btnRollBack.TabIndex = 29;
@@ -463,7 +464,7 @@
             // btnEmail
             // 
             this.btnEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEmail.Location = new System.Drawing.Point(835, 538);
+            this.btnEmail.Location = new System.Drawing.Point(835, 543);
             this.btnEmail.Name = "btnEmail";
             this.btnEmail.Size = new System.Drawing.Size(130, 23);
             this.btnEmail.TabIndex = 30;
@@ -476,7 +477,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(816, 169);
+            this.label3.Location = new System.Drawing.Point(816, 174);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(109, 13);
             this.label3.TabIndex = 31;
@@ -487,7 +488,7 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(380, 15);
+            this.label4.Location = new System.Drawing.Point(380, 20);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(214, 24);
             this.label4.TabIndex = 32;
@@ -511,7 +512,7 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(38, 175);
+            this.label5.Location = new System.Drawing.Point(38, 180);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(448, 16);
             this.label5.TabIndex = 37;
@@ -530,9 +531,9 @@
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(586, 580);
+            this.btnSave.Location = new System.Drawing.Point(498, 585);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(115, 23);
+            this.btnSave.Size = new System.Drawing.Size(97, 23);
             this.btnSave.TabIndex = 39;
             this.btnSave.Text = "Save changes";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -553,12 +554,29 @@
             this.grpPriceChange.Controls.Add(this.textBox3);
             this.grpPriceChange.Controls.Add(this.textBox2);
             this.grpPriceChange.Controls.Add(this.textBox1);
-            this.grpPriceChange.Location = new System.Drawing.Point(38, 472);
+            this.grpPriceChange.Location = new System.Drawing.Point(38, 477);
             this.grpPriceChange.Name = "grpPriceChange";
             this.grpPriceChange.Size = new System.Drawing.Size(791, 73);
             this.grpPriceChange.TabIndex = 40;
             this.grpPriceChange.TabStop = false;
             this.grpPriceChange.Text = "Price Change";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(701, 27);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(65, 13);
+            this.label13.TabIndex = 15;
+            this.label13.Text = "Quote Date:";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker2.Location = new System.Drawing.Point(703, 42);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(82, 20);
+            this.dateTimePicker2.TabIndex = 14;
             // 
             // textBox4
             // 
@@ -595,7 +613,7 @@
             this.cmbCustomers.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cmbCustomers.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbCustomers.FormattingEnabled = true;
-            this.cmbCustomers.Location = new System.Drawing.Point(38, 146);
+            this.cmbCustomers.Location = new System.Drawing.Point(38, 151);
             this.cmbCustomers.Name = "cmbCustomers";
             this.cmbCustomers.Size = new System.Drawing.Size(403, 21);
             this.cmbCustomers.TabIndex = 41;
@@ -635,7 +653,7 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.gridPrices.DefaultCellStyle = dataGridViewCellStyle4;
-            this.gridPrices.Location = new System.Drawing.Point(38, 194);
+            this.gridPrices.Location = new System.Drawing.Point(38, 199);
             this.gridPrices.Name = "gridPrices";
             this.gridPrices.ReadOnly = true;
             this.gridPrices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -708,7 +726,7 @@
             this.lblTotalPricesForCust.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTotalPricesForCust.AutoSize = true;
             this.lblTotalPricesForCust.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lblTotalPricesForCust.Location = new System.Drawing.Point(719, 175);
+            this.lblTotalPricesForCust.Location = new System.Drawing.Point(719, 180);
             this.lblTotalPricesForCust.Name = "lblTotalPricesForCust";
             this.lblTotalPricesForCust.Size = new System.Drawing.Size(60, 16);
             this.lblTotalPricesForCust.TabIndex = 43;
@@ -719,7 +737,7 @@
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.Location = new System.Drawing.Point(835, 580);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 23);
+            this.button1.Size = new System.Drawing.Size(130, 46);
             this.button1.TabIndex = 44;
             this.button1.Text = "Exit";
             this.button1.UseVisualStyleBackColor = true;
@@ -730,7 +748,7 @@
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(460, 123);
+            this.label10.Location = new System.Drawing.Point(460, 128);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(195, 16);
             this.label10.TabIndex = 47;
@@ -741,7 +759,7 @@
             this.lbl11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl11.AutoSize = true;
             this.lbl11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl11.Location = new System.Drawing.Point(460, 147);
+            this.lbl11.Location = new System.Drawing.Point(460, 152);
             this.lbl11.Name = "lbl11";
             this.lbl11.Size = new System.Drawing.Size(195, 16);
             this.lbl11.TabIndex = 48;
@@ -750,7 +768,7 @@
             // btnUpdSPQ
             // 
             this.btnUpdSPQ.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnUpdSPQ.Location = new System.Drawing.Point(303, 580);
+            this.btnUpdSPQ.Location = new System.Drawing.Point(215, 585);
             this.btnUpdSPQ.Name = "btnUpdSPQ";
             this.btnUpdSPQ.Size = new System.Drawing.Size(151, 23);
             this.btnUpdSPQ.TabIndex = 49;
@@ -758,28 +776,23 @@
             this.btnUpdSPQ.UseVisualStyleBackColor = true;
             this.btnUpdSPQ.Click += new System.EventHandler(this.btnUpdSPQ_Click);
             // 
-            // dateTimePicker2
+            // btnUpdateLast12MoQtyTo1
             // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(703, 42);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(82, 20);
-            this.dateTimePicker2.TabIndex = 14;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(701, 27);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(65, 13);
-            this.label13.TabIndex = 15;
-            this.label13.Text = "Quote Date:";
+            this.btnUpdateLast12MoQtyTo1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnUpdateLast12MoQtyTo1.Location = new System.Drawing.Point(694, 580);
+            this.btnUpdateLast12MoQtyTo1.Name = "btnUpdateLast12MoQtyTo1";
+            this.btnUpdateLast12MoQtyTo1.Size = new System.Drawing.Size(129, 46);
+            this.btnUpdateLast12MoQtyTo1.TabIndex = 50;
+            this.btnUpdateLast12MoQtyTo1.Text = "Update Last 12 mo QTY to 1";
+            this.btnUpdateLast12MoQtyTo1.UseVisualStyleBackColor = true;
+            this.btnUpdateLast12MoQtyTo1.Click += new System.EventHandler(this.btnUpdateLast12MoQtyTo1_Click);
             // 
             // frmViewPricing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1064, 618);
+            this.ClientSize = new System.Drawing.Size(1064, 628);
+            this.Controls.Add(this.btnUpdateLast12MoQtyTo1);
             this.Controls.Add(this.btnUpdSPQ);
             this.Controls.Add(this.grpPriceInfo);
             this.Controls.Add(this.lbl11);
@@ -878,5 +891,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Button btnUpdateLast12MoQtyTo1;
     }
 }

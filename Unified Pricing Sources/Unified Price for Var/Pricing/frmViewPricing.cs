@@ -322,8 +322,8 @@ namespace Unified_Price_for_Var
                 //              ASTCurrPriceDec = (decimal)ASTCurrPrice[0];
 
                 var cust = Db.ExecuteDataRow("SELECT * FROM tblCustomers WHERE [Customer Number] = '{0}'", custPricings.Rows[i]["Customer Number"]);
-                decimal curPrice = 0; 
-                Decimal.TryParse(custPricings.Rows[i]["Current Price"].ReplaceNulls(),out curPrice);
+                decimal curPrice = 0;
+                Decimal.TryParse(custPricings.Rows[i]["Current Price"].ReplaceNulls(), out curPrice);
                 DateTime QuoteDate = new DateTime(2000, 1, 1);
                 DateTime.TryParse(custPricings.Rows[i]["QuoteDate"].ReplaceNulls(), out QuoteDate);
                 Db.NonQuery("INSERT INTO tblByCustomer_Report ([Customer Number], [Customer Name], [Item Number], [Item Description], [Current Price], [Customer Item Number], [IsNew], [ASR Current Price], [AST Current Price], [Notes],[Last12MonthQTY],[QuoteDate]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}','{10}','{11}')",
@@ -556,7 +556,7 @@ namespace Unified_Price_for_Var
                 Decimal.TryParse(custPricings.Rows[i]["Current Price"].ReplaceNulls(), out curPrice);
                 DateTime QuoteDate = new DateTime(2000, 1, 1);
                 DateTime.TryParse(custPricings.Rows[i]["QuoteDate"].ReplaceNulls(), out QuoteDate);
-               
+
                 Db.NonQuery("INSERT INTO tblByCustomer_Report ([Customer Number], [Customer Name], [Item Number], [Item Description], [Current Price], [Customer Item Number], [IsNew], [ASR Current Price], [AST Current Price], [Notes], [QuoteDate], [Last12MonthQTY]) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}','{10}','{11}')",
                     custPricings.Rows[i]["Customer Number"],
                     cust["Customer Bill Name"].ToString().Replace("'", "''"),
@@ -833,6 +833,13 @@ namespace Unified_Price_for_Var
                 return;
             }
 
+            int existsForAAMNFL = (int)Db.ExecuteScalar("SELECT count([Item Number]) FROM tblPricing WHERE [Customer Number] = 'AA-MN-FL' and [Item Number] = '{1}'", cmbCustomers.SelectedValue, cmbItemNumb.Text);
+            if (existsForAAMNFL == 0)
+            {
+                MessageBox.Show("!! STOP !! " + Environment.NewLine + "Item does not exists for AA-MN-FL Customer.");
+                return;
+            }
+
             if (cmbItemNumb.Text == "")
             {
                 MessageBox.Show("You must select the Item to quote this Customer a Price for. \n Please select an Item");
@@ -1080,6 +1087,14 @@ namespace Unified_Price_for_Var
         {
 
         }
+
+        private void btnUpdateLast12MoQtyTo1_Click(object sender, EventArgs e)
+        {
+            frmUpdateLast12MoQty frm = new frmUpdateLast12MoQty();
+            frm.ShowDialog();
+        }
+
+       
         //===================================================================================================
     }
 }

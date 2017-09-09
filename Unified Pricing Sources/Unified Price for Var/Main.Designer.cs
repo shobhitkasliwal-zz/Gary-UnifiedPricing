@@ -54,6 +54,8 @@
             this.btnBackUp = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.btnConvert = new System.Windows.Forms.Button();
+            this.listBox8 = new System.Windows.Forms.ListBox();
+            this.btnMainNetFull = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,7 +69,7 @@
             "Pricing by Item Reports    ",
             "Pricing by Customer/Distribution Lists Reports",
             "Swing Reports"});
-            this.listBox7.Location = new System.Drawing.Point(342, 504);
+            this.listBox7.Location = new System.Drawing.Point(211, 504);
             this.listBox7.Name = "listBox7";
             this.listBox7.Size = new System.Drawing.Size(327, 39);
             this.listBox7.TabIndex = 38;
@@ -83,7 +85,7 @@
             "or a  percentage",
             "Procentage in Group Pricing are representing at full numbers, ",
             "such as 5.5% or 25%"});
-            this.listBox5.Location = new System.Drawing.Point(342, 414);
+            this.listBox5.Location = new System.Drawing.Point(211, 414);
             this.listBox5.Name = "listBox5";
             this.listBox5.Size = new System.Drawing.Size(327, 52);
             this.listBox5.TabIndex = 36;
@@ -98,7 +100,7 @@
             "Add, Edit, or Delete Distribution List",
             "Reconcile Customer Pricing list in the Distribution List",
             "Manage Swing Number listing"});
-            this.listBox4.Location = new System.Drawing.Point(342, 338);
+            this.listBox4.Location = new System.Drawing.Point(211, 338);
             this.listBox4.Name = "listBox4";
             this.listBox4.Size = new System.Drawing.Size(327, 39);
             this.listBox4.TabIndex = 35;
@@ -112,7 +114,7 @@
             this.listBox3.Items.AddRange(new object[] {
             "Add, Edit, or Delete Items",
             "See what Customer or Distribution Lists have prices for an Item "});
-            this.listBox3.Location = new System.Drawing.Point(342, 276);
+            this.listBox3.Location = new System.Drawing.Point(211, 276);
             this.listBox3.Name = "listBox3";
             this.listBox3.Size = new System.Drawing.Size(327, 26);
             this.listBox3.TabIndex = 34;
@@ -126,7 +128,7 @@
             this.listBox2.Items.AddRange(new object[] {
             "Add, Edit, or Delete Customers and Distribution Lists",
             "Manage Customer Item Numbers to reference your own Items "});
-            this.listBox2.Location = new System.Drawing.Point(342, 120);
+            this.listBox2.Location = new System.Drawing.Point(211, 120);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(297, 26);
             this.listBox2.TabIndex = 33;
@@ -143,7 +145,7 @@
             "Check for and remove duplicate prices from a Customer or Distribution list",
             "Copy prices from one Customer/Distribution list to another",
             "Mark prices as old"});
-            this.listBox1.Location = new System.Drawing.Point(342, 179);
+            this.listBox1.Location = new System.Drawing.Point(211, 179);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(327, 65);
             this.listBox1.TabIndex = 32;
@@ -152,7 +154,7 @@
             // 
             this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(610, 568);
+            this.btnExit.Location = new System.Drawing.Point(479, 568);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 7;
@@ -164,7 +166,7 @@
             // 
             this.btnReports.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReports.Location = new System.Drawing.Point(190, 514);
+            this.btnReports.Location = new System.Drawing.Point(59, 514);
             this.btnReports.Name = "btnReports";
             this.btnReports.Size = new System.Drawing.Size(127, 27);
             this.btnReports.TabIndex = 6;
@@ -176,7 +178,7 @@
             // 
             this.btnGroup_Pricing.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnGroup_Pricing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGroup_Pricing.Location = new System.Drawing.Point(190, 428);
+            this.btnGroup_Pricing.Location = new System.Drawing.Point(59, 428);
             this.btnGroup_Pricing.Name = "btnGroup_Pricing";
             this.btnGroup_Pricing.Size = new System.Drawing.Size(127, 27);
             this.btnGroup_Pricing.TabIndex = 4;
@@ -188,7 +190,7 @@
             // 
             this.btnDistr_List.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnDistr_List.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDistr_List.Location = new System.Drawing.Point(190, 348);
+            this.btnDistr_List.Location = new System.Drawing.Point(59, 348);
             this.btnDistr_List.Name = "btnDistr_List";
             this.btnDistr_List.Size = new System.Drawing.Size(127, 27);
             this.btnDistr_List.TabIndex = 3;
@@ -200,7 +202,7 @@
             // 
             this.btnItems.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnItems.Location = new System.Drawing.Point(190, 276);
+            this.btnItems.Location = new System.Drawing.Point(59, 276);
             this.btnItems.Name = "btnItems";
             this.btnItems.Size = new System.Drawing.Size(127, 27);
             this.btnItems.TabIndex = 2;
@@ -212,7 +214,7 @@
             // 
             this.btnPrice.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrice.Location = new System.Drawing.Point(190, 200);
+            this.btnPrice.Location = new System.Drawing.Point(59, 200);
             this.btnPrice.Name = "btnPrice";
             this.btnPrice.Size = new System.Drawing.Size(127, 27);
             this.btnPrice.TabIndex = 1;
@@ -224,7 +226,7 @@
             // 
             this.btnCustomer.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCustomer.Location = new System.Drawing.Point(190, 120);
+            this.btnCustomer.Location = new System.Drawing.Point(59, 120);
             this.btnCustomer.Name = "btnCustomer";
             this.btnCustomer.Size = new System.Drawing.Size(127, 27);
             this.btnCustomer.TabIndex = 0;
@@ -237,7 +239,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(282, 48);
+            this.label1.Location = new System.Drawing.Point(373, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(269, 24);
             this.label1.TabIndex = 23;
@@ -254,9 +256,9 @@
             this.panel1.Controls.Add(this.txtPassword);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(108, 32);
+            this.panel1.Location = new System.Drawing.Point(28, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(700, 575);
+            this.panel1.Size = new System.Drawing.Size(980, 575);
             this.panel1.TabIndex = 39;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -271,7 +273,7 @@
             "Please enter your Username and Password below.",
             "Make sure you have correct UserName and Password.",
             "If not, contact your System administrator.  "});
-            this.listBox6.Location = new System.Drawing.Point(195, 125);
+            this.listBox6.Location = new System.Drawing.Point(328, 133);
             this.listBox6.Name = "listBox6";
             this.listBox6.Size = new System.Drawing.Size(343, 51);
             this.listBox6.TabIndex = 14;
@@ -280,7 +282,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(239, 49);
+            this.label4.Location = new System.Drawing.Point(372, 57);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(245, 22);
             this.label4.TabIndex = 13;
@@ -289,14 +291,14 @@
             // txtUsername
             // 
             this.txtUsername.FormattingEnabled = true;
-            this.txtUsername.Location = new System.Drawing.Point(316, 254);
+            this.txtUsername.Location = new System.Drawing.Point(449, 262);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(121, 21);
             this.txtUsername.TabIndex = 0;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(445, 395);
+            this.button2.Location = new System.Drawing.Point(578, 403);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 3;
@@ -306,7 +308,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(335, 395);
+            this.button1.Location = new System.Drawing.Point(468, 403);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -316,7 +318,7 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(316, 320);
+            this.txtPassword.Location = new System.Drawing.Point(449, 328);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(121, 20);
@@ -325,7 +327,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(254, 323);
+            this.label2.Location = new System.Drawing.Point(387, 331);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 7;
@@ -334,7 +336,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(252, 257);
+            this.label3.Location = new System.Drawing.Point(385, 265);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 6;
@@ -344,7 +346,7 @@
             // 
             this.btnBackUp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnBackUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBackUp.Location = new System.Drawing.Point(190, 570);
+            this.btnBackUp.Location = new System.Drawing.Point(59, 570);
             this.btnBackUp.Name = "btnBackUp";
             this.btnBackUp.Size = new System.Drawing.Size(127, 27);
             this.btnBackUp.TabIndex = 40;
@@ -356,7 +358,7 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(342, 575);
+            this.label5.Location = new System.Drawing.Point(211, 575);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(219, 13);
             this.label5.TabIndex = 41;
@@ -365,7 +367,7 @@
             // btnConvert
             // 
             this.btnConvert.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnConvert.Location = new System.Drawing.Point(25, 27);
+            this.btnConvert.Location = new System.Drawing.Point(116, 27);
             this.btnConvert.Name = "btnConvert";
             this.btnConvert.Size = new System.Drawing.Size(112, 23);
             this.btnConvert.TabIndex = 42;
@@ -374,11 +376,37 @@
             this.btnConvert.Visible = false;
             this.btnConvert.Click += new System.EventHandler(this.btnConvert_Click);
             // 
+            // listBox8
+            // 
+            this.listBox8.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.listBox8.BackColor = System.Drawing.SystemColors.Menu;
+            this.listBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBox8.FormattingEnabled = true;
+            this.listBox8.Items.AddRange(new object[] {
+            "Change Price of Inactive Items for Customer \"Maintenance ",
+            "Nets Full Line\"."});
+            this.listBox8.Location = new System.Drawing.Point(711, 121);
+            this.listBox8.Name = "listBox8";
+            this.listBox8.Size = new System.Drawing.Size(297, 26);
+            this.listBox8.TabIndex = 44;
+            // 
+            // btnMainNetFull
+            // 
+            this.btnMainNetFull.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnMainNetFull.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMainNetFull.Location = new System.Drawing.Point(559, 121);
+            this.btnMainNetFull.Name = "btnMainNetFull";
+            this.btnMainNetFull.Size = new System.Drawing.Size(127, 27);
+            this.btnMainNetFull.TabIndex = 43;
+            this.btnMainNetFull.Text = "Main Net Full";
+            this.btnMainNetFull.UseVisualStyleBackColor = true;
+            this.btnMainNetFull.Click += new System.EventHandler(this.btnMainNetFull_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(859, 619);
+            this.ClientSize = new System.Drawing.Size(1041, 619);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.listBox7);
             this.Controls.Add(this.listBox5);
@@ -397,6 +425,8 @@
             this.Controls.Add(this.btnBackUp);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnConvert);
+            this.Controls.Add(this.btnMainNetFull);
+            this.Controls.Add(this.listBox8);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Screen";
@@ -437,5 +467,7 @@
         private System.Windows.Forms.Button btnBackUp;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnConvert;
+        private System.Windows.Forms.ListBox listBox8;
+        private System.Windows.Forms.Button btnMainNetFull;
     }
 }

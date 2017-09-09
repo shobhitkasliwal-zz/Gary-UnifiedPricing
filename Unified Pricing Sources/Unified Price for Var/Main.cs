@@ -47,7 +47,7 @@ namespace Unified_Price_for_Var
             Cursor.Current = Cursors.WaitCursor;
             frmViewPricing nextScreen2 = new frmViewPricing();
             DialogResult result = nextScreen2.ShowDialog();
-            Cursor.Current =Cursors.Default;
+            Cursor.Current = Cursors.Default;
         }
 
         private void btnDistr_List_Click(object sender, EventArgs e)
@@ -57,7 +57,7 @@ namespace Unified_Price_for_Var
             DialogResult result = nextScreen3.ShowDialog();
             Cursor.Current = Cursors.Default;
         }
-        
+
         private void btnGroup_Pricing_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
@@ -92,7 +92,7 @@ namespace Unified_Price_for_Var
             if (results.Rows.Count > 0)
                 panel1.Visible = false;
             else
-                MessageBox.Show("Username/Password incorrect");            
+                MessageBox.Show("Username/Password incorrect");
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -111,7 +111,7 @@ namespace Unified_Price_for_Var
             BackUp.frmBackUp nextScreen6 = new BackUp.frmBackUp();
             DialogResult result = nextScreen6.ShowDialog();
             Cursor.Current = Cursors.Default;
-            
+
         }
 
         private void btnConvert_Click(object sender, EventArgs e)
@@ -120,6 +120,26 @@ namespace Unified_Price_for_Var
             ItemConversion nextScreen7 = new ItemConversion();
             DialogResult result = nextScreen7.ShowDialog();
             Cursor.Current = Cursors.Default;
+        }
+
+        private void btnMainNetFull_Click(object sender, EventArgs e)
+        {
+            var InActiveQty = Db.ExecuteScalar(@"SELECT count('*') from tblPricing 
+                                    where [Customer Number] ='AA-MN-FL' 
+                                    and ([QuoteDate] is null or [QuoteDate] <=  DateAdd(""yyyy"",-1,Date())) 
+                                    and iif(isnull(Last12MonthQty),0,Last12MonthQty) <=0 ");
+            frmChangePricing frmChangePricing = new frmChangePricing();
+            string type = "notavailable";
+            if (Convert.ToInt32(InActiveQty) > 0 )
+            {
+                frmChangePricing.CustomerId = "AA-MN-FL";
+                frmChangePricing.CustomerName = "MAINTENANCE NETS, FULL LINE";
+                frmChangePricing.ItemCount = Convert.ToInt32(InActiveQty);
+                type = "changeprice";
+            }
+            frmChangePricing.LoadForm(type);
+            frmChangePricing.ShowDialog();
+
         }
     }
 }

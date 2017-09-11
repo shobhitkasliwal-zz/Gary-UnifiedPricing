@@ -52,6 +52,8 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.lblNotAvailableText = new System.Windows.Forms.Label();
             this.lblSuccessText = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -106,7 +108,7 @@
             // 
             // rdoIncreasePercent
             // 
-            this.rdoIncreasePercent.Location = new System.Drawing.Point(15, 19);
+            this.rdoIncreasePercent.Location = new System.Drawing.Point(15, 36);
             this.rdoIncreasePercent.Name = "rdoIncreasePercent";
             this.rdoIncreasePercent.Size = new System.Drawing.Size(81, 23);
             this.rdoIncreasePercent.TabIndex = 7;
@@ -118,7 +120,7 @@
             // 
             // rdoIncreaseAmount
             // 
-            this.rdoIncreaseAmount.Location = new System.Drawing.Point(13, 48);
+            this.rdoIncreaseAmount.Location = new System.Drawing.Point(13, 65);
             this.rdoIncreaseAmount.Name = "rdoIncreaseAmount";
             this.rdoIncreaseAmount.Size = new System.Drawing.Size(81, 23);
             this.rdoIncreaseAmount.TabIndex = 8;
@@ -130,7 +132,7 @@
             // 
             // rdoDecreasePercent
             // 
-            this.rdoDecreasePercent.Location = new System.Drawing.Point(130, 19);
+            this.rdoDecreasePercent.Location = new System.Drawing.Point(130, 36);
             this.rdoDecreasePercent.Name = "rdoDecreasePercent";
             this.rdoDecreasePercent.Size = new System.Drawing.Size(81, 23);
             this.rdoDecreasePercent.TabIndex = 9;
@@ -142,7 +144,7 @@
             // 
             // rdoDecreaseAmount
             // 
-            this.rdoDecreaseAmount.Location = new System.Drawing.Point(130, 48);
+            this.rdoDecreaseAmount.Location = new System.Drawing.Point(130, 65);
             this.rdoDecreaseAmount.Name = "rdoDecreaseAmount";
             this.rdoDecreaseAmount.Size = new System.Drawing.Size(81, 23);
             this.rdoDecreaseAmount.TabIndex = 10;
@@ -154,19 +156,21 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.rdoDecreaseAmount);
             this.groupBox1.Controls.Add(this.rdoIncreasePercent);
             this.groupBox1.Controls.Add(this.rdoDecreasePercent);
             this.groupBox1.Controls.Add(this.rdoIncreaseAmount);
             this.groupBox1.Location = new System.Drawing.Point(87, 117);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(225, 78);
+            this.groupBox1.Size = new System.Drawing.Size(229, 99);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             // 
             // lblSelection
             // 
-            this.lblSelection.Location = new System.Drawing.Point(7, 217);
+            this.lblSelection.Location = new System.Drawing.Point(7, 228);
             this.lblSelection.Name = "lblSelection";
             this.lblSelection.Size = new System.Drawing.Size(112, 20);
             this.lblSelection.TabIndex = 12;
@@ -175,7 +179,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(125, 217);
+            this.textBox1.Location = new System.Drawing.Point(125, 228);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 13;
@@ -306,6 +310,26 @@
             this.lblSuccessText.Text = "label6";
             this.lblSuccessText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(7, 16);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Increase Price";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(123, 16);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(94, 13);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Decrease Price";
+            // 
             // frmChangePricing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -316,8 +340,9 @@
             this.Controls.Add(this.panel1);
             this.Name = "frmChangePricing";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Change Inavtive Items Price";
+            this.Text = "Change Inactive Items Price";
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -352,5 +377,7 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lblNotAvailableText;
         private System.Windows.Forms.Label lblSuccessText;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
     }
 }

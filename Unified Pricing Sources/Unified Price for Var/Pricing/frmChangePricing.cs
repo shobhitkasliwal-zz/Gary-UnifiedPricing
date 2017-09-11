@@ -98,7 +98,7 @@ namespace Unified_Price_for_Var
             if (rdoDecreasePercent.Checked || rdoIncreasePercent.Checked)
                 changeVal = changeVal / 100;
             string ChangePriceQuery  = String.Format(@"Update tblPricing
-                                    set  QuoteDate = Date(), [Current Price]= [Current Price] {0} {1} where [Customer Number] ='AA-MN-FL' 
+                                    set  QuoteDate = Date(), [old price]= [Current Price], [Current Price]= [Current Price] {0} {1} where [Customer Number] ='AA-MN-FL' 
                                     and ([QuoteDate] is null or [QuoteDate] <=  DateAdd(""yyyy"",-1,Date())) 
                                     and iif(isnull(Last12MonthQty),0,Last12MonthQty) <=0", (rdoDecreasePercent.Checked || rdoDecreaseAmount.Checked ? " - " : " + "),
                                                                                          (rdoDecreaseAmount.Checked || rdoIncreaseAmount.Checked ? changeVal.ToString() : "(" + changeVal.ToString() + " * [Current Price] )")

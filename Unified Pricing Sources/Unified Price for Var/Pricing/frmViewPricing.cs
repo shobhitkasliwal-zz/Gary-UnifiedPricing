@@ -833,11 +833,14 @@ namespace Unified_Price_for_Var
                 return;
             }
 
-            int existsForAAMNFL = (int)Db.ExecuteScalar("SELECT count([Item Number]) FROM tblPricing WHERE [Customer Number] = 'AA-MN-FL' and [Item Number] = '{1}'", cmbCustomers.SelectedValue, cmbItemNumb.Text);
-            if (existsForAAMNFL == 0)
+            if (!cmbCustomers.SelectedValue.ToString().Equals("AA-MN-FL", StringComparison.OrdinalIgnoreCase))
             {
-                MessageBox.Show("!! STOP !! " + Environment.NewLine + "Item does not exists for AA-MN-FL Customer.");
-                return;
+                int existsForAAMNFL = (int)Db.ExecuteScalar("SELECT count([Item Number]) FROM tblPricing WHERE [Customer Number] = 'AA-MN-FL' and [Item Number] = '{1}'", cmbCustomers.SelectedValue, cmbItemNumb.Text);
+                if (existsForAAMNFL == 0)
+                {
+                    MessageBox.Show("!! STOP !! " + Environment.NewLine + "Item does not exists for AA-MN-FL Customer.");
+                    return;
+                }
             }
 
             if (cmbItemNumb.Text == "")
@@ -1094,7 +1097,7 @@ namespace Unified_Price_for_Var
             frm.ShowDialog();
         }
 
-       
+
         //===================================================================================================
     }
 }

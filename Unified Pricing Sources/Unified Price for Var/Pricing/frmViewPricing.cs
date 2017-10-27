@@ -169,7 +169,7 @@ namespace Unified_Price_for_Var
                     row.Cells["PreviousPrice"].Value = row.Cells["CurrentPrice"].Value;
                     row.Cells["CurrentPrice"].Value = currentPrice;
 
-                    Db.NonQuery("UPDATE tblPricing SET [Old Price] = [Current Price], [Current Price] = '{0}', IsNew = 1, Notes = '{1}', QuoteDate='{3}'  WHERE ID = {2}", currentPrice, txtNotes.Text, row.Cells["ID"].Value.ToString(), dateTimePicker2.Value.ToShortDateString());
+                    Db.NonQuery("UPDATE tblPricing SET [Old Price] = [Current Price], [Current Price] = '{0}', IsNew = 1, Notes = '{1}', QuoteDate='{3}', [Customer Item Number]='{4}'  WHERE ID = {2}", currentPrice, txtNotes.Text, row.Cells["ID"].Value.ToString(), dateTimePicker2.Value.ToShortDateString(), textBox4.Text);
 
                     var lead = Db.ExecuteDataRow("SELECT * FROM tblDistributionGroupDetail WHERE [Group_Customer_Name] = '{0}' AND Modifier = 'Lead'", cmbCustomers.SelectedValue);
                     if (lead != null)
@@ -833,15 +833,15 @@ namespace Unified_Price_for_Var
                 return;
             }
 
-            if (!cmbCustomers.SelectedValue.ToString().Equals("AA-MN-FL", StringComparison.OrdinalIgnoreCase))
-            {
-                int existsForAAMNFL = (int)Db.ExecuteScalar("SELECT count([Item Number]) FROM tblPricing WHERE [Customer Number] = 'AA-MN-FL' and [Item Number] = '{1}'", cmbCustomers.SelectedValue, cmbItemNumb.Text);
-                if (existsForAAMNFL == 0)
-                {
-                    MessageBox.Show("!! STOP !! " + Environment.NewLine + "Item does not exists for AA-MN-FL Customer.");
-                    return;
-                }
-            }
+            //if (!cmbCustomers.SelectedValue.ToString().Equals("AA-MN-FL", StringComparison.OrdinalIgnoreCase))
+            //{
+            //    int existsForAAMNFL = (int)Db.ExecuteScalar("SELECT count([Item Number]) FROM tblPricing WHERE [Customer Number] = 'AA-MN-FL' and [Item Number] = '{1}'", cmbCustomers.SelectedValue, cmbItemNumb.Text);
+            //    if (existsForAAMNFL == 0)
+            //    {
+            //        MessageBox.Show("!! STOP !! " + Environment.NewLine + "Item does not exists for AA-MN-FL Customer.");
+            //        return;
+            //    }
+            //}
 
             if (cmbItemNumb.Text == "")
             {

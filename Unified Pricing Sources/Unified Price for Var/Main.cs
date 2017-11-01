@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Unified_Price_for_Var.Item;
 
 
 namespace Unified_Price_for_Var
@@ -130,7 +131,7 @@ namespace Unified_Price_for_Var
                                     and iif(isnull(Last12MonthQty),0,Last12MonthQty) <=0 ");
             frmChangePricing frmChangePricing = new frmChangePricing();
             string type = "notavailable";
-            if (Convert.ToInt32(InActiveQty) > 0 )
+            if (Convert.ToInt32(InActiveQty) > 0)
             {
                 frmChangePricing.CustomerId = "AA-MN-FL";
                 frmChangePricing.CustomerName = "MAINTENANCE NETS, FULL LINE";
@@ -139,6 +140,67 @@ namespace Unified_Price_for_Var
             }
             frmChangePricing.LoadForm(type);
             frmChangePricing.ShowDialog();
+
+        }
+
+        private void btnDeleteItem_Click(object sender, EventArgs e)
+        {
+            frmDeleteItem frm = new frmDeleteItem();
+            frm.ShowDialog();
+
+        }
+
+        private void btnSpreadNewESItems_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show(String.Format("You are going to update members of \"Full Item group\"" + Environment.NewLine + "Please Confirm."),
+                                      "Confirm Update!!",
+                                      MessageBoxButtons.OKCancel);
+
+            if (confirmResult == System.Windows.Forms.DialogResult.OK)
+            {
+                DataTable dtGroup = Db.ExecuteDataTable("SELECT b.[Group_Customer_Name], b.[Percent], b.Modifier from tblDistributionGroupMaster a Inner Join tblDistributionGroupDetail b on a.[Group Number] = b.[Group Number] where a.[Group Name] = 'Full Item List' ");
+                DataTable dt = Db.ExecuteDataTable("Select [Item Number], [Std Pack QTY], [Price] from tbl_VAR_NEW_ES");
+                foreach (DataRow row in dt.Rows)
+                {
+                    var iDesc = Db.ExecuteScalar(String.Format("SELECT [Item Description] from tblItems where [Item Number]='" + row["Item Number"].ToString() + "'"));
+                    string itemDescription = iDesc != null && !string.IsNullOrEmpty(iDesc.ToString()) ? iDesc.ToString() : "";
+                    foreach (DataRow group in dtGroup.Rows)
+                    {
+
+                        decimal newPrice = 0;
+                        decimal percent = 0;
+                        Decimal.TryParse(group["Percent"].ToString(), out percent);
+                        if (Decimal.TryParse(row["Price"].ToString(), out newPrice))
+                        {
+                            switch (group["Modifier"].ToString().ToUpper())
+                            {
+                                case "LEAD":
+                                    newPrice = newPrice * 1;
+                                    break;
+                                case "INCREASE":
+                                    newPrice = newPrice * (1 + (percent / 100));
+                                    break;
+                                case "DECREASE":
+                                    newPrice = newPrice * (1 - (percent / 100));
+                                    break;
+                            }
+                            var itemCount = Db.ExecuteScalar(String.Format("select count('*') from tblPricing where [Customer Number]='{0}' and [Item Number] ='{1}'", group["Group_Customer_Name"].ToString(), row["Item Number"].ToString()));
+                            if (Convert.ToInt32(itemCount) > 0)
+                            {
+                                Db.NonQuery(String.Format("UPDATE tblPricing set [Current Price]={0}, [Item Description]='{1}',[Break Pak Net]='{2}',[QuoteDate]='{3}' where [Customer Number]='{4}' and [Item Number] ='{5}'", newPrice.ToString(), itemDescription, row["Std Pack QTY"].ToString(), DateTime.Today.ToShortDateString(), group["Group_Customer_Name"].ToString(), row["Item Number"].ToString()));
+                            }
+                            else
+                            {
+                                Db.NonQuery(String.Format("INSERT INTO tblPricing ([Item Number], [Customer Number], [Current Price], [Item Description],[Break Pak Net],[QuoteDate]) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}' )", row["Item Number"].ToString(), group["Group_Customer_Name"].ToString(), newPrice.ToString(), itemDescription, row["Std Pack QTY"].ToString(), DateTime.Today.ToShortDateString()));
+                            }
+                        }
+                    }
+
+                }
+
+                MessageBox.Show("Members of group \"Full Item Group\" updated successfully.", "Success", MessageBoxButtons.OK);
+
+            }
 
         }
     }

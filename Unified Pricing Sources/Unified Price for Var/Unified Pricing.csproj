@@ -220,6 +220,12 @@
     <Compile Include="frmBackUp.designer.cs">
       <DependentUpon>frmBackUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Item\frmDeleteItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Item\frmDeleteItem.Designer.cs">
+      <DependentUpon>frmDeleteItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pricing\frmChangePricing.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -467,6 +473,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBackUp.resx">
       <DependentUpon>frmBackUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Item\frmDeleteItem.resx">
+      <DependentUpon>frmDeleteItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pricing\frmChangePricing.resx">
       <DependentUpon>frmChangePricing.cs</DependentUpon>

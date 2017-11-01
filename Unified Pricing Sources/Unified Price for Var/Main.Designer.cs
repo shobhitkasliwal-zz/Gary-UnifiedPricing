@@ -56,6 +56,10 @@
             this.btnConvert = new System.Windows.Forms.Button();
             this.listBox8 = new System.Windows.Forms.ListBox();
             this.btnMainNetFull = new System.Windows.Forms.Button();
+            this.btnDeleteItem = new System.Windows.Forms.Button();
+            this.lstDeleteItem = new System.Windows.Forms.ListBox();
+            this.btnSpreadNewESItems = new System.Windows.Forms.Button();
+            this.listBox10 = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -256,7 +260,7 @@
             this.panel1.Controls.Add(this.txtPassword);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(28, 32);
+            this.panel1.Location = new System.Drawing.Point(28, 31);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(980, 575);
             this.panel1.TabIndex = 39;
@@ -402,6 +406,60 @@
             this.btnMainNetFull.UseVisualStyleBackColor = true;
             this.btnMainNetFull.Click += new System.EventHandler(this.btnMainNetFull_Click);
             // 
+            // btnDeleteItem
+            // 
+            this.btnDeleteItem.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDeleteItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteItem.Location = new System.Drawing.Point(559, 200);
+            this.btnDeleteItem.Name = "btnDeleteItem";
+            this.btnDeleteItem.Size = new System.Drawing.Size(127, 27);
+            this.btnDeleteItem.TabIndex = 45;
+            this.btnDeleteItem.Text = "Delete Item";
+            this.btnDeleteItem.UseVisualStyleBackColor = true;
+            this.btnDeleteItem.Click += new System.EventHandler(this.btnDeleteItem_Click);
+            // 
+            // lstDeleteItem
+            // 
+            this.lstDeleteItem.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lstDeleteItem.BackColor = System.Drawing.SystemColors.Menu;
+            this.lstDeleteItem.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lstDeleteItem.FormattingEnabled = true;
+            this.lstDeleteItem.Items.AddRange(new object[] {
+            "This function will allow user to delete selected item from ",
+            "All customer listings and if requested delete selected ",
+            "item from item master table."});
+            this.lstDeleteItem.Location = new System.Drawing.Point(711, 188);
+            this.lstDeleteItem.Name = "lstDeleteItem";
+            this.lstDeleteItem.Size = new System.Drawing.Size(297, 39);
+            this.lstDeleteItem.TabIndex = 46;
+            // 
+            // btnSpreadNewESItems
+            // 
+            this.btnSpreadNewESItems.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSpreadNewESItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSpreadNewESItems.Location = new System.Drawing.Point(559, 268);
+            this.btnSpreadNewESItems.Name = "btnSpreadNewESItems";
+            this.btnSpreadNewESItems.Size = new System.Drawing.Size(127, 43);
+            this.btnSpreadNewESItems.TabIndex = 47;
+            this.btnSpreadNewESItems.Text = "Spread New ES items";
+            this.btnSpreadNewESItems.UseVisualStyleBackColor = true;
+            this.btnSpreadNewESItems.Click += new System.EventHandler(this.btnSpreadNewESItems_Click);
+            // 
+            // listBox10
+            // 
+            this.listBox10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.listBox10.BackColor = System.Drawing.SystemColors.Menu;
+            this.listBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBox10.FormattingEnabled = true;
+            this.listBox10.Items.AddRange(new object[] {
+            "upload all members of \"Full item Group\" group from ",
+            "\"tbl_VAR_NEW_ES\" table related to customer",
+            "\"AA-MN-FL\""});
+            this.listBox10.Location = new System.Drawing.Point(711, 268);
+            this.listBox10.Name = "listBox10";
+            this.listBox10.Size = new System.Drawing.Size(297, 39);
+            this.listBox10.TabIndex = 48;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -427,6 +485,10 @@
             this.Controls.Add(this.btnConvert);
             this.Controls.Add(this.btnMainNetFull);
             this.Controls.Add(this.listBox8);
+            this.Controls.Add(this.btnSpreadNewESItems);
+            this.Controls.Add(this.listBox10);
+            this.Controls.Add(this.btnDeleteItem);
+            this.Controls.Add(this.lstDeleteItem);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Screen";
@@ -469,5 +531,9 @@
         private System.Windows.Forms.Button btnConvert;
         private System.Windows.Forms.ListBox listBox8;
         private System.Windows.Forms.Button btnMainNetFull;
+        private System.Windows.Forms.Button btnDeleteItem;
+        private System.Windows.Forms.ListBox lstDeleteItem;
+        private System.Windows.Forms.Button btnSpreadNewESItems;
+        private System.Windows.Forms.ListBox listBox10;
     }
 }

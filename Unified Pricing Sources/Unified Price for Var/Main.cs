@@ -191,7 +191,7 @@ namespace Unified_Price_for_Var
                             }
                             else
                             {
-                                Db.NonQuery(String.Format("INSERT INTO tblPricing ([Item Number], [Customer Number], [Current Price], [Item Description],[Break Pak Net],[QuoteDate]) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}' )", row["Item Number"].ToString(), group["Group_Customer_Name"].ToString(), newPrice.ToString(), itemDescription, row["Std Pack QTY"].ToString(), DateTime.Today.ToShortDateString()));
+                                Db.NonQuery(String.Format("INSERT INTO tblPricing ([Item Number], [Customer Number], [Current Price], [Item Description],[Notes],[QuoteDate]) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}' )", row["Item Number"].ToString(), group["Group_Customer_Name"].ToString(), newPrice.ToString(), itemDescription, row["Std Pack QTY"].ToString(), DateTime.Today.ToShortDateString()));
                             }
                         }
                     }
